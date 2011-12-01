@@ -1,0 +1,12 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    github-markup (0.5.3)
+    mustache (0.99.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  github-markup
+  mustache
