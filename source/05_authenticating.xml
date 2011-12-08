@@ -1,0 +1,165 @@
+<document>
+  <position>5</position>
+  <title>Authentication</title>
+  <section>
+    <docs>
+      <![CDATA[
+      Developers must authenticate themselves and the user by supplying API keys for **every** request.
+
+      You (the developer) are assigned an API key. This never changes unless there is a very serious 
+      reason. One of the Radium admins will issue you a key upon request. If you are developing
+      multiple applications on the Radium platform, you should use a unique key for every application.
+      This will allow us and you to track your individual applications and handle them separately. 
+
+      You will need to retreive a user's API key in order for them to use your application.
+      This means the user must login to our platform and thusly your application. This is the only 
+      request **that does not require a user api key**.
+
+      The next sections will cover how to authenticate using three different methods.
+      Choose which ever one makes developing your application easier. These parameters 
+      must be sent with every request so make sure the method is configurable with your individual
+      HTTP library.
+
+      You must choose **one** way to authenticate. The server tries to authenticate each request in
+      in this order:
+
+      1. Headers
+      2. HTTP Authentication
+      3. Query/Form Parameters
+      ]]>
+    </docs>
+  </section>
+  <section title="HTTP Authentication">
+    <docs>
+      <![CDATA[
+      You can authenticate yourself and the user over HTTP authentication. This process is simple.
+      You use the developer API key for the user and the user API key for the password.
+      This request can be presented in URL form: `http://developer_api_key:user_api_key@www.example.com/`
+
+      You can also use this method to login a user. The user API key will only be checked if
+      it is required for that particular request.
+      ]]>
+    </docs>
+  </section>
+  <section title="Header Authentication">
+    <docs>
+      <![CDATA[
+      You can authenticate yourself by sending two headers with every HTTP request. The header names are:
+
+      1. `X-Radium-Developer-API-Key`
+      2. `X-Radium-User-API-Key`
+      ]]>
+    </docs>
+  </section>
+  <section title="Form Parameters Authentication">
+    <docs>
+      <![CDATA[
+      This is the most common way to authenticate. Your request must include these two parameters:
+
+      1. `developer_api_key`
+      2. `user_api_key`
+
+      These parameters can come in two ways. They can speified in the URL as query parameters or sent as 
+      form/JSON encoded parameters in the body of each request. They can also be combined. 
+      For example, you could specifiy the `developer_api_key` in the URL and the `user_api_key` in the body 
+      of each request.
+      ]]>
+    </docs>
+  </section>
+  <section title="Retrieve a User's API KEY">
+    <docs>
+      <![CDATA[
+      This first thing your application will do is prompt the user to login. If they login is successful,
+      the server will give you back their API key which you can store and reuse for all future requests.
+      One of the parameters will be the `api_key`. Refer to the user section
+      for the complete documentation on user reponse formats. For this particular response, the `api_key`
+      is added.
+
+      ### Parameters
+
+      <dl>
+        <dt>developer_api_key</dt>
+        <dd><strong>Required</strong></dd>
+
+        <dt>email</dt>
+        <dd>
+          <strong>Required</strong><br/>This is case insenstive.
+        </dd>
+
+        <dt>password</dt>
+        <dd><strong>Required</strong></dd>
+      </dl>
+
+      ]]>
+    </docs>
+    <reference title="Login">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/login`
+
+      Authenticate a user from their email and password and return specific information
+      about that user, mainly their api key.
+
+      ### Example Request Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "your-private-key",
+        "email": "adam@radiumcrm.com",
+        "password": "password1",
+      }
+      ```
+
+      ### Example Response
+
+      Note: more parameters than email and passowrd will be returned. Refer to the
+      user section for complete documentation.
+
+      ```javascript
+      {
+        "email": "adam@radiumcrm.com",
+        "password": "password",
+        "api_key": "users-secret-key"
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <docs>
+      <![CDATA[
+      ## Testing Your Login
+
+      You can also test your code by using the echo service. This route acts exactly
+      like all the others except it does not check the user api key and it always returns
+      whatever you sent it. You can use this to test that you're sending the developer API
+      key correctly and your request parameters are being interperted correctly. 
+      ]]>
+    </docs>
+    <reference title="Echo">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/echo`
+
+      Allow a developer to test their code's interaction with the API without modifying
+      anything on the server.
+
+      ### Example Request Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "ab823478asd87bca8",
+        "foo": "bar"
+      }
+      ```
+
+      ### Example Response
+
+      ```javascript
+      {
+        "developer_api_key": "ab823478asd87bca8",
+        "foo": "bar"
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

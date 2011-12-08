@@ -1,4 +1,4 @@
 source :rubygems
 
-gem 'github-markup'
-gem 'mustache'
+gem 'rake'
+gem 'api_guides', :path => "~/projects/api_guides"

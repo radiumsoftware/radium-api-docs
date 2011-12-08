@@ -1,0 +1,86 @@
+<document>
+  <title>The Pipeline</title>
+  <position>4</position>
+  <section>
+    <docs>
+      <![CDATA[
+      The pipeline models the progression of a contact. They enter the system
+      as a `lead` and either exit the system as a `customer` or a `dead end`.
+      You do not have to manage the pipeline yourself. It happens
+      automatically based a user's interaction with that particular person.
+      The progression through the pipeline is:
+
+      1. Lead
+      2. Prospect
+      3. Opportunity
+      4. Customer
+      5. Dead End
+
+      These states are not serial. They can be skipped. Radium will do it's
+      best to adapt to all scenarios. Contacts can have their state changed if
+      people desire. However, the automatically pipeline progression should be
+      acceptable in most scenarios.
+      ]]>
+    </docs>
+  </section>
+  <section title="Leads">
+    <docs>
+      <![CDATA[
+      `Lead` is the default state. If a contact is added **without** a state
+      specified they will be a lead. A lead is someone you have not contacted
+      or interacted with. A lead represents a chance for your company to make
+      money. A lead will become a prospect once they are interacted with. This
+      means, sending them a message, inviting them to a meeting, or making a
+      todo about them. They can become a dead end if they are uninterested in
+      whatever your product is. All states can become dead ends at any time.
+      ]]>
+    </docs>
+  </section>
+  <section title="Prospecs">
+    <docs>
+      <![CDATA[
+      `Prospect` means you've interacted with this contact some how. They've
+      already been through the lead pool and you're are actively trying to
+      start a deal with this person in some fashion. A prospect will become an
+      `opportunity` when a deal is added with them.
+      ]]>
+    </docs>
+  </section>
+  <section title="Opportunities">
+    <docs>
+      <![CDATA[
+      `Opportunity` means there is open deal with this person. They will
+      either become a customer when the deal is paid or dead end if the deal
+      is rejected.
+      ]]>
+    </docs>
+  </section>
+  <section title="Customers">
+    <docs>
+      <![CDATA[
+      `Customer` is the happy state. This means they've bought whatever your
+      selling and now it is up to you to follow up with them or do whatever
+      your organization requires to retain them.
+      ]]>
+    </docs>
+  </section>
+  <section title="Dead Ends">
+    <docs>
+      <![CDATA[
+      `Dead Ends` are people who are not interested in your product(s) at all.
+      They should not be contacted again. For all intensive purposes, you can
+      consider them removed from the system. 
+      ]]>
+    </docs>
+  </section>
+  <section title="Statistics & Reports">
+    <docs>
+      <![CDATA[
+      Progression through the pipeline is automatically tracked by Radium.
+      Radium will use this information to generate all sorts of fancy reports
+      (including charts and graphs!) for pipeline states at arbitrary times. We
+      are here for all your enterprise needs! (including charts and graphs).
+      ]]>
+    </docs>
+  </section>
+</document>

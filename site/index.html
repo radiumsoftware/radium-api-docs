@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>Radium API</title>
+  <link rel="stylesheet" type="text/css" href="./syntax.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+
+<div id="topbar">
+    <img id="logo" src="/Users/adam/radium/api-docs/logo.png"/>
+
+  <a href="#" class="brand">Radium API</a>
+
+  <ul class="nav">
+    <li id="toc">
+      <a href="#">Table of Contents</a>
+      <div id="table-of-contents">
+          <section>
+            <a class="header" href="#d-introduction">Introduction</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-authentication">Authentication</a></li>
+                  <li class="sub-section"><a href="#s-parameter-parsing">Parameter Parsing</a></li>
+                  <li class="sub-section"><a href="#s-encodings">Encodings</a></li>
+                  <li class="sub-section"><a href="#s-times">Times</a></li>
+                  <li class="sub-section"><a href="#s-response-codes">Response Codes</a></li>
+                  <li class="sub-section"><a href="#s-resources">Resources</a></li>
+                  <li class="sub-section"><a href="#s-push-notifications">Push Notifications</a></li>
+                  <li class="sub-section"><a href="#s-help-support">Help  Support</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-routes">Routes</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-overview">Overview</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-data-model">Data Model</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-accounts">Accounts</a></li>
+                  <li class="sub-section"><a href="#s-users">Users</a></li>
+                  <li class="sub-section"><a href="#s-contacts">Contacts</a></li>
+                  <li class="sub-section"><a href="#s-groups">Groups</a></li>
+                  <li class="sub-section"><a href="#s-todos">Todos</a></li>
+                  <li class="sub-section"><a href="#s-deals">Deals</a></li>
+                  <li class="sub-section"><a href="#s-messages-email-sms-im-">Messages (Email, SMS,  IM)</a></li>
+                  <li class="sub-section"><a href="#s-phone-calls">Phone Calls</a></li>
+                  <li class="sub-section"><a href="#s-meetings">Meetings</a></li>
+                  <li class="sub-section"><a href="#s-call-lists">Call Lists</a></li>
+                  <li class="sub-section"><a href="#s-campaigns">Campaigns</a></li>
+                  <li class="sub-section"><a href="#s-notes-comments-attachments">Notes, Comments,  Attachments</a></li>
+                  <li class="sub-section"><a href="#s-extra-fields">Extra Fields</a></li>
+                  <li class="sub-section"><a href="#s-reminders">Reminders</a></li>
+                  <li class="sub-section"><a href="#s-external-accounts">External Accounts</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-the-pipeline">The Pipeline</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-leads">Leads</a></li>
+                  <li class="sub-section"><a href="#s-prospecs">Prospecs</a></li>
+                  <li class="sub-section"><a href="#s-opportunities">Opportunities</a></li>
+                  <li class="sub-section"><a href="#s-customers">Customers</a></li>
+                  <li class="sub-section"><a href="#s-dead-ends">Dead Ends</a></li>
+                  <li class="sub-section"><a href="#s-statistics-reports">Statistics  Reports</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-authentication">Authentication</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-http-authentication">HTTP Authentication</a></li>
+                  <li class="sub-section"><a href="#s-header-authentication">Header Authentication</a></li>
+                  <li class="sub-section"><a href="#s-form-parameters-authentication">Form Parameters Authentication</a></li>
+                  <li class="sub-section"><a href="#s-retrieve-a-user-s-api-key">Retrieve a User's API KEY</a></li>
+            </ol>
+          </section>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+<div id="container">
+  <div id="background"></div>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-introduction">Introduction</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>The Radium API is designed around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>.
+The API is designed to be predictable and fast. HTTP verbs are used to
+indicate what action to do on a particiular resource. HTTP status codes
+are use to indicate the results. All response are given back in
+<a href="http://www.json.org/">JSON</a>. All requests happen over HTTPS to ensure
+security. All requests can be sent either as JSON or as standard URL
+encoded form bodies.</p>
+
+<p>The API allows you act like the user you are logged in
+as. System wide access is not allowed.</p>
+
+<p>You will need two things to start using the API.</p>
+
+<ol>
+<li>A Developer API key. This is your authentication token. We will
+monitor use of this specific token. Every application should have
+a unique token. This token is sent with every HTTP request.</li>
+<li>A User API key. This token is globally unique through out Radium.
+This allows you to complete actions as the user indentified by this
+token. This token never changes. You can use your developer API key
+to retreive user API keys.</li>
+</ol>
+
+<p>The API is designed to be developer friendly for many different HTTP
+clients in any different langauge or framework. You should have no
+problem using the API has long as your library can:</p>
+
+<ol>
+<li>Send <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> requests</li>
+<li>Set headers on individual requests</li>
+<li>Conduct HTTP authorization.</li>
+</ol>
+
+<p>Now that you know the basics, let&#39;s go
+over developer and user authentication. The server will authorize
+requests based on the resource, user, and action requested. You have no
+control over the authorization process. You can simply authenticate to
+the server.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-authentication">Authentication</h2>
+
+              <p>The API has been designed to allow multiple ways to authenticate. It is
+designed this way because the authentication information should sent
+with every request. Different HTTP libraries allow you to configure them
+to do so but in different ways. The API is designed support a few common
+scenarios.</p>
+
+<ol>
+<li>Authentication by query string paramters. EX:
+<code>&#47;foo?developer_api_key=bar&amp;user_api_key=baz</code></li>
+<li>HTTP authorization. EX:
+<code>https:&#47;&#47;developer_api_key@user_api_key:api.radiumcrm.com</code></li>
+<li>Request Headers. EX <code>X-Radium-Developer-API-Key: foo</code></li>
+<li>Form body paramters.</li>
+</ol>
+
+<p>Refer to your library&#39;s documentation to determine which authentication
+strategy is right for your application.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-parameter-parsing">Parameter Parsing</h2>
+
+              <p>The API is designed to work these formats:</p>
+
+<ol>
+<li><code>application&#47;json</code> <strong>RECOMMENDED</strong></li>
+<li><code>application&#47;x-www-form-urlencoded</code></li>
+<li><code>multipart&#47;form-data</code> (for uploading Attachments and other files)</li>
+</ol>
+
+<p>Sending parameters as JSON encoded objects is the preferred and
+recommend way to interact with the API. JSON makes it easier to model
+some larger structures required by the API. The examples are also
+modeled using JSON input and JSON
+output. Your HTTP library should be able to use any
+of these formats, however it may not automatically encode JSON for you
+so be sure you know your HTTP library inside and out!</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-encodings">Encodings</h2>
+
+              <p><strong>All</strong> requests should be encoded in UTF8. All responses will be in UTF8.
+It it your responsiblitiy to ensure that your code is sending the proper
+requests.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-times">Times</h2>
+
+              <p>All times are stored in UTC. It is recommened, but not required that all
+incoming timestamps be in UTC. All times will be converted to UTC before
+entering the database. <strong>All</strong> times will be returned in UTC independent of
+whatever time zone they entered as. It is up to you to present the time
+in a different time zone if you want.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-response-codes">Response Codes</h2>
+
+              <p>The API returns status codes to describe what happens for the particular
+response. This section is here to give you a overview of what the 
+API returns and how to interpert it.</p>
+
+<dl>
+  <dt>200</dt>
+  <dd>
+    <strong>Success</strong><br/>
+    Pip-pip, jolly good fun ol' bean. Everything went according to plan
+  </dd>
+
+  <dt>201</dt>
+  <dd>
+    <strong>Created</strong><br/>
+    Used when a POST to create a resource was successful
+  </dd>
+
+  <dt>202</dt>
+  <dd>
+    <strong>Accepted</strong><br/>
+    Used when a requests enter a queuing system. They are
+    processed later and my succeded or fail at that time. If you request
+    returns a 202 it should be considered a success.
+  </dd>
+
+  <dt>401</dt>
+  <dd>
+    <strong>Unauthorized</strong><br/>
+    Could not authenticate using the developer or user token.
+    This is either because the tokens were not provided, provided incorrectly, or simply wrong.
+  </dd>
+
+  <dt>402</dt>
+  <dd>
+    <strong>Payment Required</strong><br/>
+    Used when authentication worked, but the request 
+    requires a UBB (Usage Based Billing) service that the user
+    does not have enough credit for.
+  </dd>
+
+  <dt>403</dt>
+  <dd>
+    <strong>Forbidden</strong><br/>
+    Used when authentication happened correctly, but the
+    user does not have authorization to complete that action on the specific
+    resource. Example, try to delete a user from a different account.
+  </dd>
+
+  <dt>404</dt>
+  <dd>
+    <strong>Not Found</strong><br/>
+    Used when you the specified record could not be found
+    in the system. This error will be raised if you try to access records
+    outside the scope of the user's account or specify the ID incorrectly.
+    Example, specify id is 5 when there is no Todo with id 5.
+  </dd>
+
+  <dt>405</dt>
+  <dd>
+    <strong>Method Not Allowed</strong><br/>
+    Used when specific URL requires a POST but request comes as a GET.
+  </dd>
+
+  <dt>406</dt>
+  <dd>
+    <strong>Not Acceptable</strong><br/>
+    Used then the API does not know how to generate a
+    response for the specified format. Example, requesting XML when the
+    API only returns JSON.
+  </dd>
+
+  <dt>422</dt>
+  <dd>
+    <strong>Unprocessable Entity (aka Validation Failed)</strong><br/>
+    Used for all responses where the associated resource fails validation.
+    For example, you tried to create a user but forgot to specify the email address.
+    See the response body for a list of errors.
+  </dd>
+
+  <dt>429</dt>
+  <dd>
+    <strong>Too Many Requests</strong><br/>
+    Application is over the rate limit.
+  </dd>
+
+  <dt>500</dt>
+  <dd>
+    <strong>Internal Server Error</strong><br/>
+    Returned when an exception is raised on the
+    server. This is usually because a bug has occured. 500 responses are
+    automatically sent to admins for debugging. This means there is a
+    problem with the server and not your application.
+  </dd>
+
+  <dt>502</dt>
+  <dd>
+    <strong>Bad Gateway</strong><br/>
+    Used when an external server is needed to complete a request and it returned an error.
+  </dd>
+
+  <dt>503</dt>
+  <dd>
+    <strong>Down for maintenance</strong><br/>
+    This is a temporary state.
+  </dd>
+</dl>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-resources">Resources</h2>
+
+              <p>The API grants you access to all the fundamental resources in Radium.
+You should easily be able to use all these resources to create your own
+rich Application based off on the Radium platform. I&#39;ll give you
+a quick list of all the different things you can access. Refer to the
+individual sections for complete indepth disscussion of each resource
+and how it relates to the others.</p>
+
+<ol>
+<li>Users</li>
+<li>Contacts</li>
+<li>Groups</li>
+<li>Emails</li>
+<li>SMS</li>
+<li>IM</li>
+<li>Todos</li>
+<li>Call Lists</li>
+<li>Deals</li>
+<li>Phone Calls</li>
+<li>Meetings</li>
+<li>External Accounts (Microsoft Exchange &amp; Google)</li>
+<li>Campaigns</li>
+<li>Call Lists</li>
+<li>Lead Capture</li>
+<li>Attachments</li>
+<li>Comments</li>
+</ol>
+
+<p>Each resource allows for basic CRUD (Create, Read, Update, and Delete)
+operations plus some specific actions for individual resources. For
+example, you can CRUD meetings as well as confirm or reject them. Basic
+CRUD operations give you (the developer) full control of the lifecyle of
+individual records.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-push-notifications">Push Notifications</h2>
+
+              <p>The platform will also send push notifications for changes to each
+record as well as specific events related to each record. For example,
+you may receive a <code>deal_closed</code> event. You can use a <a href="http://dev.w3.org/html5/websockets/">Websocket</a>
+or a few other socket protocols to connect to the notification server.
+You should listen for notifications to keep your application&#39;s data up
+to date as it changes in real time. Authentication and listening is
+slightly different for push notifications. Refer to the push
+notification section for indepth discussion.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-help-support">Help  Support</h2>
+
+              <p>IF you are having a prolem using or understanding <strong>after having read
+the documentation</strong> please email: <a href="mailto:%0Aapi-support@radiumcrm.com">api-support@radiumcrm.com</a>. Someone will get back to you ASAP. If you
+happen to run into Adam Hawkins anywhere like on the street, in the
+club, on the beach, in Europe, in California, in Asia, or at a
+conference, or up in your codez, please give him a shout! He&#39;d love to
+hear from you. </p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-routes">Routes</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-overview">Overview</h2>
+
+              <p>Routing follows RESTful principles. </p>
+
+<ul>
+<li><code>POST</code> means create a resource</li>
+<li><code>PUT</code> updates a resource</li>
+<li><code>GET</code> returns one or more resources</li>
+<li><code>DELETE</code> removes a resource</li>
+</ul>
+
+<p><code>:variable_name</code> refers to input parameters in the URL.
+The various <code>:id</code> parameters are <strong>numeric</strong> only.</p>
+
+<p>Refer to the individual sections for complete coverage
+of input paramters and output formats.</p>
+
+<p>Some routes are nested as required. For example, you need 
+an account to create a user, so the route <code>POST &#47;accounts&#47;:account_id&#47;users</code>
+reflects that.</p>
+
+<p>There are also associated routes. For example, you can create
+a todo about a contact usign the <code>POST &#47;contacts&#47;:contact_id&#47;todos</code>
+route. This associates the new todo with the specified contact.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-routes">Routes</h2>
+                <pre><code>POST   &#47;accounts&#47;:account_id&#47;users
+POST   &#47;accounts
+GET    &#47;accounts&#47;:id
+PUT    &#47;accounts&#47;:id
+DELETE &#47;accounts&#47;:id
+
+POST   &#47;users&#47;:user_id&#47;follow
+GET    &#47;users
+GET    &#47;users&#47;:id
+PUT    &#47;users&#47;:id
+DELETE &#47;users&#47;:id
+
+POST   &#47;contacts&#47;:contact_id&#47;deals
+POST   &#47;contacts&#47;:contact_id&#47;fields
+POST   &#47;contacts&#47;:contact_id&#47;notes
+POST   &#47;contacts&#47;:contact_id&#47;todos
+POST   &#47;contacts&#47;:contact_id&#47;follow
+GET    &#47;contacts
+POST   &#47;contacts
+GET    &#47;contacts&#47;:id
+PUT    &#47;contacts&#47;:id
+DELETE &#47;contacts&#47;:id
+
+POST   &#47;todos&#47;:todo_id&#47;comments
+POST   &#47;todos&#47;:todo_id&#47;reminders
+GET    &#47;todos
+POST   &#47;todos
+GET    &#47;todos&#47;:id
+PUT    &#47;todos&#47;:id
+DELETE &#47;todos&#47;:id
+
+POST   &#47;deals&#47;:deal_id&#47;comments
+POST   &#47;deals&#47;:deal_id&#47;notes
+POST   &#47;deals&#47;:deal_id&#47;todos
+POST   &#47;deals&#47;:deal_id&#47;follow
+GET    &#47;deals
+GET    &#47;deals&#47;:id
+PUT    &#47;deals&#47;:id
+DELETE &#47;deals&#47;:id
+
+POST   &#47;groups&#47;:group_id&#47;todos
+POST   &#47;groups&#47;:group_id&#47;follow
+GET    &#47;groups
+POST   &#47;groups
+GET    &#47;groups&#47;:id
+PUT    &#47;groups&#47;:id
+DELETE &#47;groups&#47;:id
+
+GET    &#47;announcements
+POST   &#47;announcements
+GET    &#47;announcements&#47;new
+GET    &#47;announcements&#47;:id
+PUT    &#47;announcements&#47;:id
+DELETE &#47;announcements&#47;:id
+
+GET    &#47;fields
+GET    &#47;fields&#47;:id
+PUT    &#47;fields&#47;:id
+DELETE &#47;fields&#47;:id
+
+POST   &#47;messages&#47;:message_id&#47;todos
+POST   &#47;messages&#47;:message_id&#47;notes
+GET    &#47;messages
+GET    &#47;messages&#47;:id
+PUT    &#47;messages&#47;:id
+DELETE &#47;messages&#47;:id
+POST   &#47;emails
+POST   &#47;sms
+POST   &#47;ims
+
+POST   &#47;meetings&#47;:meeting_id&#47;todos
+POST   &#47;meetings&#47;:meeting_id&#47;reminders
+PUT    &#47;meetings&#47;:id&#47;reschedule
+PUT    &#47;meetings&#47;:id&#47;cancel
+GET    &#47;meetings
+POST   &#47;meetings
+GET    &#47;meetings&#47;:id
+PUT    &#47;meetings&#47;:id
+DELETE &#47;meetings&#47;:id
+
+PUT    &#47;invitations&#47;:id&#47;confirm
+PUT    &#47;invitations&#47;:id&#47;reject
+
+POST   &#47;phone_calls&#47;:phone_call_id&#47;todos
+GET    &#47;phone_calls
+GET    &#47;phone_calls&#47;:id
+PUT    &#47;phone_calls&#47;:id
+DELETE &#47;phone_calls&#47;:id
+
+POST   &#47;notes&#47;:note_id&#47;todos
+GET    &#47;notes
+GET    &#47;notes&#47;:id
+PUT    &#47;notes&#47;:id
+DELETE &#47;notes&#47;:id
+
+GET    &#47;reminders
+POST   &#47;reminders
+GET    &#47;reminders&#47;:id
+PUT    &#47;reminders&#47;:id
+DELETE &#47;reminders&#47;:id
+
+POST   &#47;campaigns&#47;:campaign_id&#47;follow
+GET    &#47;campaigns
+POST   &#47;campaigns
+GET    &#47;campaigns&#47;:id
+PUT    &#47;campaigns&#47;:id
+DELETE &#47;campaigns&#47;:id
+
+PUT    &#47;followings&#47;:id&#47;approve
+GET    &#47;followings
+POST   &#47;followings
+GET    &#47;followings&#47;:id
+PUT    &#47;followings&#47;:id
+DELETE &#47;followings&#47;:id
+
+GET    &#47;products
+POST   &#47;products
+GET    &#47;products&#47;:id
+PUT    &#47;products&#47;:id
+DELETE &#47;products&#47;:id
+
+GET    &#47;comments
+POST   &#47;comments
+GET    &#47;comments&#47;:id
+DELETE &#47;comments&#47;:id
+
+POST   &#47;echo
+
+POST   &#47;bug
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-data-model">Data Model</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>This section is here to give you an overview on the data model inside
+Radium. You should understand how each different resource interacts with
+the others after reading this section. This section will not go in depth
+into each resource. Refer to each resource&#39;s section for in depth
+coverage. </p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-accounts">Accounts</h2>
+
+              <p>All resources are scoped to a specific account. An account is the
+container for all things in Radium. Users, contacts, groups, and
+everything else all live inside the account. Accounts have owners.
+Owners are responsible for paying the bills for each account. Owners may
+set permissions for other users related to this account. Enabled
+services are stored at the account level. You as the developer never
+interact directly with the account. You only access things through the
+account. You are not allowed to access things side this account. The
+account is your planet and just like man kind you have not unlocked
+&quot;travel to different planets.&quot;</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-users">Users</h2>
+
+              <p>Users do actions. They send emails, make todos, create campaigns, manage
+deals, manage contacts, and create groups. They are essentially
+everything! The system is build around users interacting with contacts.
+User&#39;s can follow other users, contact, or campaigns. Users are
+organized into teams with someone in charge of the team. Users can be in
+many teams at once. You are only allowed to manage yourself. If you have
+permission you can invite more users into your company&#39;s account. You
+can also create deals, record phone calls, messages, add contacts etc.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-contacts">Contacts</h2>
+
+              <p>Contacts are the core of Radium. Contacts can be anything! They can be
+people, they can be companies, they can be organizations. They are
+anything you interact with. All resources are somehow related to
+contacts. User can request follow contacts to have things related to
+them added to their feed. Contacts can be put into multiple groups to
+keep them organized. For example, you could organize your contacts into
+&quot;Workers&quot; or &quot;Partners.&quot; Contacts also go through the sale pipeline (this
+can be configured). Contacts are automatically moved through the
+pipeline based on their interactions inside Radium. There is more
+discussion on this in the Pipeline section. Contacts must be assigned to
+users. The user is responsible for managing them through the sales
+process. The user allow approves who can view this particular contact&#39;s
+feed. Contacts can be extended with extra fields. You can use extra
+fields to add your own particular data to each individual record.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-groups">Groups</h2>
+
+              <p>Groups are a way to organize contacts. Groups can also be extended with
+extra fields. You <strong>do not</strong> interact directly with groups. You can use
+the grouping structure to mimic a Person and Company heirarchy. Groups
+are very free form and are only here for to put contacts in arbitrary
+groups. Groups are like tags but offer more power since they can be
+extended with extra fields.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-todos">Todos</h2>
+
+              <p>Todos are very important! Todos have a description and a date to finish
+it by. Todos can be associated with <em>anything</em> in the system. Todos can
+also have reminders. We also notify you if todos have been reassigned to
+you. People are allowed to add todos for other people as well. Users can
+also comment on todos. The platform will also associate todos with a
+specific contact based on what they&#39;re associated with. For example, if
+you make a todo about a meeting with a contact, the todo will be
+associated with the specific contact(s). Another example, if you make a
+todo about a deal, then the todo will be associated with the deal&#39;s
+contact. Todos may also be associated with a campaign. Todos may also
+have attachments.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-deals">Deals</h2>
+
+              <p>Deals record financial interactions with a particular contact. Deals go
+through a these states:</p>
+
+<ol>
+<li>Pending</li>
+<li>Closed</li>
+<li>Paid</li>
+<li>Rejected</li>
+</ol>
+
+<p>The associated contact will move through the pipeline depending on what
+state the deal is. Deals happen with a user and a contact. Deals can
+also be a part of a campaign. Deals can also have attachments.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-messages-email-sms-im-">Messages (Email, SMS,  IM)</h2>
+
+              <p>Radium can handle many different forms of communication. It can sync SMS
+from your phone and send them. It can sync email from your email account
+and send email using your account. You can also IM people inside your
+own company. Email and SMS can be associated with contacts. IM&#39;s are
+only associated with people inside your own company. You cannot IM a
+contact. Sending a message to a contact will move them up a stage in the
+pipeline.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-phone-calls">Phone Calls</h2>
+
+              <p>Phone calls are logged from the user&#39;s mobile device. Phone calls have
+specific outcomes which managers can use to track their agent&#39;s success
+rate. Phone calls are also associated with call lists. Phone calls
+happen between users and contacts. They can either between a user and
+another or between a contact and a user. Phone calls can have todos
+about them and also be commented on. Calling a contact will move them up
+in the pipeline.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-meetings">Meetings</h2>
+
+              <p>Anyone can add a meeting. You can have a meeting with yourself or you
+can choose to invite users or contacts to the meeting. The person who
+added the meeting can choose to cancel or reschedule the meeting. If
+they do this, everyone invited will receive a confirmation notification.
+Individual invitees can decide to confirm or deny their invitation.
+Inviting contacts to meetings will move them up in the pipeline.
+Meetings can also have attachments.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-call-lists">Call Lists</h2>
+
+              <p>Call Lists contain contacts. Call lists live inside campaigns. All call
+lists must have a name and a call by date. You choose to assign a call
+list to a user when it&#39;s created. Then, when the calls are made they
+will be automatically removed from the call list.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-campaigns">Campaigns</h2>
+
+              <p>Campaigns are a way to group everything else. Contacts, todos, messages,
+meetings, and call lists all live inside campaigns. You can add people
+to a campaign then create things for it. You need a campaign to create a
+call list. Everything else can be associated with a particular campaign.
+If you make a todo (or anything else) it can be associated with a
+campaign. Campaigns have designated start and ends times. A campaign
+also has a specific monetary value it should bring it. This is
+calculated from all the deals with contacts in the campaign. Users can
+request to follow campaigns. The person in charge of the campaign will
+approve these requests. Campaigns also have their own individual
+statistics which can be used for reporting.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-notes-comments-attachments">Notes, Comments,  Attachments</h2>
+
+              <p>These resources can be associated with anything. There is
+nothing particularly important about them. They are only used to enhance
+the associated record. They are public by default.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-extra-fields">Extra Fields</h2>
+
+              <p>Extra fields are used to extend individual records. They can be added to
+a specific record or all many records at once. They have a type like:
+email, phone number or general. You can also specify a set to choose
+from. For example you could create an extra field with choices: A, B, C,
+and D. That way when a user changes that extra field it will only allow
+value that are A, B, C, or D. The email and phone number attributes will
+also be used to match phone calls, SMS, and emails to people when
+syncing. Extra fields will also be persisted to external accounts when
+syncing to those accounts.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-reminders">Reminders</h2>
+
+              <p>Reminders can be associated with Todos or Meetings. They require a
+specific time to be sent. They can be sent via Email or SMS.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-external-accounts">External Accounts</h2>
+
+              <p>These are Google or Exchange accounts. Changes that happen in Radium
+will be synced back to all the other accounts the user has. Changes that
+happen inside these accounts are synced with Radium.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-the-pipeline">The Pipeline</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>The pipeline models the progression of a contact. They enter the system
+as a <code>lead</code> and either exit the system as a <code>customer</code> or a <code>dead end</code>.
+You do not have to manage the pipeline yourself. It happens
+automatically based a user&#39;s interaction with that particular person.
+The progression through the pipeline is:</p>
+
+<ol>
+<li>Lead</li>
+<li>Prospect</li>
+<li>Opportunity</li>
+<li>Customer</li>
+<li>Dead End</li>
+</ol>
+
+<p>These states are not serial. They can be skipped. Radium will do it&#39;s
+best to adapt to all scenarios. Contacts can have their state changed if
+people desire. However, the automatically pipeline progression should be
+acceptable in most scenarios.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-leads">Leads</h2>
+
+              <p><code>Lead</code> is the default state. If a contact is added <strong>without</strong> a state
+specified they will be a lead. A lead is someone you have not contacted
+or interacted with. A lead represents a chance for your company to make
+money. A lead will become a prospect once they are interacted with. This
+means, sending them a message, inviting them to a meeting, or making a
+todo about them. They can become a dead end if they are uninterested in
+whatever your product is. All states can become dead ends at any time.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-prospecs">Prospecs</h2>
+
+              <p><code>Prospect</code> means you&#39;ve interacted with this contact some how. They&#39;ve
+already been through the lead pool and you&#39;re are actively trying to
+start a deal with this person in some fashion. A prospect will become an
+<code>opportunity</code> when a deal is added with them.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-opportunities">Opportunities</h2>
+
+              <p><code>Opportunity</code> means there is open deal with this person. They will
+either become a customer when the deal is paid or dead end if the deal
+is rejected.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-customers">Customers</h2>
+
+              <p><code>Customer</code> is the happy state. This means they&#39;ve bought whatever your
+selling and now it is up to you to follow up with them or do whatever
+your organization requires to retain them.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-dead-ends">Dead Ends</h2>
+
+              <p><code>Dead Ends</code> are people who are not interested in your product(s) at all.
+They should not be contacted again. For all intensive purposes, you can
+consider them removed from the system. </p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-statistics-reports">Statistics  Reports</h2>
+
+              <p>Progression through the pipeline is automatically tracked by Radium.
+Radium will use this information to generate all sorts of fancy reports
+(including charts and graphs!) for pipeline states at arbitrary times. We
+are here for all your enterprise needs! (including charts and graphs).</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-authentication">Authentication</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Developers must authenticate themselves and the user by supplying API keys for <strong>every</strong> request.</p>
+
+<p>You (the developer) are assigned an API key. This never changes unless there is a very serious 
+reason. One of the Radium admins will issue you a key upon request. If you are developing
+multiple applications on the Radium platform, you should use a unique key for every application.
+This will allow us and you to track your individual applications and handle them separately. </p>
+
+<p>You will need to retreive a user&#39;s API key in order for them to use your application.
+This means the user must login to our platform and thusly your application. This is the only 
+request <strong>that does not require a user api key</strong>.</p>
+
+<p>The next sections will cover how to authenticate using three different methods.
+Choose which ever one makes developing your application easier. These parameters 
+must be sent with every request so make sure the method is configurable with your individual
+HTTP library.</p>
+
+<p>You must choose <strong>one</strong> way to authenticate. The server tries to authenticate each request in
+in this order:</p>
+
+<ol>
+<li>Headers</li>
+<li>HTTP Authentication</li>
+<li>Query&#47;Form Parameters</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-http-authentication">HTTP Authentication</h2>
+
+              <p>You can authenticate yourself and the user over HTTP authentication. This process is simple.
+You use the developer API key for the user and the user API key for the password.
+This request can be presented in URL form: <code>http:&#47;&#47;developer_api_key:user_api_key@www.example.com&#47;</code></p>
+
+<p>You can also use this method to login a user. The user API key will only be checked if
+it is required for that particular request.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-header-authentication">Header Authentication</h2>
+
+              <p>You can authenticate yourself by sending two headers with every HTTP request. The header names are:</p>
+
+<ol>
+<li><code>X-Radium-Developer-API-Key</code></li>
+<li><code>X-Radium-User-API-Key</code></li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-form-parameters-authentication">Form Parameters Authentication</h2>
+
+              <p>This is the most common way to authenticate. Your request must include these two parameters:</p>
+
+<ol>
+<li><code>developer_api_key</code></li>
+<li><code>user_api_key</code></li>
+</ol>
+
+<p>These parameters can come in two ways. They can speified in the URL as query parameters or sent as 
+form&#47;JSON encoded parameters in the body of each request. They can also be combined. 
+For example, you could specifiy the <code>developer_api_key</code> in the URL and the <code>user_api_key</code> in the body 
+of each request.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-retrieve-a-user-s-api-key">Retrieve a User's API KEY</h2>
+
+              <p>This first thing your application will do is prompt the user to login. If they login is successful,
+the server will give you back their API key which you can store and reuse for all future requests.
+One of the parameters will be the <code>api_key</code>. Refer to the user section
+for the complete documentation on user reponse formats. For this particular response, the <code>api_key</code>
+is added.</p>
+
+<h3>Parameters</h3>
+
+<dl>
+  <dt>developer_api_key</dt>
+  <dd><strong>Required</strong></dd>
+
+  <dt>email</dt>
+  <dd>
+    <strong>Required</strong><br/>This is case insenstive.
+  </dd>
+
+  <dt>password</dt>
+  <dd><strong>Required</strong></dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-login">Login</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;login</code></p>
+
+<p>Authenticate a user from their email and password and return specific information
+about that user, mainly their api key.</p>
+
+<h3>Example Request Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;your-private-key&quot;,
+  &quot;email&quot;: &quot;adam@radiumcrm.com&quot;,
+  &quot;password&quot;: &quot;password1&quot;,
+}
+</code></pre>
+
+<h3>Example Response</h3>
+
+<p>Note: more parameters than email and passowrd will be returned. Refer to the
+user section for complete documentation.</p>
+
+<pre><code class="javascript">{
+  &quot;email&quot;: &quot;adam@radiumcrm.com&quot;,
+  &quot;password&quot;: &quot;password&quot;,
+  &quot;api_key&quot;: &quot;users-secret-key&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <h2>Testing Your Login</h2>
+
+<p>You can also test your code by using the echo service. This route acts exactly
+like all the others except it does not check the user api key and it always returns
+whatever you sent it. You can use this to test that you&#39;re sending the developer API
+key correctly and your request parameters are being interperted correctly. </p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-echo">Echo</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;echo</code></p>
+
+<p>Allow a developer to test their code&#39;s interaction with the API without modifying
+anything on the server.</p>
+
+<h3>Example Request Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;ab823478asd87bca8&quot;,
+  &quot;foo&quot;: &quot;bar&quot;
+}
+</code></pre>
+
+<h3>Example Response</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;ab823478asd87bca8&quot;,
+  &quot;foo&quot;: &quot;bar&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+</div>
+</body>
+</html>

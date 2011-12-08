@@ -1,0 +1,217 @@
+<document>
+  <title>Data Model</title>
+  <position>3</position>
+  <section>
+    <docs>
+      <![CDATA[
+      This section is here to give you an overview on the data model inside
+      Radium. You should understand how each different resource interacts with
+      the others after reading this section. This section will not go in depth
+      into each resource. Refer to each resource's section for in depth
+      coverage. 
+      ]]>
+    </docs>
+  </section>
+  <section title="Accounts">
+    <docs>
+      <![CDATA[
+      All resources are scoped to a specific account. An account is the
+      container for all things in Radium. Users, contacts, groups, and
+      everything else all live inside the account. Accounts have owners.
+      Owners are responsible for paying the bills for each account. Owners may
+      set permissions for other users related to this account. Enabled
+      services are stored at the account level. You as the developer never
+      interact directly with the account. You only access things through the
+      account. You are not allowed to access things side this account. The
+      account is your planet and just like man kind you have not unlocked
+      "travel to different planets."
+      ]]>
+    </docs>
+  </section>
+  <section title="Users">
+    <docs>
+      <![CDATA[
+      Users do actions. They send emails, make todos, create campaigns, manage
+      deals, manage contacts, and create groups. They are essentially
+      everything! The system is build around users interacting with contacts.
+      User's can follow other users, contact, or campaigns. Users are
+      organized into teams with someone in charge of the team. Users can be in
+      many teams at once. You are only allowed to manage yourself. If you have
+      permission you can invite more users into your company's account. You
+      can also create deals, record phone calls, messages, add contacts etc.
+      ]]>
+    </docs>
+  </section>
+  <section title="Contacts">
+    <docs>
+      <![CDATA[
+      Contacts are the core of Radium. Contacts can be anything! They can be
+      people, they can be companies, they can be organizations. They are
+      anything you interact with. All resources are somehow related to
+      contacts. User can request follow contacts to have things related to
+      them added to their feed. Contacts can be put into multiple groups to
+      keep them organized. For example, you could organize your contacts into
+      "Workers" or "Partners." Contacts also go through the sale pipeline (this
+      can be configured). Contacts are automatically moved through the
+      pipeline based on their interactions inside Radium. There is more
+      discussion on this in the Pipeline section. Contacts must be assigned to
+      users. The user is responsible for managing them through the sales
+      process. The user allow approves who can view this particular contact's
+      feed. Contacts can be extended with extra fields. You can use extra
+      fields to add your own particular data to each individual record.
+      ]]>
+    </docs>
+  </section>
+  <section title="Groups">
+    <docs>
+      <![CDATA[
+      Groups are a way to organize contacts. Groups can also be extended with
+      extra fields. You **do not** interact directly with groups. You can use
+      the grouping structure to mimic a Person and Company heirarchy. Groups
+      are very free form and are only here for to put contacts in arbitrary
+      groups. Groups are like tags but offer more power since they can be
+      extended with extra fields.
+      ]]>
+    </docs>
+  </section>
+  <section title="Todos">
+    <docs>
+      <![CDATA[
+      Todos are very important! Todos have a description and a date to finish
+      it by. Todos can be associated with _anything_ in the system. Todos can
+      also have reminders. We also notify you if todos have been reassigned to
+      you. People are allowed to add todos for other people as well. Users can
+      also comment on todos. The platform will also associate todos with a
+      specific contact based on what they're associated with. For example, if
+      you make a todo about a meeting with a contact, the todo will be
+      associated with the specific contact(s). Another example, if you make a
+      todo about a deal, then the todo will be associated with the deal's
+      contact. Todos may also be associated with a campaign. Todos may also
+      have attachments.
+      ]]>
+    </docs>
+  </section>
+  <section title="Deals">
+    <docs>
+      <![CDATA[
+      Deals record financial interactions with a particular contact. Deals go
+      through a these states:
+
+      1. Pending
+      2. Closed
+      3. Paid
+      4. Rejected
+
+      The associated contact will move through the pipeline depending on what
+      state the deal is. Deals happen with a user and a contact. Deals can
+      also be a part of a campaign. Deals can also have attachments.
+      ]]>
+    </docs>
+  </section>
+  <section title="Messages (Email, SMS, & IM)">
+    <docs>
+      <![CDATA[
+      Radium can handle many different forms of communication. It can sync SMS
+      from your phone and send them. It can sync email from your email account
+      and send email using your account. You can also IM people inside your
+      own company. Email and SMS can be associated with contacts. IM's are
+      only associated with people inside your own company. You cannot IM a
+      contact. Sending a message to a contact will move them up a stage in the
+      pipeline.
+      ]]>
+    </docs>
+  </section>
+  <section title="Phone Calls">
+    <docs>
+      <![CDATA[
+      Phone calls are logged from the user's mobile device. Phone calls have
+      specific outcomes which managers can use to track their agent's success
+      rate. Phone calls are also associated with call lists. Phone calls
+      happen between users and contacts. They can either between a user and
+      another or between a contact and a user. Phone calls can have todos
+      about them and also be commented on. Calling a contact will move them up
+      in the pipeline.
+      ]]>
+    </docs>
+  </section>
+  <section title="Meetings">
+    <docs>
+      <![CDATA[
+      Anyone can add a meeting. You can have a meeting with yourself or you
+      can choose to invite users or contacts to the meeting. The person who
+      added the meeting can choose to cancel or reschedule the meeting. If
+      they do this, everyone invited will receive a confirmation notification.
+      Individual invitees can decide to confirm or deny their invitation.
+      Inviting contacts to meetings will move them up in the pipeline.
+      Meetings can also have attachments.
+      ]]>
+    </docs>
+  </section>
+  <section title="Call Lists">
+    <docs>
+      <![CDATA[
+      Call Lists contain contacts. Call lists live inside campaigns. All call
+      lists must have a name and a call by date. You choose to assign a call
+      list to a user when it's created. Then, when the calls are made they
+      will be automatically removed from the call list.
+      ]]>
+    </docs>
+  </section>
+  <section title="Campaigns">
+    <docs>
+      <![CDATA[
+      Campaigns are a way to group everything else. Contacts, todos, messages,
+      meetings, and call lists all live inside campaigns. You can add people
+      to a campaign then create things for it. You need a campaign to create a
+      call list. Everything else can be associated with a particular campaign.
+      If you make a todo (or anything else) it can be associated with a
+      campaign. Campaigns have designated start and ends times. A campaign
+      also has a specific monetary value it should bring it. This is
+      calculated from all the deals with contacts in the campaign. Users can
+      request to follow campaigns. The person in charge of the campaign will
+      approve these requests. Campaigns also have their own individual
+      statistics which can be used for reporting.
+      ]]>
+    </docs>
+  </section>
+  <section title="Notes, Comments, & Attachments">
+    <docs>
+      <![CDATA[
+      These resources can be associated with anything. There is
+      nothing particularly important about them. They are only used to enhance
+      the associated record. They are public by default.
+      ]]>
+    </docs>
+  </section>
+  <section title="Extra Fields">
+    <docs>
+      <![CDATA[
+      Extra fields are used to extend individual records. They can be added to
+      a specific record or all many records at once. They have a type like:
+      email, phone number or general. You can also specify a set to choose
+      from. For example you could create an extra field with choices: A, B, C,
+      and D. That way when a user changes that extra field it will only allow
+      value that are A, B, C, or D. The email and phone number attributes will
+      also be used to match phone calls, SMS, and emails to people when
+      syncing. Extra fields will also be persisted to external accounts when
+      syncing to those accounts.
+      ]]>
+    </docs>
+  </section>
+  <section title="Reminders">
+    <docs>
+      <![CDATA[
+      Reminders can be associated with Todos or Meetings. They require a
+      specific time to be sent. They can be sent via Email or SMS.
+      ]]>
+    </docs>
+  </section>
+  <section title="External Accounts">
+    <docs>
+      <![CDATA[
+      These are Google or Exchange accounts. Changes that happen in Radium
+      will be synced back to all the other accounts the user has. Changes that
+      happen inside these accounts are synced with Radium.
+    ]]></docs>
+  </section>
+</document>

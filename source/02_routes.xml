@@ -1,0 +1,165 @@
+<document>
+  <title>Routes</title>
+  <position>2</position>
+  <section title="Overview">
+    <docs>
+      <![CDATA[
+      Routing follows RESTful principles. 
+
+      * `POST` means create a resource
+      * `PUT` updates a resource
+      * `GET` returns one or more resources
+      * `DELETE` removes a resource
+
+      `:variable_name` refers to input parameters in the URL.
+      The various `:id` parameters are **numeric** only.
+
+      Refer to the individual sections for complete coverage
+      of input paramters and output formats.
+
+      Some routes are nested as required. For example, you need 
+      an account to create a user, so the route `POST /accounts/:account_id/users`
+      reflects that.
+
+      There are also associated routes. For example, you can create
+      a todo about a contact usign the `POST /contacts/:contact_id/todos`
+      route. This associates the new todo with the specified contact.
+      ]]>
+    </docs>
+    <reference title="Routes">
+      <![CDATA[
+      ```
+      POST   /accounts/:account_id/users
+      POST   /accounts
+      GET    /accounts/:id
+      PUT    /accounts/:id
+      DELETE /accounts/:id
+
+      POST   /users/:user_id/follow
+      GET    /users
+      GET    /users/:id
+      PUT    /users/:id
+      DELETE /users/:id
+
+      POST   /contacts/:contact_id/deals
+      POST   /contacts/:contact_id/fields
+      POST   /contacts/:contact_id/notes
+      POST   /contacts/:contact_id/todos
+      POST   /contacts/:contact_id/follow
+      GET    /contacts
+      POST   /contacts
+      GET    /contacts/:id
+      PUT    /contacts/:id
+      DELETE /contacts/:id
+
+      POST   /todos/:todo_id/comments
+      POST   /todos/:todo_id/reminders
+      GET    /todos
+      POST   /todos
+      GET    /todos/:id
+      PUT    /todos/:id
+      DELETE /todos/:id
+
+      POST   /deals/:deal_id/comments
+      POST   /deals/:deal_id/notes
+      POST   /deals/:deal_id/todos
+      POST   /deals/:deal_id/follow
+      GET    /deals
+      GET    /deals/:id
+      PUT    /deals/:id
+      DELETE /deals/:id
+
+      POST   /groups/:group_id/todos
+      POST   /groups/:group_id/follow
+      GET    /groups
+      POST   /groups
+      GET    /groups/:id
+      PUT    /groups/:id
+      DELETE /groups/:id
+
+      GET    /announcements
+      POST   /announcements
+      GET    /announcements/new
+      GET    /announcements/:id
+      PUT    /announcements/:id
+      DELETE /announcements/:id
+
+      GET    /fields
+      GET    /fields/:id
+      PUT    /fields/:id
+      DELETE /fields/:id
+
+      POST   /messages/:message_id/todos
+      POST   /messages/:message_id/notes
+      GET    /messages
+      GET    /messages/:id
+      PUT    /messages/:id
+      DELETE /messages/:id
+      POST   /emails
+      POST   /sms
+      POST   /ims
+
+      POST   /meetings/:meeting_id/todos
+      POST   /meetings/:meeting_id/reminders
+      PUT    /meetings/:id/reschedule
+      PUT    /meetings/:id/cancel
+      GET    /meetings
+      POST   /meetings
+      GET    /meetings/:id
+      PUT    /meetings/:id
+      DELETE /meetings/:id
+
+      PUT    /invitations/:id/confirm
+      PUT    /invitations/:id/reject
+
+      POST   /phone_calls/:phone_call_id/todos
+      GET    /phone_calls
+      GET    /phone_calls/:id
+      PUT    /phone_calls/:id
+      DELETE /phone_calls/:id
+
+      POST   /notes/:note_id/todos
+      GET    /notes
+      GET    /notes/:id
+      PUT    /notes/:id
+      DELETE /notes/:id
+
+      GET    /reminders
+      POST   /reminders
+      GET    /reminders/:id
+      PUT    /reminders/:id
+      DELETE /reminders/:id
+
+      POST   /campaigns/:campaign_id/follow
+      GET    /campaigns
+      POST   /campaigns
+      GET    /campaigns/:id
+      PUT    /campaigns/:id
+      DELETE /campaigns/:id
+
+      PUT    /followings/:id/approve
+      GET    /followings
+      POST   /followings
+      GET    /followings/:id
+      PUT    /followings/:id
+      DELETE /followings/:id
+
+      GET    /products
+      POST   /products
+      GET    /products/:id
+      PUT    /products/:id
+      DELETE /products/:id
+
+      GET    /comments
+      POST   /comments
+      GET    /comments/:id
+      DELETE /comments/:id
+
+      POST   /echo
+
+      POST   /bug
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

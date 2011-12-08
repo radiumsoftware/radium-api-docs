@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>Radium API Documentation</title>
+  <link rel="stylesheet" type="text/css" href="./bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="./syntax.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+      <img id="logo" src="/Users/adam/radium/api-docs/logo.png"/>
+
+    <h3><a href="#" class="brand">Radium API Documentation</a></h3>
+
+    <ul class="nav">
+      <li><a href="#">Authentication</a></li>
+      <li><a href="#">Users</a></li>
+      <li><a href="#">Contacts</a></li>
+      <li><a href="#">Groups</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="container">
+  <div id="background"></div>
+  <table cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th class="docs"><h1>Radium API Documentation</h1></th>
+      <th class="code"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="docs">
+        <p>The Radium API is designed around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>.
+The API is designed to be predictable and fast. HTTP verbs are used to
+indicate what action to do on a particiular resource. HTTP status codes
+are use to indicate the results. All response are given back in
+<a href="http://www.json.org/">JSON</a>. All requests happen over HTTPS to ensure
+security. All requests can be sent either as JSON or as standard URL
+encoded form bodies.</p>
+
+<p>The API is designed only allows you act like the user you are logged in
+as. System wide access is not allowed. </p>
+
+<p>You will need two things to start using the API.</p>
+
+<ol>
+<li>A Developer API key. This is your authentication token. We will
+monitor use of this specific token. Every application should have
+their own unique token. This token is sent with every HTTP request.</li>
+<li>A User API key. This token is globally unique through out Radium.
+This allows you to complete actions as the user indentified by this
+token. This token never changes. You can use your developer API key
+to retreive user API keys.</li>
+</ol>
+
+<p>The API is designed to be developer friendly for many different HTTP
+clients in any different langauge or framework. You should have no
+problem using the API has long as your library can:</p>
+
+<ol>
+<li>Send <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> requests</li>
+<li>Set headers on individual requests</li>
+<li>Conduct HTTP authorization.</li>
+</ol>
+
+<p>Now that you know the basic of what you need to use the API&#39;s, let&#39;s go
+over developer and user authentication. The server with authorize
+requests baised on the resource, user, and action requested. You have no
+control over the authorization process. You can simply authenticate to
+the server.</p>
+
+<h2>Authentication</h2>
+
+<p>The API has been designed to allow multiple ways to authenticate. It is
+designed this way because the authentication information should sent
+with every request. Different HTTP libraries allow you to configure them
+to do so but in different ways. The API is designed support a few common
+scenarios.</p>
+
+<ol>
+<li>Authentication by query string paramters. EX:
+<code>&#47;foo?developer_api_key=bar&amp;user_api_key=baz</code></li>
+<li>HTTP authorization. EX:
+<code>https:&#47;&#47;developer_api_key@user_api_key:api.radiumcrm.com</code></li>
+<li>Request Headers. EX <code>X-Radium-Developer-API-Key: foo</code></li>
+<li>Form body paramters.</li>
+</ol>
+
+<p>Refer to your librarie&#39;s documentation to determine which authentication
+strategy is right for your application.</p>
+
+<h2>Parameter Parsing</h2>
+
+<p>The API is designed to work these formats:</p>
+
+<ol>
+<li><code>application&#47;json</code> <strong>RECOMMENDED</strong></li>
+<li><code>application&#47;x-www-form-urlencoded</code></li>
+<li><code>multipart&#47;form-data</code> (for uploading Attachments and other files)</li>
+</ol>
+
+<p>Sending parameters as JSON encoded objects is the preferred and
+recommend way to interact with the API. JSON makes it easier to model
+some larger structures required by the API. The examples are also
+modeled using a JSON encoded object for input parameters and a JSON
+encoded object for output. Your HTTP library should be able to use any
+of these formats, however it may not automatically encode JSON for you
+so besure you know your HTTP library inside and out!</p>
+
+<h2>HTTP Response Codes</h2>
+
+<p>The API returns status codes to describe what happens for the particular
+response. Response codes are listed per individual request as well. 
+This section is here to give you a overview of what the API returns and
+how to interpert it.</p>
+
+<dl>
+  <dt>200</dt>
+  <dd>
+    <strong>Success</strong><br/>
+    Pip-pip jolly good fun ol' bean. Everything went according to plan
+  </dd>
+
+  <dt>201</dt>
+  <dd>
+    <strong>Created</strong><br/>
+    Used when a POST to create a resource was successfully
+  </dd>
+
+  <dt>202</dt>
+  <dd>
+    <strong>Accepted</strong><br/>
+    Used when a requests enter a queuing system. They are
+    processed later and my succeded or fail at that time. If you request
+    returns a 202 it should be considered a success.
+  </dd>
+
+  <dt>401</dt>
+  <dd>
+    <strong>Unauthorized</strong><br/>
+    Used when could not authenticate using the developer or user token. T
+    his is either because the tokens were not provided, provided incorrectly, or simply wrong.
+  </dd>
+
+  <dt>402</dt>
+  <dd>
+    <strong>Payment Required</strong><br/>
+    Used when authentication happened correctly, but the request 
+    requires a UBB (Usage Based Billing) service that the user
+    does not have enough credit for.
+  </dd>
+
+  <dt>403</dt>
+  <dd><strong>Forbidden</strong><br/> Used when authentication happened correctly, but the
+  user does not have access to complete that action on the specific
+  resource. Example, try to delete a user from a different account.</dd>
+
+  <dt>404</dt>
+  <dd><strong>Not Found</strong><br/> Used when you the specified record could not be found
+  in the system. This error will be raised if you try to access records
+  outside the scope of the user's account or specify the ID incorrectly.
+  Example, specify id is 5 when there is no Todo with id 5.</dd>
+
+  <dt>405</dt>
+  <dd><strong>Method Not Allowed</strong><br/> Used when specific URL requires a POST but
+  request comes as a GET.</dd>
+
+  <dt>406</dt>
+  <dd><strong>Not Acceptable</strong><br/> Used then the API does not know how to generate a
+  response for the specified format. Example, requesting XML when the
+  API only returns JSON.</dd>
+
+  <dt>422</dt>
+  <dd><strong>Unprocessable Entity (aka Validation Failed)</strong><br/> Used for all
+  responses that fail to update records for validation reasons or there
+  was a problem with the input parameters. See the response body for a
+  list of errors.</dd>
+
+  <dt>429</dt>
+  <dd><strong>Too Many Requests</strong><br/> Application is over the rate limit for the
+  specified developer.</dd>
+
+  <dt>500</dt>
+  <dd><strong>Internal Server Error</strong><br/> Returned when an exception is raised on the
+  server. This is usually because a bug has occured. 500 responses are
+  automatically sent to admins for debugging. This means there is a
+  problem with the server and not your application.</dd>
+
+  <dt>502</dt>
+  <dd><strong>Bad Gateway</strong><br/> Used when an external server is needed to complete a
+  request and it returned an error.</dd>
+
+  <dt>503</dt>
+  <dd><strong>Down for maintenance</strong><br/> This is a temporary state.</dd>
+</dl>
+
+<h2>Resources</h2>
+
+<p>The API grants you access to all the fundamental resources in Radium.
+You should easily be able to use all these resources to create your own
+rich Application based off on the Radium platform. I&#39;ll give you
+a quick list of all the different things you can access. Refer to the
+individual sections for complete indepth disscussion of each resource
+and how it relates to the others.</p>
+
+<ol>
+<li>Users</li>
+<li>Contacts</li>
+<li>Groups</li>
+<li>Emails</li>
+<li>SMS</li>
+<li>IM</li>
+<li>Todos</li>
+<li>Call Lists</li>
+<li>Deals</li>
+<li>Phone Calls</li>
+<li>Meetings</li>
+<li>External Accounts (Microsoft Exchange &amp; Google)</li>
+<li>Campaigns</li>
+<li>Lead Capture</li>
+<li>Attachments</li>
+<li>Comments</li>
+</ol>
+
+<p>Each resource allows for basic CRUD (Create, Read, Update, and Delete)
+operations plus some specific actions for individual resources. For
+example, you can CRUD meetings as well as confirm or reject them. Basic
+CRUD operations give you (the developer) full control of the lifecyle of
+individual records.</p>
+
+<h2>Push Notifications</h2>
+
+<p>The platform will also send push notifications for changes to each
+record as well as specific events related to each record. For example,
+you may receive a <code>deal_closed</code> event. You can use a <a href="http://dev.w3.org/html5/websockets/">Websocket</a>
+or a few other socket protocols to connect to the notification server.
+You should listen for notifications to keep your application&#39;s data up
+to date as it changes in real time. Authentication and listening is
+slitghtly different for push notifications. Refer to the push
+notification section for indepth discussion.</p>
+
+<h2>Help &amp; Support</h2>
+
+<p>IF you are having a prolem using or understanding <strong>after having read
+the documentation</strong> please email: <a href="mailto:%0Aapi-support@radiumcrm.com">api-support@radiumcrm.com</a>. Someone will get back to you ASAP. If you
+happen to run into Adam Hawkins anywhere like on the street, in the
+club, on the beach, in Europe, in California, in Asia, or at a
+conference, or up in your codez, please give him a shout! He&#39;d love to
+hear from you. </p>
+
+      </td>
+      <td class="code">
+        <div class="highlight"><pre><span class="k">class</span> <span class="nc">GuidGenerator</span>
+  <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+    <span class="c1"># this is a comment</span>
+    <span class="nb">puts</span> <span class="n">thing</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+      </td>
+    </tr>
+    <tr>
+      <td class="docs">
+        <p>This section is here to give you an overview on the data model inside
+Radium. You should understand how each different resource interacts with
+the others after reading this section. This section will not go in depth
+into each resource. Refer to each resource&#39;s section for in depth
+coverage. </p>
+
+<h2>Accounts</h2>
+
+<p>All resources are scoped to a specific account. An account is the
+container for all things in Radium. Users, contacts, groups, and
+everything else all live inside the account. Accounts have owners.
+Owners are responsible for paying the bills for each account. Owners may
+set permissions for other users related to this account. Enabled
+services are stored at the account level. You as the developer never
+interact directly with the account. You only access things through the
+account. You are not allowed to access things side this account. The
+account is your planet and just like man kind you have not unlocked
+&quot;travel to different planets.&quot;</p>
+
+<h2>Users</h2>
+
+<p>Users do actions. They send emails, make todos, create campaigns, manage
+deals, manage contacts, and create groups. They are essentially
+everything! The system is build around users interacting with contacts.
+User&#39;s can follow other users, contact, or campaigns. Users are
+organized into teams with someone in charge of the team. Users can be in
+many teams at once. You are only allowed to manage yourself. If you have
+permission you can invite more users into your company&#39;s account. You
+can also create deals, record phone calls, messages, add contacts etc. </p>
+
+<h2>Contacts</h2>
+
+<p>Contacts are the core of Radium. Contacts can be anything! They can be
+people, they can be companies, they can be organizations. They are
+anything you interact with. All resources are somehow related to
+contacts. User can request follow contacts to have things related to
+them added to their feed. Contacts can be put into multiple groups to
+keep them organized. For example, you could organize your contacts into
+&quot;Workers&quot; or &quot;Partners.&quot; Contacts also go through the sale pipeline (this
+can be configured). Contacts are automatically moved through the
+pipeline based on their interactions inside Radium. There is more
+discussion on this in the Pipeline section. Contacts must be assigned to
+users. The user is responsible for managing them through the sales
+process. The user allow approves who can view this particular contact&#39;s
+feed. Contacts can be extended with extra fields. You can use extra
+fields to add your own particular data to each individual record.</p>
+
+<h2>Groups</h2>
+
+<p>Groups are a way to organize contacts. Groups can also be extended with
+extra fields. You <strong>do not</strong> interact directly with groups. You can use
+the grouping structure to mimic a Person and Company heirarchy. Groups
+are very free form and are only here for to put contacts in arbitrary
+groups. Groups are like tags but offer more power since they can be
+extended with extra fields.</p>
+
+<h2>Todos</h2>
+
+<p>Todos are very important! Todos have a description and a date to finish
+it by. Todos can be associated with <em>anything</em> in the system. Todos can
+also have reminders. We also notify you if todos have been reassigned to
+you. People are allowed to add todos for other people as well. Users can
+also comment on todos. The platform will also associate todos with a
+specific contact based on what they&#39;re associated with. For example, if
+you make a todo about a meeting with a contact, the todo will be
+associated with the specific contact(s). Another example, if you make a
+todo about a deal, then the todo will be associated with the deal&#39;s
+contact. Todos may also be associated with a campaign. Todos may also
+have attachments.</p>
+
+<h2>Deals</h2>
+
+<p>Deals record financial interactions with a particular contact. Deals go
+through a these states:</p>
+
+<ol>
+<li>Pending</li>
+<li>Closed</li>
+<li>Paid</li>
+<li>Rejected</li>
+</ol>
+
+<p>The associated contact will move through the pipeline depending on what
+state the deal is. Deals happen with a user and a contact. Deals can
+also be a part of a campaign. Deals can also have attachments.</p>
+
+<h2>Messages (Email, SMS &amp; IM)</h2>
+
+<p>Radium can handle many different forms of communication. It can sync SMS
+from your phone and send them. It can sync email from your email account
+and send email using your account. You can also IM people inside your
+own company. Email and SMS can be associated with contacts. IM&#39;s are
+only associated with people inside your own company. You cannot IM a
+contact. Sending a message to a contact will move them up a stage in the
+pipeline. </p>
+
+<h2>Phone Calls</h2>
+
+<p>Phone calls are logged from the user&#39;s mobile device. Phone calls have
+specific outcomes which managers can use to track their agent&#39;s success
+rate. Phone calls are also associated with call lists. Phone calls
+happen between users and contacts. They can either between a user and
+another or between a contact and a user. Phone calls can have todos
+about them and also be commented on. Calling a contact will move them up
+in the pipeline.</p>
+
+<h2>Meetings</h2>
+
+<p>Anyone can add a meeting. You can have a meeting with yourself or you
+can choose to invite users or contacts to the meeting. The person who
+added the meeting can choose to cancel or reschedule the meeting. If
+they do this, everyone invited will receive a confirmation notification.
+Individual invitees can decide to confirm or deny their invitation.
+Inviting contacts to meetings will move them up in the pipeline.
+Meetings can also have attachments.</p>
+
+<h2>Call Lists</h2>
+
+<p>Call Lists contain contacts. Call lists live inside campaigns. All call
+lists must have a name and a call by date. You choose to assign a call
+list to a user when it&#39;s created. Then, when the calls are made they
+will be automatically removed from the call list.</p>
+
+<h2>Campaigns</h2>
+
+<p>Campaigns are a way to group everything else. Contacts, todos, messages,
+meetings, and call lists all live inside campaigns. You can add people
+to a campaign then create things for it. You need a campaign to create a
+call list. Everything else can be associated with a particular campaign.
+If you make a todo (or anything else) it can be associated with a
+campaign. Campaigns have designated start and ends times. A campaign
+also has a specific monetary value it should bring it. This is
+calculated from all the deals with contacts in the campaign. Users can
+request to follow campaigns. The person in charge of the campaign will
+approve these requests. Campaigns also have their own individual
+statistics which can be used for reporting.</p>
+
+<h2>Notes, Comments &amp; Attachments</h2>
+
+<p>These resources can be associated with anything. There is
+nothing particularly important about them. They are only used to enhance
+the associated record. They are public by default.</p>
+
+<h2>Extra Fields</h2>
+
+<p>Extra fields are used to extend individual records. They can be added to
+a specific record or all many records at once. They have a type like:
+email, phone number or general. You can also specify a set to choose
+from. For example you could create an extra field with choices: A, B, C,
+and D. That way when a user changes that extra field it will only allow
+value that are A, B, C, or D. The email and phone number attributes will
+also be used to match phone calls, SMS, and emails to people when
+syncing. Extra fields will also be persisted to external accounts when
+syncing to those accounts.</p>
+
+<h2>Reminders</h2>
+
+<p>Reminders can be associated with Todos or Meetings. They require a
+specific time to be sent. They can be sent via Email or SMS.</p>
+
+<h2>External Accounts</h2>
+
+<p>These are Google or Exchange accounts. Changes that happen in Radium
+will be synced back to all the other accounts the user has. Changes that
+happen inside these accounts are synced with Radium.</p>
+
+      </td>
+      <td class="code">
+        
+      </td>
+    </tr>
+    <tr>
+      <td class="docs">
+        <p>The pipeline models the progression of a contact. They enter the system
+as a <code>lead</code> and either exit the system as a <code>customer</code> or a <code>dead end</code>.
+You do not have to manage the pipeline yourself. It happens
+automatically based a user&#39;s interaction with that particular person.
+The progression through the pipeline is:</p>
+
+<ol>
+<li>Lead</li>
+<li>Prospect</li>
+<li>Opportunity</li>
+<li>Customer</li>
+<li>Dead End</li>
+</ol>
+
+<p>These states are not serial. They can be skipped. Radium will do it&#39;s
+best to adapt to all scenarios. Contacts can have their state changed if
+people desire. However, the automatically pipeline progression should be
+acceptable in most scenarios.</p>
+
+<h2>Leads</h2>
+
+<p><code>Lead</code> is the default state. If a contact is added <strong>without</strong> a state
+specified they will be a lead. A lead is someone you have not contacted
+or interacted with. A lead represents a chance for your company to make
+money. A lead will become a prospect once they are interacted with. This
+means, sending them a message, inviting them to a meeting, or making a
+todo about them. They can become a dead end if they are uninterested in
+whatever your product is. All states can become dead ends at any time.</p>
+
+<h2>Prospects</h2>
+
+<p><code>Prospect</code> means you&#39;ve interacted with this contact some how. They&#39;ve
+already been through the lead pool and you&#39;re are actively trying to
+start a deal with this person in some fashion. A prospect will become an
+<code>opportunity</code> when a deal is added with them.</p>
+
+<h2>Opportunities</h2>
+
+<p><code>Opportunity</code> means there is open deal with this person. They will
+either become a customer when the deal is paid or dead end if the deal
+is rejected.</p>
+
+<h2>Customers</h2>
+
+<p><code>Customer</code> is the happy state. This means they&#39;ve bought whatever your
+selling and now it is up to you to follow up with them or do whatever
+your organization requires to retain them.</p>
+
+<h2>Dead Ends</h2>
+
+<p><code>Dead Ends</code> are people who are not interested in your product(s) at all.
+They should not be contacted again. For all intensive purposes, you can
+consider them removed from the system. </p>
+
+<h2>Statistics &amp; Reports</h2>
+
+<p>Progression through the pipeline is automatically tracked by Radium.
+Radium will use this information to generate all sorts of fancy reports
+(including charts and graphs!) for pipeline states at arbitrary times. We
+are here for all your enterprise needs! (including charts and graphs).</p>
+
+      </td>
+      <td class="code">
+        
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
