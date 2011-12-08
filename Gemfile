@@ -1,4 +1,10 @@
 source :rubygems
 
 gem 'rake'
-gem 'api_guides', :path => "~/projects/api_guides"
+gem 'rack-rewrite'
+gem 'thin'
+
+group :development do
+  gem 'heroku'
+  gem 'api_guides', :path => "~/projects/api_guides"
+end
