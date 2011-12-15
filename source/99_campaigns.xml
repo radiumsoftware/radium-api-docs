@@ -1,0 +1,231 @@
+<document>
+  <title>Campaigns</title>
+  <position>99</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Campaigns are a way to organize different things in Radium. 
+      Putting things in a campaign will allow you generate statistics
+      for each one and provide a way to break down your company's performance.
+
+      One user is responsible for each campaign. They can approve
+      who get to follow this campaign. They can also add more
+      contacts to the campaign.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+        * `POST /campaigns`: Team leaders or Gods
+        * `GET /campaigns`: All Users according to scoping
+        * `GET /campaigns/:id`: All users according to scoping
+        * `PUT /campaigns/:id`: Campaign manager or Gods
+        * `DELETE /campaigns/:id`: Campaign manager or Gods
+
+        ### Scoping
+
+        You can have read access the following ways:
+
+        1. You are managing the campaign
+        2. You are following the campaign
+        3. The campaign is public
+        4. You are a God
+      ]]>
+    </docs>
+  </section>
+  <section title="Attributes">
+    <docs>
+      <![CDATA[
+      <dl>
+        <dt>name</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          A succinct name. Example: "Fall 2011"
+        </dd>
+
+        <dt>description</dt>
+        <dd>
+          <strong>Required</strong><br />
+          Long form text used to describe this campaign.
+        </dd>
+
+        <dt>ends_at</dt>
+        <dd>
+          <strong>Required</strong></br />
+          Date &amp; Time for when the campaign ends.
+        </dd>
+
+        <dt>target</dt>
+        <dd>The ammount of revenue this campaign should generate</dd>
+
+        <dt>currency</dt>
+        <dd>Currency for the target value. See the currency section for allowed values.</dd>
+
+        <dt>public</dt>
+        <dd>Inherits this setting from the account unless specified</dd>
+
+        <dt>user</dt>
+        <dd>
+          <strong>Required</strong><br/ >
+          The ID for user who's managing this campaign.<br/>
+          NOTE: You can change this by specifying a <code>user_id</code> attribute.
+        </dd>
+
+        <dt>contacts</dt>
+        <dd>
+          All the contacts associated with this campaign.<br/>
+          NOTE: You can change this by specifying the <code>contact_ids</code> attribute.
+          However, if you want to add one person, you will need to add the new id
+          to existing array.
+        </dd>
+
+        <dt>todos</dt>
+        <dd>All the todos that are associated with this campaign</dd>
+
+        <dt>deals</dt>
+        <dd>All the deals that are associated with this campaign</dd>
+
+        <dt>phone_calls</dt>
+        <dd>All the phone calls that are associated with this campaign (call list or otherwiser)</dd>
+
+        <dt>messages</dt>
+        <dd>All the messages that have been sent relating to this campaign</dd>
+
+        <dt>groups</dt>
+        <dd>All the groups associated with this campaign</dd>
+
+        <dt>products</dt>
+        <dd>All the products associated with this campaign</dd>
+
+        <dt>users</dt>
+        <dd>All the users who are working this campaign</dd>
+
+        <dt>followers</dt>
+        <dd>All the users who are following this campaign</dd>
+
+        <dt>notes</dt>
+        <dd>All the notes relating to this campaign</dd>
+
+        <dt>meetings</dt>
+        <dd>All the meetings relating to this campaign</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Campaign Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 13,
+        "created_at": "2011-12-14T14:56:12Z",
+        "updated_at": "2011-12-14T14:56:12Z",
+        "name": "Campaign 3",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+        "ends_at": "2011-12-21T14:55:25Z",
+        "currency": "USD",
+        "target": "10000.0",
+        "user": 449,
+        "public": true,
+        "contacts": [
+
+        ],
+        "todos": [
+
+        ],
+        "deals": [
+
+        ],
+        "phone_calls": [
+
+        ],
+        "messages": [
+
+        ],
+        "groups": [
+
+        ],
+        "products": [
+
+        ],
+        "users": [
+
+        ],
+        "followers": [
+
+        ],
+        "notes": [
+
+        ],
+        "meetings": [
+
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <docs>
+      <![CDATA[
+      New campaigns will be assigned to the user creating them unless
+      the `user_id` attribute is given. 
+
+      The associated contacts can also be set by providing the `contact_ids` 
+      attribute.
+      ]]>
+    </docs>
+    <reference title="Create a Campaign">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/campaigns`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar",
+        "campaign": {
+          "name": "Campaign 3",
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+          "ends_at": "2011-12-21T14:55:25Z",
+          "currency": "USD",
+          "target": "10000.0",
+          "user_id": 449,
+          "approve_following_requests": true,
+          "contact_ids": [1,2,3,5]
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <docs>
+      <![CDATA[
+      You can "reassign" a campaign by passing the `user_id` attribute.
+
+      You can add more contacts to a campaign by passing `contact_ids` **AND**
+      including current ids plus the ones.
+      ]]>
+    </docs>
+    <reference title="Update a Campaign">
+      <![CDATA[
+      `PUT https://api.radiumcrm.com/campaigns/:id`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar",
+        "campaign": {
+          "currency": "USD",
+          "target": "15000.0",
+          "user_id": 398
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

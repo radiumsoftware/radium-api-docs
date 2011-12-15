@@ -101,6 +101,25 @@
       ]]>
     </docs>
   </section>
+  <section title="Phone Numbers">
+    <docs>
+      <![CDATA[
+      Phone numbers come up often in the system. All phone numbers should be in 
+      international format. They should include a +/00 & country code, but this not mandatory.
+      A number cannot use click to call or other VOIP related features unless it is
+      international format.
+
+      Here are some examples of valid phone numbers:
+
+      * +19255778951
+      * 009255778951
+      * +358503213986
+      * +358503213986#781
+      * 5778951
+      * 9255778951
+      ]]>
+    </docs>
+  </section>
   <section title="Response Codes">
     <docs>
       <![CDATA[
@@ -246,6 +265,20 @@
       example, you can CRUD meetings as well as confirm or reject them. Basic
       CRUD operations give you (the developer) full control of the lifecyle of
       individual records.
+      ]]>
+    </docs>
+  </section>
+  <section title="Associated Resources">
+    <docs>
+      <![CDATA[
+      Every resource is related another resource somehow. The amount of connections require some 
+      design choices to be made. **When retreiving a list or a specific object, the API will give
+      you the ID's of all the associated records.** This choice has been made to keep each response
+      focused on the item(s) requested. If you want to retreive an associated object, use the API
+      for that specific resource. 
+
+      Here is an example. Users are associated with many contacts. When you retrieve a user it will
+      contain the id's of all the associated contacts so you _may_ retrieve them if you like.
       ]]>
     </docs>
   </section>

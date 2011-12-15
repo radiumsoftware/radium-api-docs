@@ -1,0 +1,69 @@
+<document>
+  <title>Reporting Bugs</title>
+  <position>99</position>
+  <section>
+    <docs>
+      <![CDATA[
+      This API is for reporting errors in offical Radium products.
+      If you are not a Radium developer, you cannot use this API.
+
+      This request is different from the others because it only
+      returns a `HEAD` response. The reports are sent to an external
+      system for tracking and resolving.
+
+      <dl>
+        <dt>title</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          A succinct description of the problem.
+        </dd>
+
+        <dt>what_happened</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          A longer description of what the problem actually is.
+        </dd>
+
+        <dt>steps_to_repoduce</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          How the bug is triggered
+        </dd>
+
+        <dt>project_id</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          Corresponds to a Radium product.
+        </dd>
+
+        <dt>notes</dt>
+        <dd>Any other information that may help with this bug</dd>
+
+        <dt>screenshot</dt>
+        <dd>File may be uploaded as well</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Reporting a Bug">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/bugs`
+
+      ### Parameters 
+
+      ```javascript
+      {
+        "developer_api_key" => "foo",
+        "user_api_key" => "bar",
+        "bug" => {
+          "title": "Short description",
+          "what_happened": "Call did not sync",
+          "expected_result": "For the call to sync"
+          "steps_to_reproduce": "Call someone on a Nokia phone"
+          "project_id": 1
+        }
+      }
+      ````
+      ]]>
+    </reference>
+  </section>
+</document>

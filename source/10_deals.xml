@@ -1,0 +1,273 @@
+<document>
+  <title>Deals</title>
+  <position>10</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Deals represent financial interactions between contacts. 
+      A user is in charge of each deal. Deals go through these states:
+
+      1. Pending
+      2. Closed
+      3. Paid
+      4. Rejected
+
+      Deals may also have todos, comments, and associated attachments.
+      They are optionally associated with a campaign.
+
+      They also have embed line items to create an invoice style 
+      structure that can eventually be handed off to fullfillment/accounting.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permission">
+    <docs>
+      <![CDATA[
+      * `POST /deals`: All users
+      * `GET /deals`: All users according to scoping rules
+      * `GET /deals/:id`: All users according scoping rules
+      * `PUT /deals/:id`: Managing the deal or God
+      * `DELETE /deals/:id`: Managing the deal or God
+
+      ### Scoping
+      You can read deals you have access to. You can have access
+      the following ways:
+
+      1. You are managing the deal
+      2. You are following the deal
+      3. The deal is public
+      4. You are a god
+      ]]>
+    </docs>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      <dl>
+        <dt>description</dt>
+        <dd>
+          <strong>Required</strong><br />
+          Long form text describing this deal
+        </dd>
+
+        <dt>close_by</dt>
+        <dd>
+          <strong>Required</strong><br />
+          The date the deal should close by.
+        </dd>
+
+        <dt>state</dt>
+        <dd>
+          <strong>Required</strong><br />
+          One of the following: 
+          <code>pending</code>,
+          <code>closed</code>,
+          <code>paid</code>,
+          <code>rejected</code><br />
+          <em>Default</em>: <code>pending</code>
+        </dd>
+
+        <dt>public</dt>
+        <dd>This is inherited from the account unless otherwise specified.</dd>
+
+        <dt>line_itmes</dt>
+        <dd>
+          <dl>
+            <dt>name</dt>
+            <dd><strong>Required</strong></dd>
+
+            <dt>quantity</dt>
+            <dd>
+              <strong>Required</strong><br />
+              Positive integers only.
+            </dd>
+
+            <dt>price</dt>
+            <dd>
+              <strong>Required</strong><br />
+              The price of one individual unit. This is NOT the total cost.
+            </dd>
+
+            <dt>currency</dt>
+            <dd>
+              <strong>Required</strong><br/>
+              See the supported currencies section
+            </dd>
+
+            <dt>product</dt>
+            <dd>
+              The ID of an associated product. 
+              If the price and currency are not specified and the product is,
+              then these values will be filled in using the product.
+              Specifying a product is not required.
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>contact</dt>
+        <dd>
+          <strong>Required</strong><br />
+          ID of associated contact
+        </dd>
+
+        <dt>user</dt>
+        <dd>
+          <strong>Required</strong><br />
+          ID of the user managing this deal
+        </dd>
+
+        <dt>todos</dt>
+        <dd>IDs of all the todos</dd>
+
+        <dt>comments</dt>
+        <dd>All comment object. See comment section.</dd>
+
+        <dt>products</dt>
+        <dd>IDs of all products referenced by line items</dd>
+      </dl>
+
+      ### Specifying Assocations
+
+      You can change the `user` and `contact` associations by passing
+      a `user_id` or `contact_id` attribute.
+
+      ]]>
+    </docs>
+    <reference title="Deal Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 31,
+        "created_at": "2011-12-15T09:37:23Z",
+        "updated_at": "2011-12-15T09:37:23Z",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+        "close_by": "2011-12-22T09:37:23Z",
+        "state": "pending",
+        "public": true,
+        "line_items": [
+          {
+            "id": 34,
+            "name": "Radium",
+            "quantity": 1,
+            "price": "1000.0",
+            "currency": "USD",
+            "product": null
+          },
+          {
+            "id": 33,
+            "name": "Radium",
+            "quantity": 1,
+            "price": "1000.0",
+            "currency": "USD",
+            "product": null
+          },
+          {
+            "id": 32,
+            "name": "Radium",
+            "quantity": 1,
+            "price": "1000.0",
+            "currency": "USD",
+            "product": null
+          }
+        ],
+        "contact": 151,
+        "user": 460,
+        "todos": [
+
+        ],
+        "comments": [
+
+        ],
+        "products": [
+
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section title="Nested Line Items">
+    <docs>
+      <![CDATA[
+      Line items are nested inside the deal. There are no routes to 
+      directly mainpulate individual items, so they must be managed
+      through the deal. You can created, update, or delete items 
+      through the `line_items_attributes` attribute. It takes an array
+      of line items objects.
+
+      If you pass an `id` then that record will be updated. 
+      If you do not pass an `id` a new record will be created.
+      If you pass an `id` and a `_delete` the record will be deleted.
+      ]]>
+    </docs>
+    <reference title="Nested Line Items">
+      <![CDATA[
+      ```javascript
+      {
+        "line_items_attributes": [
+          {
+            "id": 34,
+            "name": "Radium",
+            "quantity": 1,
+            "price": "1500.0",
+            "currency": "USD",
+            "product": null
+          },
+          {
+            "name": "Radium",
+            "quantity": 1,
+            "price": "1000.0",
+            "currency": "USD",
+            "product": null
+          },
+          {
+            "_delete": true,
+            "id": 32
+          }
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <docs>
+      <![CDATA[
+      A deal will automatically be assigned to you if you don't specify
+      the `user_id`.
+      ]]>
+    </docs>
+    <reference title="Create a Deal">
+      <![CDATA[
+      `POST /deals`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar",
+        "deal: {
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+          "close_by": "2011-12-22T09:37:23Z",
+          "line_items": [
+            {
+              "name": "Radium",
+              "quantity": 1,
+              "price": "1000.0",
+              "currency": "USD",
+            },
+            {
+              "quantity": 1,
+              "product_id": 5
+            }
+          ],
+          "contact_id": 151,
+          "user_id": 460
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</section>

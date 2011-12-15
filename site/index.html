@@ -24,8 +24,10 @@
                   <li class="sub-section"><a href="#s-parameter-parsing">Parameter Parsing</a></li>
                   <li class="sub-section"><a href="#s-encodings">Encodings</a></li>
                   <li class="sub-section"><a href="#s-times">Times</a></li>
+                  <li class="sub-section"><a href="#s-phone-numbers">Phone Numbers</a></li>
                   <li class="sub-section"><a href="#s-response-codes">Response Codes</a></li>
                   <li class="sub-section"><a href="#s-resources">Resources</a></li>
+                  <li class="sub-section"><a href="#s-associated-resources">Associated Resources</a></li>
                   <li class="sub-section"><a href="#s-push-notifications">Push Notifications</a></li>
                   <li class="sub-section"><a href="#s-help-support">Help  Support</a></li>
             </ol>
@@ -74,6 +76,64 @@
                   <li class="sub-section"><a href="#s-header-authentication">Header Authentication</a></li>
                   <li class="sub-section"><a href="#s-form-parameters-authentication">Form Parameters Authentication</a></li>
                   <li class="sub-section"><a href="#s-retrieve-a-user-s-api-key">Retrieve a User's API KEY</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-accounts">Accounts</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-account-format">Account Format</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-users">Users</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-permissions-routes">Permissions  Routes</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+                  <li class="sub-section"><a href="#s-creating-users">Creating Users</a></li>
+                  <li class="sub-section"><a href="#s-updating-users">Updating Users</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-contacts">Contacts</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-attributes">Attributes</a></li>
+                  <li class="sub-section"><a href="#s-nested-resources">Nested Resources</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-deals">Deals</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permission">Routes  Permission</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+                  <li class="sub-section"><a href="#s-nested-line-items">Nested Line Items</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-campaigns">Campaigns</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-attributes">Attributes</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-announcements">Announcements</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-response-format">Response Format</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-comments">Comments</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-attributes">Attributes</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-reporting-bugs">Reporting Bugs</a>
+            <ol>
             </ol>
           </section>
       </div>
@@ -216,6 +276,31 @@ incoming timestamps be in UTC. All times will be converted to UTC before
 entering the database. <strong>All</strong> times will be returned in UTC independent of
 whatever time zone they entered as. It is up to you to present the time
 in a different time zone if you want.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-phone-numbers">Phone Numbers</h2>
+
+              <p>Phone numbers come up often in the system. All phone numbers should be in 
+international format. They should include a +&#47;00 &amp; country code, but this not mandatory.
+A number cannot use click to call or other VOIP related features unless it is
+international format.</p>
+
+<p>Here are some examples of valid phone numbers:</p>
+
+<ul>
+<li>+19255778951</li>
+<li>009255778951</li>
+<li>+358503213986</li>
+<li>+358503213986#781</li>
+<li>5778951</li>
+<li>9255778951</li>
+</ul>
 
             </td>
             <td class="code">
@@ -382,6 +467,24 @@ individual records.</p>
           </tr>
           <tr>
             <td class="docs">
+              <h2 id="s-associated-resources">Associated Resources</h2>
+
+              <p>Every resource is related another resource somehow. The amount of connections require some 
+design choices to be made. <strong>When retreiving a list or a specific object, the API will give
+you the ID&#39;s of all the associated records.</strong> This choice has been made to keep each response
+focused on the item(s) requested. If you want to retreive an associated object, use the API
+for that specific resource. </p>
+
+<p>Here is an example. Users are associated with many contacts. When you retrieve a user it will
+contain the id&#39;s of all the associated contacts so you <em>may</em> retrieve them if you like.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
               <h2 id="s-push-notifications">Push Notifications</h2>
 
               <p>The platform will also send push notifications for changes to each
@@ -456,17 +559,17 @@ route. This associates the new todo with the specified contact.</p>
             </td>
             <td class="code">
                 <h2 id="r-routes">Routes</h2>
-                <pre><code>POST   &#47;accounts&#47;:account_id&#47;users
-POST   &#47;accounts
+                <pre><code>POST   &#47;accounts
 GET    &#47;accounts&#47;:id
 PUT    &#47;accounts&#47;:id
 DELETE &#47;accounts&#47;:id
 
-POST   &#47;users&#47;:user_id&#47;follow
+POST   &#47;accounts&#47;:account_id&#47;users
 GET    &#47;users
 GET    &#47;users&#47;:id
 PUT    &#47;users&#47;:id
 DELETE &#47;users&#47;:id
+POST   &#47;users&#47;:user_id&#47;follow
 
 POST   &#47;contacts&#47;:contact_id&#47;deals
 POST   &#47;contacts&#47;:contact_id&#47;fields
@@ -1194,6 +1297,1775 @@ anything on the server.</p>
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;ab823478asd87bca8&quot;,
   &quot;foo&quot;: &quot;bar&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-accounts">Accounts</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Accounts are like houses. All resources in live in a house. The account is the house.
+You only have access to things inside your account. Accounts are for groups of users.
+They intended for Companies, IE, your company would open an account in Radium then
+add users to it. Usage Based Billing services are billed to the account. The account
+contains billing and credit.</p>
+
+<h3>Deleting Accounts</h3>
+
+<p>This should be used with <strong>EXTREME</strong> caution. It will delete everything from the DB. 
+There is no going back once this happens. Everything that has ever happened 
+in Radium will be deleted!</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;accounts</code>: God developers only</li>
+<li><code>GET &#47;accounts&#47;:id</code>: All developers</li>
+<li><code>PUT &#47;account&#47;:id</code>: All developers</li>
+<li><code>DELETE &#47;accounts&#47;:id</code> God developers only</li>
+</ul>
+
+<p>The <code>user_api_key</code> is not required to create an account. It is however,
+<strong>required</strong> for the others. This tells the API that a user has granted
+you access to their account. This prevents rouge developers from 
+trying to poke around into other company&#39;s accounts.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-account-format">Account Format</h2>
+
+              <dl>
+  <dt>name</dt>
+  <dd><strong>Required</strong></dd>
+
+  <dt>approve_follow_requests</dt>
+  <dd>
+    Determines the default setting for handling following requests.
+    All followable records will use the value for their default 
+    which can be changed later. <br/>
+
+    Example: If this is true, then all contacts will have their
+    following requests automatically approved UNLESS switched
+    off specifically for that contact. <br/>
+
+    <em>Default:</em> True
+  </dd>
+
+  <dt>users</dt>
+  <dd>IDs of all the users in this account</dd>
+
+  <dt>contacts</dt>
+  <dd>IDs of all the contacts in this account</dd>
+
+  <dt>campaigns</dt>
+  <dd>IDs of all the campaigns in this account</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-account-format">Account Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 305,
+  &quot;created_at&quot;: &quot;2011-12-14T12:39:23Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T12:39:23Z&quot;,
+  &quot;name&quot;: &quot;Apple&quot;,
+  &quot;approve_follow_requests&quot;: true,
+  &quot;users&quot;: [1,3,4,5],
+  &quot;contacts&quot;: [1,2],
+  &quot;campaigns&quot;: [1,3,4,5]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-create-an-account">Create an Account</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;accounts</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;accounts&quot;: {
+    &quot;name&quot;: &quot;My Company Inc.&quot;
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-update-an-account">Update an Account</h2>
+                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;accounts&#47;:id</code></p>
+
+<h3>Parameters</h3>
+
+<p>Set the <code>user_api_key</code> to a user in that account&#39;s api key.</p>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;accounts&quot;: {
+    &quot;name&quot;: &quot;New Name!&quot;
+    &quot;approve_following_requests&quot;: false
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-users">Users</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Users are at Radium&#39;s core. They are related to all resources
+and do most of the actions in the system. Users are organized
+into teams. Teams have a leader. User&#39;s can also follow
+other teams or users to add their activities into their feed.</p>
+
+<h3>Deleting Users</h3>
+
+<p>This request may take a while to return depending
+on how many things are associated with this user. Keep
+this in mind when programming.</p>
+
+<p><strong>WARNING</strong>: This will DELETE all things they are associated
+with. There is no going back! You <strong>must</strong> reassign all contacts
+before deleting a user, othwerise the delete will fail.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-permissions-routes">Permissions  Routes</h2>
+
+              <ul>
+<li><code>GET &#47;users</code>: All users</li>
+<li><code>POST &#47;users</code>: Gods only</li>
+<li><code>GET &#47;users&#47;:id</code>: All users</li>
+<li><code>PUT &#47;users&#47;:id</code>: Gods to update anyone, but of you may update yourself</li>
+<li><code>DELETE &#47;users&#47;:id</code>: Gods only</li>
+</ul>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <dl>
+  <dt>id</dt>
+  <dd>ID for this record. Use this if you want to access it again.</dd>
+
+  <dt>created_at</dt>
+  <dd>Timestamp for when this record was added to the DB.</dd>
+
+  <dt>updated_at</dt>
+  <dd>Timestamp for when this record was last updated in the DB.</dd>
+
+  <dt>name</dt>
+  <dd>The full name </dd>
+
+  <dt>email</dt>
+  <dd>Email addressed used to log into Radium</dd>
+
+  <dt>phone</dt>
+  <dd>User's primary contact phone number</dd>
+
+  <dt>password</dt>
+  <dd>A nice strong password. All characters are accepted.</dd>
+
+  <dt>password_confirmation</dt>
+  <dd><strong><em>Required</em></strong> if `password` has been changed.</dd>
+
+  <dt>api_key</dt>
+  <dd>
+    Secret key used to grant access to the API.
+    <strong>This attribute is only added when user matches the logged in user!</strong>
+  </dd>
+
+  <dt>account_id</dt>
+  <dd>The ID for this user's company's account.</dd>
+
+  <dt>contacts</dt>
+  <dd>Associated contact IDs</dd>
+
+  <dt>deals</dt>
+  <dd>Associated deal IDs</dd>
+
+  <dt>campaigns</dt>
+  <dd>Associated campaign IDs</dd>
+
+  <dt>following</dt>
+  <dd>IDs for all the users this person is following</dd>
+
+  <dt>followers</dt>
+  <dd>IDs for all the users that are following this user</dd>
+
+  <dt>todos</dt>
+  <dd>Associated todo IDs</dd>
+
+  <dt>meetings</dt>
+  <dd>Associated meeting IDs</dd>
+
+  <dt>reminders</dt>
+  <dd>IDs for all reminders</dd>
+
+  <dt>notes</dt>
+  <dd>IDs for all this user's notes</dd>
+
+  <dt>phone_calls</dt>
+  <dd>IDs for all this user's phone calls</dd>
+
+  <dt>messages</dt>
+  <dd>IDs for all this user's messages (IM, SMS &amp; Email)</dd>
+
+  <dt>activities</dt>
+  <dd>IDs for every activity in this user's feed</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-user-format">User Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 442,
+  &quot;created_at&quot;: &quot;2011-12-13T15:15:35Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-13T15:15:35Z&quot;,
+  &quot;name&quot;: &quot;Adam Hawkins&quot;,
+  &quot;email&quot;: &quot;user-1@example.com&quot;,
+  &quot;api_key&quot;: &quot;e68ff9eeeedbf05f2909f78eb960b69c2ae3fc2a&quot;,
+  &quot;phone&quot;: &quot;+1234987&quot;
+  &quot;account_id&quot;: 294,
+  &quot;contacts&quot;: [1,3,4,5,6,7]
+  &quot;deals&quot;: [1,3,4,5,6],
+  &quot;campaigns&quot;: [1,2,3],
+  &quot;following&quot;: [1,2,3],
+  &quot;followers&quot;: [1,2],
+  &quot;todos&quot;: [1,3,5,6],
+  &quot;meetings&quot;: [1,3,5,6],
+  &quot;reminders&quot;: [1,5,6,7],
+  &quot;notes&quot;: [183,81]
+  &quot;phone_calls&quot;: [57,85],
+  &quot;messages&quot;: [1,3,5],
+  &quot;activities&quot;: [237, 82347, 123847]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-creating-users">Creating Users</h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-create-a-user">Create a User</h2>
+                <p>`POST https:&#47;&#47;api.radiumcrm.com&#47;accounts&#47;:account_id&#47;users</p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;email&quot;: &quot;example@example.com&quot;,
+  &quot;name&quot;: &quot;Adam Hawkins&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-updating-users">Updating Users</h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-change-a-password">Change a Password</h2>
+                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;users&#47;:id</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;name&quot;: &quot;Adam Hawkins&quot;,
+  &quot;password&quot;: &quot;my super secure password&quot;,
+  &quot;password_confirmation&quot;: &quot;my super secure password&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-contacts">Contacts</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Contacts are the core resource. Everything is somehow related to them.
+Contacts must be assigned to someone. They can be placed in arbitrary
+groups. They are added to campaigns and users interact with them
+through the other resources (Deals, Todos, Phone Calls etc). Users
+can request to follow contacts to add their activites to their feed.
+Their progress is tracked through the sales pipeline.</p>
+
+<p>They have multiple addresses, phone numbers, and email address. 
+They can also be extended with arbitrary key value pairs.</p>
+
+<p>A Contact is <strong>not</strong> just a person. It can be company, it could
+be another business, it could be anything. Think of it like
+an entry in an address book. You may have companies and people
+in there.</p>
+
+<p>You can simulate a company structure using groups. More on this
+in that particular section.</p>
+
+<p><strong>NOTE</strong>: If you want to interact with it, it should be a contact.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;contacts</code>: All Users</li>
+<li><code>GET &#47;contacts</code>: All users</li>
+<li><code>GET &#47;contacts&#47;:id</code>: Assigned to, following the contact, or a God</li>
+<li><code>PUT &#47;contacts&#47;:id</code>: Assigned to, following the contact, or a God</li>
+<li><code>DELETE &#47;contacts&#47;:id</code>: Assigned to you or you are a God</li>
+</ul>
+
+<h3>Scoping</h3>
+
+<p>The <code>GET &#47;contacts</code> route will only return contacts the specific user has 
+access to you. You can be granted access the following ways:</p>
+
+<ol>
+<li>The contact is assigned to you</li>
+<li>You are following that contact</li>
+<li>The contact is public</li>
+<li>You are God</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-attributes">Attributes</h2>
+
+              <p>The contact format is slightly different because of how important contacts are. 
+Some associated records are embeded directly into the contact itself. It&#39;s assumed
+that your application will need any extra information right away so it is given 
+to you.</p>
+
+<dl>
+  <dt>name</dt>
+  <dd>The full name of this contact</dd>
+
+  <dt>addresses</dt>
+  <dd>
+    <dl>
+      <dt>name</dt>
+      <dd>
+        <strong>Required</strong><br/>
+        A name for this address
+      </dd>
+
+      <dt>street</dt>
+      <dd>The house # and street name</dd>
+
+      <dt>state</dt>
+      <dd>Local region of country</dd>
+
+      <dt>country</dt>
+      <dd>Country for this address</dd>
+
+      <dt>time_zone</dt>
+      <dd>Time zone this address is in</dd>
+    </dl>
+  </dd>
+
+  <dt>phone_numbers</dt>
+  <dd>
+    <dl>
+      <dt>name</dt>
+      <dd>
+        <strong>Required</strong><br />
+        A name for this phone number
+      </dd>
+
+      <dt>value</dt>
+      <dd>
+        <strong>Required</strong><br />
+        The phone number
+      </dd>
+    </dl>
+  </dd>
+
+  <dt>email_addresses</dt>
+  <dd>
+    <dl>
+      <dt>name</dt>
+      <dd>
+        <strong>Required</strong><br />
+        A name for this address
+      </dd>
+
+      <dt>value</dt>
+      <dd>
+        <strong>Required</strong><br />
+        The email address
+      </dd>
+    </dl>
+  </dd>
+
+  <dt>fields</dt>
+  <dd>
+    <dl>
+      <dt>name</dt>
+      <dd>
+        <strong>Required</strong>
+      </dd>
+
+      <dt>value</dt>
+      <dd>The value for this specific field</dd>
+
+      <dt>accepted_values</dt>
+      <dd>
+        An optional array of values that can be used. 
+        The server will not allow a field to be saved if its
+        value is not one of these.
+      </dd>
+
+      <dt>kind</dt>
+      <dd>
+        <strong>Required</strong><br />
+        One of the following: 
+        <code>email_address</code>,
+        <code>phone_number</code>,
+        <code>url</code>,
+        <code>other</code>
+      </dd>
+    </dl>
+  </dd>
+
+  <dt>groups</dt>
+  <dd>IDs for all the groups</dd>
+
+  <dt>deals</dt>
+  <dd>IDs for all the deals</dd>
+
+  <dt>todos</dt>
+  <dd>IDs for all the todos</dd>
+
+  <dt>campaigns</dt>
+  <dd>IDs for all the campaigns</dd>
+
+  <dt>followers</dt>
+  <dd>IDs for all the users following this contact</dd>
+
+  <dt>messages</dt>
+  <dd>IDs for all the messages</dd>
+
+  <dt>phone_calls</dt>
+  <dd>IDs for all the phone calls</dd>
+
+  <dt>meetings</dt>
+  <dd>IDs for all the meetings</dd>
+
+  <dt>notes</dt>
+  <dd>IDs for all the notes</dd>
+
+  <dt>activities</dt>
+  <dd>IDs for all the activities</dd>
+
+  <dt>user</dt>
+  <dd>ID for the user managing this contact</dd>
+</dl>
+
+<h3>Email Addresses, Phone Numbers, &amp; Fields</h3>
+
+<p>All of these are stored internally in a <code>Field</code> resource, hence
+the smiliar format. The <code>kind</code> attributes are omitted for
+<code>email_addresses</code> and <code>phone_numbers</code> since it&#39;s implied
+by the attribute name. You can manipulate these by using
+nested attributes or directly using the <code>Field</code> routes.
+All of these things can be created or updated in the same
+request.</p>
+
+<h3>Addresses</h3>
+
+<p>Addresses are only accessible through the contact. You can
+create, delete, update them through the <code>addresses_attributes</code>
+attribute which will be discussed later. Addresses can be 
+created, updated, or deleted in the same request.</p>
+
+<h3>The User</h3>
+
+<p>The user association represents who is managing this contact. 
+You can change it by passing the <code>user_id</code> attribute on any
+contact object.</p>
+
+<h3>Groups</h3>
+
+<p>You may also assign a new set of groups by passing the <code>group_ids</code>
+attribute. Note, this will be treated as the entire set. So,
+if you want to add a contact to a group, make sure you
+add the new group id to the existing set of ids before updating
+the contact on the server. You can specify <code>group_ids</code> on any
+contact object.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-contact-format">Contact Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 150,
+  &quot;created_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
+  &quot;name&quot;: &quot;Johnny Graham&quot;,
+  &quot;addresses&quot;: [
+    {
+      &quot;id&quot;: 8,
+      &quot;created_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
+      &quot;name&quot;: &quot;Address 1&quot;,
+      &quot;street&quot;: &quot;03284 Johnson Center&quot;,
+      &quot;state&quot;: &quot;Illinois&quot;,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;zip_code&quot;: &quot;39645&quot;,
+      &quot;time_zone&quot;: null
+    }
+  ],
+  &quot;phone_numbers&quot;: [
+    {
+      &quot;id&quot;: 282,
+      &quot;created_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
+      &quot;name&quot;: &quot;Phone Number&quot;,
+      &quot;value&quot;: &quot;+52313872481&quot;,
+      &quot;accepted_values&quot;: null,
+    }
+  ],
+  &quot;email_addresses&quot;: [
+    {
+      &quot;id&quot;: 281,
+      &quot;created_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
+      &quot;name&quot;: &quot;Email&quot;,
+      &quot;value&quot;: &quot;email-1@example.com&quot;,
+      &quot;accepted_values&quot;: null,
+    }
+  ],
+  &quot;fields&quot;: [
+    {
+      &quot;id&quot;: 285,
+      &quot;created_at&quot;: &quot;2011-12-14T19:12:30Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T19:12:30Z&quot;,
+      &quot;name&quot;: &quot;Industry&quot;,
+      &quot;value&quot;: &quot;Real Estate Development&quot;,
+      &quot;accepted_values&quot;: null,
+      &quot;kind&quot;: &quot;other&quot;
+    },
+    {
+      &quot;id&quot;: 284,
+      &quot;created_at&quot;: &quot;2011-12-14T19:12:28Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T19:12:28Z&quot;,
+      &quot;name&quot;: &quot;Industry&quot;,
+      &quot;value&quot;: &quot;Auto Parts Stores&quot;,
+      &quot;accepted_values&quot;: null,
+      &quot;kind&quot;: &quot;other&quot;
+    },
+    {
+      &quot;id&quot;: 283,
+      &quot;created_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+      &quot;name&quot;: &quot;Industry&quot;,
+      &quot;value&quot;: &quot;Property &amp; Casualty Insurance&quot;,
+      &quot;accepted_values&quot;: null,
+      &quot;kind&quot;: &quot;other&quot;
+    }
+  ],
+  &quot;groups&quot;: [17,18
+  ],
+  &quot;deals&quot;: [
+
+  ],
+  &quot;todos&quot;: [
+
+  ],
+  &quot;campaigns&quot;: [
+
+  ],
+  &quot;followers&quot;: [
+
+  ],
+  &quot;messages&quot;: [
+
+  ],
+  &quot;phone_calls&quot;: [
+
+  ],
+  &quot;meetings&quot;: [
+
+  ],
+  &quot;notes&quot;: [
+
+  ],
+  &quot;activities&quot;: [
+
+  ],
+  &quot;user&quot;: 458
+}
+
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-nested-resources">Nested Resources</h2>
+
+              <p>Nested resources are child resources that can be modified from
+the parent. Not all resources support nested resources. 
+Contacts have these nested resources.</p>
+
+<ul>
+<li><code>fields</code></li>
+<li><code>email_addresses</code></li>
+<li><code>phone_numbers</code></li>
+<li><code>notes</code></li>
+</ul>
+
+<p>You specifically create, updated, or delete a member of the collection
+through the attributes accessor. You assign a collection of new
+objects through the accessor. If the <code>id</code> is given, then that
+record will be updated. If <code>id</code> is not given, a new record
+will be created. If <code>_delete</code> is given, then that record will be
+deleted.</p>
+
+<p>You can manipulate each collection through these attributes:</p>
+
+<ul>
+<li><code>fields_attributes</code></li>
+<li><code>email_addresses_attributes</code></li>
+<li><code>phone_numbers_attributes</code></li>
+<li><code>notes_attributes</code></li>
+</ul>
+
+            </td>
+            <td class="code">
+                <h2 id="r-contact-nested-resources">Contact Nested Resources</h2>
+                <p>Here are examples for managing each collection. There
+is one example for each collection. Then an example of 
+creating, update, and deleting for each. </p>
+
+<h3>Fields</h3>
+
+<pre><code class="javascript">{
+  &quot;fields_attributes&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;value&quot;: &quot;New Value&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Industry&quot;,
+      &quot;value&quot;: &quot;IT&quot;,
+      &quot;kind&quot;: &quot;other&quot;
+    },
+    {
+      &quot;_delete&quot;: true
+      &quot;id&quot;: 2
+    }
+  ]
+}
+</code></pre>
+
+<h3>Email Addresses</h3>
+
+<pre><code class="javascript">{
+  &quot;email_addresses_attributes&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;value&quot;: &quot;adam@radiumcrm.com&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Personal&quot;,
+      &quot;value&quot;: &quot;jon@name.com&quot;
+    },
+    {
+      &quot;_delete&quot;: true
+      &quot;id&quot;: 2
+    }
+  ]
+}
+</code></pre>
+
+<h3>Phone Numbers</h3>
+
+<pre><code class="javascript">{
+  &quot;phone_numbers_attributes&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;value&quot;: &quot;+234812394878&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Cell&quot;,
+      &quot;value&quot;: &quot;+2384791832&quot;
+    },
+    {
+      &quot;_delete&quot;: true
+      &quot;id&quot;: 2
+    }
+  ]
+}
+</code></pre>
+
+<h3>Notes</h3>
+
+<pre><code class="javascript">{
+  &quot;notes_attributes&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;text&quot;: &quot;New text!&quot;
+    },
+    {
+      &quot;text&quot;: &quot;I hear this guy loves the NFL&quot;
+    },
+    {
+      &quot;_delete&quot;: true
+      &quot;id&quot;: 2
+    }
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>The contact will be assigned to you if you don&#39;t specify the <code>user_id</code></p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-creating-a-contact">Creating a Contact</h2>
+                <p><code>POST &#47;contacts</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;contact&quot;: {
+    &quot;user_id&quot;: 5,
+    &quot;group_ids&quot;: [1,3,5,89,38],
+    &quot;name&quot;: &quot;Nokia&quot;,
+    &quot;addresses_attributes&quot;: [
+      {
+        &quot;name&quot;: &quot;Head Quarters&quot;,
+        &quot;street&quot;: &quot;123 Nokiankatu&quot;,
+        &quot;city&quot;: &quot;Espoo&quot;,
+        &quot;country&quot;: &quot;Finland&quot;
+      },
+      {
+        &quot;name&quot;: &quot;West Coast&quot;,
+        &quot;street&quot;: &quot;5 Embarcadero&quot;,
+        &quot;city&quot;: &quot;San Francisco&quot;,
+        &quot;state&quot;: &quot;California&quot;,
+        &quot;country&quot;: &quot;USA&quot;
+      }
+    ],
+    &quot;email_addresses_attributes&quot;: [
+      {
+        &quot;name&quot;: &quot;primary&quot;,
+        &quot;value&quot;: &quot;sales@nokia.fi&quot;
+      },
+      {
+        &quot;name&quot;: &quot;secondary&quot;,
+        &quot;value&quot;: &quot;sales@nokia.com&quot;
+      }
+    ],
+    &quot;phone_numbers_attributes&quot;: [
+      {
+        &quot;name&quot;: &quot;primary&quot;,
+        &quot;value&quot;: &quot;+358234878187&quot;
+      },
+      {
+        &quot;name&quot;: &quot;secondary&quot;,
+        &quot;value&quot;: &quot;+14052348723&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-deals">Deals</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Deals represent financial interactions between contacts. 
+A user is in charge of each deal. Deals go through these states:</p>
+
+<ol>
+<li>Pending</li>
+<li>Closed</li>
+<li>Paid</li>
+<li>Rejected</li>
+</ol>
+
+<p>Deals may also have todos, comments, and associated attachments.
+They are optionally associated with a campaign.</p>
+
+<p>They also have embed line items to create an invoice style 
+structure that can eventually be handed off to fullfillment&#47;accounting.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permission">Routes  Permission</h2>
+
+              <ul>
+<li><code>POST &#47;deals</code>: All users</li>
+<li><code>GET &#47;deals</code>: All users according to scoping rules</li>
+<li><code>GET &#47;deals&#47;:id</code>: All users according scoping rules</li>
+<li><code>PUT &#47;deals&#47;:id</code>: Managing the deal or God</li>
+<li><code>DELETE &#47;deals&#47;:id</code>: Managing the deal or God</li>
+</ul>
+
+<h3>Scoping</h3>
+
+<p>You can read deals you have access to. You can have access
+the following ways:</p>
+
+<ol>
+<li>You are managing the deal</li>
+<li>You are following the deal</li>
+<li>The deal is public</li>
+<li>You are a god</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <dl>
+  <dt>description</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Long form text describing this deal
+  </dd>
+
+  <dt>close_by</dt>
+  <dd>
+    <strong>Required</strong><br />
+    The date the deal should close by.
+  </dd>
+
+  <dt>state</dt>
+  <dd>
+    <strong>Required</strong><br />
+    One of the following: 
+    <code>pending</code>,
+    <code>closed</code>,
+    <code>paid</code>,
+    <code>rejected</code><br />
+    <em>Default</em>: <code>pending</code>
+  </dd>
+
+  <dt>public</dt>
+  <dd>This is inherited from the account unless otherwise specified.</dd>
+
+  <dt>line_itmes</dt>
+  <dd>
+    <dl>
+      <dt>name</dt>
+      <dd><strong>Required</strong></dd>
+
+      <dt>quantity</dt>
+      <dd>
+        <strong>Required</strong><br />
+        Positive integers only.
+      </dd>
+
+      <dt>price</dt>
+      <dd>
+        <strong>Required</strong><br />
+        The price of one individual unit. This is NOT the total cost.
+      </dd>
+
+      <dt>currency</dt>
+      <dd>
+        <strong>Required</strong><br/>
+        See the supported currencies section
+      </dd>
+
+      <dt>product</dt>
+      <dd>
+        The ID of an associated product. 
+        If the price and currency are not specified and the product is,
+        then these values will be filled in using the product.
+        Specifying a product is not required.
+      </dd>
+    </dl>
+  </dd>
+
+  <dt>contact</dt>
+  <dd>
+    <strong>Required</strong><br />
+    ID of associated contact
+  </dd>
+
+  <dt>user</dt>
+  <dd>
+    <strong>Required</strong><br />
+    ID of the user managing this deal
+  </dd>
+
+  <dt>todos</dt>
+  <dd>IDs of all the todos</dd>
+
+  <dt>comments</dt>
+  <dd>All comment object. See comment section.</dd>
+
+  <dt>products</dt>
+  <dd>IDs of all products referenced by line items</dd>
+</dl>
+
+<h3>Specifying Assocations</h3>
+
+<p>You can change the <code>user</code> and <code>contact</code> associations by passing
+a <code>user_id</code> or <code>contact_id</code> attribute.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-deal-format">Deal Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 31,
+  &quot;created_at&quot;: &quot;2011-12-15T09:37:23Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T09:37:23Z&quot;,
+  &quot;description&quot;: &quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.&quot;,
+  &quot;close_by&quot;: &quot;2011-12-22T09:37:23Z&quot;,
+  &quot;state&quot;: &quot;pending&quot;,
+  &quot;public&quot;: true,
+  &quot;line_items&quot;: [
+    {
+      &quot;id&quot;: 34,
+      &quot;name&quot;: &quot;Radium&quot;,
+      &quot;quantity&quot;: 1,
+      &quot;price&quot;: &quot;1000.0&quot;,
+      &quot;currency&quot;: &quot;USD&quot;,
+      &quot;product&quot;: null
+    },
+    {
+      &quot;id&quot;: 33,
+      &quot;name&quot;: &quot;Radium&quot;,
+      &quot;quantity&quot;: 1,
+      &quot;price&quot;: &quot;1000.0&quot;,
+      &quot;currency&quot;: &quot;USD&quot;,
+      &quot;product&quot;: null
+    },
+    {
+      &quot;id&quot;: 32,
+      &quot;name&quot;: &quot;Radium&quot;,
+      &quot;quantity&quot;: 1,
+      &quot;price&quot;: &quot;1000.0&quot;,
+      &quot;currency&quot;: &quot;USD&quot;,
+      &quot;product&quot;: null
+    }
+  ],
+  &quot;contact&quot;: 151,
+  &quot;user&quot;: 460,
+  &quot;todos&quot;: [
+
+  ],
+  &quot;comments&quot;: [
+
+  ],
+  &quot;products&quot;: [
+
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-nested-line-items">Nested Line Items</h2>
+
+              <p>Line items are nested inside the deal. There are no routes to 
+directly mainpulate individual items, so they must be managed
+through the deal. You can created, update, or delete items 
+through the <code>line_items_attributes</code> attribute. It takes an array
+of line items objects.</p>
+
+<p>If you pass an <code>id</code> then that record will be updated. 
+If you do not pass an <code>id</code> a new record will be created.
+If you pass an <code>id</code> and a <code>_delete</code> the record will be deleted.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-nested-line-items">Nested Line Items</h2>
+                <pre><code class="javascript">{
+  &quot;line_items_attributes&quot;: [
+    {
+      &quot;id&quot;: 34,
+      &quot;name&quot;: &quot;Radium&quot;,
+      &quot;quantity&quot;: 1,
+      &quot;price&quot;: &quot;1500.0&quot;,
+      &quot;currency&quot;: &quot;USD&quot;,
+      &quot;product&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Radium&quot;,
+      &quot;quantity&quot;: 1,
+      &quot;price&quot;: &quot;1000.0&quot;,
+      &quot;currency&quot;: &quot;USD&quot;,
+      &quot;product&quot;: null
+    },
+    {
+      &quot;_delete&quot;: true,
+      &quot;id&quot;: 32
+    }
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>A deal will automatically be assigned to you if you don&#39;t specify
+the <code>user_id</code>.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-create-a-deal">Create a Deal</h2>
+                <p><code>POST &#47;deals</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;deal: {
+    &quot;description&quot;: &quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.&quot;,
+    &quot;close_by&quot;: &quot;2011-12-22T09:37:23Z&quot;,
+    &quot;line_items&quot;: [
+      {
+        &quot;name&quot;: &quot;Radium&quot;,
+        &quot;quantity&quot;: 1,
+        &quot;price&quot;: &quot;1000.0&quot;,
+        &quot;currency&quot;: &quot;USD&quot;,
+      },
+      {
+        &quot;quantity&quot;: 1,
+        &quot;product_id&quot;: 5
+      }
+    ],
+    &quot;contact_id&quot;: 151,
+    &quot;user_id&quot;: 460
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-campaigns">Campaigns</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Campaigns are a way to organize different things in Radium. 
+Putting things in a campaign will allow you generate statistics
+for each one and provide a way to break down your company&#39;s performance.</p>
+
+<p>One user is responsible for each campaign. They can approve
+who get to follow this campaign. They can also add more
+contacts to the campaign.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;campaigns</code>: Team leaders or Gods</li>
+<li><code>GET &#47;campaigns</code>: All Users according to scoping</li>
+<li><code>GET &#47;campaigns&#47;:id</code>: All users according to scoping</li>
+<li><code>PUT &#47;campaigns&#47;:id</code>: Campaign manager or Gods</li>
+<li><code>DELETE &#47;campaigns&#47;:id</code>: Campaign manager or Gods</li>
+</ul>
+
+<h3>Scoping</h3>
+
+<p>You can have read access the following ways:</p>
+
+<ol>
+<li>You are managing the campaign</li>
+<li>You are following the campaign</li>
+<li>The campaign is public</li>
+<li>You are a God</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-attributes">Attributes</h2>
+
+              <dl>
+  <dt>name</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    A succinct name. Example: "Fall 2011"
+  </dd>
+
+  <dt>description</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Long form text used to describe this campaign.
+  </dd>
+
+  <dt>ends_at</dt>
+  <dd>
+    <strong>Required</strong></br />
+    Date &amp; Time for when the campaign ends.
+  </dd>
+
+  <dt>target</dt>
+  <dd>The ammount of revenue this campaign should generate</dd>
+
+  <dt>currency</dt>
+  <dd>Currency for the target value. See the currency section for allowed values.</dd>
+
+  <dt>public</dt>
+  <dd>Inherits this setting from the account unless specified</dd>
+
+  <dt>user</dt>
+  <dd>
+    <strong>Required</strong><br/ >
+    The ID for user who's managing this campaign.<br/>
+    NOTE: You can change this by specifying a <code>user_id</code> attribute.
+  </dd>
+
+  <dt>contacts</dt>
+  <dd>
+    All the contacts associated with this campaign.<br/>
+    NOTE: You can change this by specifying the <code>contact_ids</code> attribute.
+    However, if you want to add one person, you will need to add the new id
+    to existing array.
+  </dd>
+
+  <dt>todos</dt>
+  <dd>All the todos that are associated with this campaign</dd>
+
+  <dt>deals</dt>
+  <dd>All the deals that are associated with this campaign</dd>
+
+  <dt>phone_calls</dt>
+  <dd>All the phone calls that are associated with this campaign (call list or otherwiser)</dd>
+
+  <dt>messages</dt>
+  <dd>All the messages that have been sent relating to this campaign</dd>
+
+  <dt>groups</dt>
+  <dd>All the groups associated with this campaign</dd>
+
+  <dt>products</dt>
+  <dd>All the products associated with this campaign</dd>
+
+  <dt>users</dt>
+  <dd>All the users who are working this campaign</dd>
+
+  <dt>followers</dt>
+  <dd>All the users who are following this campaign</dd>
+
+  <dt>notes</dt>
+  <dd>All the notes relating to this campaign</dd>
+
+  <dt>meetings</dt>
+  <dd>All the meetings relating to this campaign</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-campaign-format">Campaign Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 13,
+  &quot;created_at&quot;: &quot;2011-12-14T14:56:12Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T14:56:12Z&quot;,
+  &quot;name&quot;: &quot;Campaign 3&quot;,
+  &quot;description&quot;: &quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.&quot;,
+  &quot;ends_at&quot;: &quot;2011-12-21T14:55:25Z&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;target&quot;: &quot;10000.0&quot;,
+  &quot;user&quot;: 449,
+  &quot;public&quot;: true,
+  &quot;contacts&quot;: [
+
+  ],
+  &quot;todos&quot;: [
+
+  ],
+  &quot;deals&quot;: [
+
+  ],
+  &quot;phone_calls&quot;: [
+
+  ],
+  &quot;messages&quot;: [
+
+  ],
+  &quot;groups&quot;: [
+
+  ],
+  &quot;products&quot;: [
+
+  ],
+  &quot;users&quot;: [
+
+  ],
+  &quot;followers&quot;: [
+
+  ],
+  &quot;notes&quot;: [
+
+  ],
+  &quot;meetings&quot;: [
+
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>New campaigns will be assigned to the user creating them unless
+the <code>user_id</code> attribute is given. </p>
+
+<p>The associated contacts can also be set by providing the <code>contact_ids</code> 
+attribute.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-create-a-campaign">Create a Campaign</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;campaigns</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;campaign&quot;: {
+    &quot;name&quot;: &quot;Campaign 3&quot;,
+    &quot;description&quot;: &quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.&quot;,
+    &quot;ends_at&quot;: &quot;2011-12-21T14:55:25Z&quot;,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;target&quot;: &quot;10000.0&quot;,
+    &quot;user_id&quot;: 449,
+    &quot;approve_following_requests&quot;: true,
+    &quot;contact_ids&quot;: [1,2,3,5]
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>You can &quot;reassign&quot; a campaign by passing the <code>user_id</code> attribute.</p>
+
+<p>You can add more contacts to a campaign by passing <code>contact_ids</code> <strong>AND</strong>
+including current ids plus the ones.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-update-a-campaign">Update a Campaign</h2>
+                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;campaigns&#47;:id</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;campaign&quot;: {
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;target&quot;: &quot;15000.0&quot;,
+    &quot;user_id&quot;: 398
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-announcements">Announcements</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Announcements are sent out to all users. Only certain users can
+create announcements. All users in the account will receive an email
+when one is posted. A user can dimiss the announcement. The person
+who posted it can change it or delete it.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;announcements</code>: Team leaders</li>
+<li><code>GET &#47;announcements</code>: All Users</li>
+<li><code>GET &#47;announcements&#47;:id</code>: All users</li>
+<li><code>PUT &#47;announcements&#47;:id</code>: The poster</li>
+<li><code>DELETE &#47;announcements&#47;:id</code>: The poster</li>
+<li><code>POST &#47;announcements&#47;:id&#47;dismiss</code>: All users</li>
+</ul>
+
+<h3>Scoping</h3>
+
+<p>Only non-dismissed announcements are accessible via <code>GET</code></p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-response-format">Response Format</h2>
+
+              <dl>
+  <dt>title</dt>
+  <dd>The title for the announcment.</dd>
+
+  <dt>message</dt>
+  <dd>The text for the announcement. Can be as long as required.</dd>
+
+  <dt>comments</dt>
+  <dd>All the comments for this announcement.</dd>
+
+  <dt>user</dt>
+  <dd>ID of the user who posted this announcement</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-announcement-format">Announcement Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 7,
+  &quot;created_at&quot;: &quot;2011-12-14T13:25:17Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;title&quot;: &quot;Announcement 1&quot;,
+  &quot;message&quot;: &quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.&quot;,
+  &quot;comments&quot;: [
+    {
+      &quot;id&quot;: 7,
+      &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+      &quot;text&quot;: &quot;Text 2&quot;,
+      &quot;user&quot;: 444
+    },
+    {
+      &quot;id&quot;: 6,
+      &quot;created_at&quot;: &quot;2011-12-14T13:25:34Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T13:25:34Z&quot;,
+      &quot;text&quot;: &quot;Text 1&quot;,
+      &quot;user&quot;: 443
+    }
+  ],
+  &quot;user&quot;: 442
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-create-an-announcement">Create an Announcement</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;announcements</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;foo&quot;,
+  &quot;announcement&quot;: {
+    &quot;title&quot;: &quot;New Sales Process&quot;,
+    &quot;text&quot;: &quot;You are starting our new process this week ...&quot;
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-dismiss-an-announcement">Dismiss an Announcement</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;announcements&#47;:id&#47;dismiss</code></p>
+
+<h3>Paramters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;foo&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-comments">Comments</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Comments work like comments in every system. You can create comments
+about many different things. Comments may also have files attached.</p>
+
+<p>These resources support comments:</p>
+
+<ol>
+<li>Todos</li>
+<li>Meetings</li>
+<li>Phone Calls</li>
+<li>Deals</li>
+<li>Messages (IM, SMS, &amp; Email)</li>
+<li>Activities</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;deals&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;todos&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;meetings&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;phone_calls&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;messages&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;activities&#47;:id&#47;comments</code>: All users</li>
+<li><code>PUT &#47;comments&#47;:id</code>: Your comments only or God</li>
+<li><code>DELETE &#47;comments&#47;:id</code>: Your comments only or God</li>
+</ul>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-attributes">Attributes</h2>
+
+              <p><dl>
+  <dt>text</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    The full text for this comment
+  </dd></p>
+
+<p><dt>attachments</dt>
+  <dd>All the attachments for this comment. See the attachment sections for the format.</dd></p>
+
+<p><dt>user</dt>
+  <dd>ID for the user who wrote the comment</dd></p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-comment-format">Comment Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 7,
+  &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;text&quot;: &quot;Text 2&quot;,
+  &quot;user&quot;: 444
+  &quot;attachments&quot;: [ 
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-posting-a-comment">Posting a Comment</h2>
+                <p><code>POST &#47;todos&#47;:id&#47;comments</code></p>
+
+<p>Create a comment for the todo specified by :id.</p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;comment&quot;: {
+    &quot;text&quot;: &quot;You know someone already did this right?&quot;
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-reporting-bugs">Reporting Bugs</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>This API is for reporting errors in offical Radium products.
+If you are not a Radium developer, you cannot use this API.</p>
+
+<p>This request is different from the others because it only
+returns a <code>HEAD</code> response. The reports are sent to an external
+system for tracking and resolving.</p>
+
+<dl>
+  <dt>title</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    A succinct description of the problem.
+  </dd>
+
+  <dt>what_happened</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    A longer description of what the problem actually is.
+  </dd>
+
+  <dt>steps_to_repoduce</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    How the bug is triggered
+  </dd>
+
+  <dt>project_id</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    Corresponds to a Radium product.
+  </dd>
+
+  <dt>notes</dt>
+  <dd>Any other information that may help with this bug</dd>
+
+  <dt>screenshot</dt>
+  <dd>File may be uploaded as well</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-reporting-a-bug">Reporting a Bug</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;bugs</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot; =&gt; &quot;foo&quot;,
+  &quot;user_api_key&quot; =&gt; &quot;bar&quot;,
+  &quot;bug&quot; =&gt; {
+    &quot;title&quot;: &quot;Short description&quot;,
+    &quot;what_happened&quot;: &quot;Call did not sync&quot;,
+    &quot;expected_result&quot;: &quot;For the call to sync&quot;
+    &quot;steps_to_reproduce&quot;: &quot;Call someone on a Nokia phone&quot;
+    &quot;project_id&quot;: 1
+  }
 }
 </code></pre>
 

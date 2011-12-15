@@ -29,17 +29,17 @@
     <reference title="Routes">
       <![CDATA[
       ```
-      POST   /accounts/:account_id/users
       POST   /accounts
       GET    /accounts/:id
       PUT    /accounts/:id
       DELETE /accounts/:id
 
-      POST   /users/:user_id/follow
+      POST   /accounts/:account_id/users
       GET    /users
       GET    /users/:id
       PUT    /users/:id
       DELETE /users/:id
+      POST   /users/:user_id/follow
 
       POST   /contacts/:contact_id/deals
       POST   /contacts/:contact_id/fields

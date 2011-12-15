@@ -1,0 +1,89 @@
+<document>
+  <title>Comments</title>
+  <position>99</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Comments work like comments in every system. You can create comments
+      about many different things. Comments may also have files attached.
+
+      These resources support comments:
+
+      1. Todos
+      2. Meetings
+      3. Phone Calls
+      4. Deals
+      5. Messages (IM, SMS, & Email)
+      6. Activities
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `POST /deals/:id/comments`: All users
+      * `POST /todos/:id/comments`: All users
+      * `POST /meetings/:id/comments`: All users
+      * `POST /phone_calls/:id/comments`: All users
+      * `POST /messages/:id/comments`: All users
+      * `POST /activities/:id/comments`: All users
+      * `PUT /comments/:id`: Your comments only or God
+      * `DELETE /comments/:id`: Your comments only or God
+      ]]>
+    </docs>
+  </section>
+  <section title="Attributes">
+    <docs>
+      <![CDATA[
+      <dl>
+        <dt>text</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          The full text for this comment
+        </dd>
+
+        <dt>attachments</dt>
+        <dd>All the attachments for this comment. See the attachment sections for the format.</dd>
+
+        <dt>user</dt>
+        <dd>ID for the user who wrote the comment</dd>
+      ]]>
+    </docs>
+    <reference title="Comment Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 7,
+        "created_at": "2011-12-14T13:25:36Z",
+        "updated_at": "2011-12-14T13:25:36Z",
+        "text": "Text 2",
+        "user": 444
+        "attachments": [ 
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Posting a Comment">
+      <![CDATA[
+      `POST /todos/:id/comments`
+
+      Create a comment for the todo specified by :id.
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar",
+        "comment": {
+          "text": "You know someone already did this right?"
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

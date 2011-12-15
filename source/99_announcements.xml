@@ -1,0 +1,115 @@
+<document>
+  <title>Announcements</title>
+  <position>99</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Announcements are sent out to all users. Only certain users can
+      create announcements. All users in the account will receive an email
+      when one is posted. A user can dimiss the announcement. The person
+      who posted it can change it or delete it.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `POST /announcements`: Team leaders
+      * `GET /announcements`: All Users
+      * `GET /announcements/:id`: All users
+      * `PUT /announcements/:id`: The poster
+      * `DELETE /announcements/:id`: The poster
+      * `POST /announcements/:id/dismiss`: All users
+
+      ### Scoping
+
+      Only non-dismissed announcements are accessible via `GET`
+      ]]>
+    </docs>
+  </section>
+  <section title="Response Format">
+    <docs>
+      <![CDATA[
+      <dl>
+        <dt>title</dt>
+        <dd>The title for the announcment.</dd>
+
+        <dt>message</dt>
+        <dd>The text for the announcement. Can be as long as required.</dd>
+
+        <dt>comments</dt>
+        <dd>All the comments for this announcement.</dd>
+
+        <dt>user</dt>
+        <dd>ID of the user who posted this announcement</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Announcement Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 7,
+        "created_at": "2011-12-14T13:25:17Z",
+        "updated_at": "2011-12-14T13:25:36Z",
+        "title": "Announcement 1",
+        "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+        "comments": [
+          {
+            "id": 7,
+            "created_at": "2011-12-14T13:25:36Z",
+            "updated_at": "2011-12-14T13:25:36Z",
+            "text": "Text 2",
+            "user": 444
+          },
+          {
+            "id": 6,
+            "created_at": "2011-12-14T13:25:34Z",
+            "updated_at": "2011-12-14T13:25:34Z",
+            "text": "Text 1",
+            "user": 443
+          }
+        ],
+        "user": 442
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Create an Announcement">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/announcements`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "foo",
+        "announcement": {
+          "title": "New Sales Process",
+          "text": "You are starting our new process this week ..."
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Dismiss an Announcement">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/announcements/:id/dismiss`
+
+      ### Paramters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "foo"
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</docs>

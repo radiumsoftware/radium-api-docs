@@ -1,0 +1,504 @@
+<document>
+  <title>Contacts</title>
+  <position>8</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Contacts are the core resource. Everything is somehow related to them.
+      Contacts must be assigned to someone. They can be placed in arbitrary
+      groups. They are added to campaigns and users interact with them
+      through the other resources (Deals, Todos, Phone Calls etc). Users
+      can request to follow contacts to add their activites to their feed.
+      Their progress is tracked through the sales pipeline.
+
+      They have multiple addresses, phone numbers, and email address. 
+      They can also be extended with arbitrary key value pairs.
+
+      A Contact is **not** just a person. It can be company, it could
+      be another business, it could be anything. Think of it like
+      an entry in an address book. You may have companies and people
+      in there.
+
+      You can simulate a company structure using groups. More on this
+      in that particular section.
+
+      **NOTE**: If you want to interact with it, it should be a contact.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `POST /contacts`: All Users
+      * `GET /contacts`: All users
+      * `GET /contacts/:id`: Assigned to, following the contact, or a God
+      * `PUT /contacts/:id`: Assigned to, following the contact, or a God
+      * `DELETE /contacts/:id`: Assigned to you or you are a God
+
+      ### Scoping
+
+      The `GET /contacts` route will only return contacts the specific user has 
+      access to you. You can be granted access the following ways:
+
+      1. The contact is assigned to you
+      2. You are following that contact
+      3. The contact is public
+      4. You are God
+      ]]>
+    </docs>
+  </section>
+  <section title="Attributes">
+    <docs>
+      <![CDATA[
+      The contact format is slightly different because of how important contacts are. 
+      Some associated records are embeded directly into the contact itself. It's assumed
+      that your application will need any extra information right away so it is given 
+      to you.
+
+      <dl>
+        <dt>name</dt>
+        <dd>The full name of this contact</dd>
+
+        <dt>addresses</dt>
+        <dd>
+          <dl>
+            <dt>name</dt>
+            <dd>
+              <strong>Required</strong><br/>
+              A name for this address
+            </dd>
+
+            <dt>street</dt>
+            <dd>The house # and street name</dd>
+
+            <dt>state</dt>
+            <dd>Local region of country</dd>
+
+            <dt>country</dt>
+            <dd>Country for this address</dd>
+
+            <dt>time_zone</dt>
+            <dd>Time zone this address is in</dd>
+          </dl>
+        </dd>
+
+        <dt>phone_numbers</dt>
+        <dd>
+          <dl>
+            <dt>name</dt>
+            <dd>
+              <strong>Required</strong><br />
+              A name for this phone number
+            </dd>
+
+            <dt>value</dt>
+            <dd>
+              <strong>Required</strong><br />
+              The phone number
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>email_addresses</dt>
+        <dd>
+          <dl>
+            <dt>name</dt>
+            <dd>
+              <strong>Required</strong><br />
+              A name for this address
+            </dd>
+
+            <dt>value</dt>
+            <dd>
+              <strong>Required</strong><br />
+              The email address
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>fields</dt>
+        <dd>
+          <dl>
+            <dt>name</dt>
+            <dd>
+              <strong>Required</strong>
+            </dd>
+
+            <dt>value</dt>
+            <dd>The value for this specific field</dd>
+
+            <dt>accepted_values</dt>
+            <dd>
+              An optional array of values that can be used. 
+              The server will not allow a field to be saved if its
+              value is not one of these.
+            </dd>
+
+            <dt>kind</dt>
+            <dd>
+              <strong>Required</strong><br />
+              One of the following: 
+              <code>email_address</code>,
+              <code>phone_number</code>,
+              <code>url</code>,
+              <code>other</code>
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>groups</dt>
+        <dd>IDs for all the groups</dd>
+
+        <dt>deals</dt>
+        <dd>IDs for all the deals</dd>
+
+        <dt>todos</dt>
+        <dd>IDs for all the todos</dd>
+
+        <dt>campaigns</dt>
+        <dd>IDs for all the campaigns</dd>
+
+        <dt>followers</dt>
+        <dd>IDs for all the users following this contact</dd>
+
+        <dt>messages</dt>
+        <dd>IDs for all the messages</dd>
+
+        <dt>phone_calls</dt>
+        <dd>IDs for all the phone calls</dd>
+
+        <dt>meetings</dt>
+        <dd>IDs for all the meetings</dd>
+
+        <dt>notes</dt>
+        <dd>IDs for all the notes</dd>
+
+        <dt>activities</dt>
+        <dd>IDs for all the activities</dd>
+
+        <dt>user</dt>
+        <dd>ID for the user managing this contact</dd>
+      </dl>
+
+      ### Email Addresses, Phone Numbers, & Fields
+
+      All of these are stored internally in a `Field` resource, hence
+      the smiliar format. The `kind` attributes are omitted for
+      `email_addresses` and `phone_numbers` since it's implied
+      by the attribute name. You can manipulate these by using
+      nested attributes or directly using the `Field` routes.
+      All of these things can be created or updated in the same
+      request.
+
+      ### Addresses
+
+      Addresses are only accessible through the contact. You can
+      create, delete, update them through the `addresses_attributes`
+      attribute which will be discussed later. Addresses can be 
+      created, updated, or deleted in the same request.
+
+      ### The User
+
+      The user association represents who is managing this contact. 
+      You can change it by passing the `user_id` attribute on any
+      contact object.
+
+      ### Groups
+
+      You may also assign a new set of groups by passing the `group_ids`
+      attribute. Note, this will be treated as the entire set. So,
+      if you want to add a contact to a group, make sure you
+      add the new group id to the existing set of ids before updating
+      the contact on the server. You can specify `group_ids` on any
+      contact object.
+      ]]>
+    </docs>
+    <reference title="Contact Format">
+      <docs>
+        <![CDATA[
+        ```javascript
+        {
+          "id": 150,
+          "created_at": "2011-12-14T16:35:15Z",
+          "updated_at": "2011-12-14T16:35:15Z",
+          "name": "Johnny Graham",
+          "addresses": [
+            {
+              "id": 8,
+              "created_at": "2011-12-14T16:35:15Z",
+              "updated_at": "2011-12-14T16:35:15Z",
+              "name": "Address 1",
+              "street": "03284 Johnson Center",
+              "state": "Illinois",
+              "country": "United States",
+              "zip_code": "39645",
+              "time_zone": null
+            }
+          ],
+          "phone_numbers": [
+            {
+              "id": 282,
+              "created_at": "2011-12-14T16:35:15Z",
+              "updated_at": "2011-12-14T16:35:15Z",
+              "name": "Phone Number",
+              "value": "+52313872481",
+              "accepted_values": null,
+            }
+          ],
+          "email_addresses": [
+            {
+              "id": 281,
+              "created_at": "2011-12-14T16:35:15Z",
+              "updated_at": "2011-12-14T16:35:15Z",
+              "name": "Email",
+              "value": "email-1@example.com",
+              "accepted_values": null,
+            }
+          ],
+          "fields": [
+            {
+              "id": 285,
+              "created_at": "2011-12-14T19:12:30Z",
+              "updated_at": "2011-12-14T19:12:30Z",
+              "name": "Industry",
+              "value": "Real Estate Development",
+              "accepted_values": null,
+              "kind": "other"
+            },
+            {
+              "id": 284,
+              "created_at": "2011-12-14T19:12:28Z",
+              "updated_at": "2011-12-14T19:12:28Z",
+              "name": "Industry",
+              "value": "Auto Parts Stores",
+              "accepted_values": null,
+              "kind": "other"
+            },
+            {
+              "id": 283,
+              "created_at": "2011-12-14T19:12:25Z",
+              "updated_at": "2011-12-14T19:12:25Z",
+              "name": "Industry",
+              "value": "Property & Casualty Insurance",
+              "accepted_values": null,
+              "kind": "other"
+            }
+          ],
+          "groups": [17,18
+          ],
+          "deals": [
+
+          ],
+          "todos": [
+
+          ],
+          "campaigns": [
+
+          ],
+          "followers": [
+
+          ],
+          "messages": [
+
+          ],
+          "phone_calls": [
+
+          ],
+          "meetings": [
+
+          ],
+          "notes": [
+
+          ],
+          "activities": [
+
+          ],
+          "user": 458
+        }
+
+        ```
+        ]]>
+      </docs>
+    </reference>
+  </section>
+  <section title="Nested Resources">
+    <docs>
+      <![CDATA[
+      Nested resources are child resources that can be modified from
+      the parent. Not all resources support nested resources. 
+      Contacts have these nested resources.
+
+      * `fields`
+      * `email_addresses`
+      * `phone_numbers`
+      * `notes`
+
+      You specifically create, updated, or delete a member of the collection
+      through the attributes accessor. You assign a collection of new
+      objects through the accessor. If the `id` is given, then that
+      record will be updated. If `id` is not given, a new record
+      will be created. If `_delete` is given, then that record will be
+      deleted.
+
+      You can manipulate each collection through these attributes:
+
+      * `fields_attributes`
+      * `email_addresses_attributes`
+      * `phone_numbers_attributes`
+      * `notes_attributes`
+      ]]>
+    </docs>
+    <reference title="Contact Nested Resources">
+      <![CDATA[
+      Here are examples for managing each collection. There
+      is one example for each collection. Then an example of 
+      creating, update, and deleting for each. 
+
+      ### Fields
+
+      ```javascript
+      {
+        "fields_attributes": [
+          {
+            "id": 1,
+            "value": "New Value"
+          },
+          {
+            "name": "Industry",
+            "value": "IT",
+            "kind": "other"
+          },
+          {
+            "_delete": true
+            "id": 2
+          }
+        ]
+      }
+      ```
+
+      ### Email Addresses
+
+      ```javascript
+      {
+        "email_addresses_attributes": [
+          {
+            "id": 1,
+            "value": "adam@radiumcrm.com"
+          },
+          {
+            "name": "Personal",
+            "value": "jon@name.com"
+          },
+          {
+            "_delete": true
+            "id": 2
+          }
+        ]
+      }
+      ```
+
+      ### Phone Numbers
+
+      ```javascript
+      {
+        "phone_numbers_attributes": [
+          {
+            "id": 1,
+            "value": "+234812394878"
+          },
+          {
+            "name": "Cell",
+            "value": "+2384791832"
+          },
+          {
+            "_delete": true
+            "id": 2
+          }
+        ]
+      }
+      ```
+
+      ### Notes
+
+      ```javascript
+      {
+        "notes_attributes": [
+          {
+            "id": 1,
+            "text": "New text!"
+          },
+          {
+            "text": "I hear this guy loves the NFL"
+          },
+          {
+            "_delete": true
+            "id": 2
+          }
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <docs>
+      <![CDATA[
+      The contact will be assigned to you if you don't specify the `user_id`
+      ]]>
+    </docs>
+    <reference title="Creating a Contact">
+      <![CDATA[
+      `POST /contacts`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar",
+        "contact": {
+          "user_id": 5,
+          "group_ids": [1,3,5,89,38],
+          "name": "Nokia",
+          "addresses_attributes": [
+            {
+              "name": "Head Quarters",
+              "street": "123 Nokiankatu",
+              "city": "Espoo",
+              "country": "Finland"
+            },
+            {
+              "name": "West Coast",
+              "street": "5 Embarcadero",
+              "city": "San Francisco",
+              "state": "California",
+              "country": "USA"
+            }
+          ],
+          "email_addresses_attributes": [
+            {
+              "name": "primary",
+              "value": "sales@nokia.fi"
+            },
+            {
+              "name": "secondary",
+              "value": "sales@nokia.com"
+            }
+          ],
+          "phone_numbers_attributes": [
+            {
+              "name": "primary",
+              "value": "+358234878187"
+            },
+            {
+              "name": "secondary",
+              "value": "+14052348723"
+            }
+          ]
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>
