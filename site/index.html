@@ -103,6 +103,13 @@
             </ol>
           </section>
           <section>
+            <a class="header" href="#d-groups">Groups</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+            </ol>
+          </section>
+          <section>
             <a class="header" href="#d-campaigns">Campaigns</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
@@ -2195,6 +2202,201 @@ creating, update, and deleting for each. </p>
         &quot;value&quot;: &quot;+14052348723&quot;
       }
     ]
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-groups">Groups</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Groups are a way to organize your documents. Contacts can be in any
+number of different groups. You can have multiple groups.
+Groups can also be extended with extra fields. They also group
+all the things associated with their contacts. You can use groups
+to generate specific sets of data for statistics.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;groups</code>: All users</li>
+<li><code>GET &#47;groups</code>: All users according to scoping</li>
+<li><code>GET &#47;groups&#47;:id</code>: All users according to scoping</li>
+<li><code>PUT &#47;groups&#47;:id</code>: The group manager or god</li>
+<li><code>DELETE &#47;groups&#47;:id</code>: The group manager or god</li>
+</ul>
+
+<h3>Scoping</h3>
+
+<p>You can read groups you have access to. You get access these ways:</p>
+
+<ol>
+<li>You are the group manager</li>
+<li>You are following a group</li>
+<li>The group is public</li>
+<li>You are god</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <p>Groups aggregate all data. They have fields. Refer to the fields
+section for more information.</p>
+
+<dl>
+  <dt>name</dt>
+  <dd><strong>Required</strong></dd>
+
+  <dt>email</dt>
+  <dd>A general contact email</dd>
+
+  <dt>phone</dt>
+  <dd>A general contact phone number</dd>
+
+  <dt>public</dt>
+  <dd>Name says it all</dd>
+
+  <dt>fields</dt>
+  <dd>Array of all the fields</dd>
+
+  <dt>contacts</dt>
+  <dd>IDs of all the contacts</dd>
+
+  <dt>todos</dt>
+  <dd>IDs of all the todos</dd>
+
+  <dt>deals</dt>
+  <dd>IDs of all the deals</dd>
+
+  <dt>messages</dt>
+  <dd>IDs of all the messages</dd>
+
+  <dt>notes</dt>
+  <dd>IDs of all the notes</dd>
+
+  <dt>phone_calls</dt>
+  <dd>IDs of all the phone call</dd>
+
+  <dt>meetings</dt>
+  <dd>IDs of all the meetings</dd>
+
+  <dt>campaigns</dt>
+  <dd>IDs for all the campaigns relating to contacts</dd>
+
+  <dt>users</dt>
+  <dd>IDs for all the users relating to contacts</dd>
+
+  <dt>activites</dt>
+  <dd>IDs for all the activities</dd>
+
+  <dt>user</dt>
+  <dd>ID of managing user</dd>
+</dl>
+
+<h3>Changing Associations</h3>
+
+<p>You can change the contacts group by setting <code>contact_ids</code>. </p>
+
+<p>You can change the managing user by setting <code>user_id</code>.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-group-format">Group Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 21,
+  &quot;created_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
+  &quot;name&quot;: &quot;Partners&quot;,
+  &quot;email: &quot;joe@partners.com&quot;,
+  &quot;phone&quot;: &quot;+13249812348&quot;,
+  &quot;public&quot;: false,
+  &quot;fields&quot;: [
+
+  ],
+  &quot;contacts&quot;: [
+    154
+  ],
+  &quot;todos&quot;: [
+
+  ],
+  &quot;deals&quot;: [
+
+  ],
+  &quot;messages&quot;: [
+
+  ],
+  &quot;notes&quot;: [
+
+  ],
+  &quot;phone_calls&quot;: [
+
+  ],
+  &quot;meetings&quot;: [
+
+  ],
+  &quot;campaigns&quot;: [
+
+  ],
+  &quot;users&quot;: [
+
+  ],
+  &quot;activities&quot;: [
+
+  ],
+  user: 55
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Groups are automatically assigned to you.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-create-a-group">Create a Group</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;groups</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;company&quot;: {
+    &quot;name&quot;: &quot;Partners&quot;,
+    &quot;contact_ids&quot;: [1,3,5,6]
   }
 }
 </code></pre>
