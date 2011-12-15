@@ -1,0 +1,77 @@
+<document>
+  <title>Notes</title>
+  <position>16</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Notes are public pieces of text associated with a resource.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      There are no routes for managing the notes themselves. This is
+      because they are always attached to other objects. 
+
+      They are managed through nested attributes.
+      ]]>
+    </docs>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      Notes only have one attribute: `text`
+      ]]>
+    </docs>
+    <reference title="Note Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 283,
+        "created_at": "2011-12-14T19:12:25Z",
+        "updated_at": "2011-12-14T19:12:25Z",
+        "text": "Blah blah"
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section title="Nested Attributes">
+    <docs>
+      <![CDATA[
+      You manage notes through the parent object. Each parent
+      object has `notes_attributes` attribute used to manage
+      the collection. You can do CRUD through this attribute.
+
+      The attribute takes an array of field objects according
+      to the format. 
+
+      If you pass an `id` then that field will be updated.
+      If you do not pass an `id` a new field will be created.
+      If you pass `id` & `delete` the field will be deleted.
+      ]]>
+    </docs>
+    <reference title="Nested Notes">
+      <![CDATA[
+      ```javascript
+      {
+        "notes_attributes": [
+          {
+            "id": 1,
+            "text": "Change me!"
+          },
+          {
+            "text": "This is a new note!",
+          },
+          {
+            "_delete": true
+            "id": 2
+          }
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

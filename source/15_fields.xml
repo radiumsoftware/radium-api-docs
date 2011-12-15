@@ -14,12 +14,14 @@
     </docs>
   </section>
   <section title="Routes & Permissions">
-    <![CDATA[
-    There are no routes for managing the fields themselves. This is
-    because they are always attached to other objects. 
+    <docs>
+      <![CDATA[
+      There are no routes for managing the fields themselves. This is
+      because they are always attached to other objects. 
 
-    They are managed through nested attributes.
-    ]]>
+      They are managed through nested attributes.
+      ]]>
+    </docs>
   </section>
   <section title="Format">
     <docs>
