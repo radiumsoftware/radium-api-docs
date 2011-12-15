@@ -1,0 +1,97 @@
+<document>
+  <title>Todos</title>
+  <position>13</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Todos can be about many things. The server will associate contacts
+      depending on what the todo is about. Todos can have attachments
+      and comments. They may also have reminders. Todos also represent
+      an item on a call list. All in All, todos are the workhorse.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `POST /contacts/:id/todos`
+      * `POST /groups/:id/todos`
+      * `POST /messages/:id/todos`
+      * `POST /phone_calls/:id/todos`
+      * `POST /meetings/:id/todos`
+      * `POST /deals/:id/todos`
+      * `GET /todos`
+      * `GET /todos/:id`
+      * `PUT /todos/:id`
+      * `DELETE /todos/:id`
+      ]]>
+    </docs>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      <dl>
+        <dt>kind</dt>
+        <dd>
+          <strong>Required</strong><br />
+          One of: <code>call</code>,
+          <code>general</code>,
+          <code>support</code>
+        </dd>
+
+        <dt>description</dt>
+        <dd>Text describing what todo</dd>
+
+        <dt>finish_by</dt>
+        <dd>Time this todo should be done by</dd>
+
+        <dt>call_list</dt>
+        <dd>ID of call list</dd>
+
+        <dt>campaign</dt>
+        <dd>ID of associated campaign</dd>
+
+        <dt>reference</dt>
+        <dd>ID & type of associated resource</dd>
+
+        <dt>contacts</dt>
+        <dd>IDs of all associated contacts</dd>
+
+        <dt>comments</dt>
+        <dd>See comments section</dd>
+
+        <dt>user</dt>
+        <dd>ID of the responsible user</dd>
+      </dl>
+
+      ### Changing Associations
+
+      You can change the user by setting the `user_id` attribute.
+      ]]>
+    </docs>
+    <reference title="Todo Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 26,
+        "created_at": "2011-12-15T15:07:13Z",
+        "updated_at": "2011-12-15T15:07:13Z",
+        "kind": "general",
+        "description": "Finish programming radium",
+        "finish_by": "2011-12-22T15:06:27Z",
+        "campaign": 3,
+        "call_list": null
+        "reference": null,
+        "contacts": [
+
+        ],
+        "comments": [
+
+        ],
+        "user": 468
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

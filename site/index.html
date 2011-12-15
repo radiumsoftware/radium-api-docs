@@ -137,6 +137,13 @@
             </ol>
           </section>
           <section>
+            <a class="header" href="#d-todos">Todos</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+            </ol>
+          </section>
+          <section>
             <a class="header" href="#d-phone-calls">Phone Calls</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
@@ -3342,6 +3349,122 @@ SMS with the correct records.</p>
 <pre><code class="javascript">{
   &quot;to&quot;: [1]
   &quot;message&quot;: &quot;How&#39;s it going?&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-todos">Todos</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Todos can be about many things. The server will associate contacts
+depending on what the todo is about. Todos can have attachments
+and comments. They may also have reminders. Todos also represent
+an item on a call list. All in All, todos are the workhorse.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;contacts&#47;:id&#47;todos</code></li>
+<li><code>POST &#47;groups&#47;:id&#47;todos</code></li>
+<li><code>POST &#47;messages&#47;:id&#47;todos</code></li>
+<li><code>POST &#47;phone_calls&#47;:id&#47;todos</code></li>
+<li><code>POST &#47;meetings&#47;:id&#47;todos</code></li>
+<li><code>POST &#47;deals&#47;:id&#47;todos</code></li>
+<li><code>GET &#47;todos</code></li>
+<li><code>GET &#47;todos&#47;:id</code></li>
+<li><code>PUT &#47;todos&#47;:id</code></li>
+<li><code>DELETE &#47;todos&#47;:id</code></li>
+</ul>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <dl>
+  <dt>kind</dt>
+  <dd>
+    <strong>Required</strong><br />
+    One of: <code>call</code>,
+    <code>general</code>,
+    <code>support</code>
+  </dd>
+
+  <dt>description</dt>
+  <dd>Text describing what todo</dd>
+
+  <dt>finish_by</dt>
+  <dd>Time this todo should be done by</dd>
+
+  <dt>call_list</dt>
+  <dd>ID of call list</dd>
+
+  <dt>campaign</dt>
+  <dd>ID of associated campaign</dd>
+
+  <dt>reference</dt>
+  <dd>ID & type of associated resource</dd>
+
+  <dt>contacts</dt>
+  <dd>IDs of all associated contacts</dd>
+
+  <dt>comments</dt>
+  <dd>See comments section</dd>
+
+  <dt>user</dt>
+  <dd>ID of the responsible user</dd>
+</dl>
+
+<h3>Changing Associations</h3>
+
+<p>You can change the user by setting the <code>user_id</code> attribute.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-todo-format">Todo Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 26,
+  &quot;created_at&quot;: &quot;2011-12-15T15:07:13Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T15:07:13Z&quot;,
+  &quot;kind&quot;: &quot;general&quot;,
+  &quot;description&quot;: &quot;Finish programming radium&quot;,
+  &quot;finish_by&quot;: &quot;2011-12-22T15:06:27Z&quot;,
+  &quot;campaign&quot;: 3,
+  &quot;call_list&quot;: null
+  &quot;reference&quot;: null,
+  &quot;contacts&quot;: [
+
+  ],
+  &quot;comments&quot;: [
+
+  ],
+  &quot;user&quot;: 468
 }
 </code></pre>
 
