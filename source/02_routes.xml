@@ -139,7 +139,6 @@
 
       PUT    /followings/:id/approve
       GET    /followings
-      POST   /followings
       GET    /followings/:id
       PUT    /followings/:id
       DELETE /followings/:id

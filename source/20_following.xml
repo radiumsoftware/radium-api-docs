@@ -1,0 +1,97 @@
+<document>
+  <title>Following</title>
+  <position>20</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Users can follow different resources in the system. This will give
+      them read access. It will also add related activities to their feed.
+      Followable resources inhert their `public` setting from the `account`.
+      If someone is public, following requests will automatically be approved.
+      If something is private, the person in charge of it will have to approve it.
+      A person can choose to no longer follow something at their will.
+
+      These resources can be followed:
+
+      1. Users
+      2. Contacts
+      3. Teams
+      4. Campaigns
+      5. Deals
+      6. Groups
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `POST /users/:id/follow`: Anyone
+      * `POST /contacts/:id/follow`: Anyone
+      * `POST /teams/:id/follow`: Anyone
+      * `POST /campaigns/:id/follow`: Anyone
+      * `POST /deals/:id/follow`: Anyone
+      * `POST /groups/:id/follow`: Anyone
+      * `GET /followings`: Anyone according to scoping
+      * `GET /followings/:id`: Any according to scoping
+      * `DELETE /followings/:id`: The follower or god
+      * `PUT /followings/:id/approve`: The resource manager or a god
+
+      ### Scoping
+
+      You are only allowed to access your own following requests.
+      ]]>
+    </docs>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      As mentioned earlier, following requests will be automatically
+      approved if the followable resource is public.
+
+      <dl>
+        <dt>approved</dt>
+        <dd>Name says it all</dd>
+
+        <dt>user</dt>
+        <dd>ID for following user</dd>
+
+        <dt>followable</dt>
+        <dd>ID and Resource type</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Following Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 12,
+        "created_at": "2011-12-15T12:39:01Z",
+        "updated_at": "2011-12-15T12:39:01Z",
+        "approved": true,
+        "user": 464,
+        "followable": {
+          "id": 154,
+          "followable_type": "Contact"
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Follow Something">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/contacts/5/follow`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar"
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>
