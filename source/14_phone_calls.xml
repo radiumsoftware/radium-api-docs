@@ -1,0 +1,210 @@
+<document>
+  <title>Phone Calls</title>
+  <position>14</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Phone calls can be logged from mobile phones or other sources.
+      They have todos and specific outcomes. 
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `GET /phone_calls`
+      * `GET /phone_calls/:id`
+      * `PUT /phone_calls/:id`
+      * `DELETE /phone_calls/:id`
+      * `POST /phone_calls/import`
+
+      ### Scoping
+
+      1. You made or received the call
+      2. It involves someone in your team
+      3. It involves one of your contacts
+      4. You're a god
+      ]]>
+    </docs>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      Phone calls can be to/from users or contacts. They also
+      have comments and todos.
+
+      <dl>
+        <dt>outcome</dt>
+        <dd>
+          Represents the action to take after the call <br />
+          One of the following:
+          <code>not_interested</code>,
+          <code>unanswered</code>,
+          <code>follow_up_required</code>, or blank.
+        </dd>
+
+        <dt>duration</dt>
+        <dd>The length of the call in seconds</dd>
+
+        <dt>kind</dt>
+        <dd>
+          One of the following:
+          <code>accepted</code>,
+          <code>rejected</code>,
+          <code>busy</code>,
+          <code>missed</code>
+        </dd>
+
+        <dt>dialed_at</dt>
+        <dd>When the call happened</dd>
+
+        <dt>to</dt>
+        <dd>ID and type for all people who received the call</dd>
+
+        <dt>from</dt>
+        <dd>ID and type for all people who made the call</dd>
+
+        <dt>contacts</dt>
+        <dd>IDs for all the contacts</dd>
+
+        <dt>users</dt>
+        <dd>IDs for all the users</dd>
+
+        <dt>todos</dt>
+        <dd>IDs for all the todos</dd>
+
+        <dt>comments</dt>
+        <dd>See the comment section</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Phone Call Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 8,
+        "created_at": "2011-12-15T14:26:39Z",
+        "updated_at": "2011-12-15T14:26:39Z",
+        "outcome": null,
+        "duration": 600,
+        "kind": "accepted",
+        "dialed_at": "2011-12-08T13:01:51Z",
+        "to": [
+          { 
+            "id": 55,
+            "to_type": "User"
+          }
+        ],
+        "from": [
+          { 
+            "id": 55,
+            "from_type": "Contact"
+          }
+        ],
+        "contacts": [
+          155
+        ],
+        "users": [
+          466
+        ],
+        "comments": [
+
+        ],
+        "todos": [
+
+        ]
+      }
+      ]]>
+    </reference>
+  </section>
+  <section title="Imorting Phone Calls">
+    <docs>
+      <![CDATA[
+      There is a special route to use to add more calls to Radium.
+      There a lot of cool things that go on in the background.
+
+      This route takes an array of phone calls or processing later.
+
+      <dl>
+        <dt>number</dt>
+        <dd>
+          <strong>Required</strong><br />
+          International format preferred, but not required
+        </dd>
+
+        <dt>kind</dt>
+        <dd>
+          <strong>Required</strong><br />
+          See previous section for values
+        </dd>
+
+        <dt>direction</dt>
+        <dd>
+          <strong>Required</strong><br />
+          Either: <code>incoming</code> or <code>outgoing</code>
+        </dd>
+
+        <dt>time</dt>
+        <dd><strong>Required</strong></dd>
+
+        <dt>duration</dt>
+        <dd>
+          <strong>Required</strong><br />
+          Length of the call in seconds
+        </dd>
+
+        <dt>outcome</dt>
+        <dd>
+          <strong>Required</strong><br />
+          See previous section for values
+        </dd>
+
+        <dt>todos</dt>
+        <dd>
+          Optionally create todos about the call.
+          See todo section for format.
+        </dd>
+
+        <dt>meetings</dt>
+        <dd>
+          Optionally book meetings with the other person.
+          See meeting section for format.
+        </dd>
+
+        <dt>comments</dt>
+        <dd>
+          Optionally create comments about the call
+          See comment section for format.
+        </dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Import a Call">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/phone_calls/import`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar",
+        "phone_calls": [
+          {
+            "number": "+2134829384",
+            "kind": "accepted",
+            "direction": "incoming",
+            "time": "2011-11-22T13:55:32Z",
+            "duration": 200,
+            "outcome": "follow_up_required",
+            "todos": [ ],
+            "meetings": [ ],
+            "comments": [ ]
+          }
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

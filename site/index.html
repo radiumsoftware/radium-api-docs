@@ -137,7 +137,23 @@
             </ol>
           </section>
           <section>
+            <a class="header" href="#d-phone-calls">Phone Calls</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+                  <li class="sub-section"><a href="#s-imorting-phone-calls">Imorting Phone Calls</a></li>
+            </ol>
+          </section>
+          <section>
             <a class="header" href="#d-fields">Fields</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+                  <li class="sub-section"><a href="#s-nested-attributes">Nested Attributes</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-notes">Notes</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
                   <li class="sub-section"><a href="#s-format">Format</a></li>
@@ -152,17 +168,17 @@
             </ol>
           </section>
           <section>
-            <a class="header" href="#d-announcements">Announcements</a>
-            <ol>
-                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
-                  <li class="sub-section"><a href="#s-response-format">Response Format</a></li>
-            </ol>
-          </section>
-          <section>
             <a class="header" href="#d-comments">Comments</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
                   <li class="sub-section"><a href="#s-attributes">Attributes</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-announcements">Announcements</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-response-format">Response Format</a></li>
             </ol>
           </section>
           <section>
@@ -3338,6 +3354,241 @@ SMS with the correct records.</p>
       <thead>
         <tr>
           <th class="docs">
+            <h1 id="d-phone-calls">Phone Calls</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Phone calls can be logged from mobile phones or other sources.
+They have todos and specific outcomes. </p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>GET &#47;phone_calls</code></li>
+<li><code>GET &#47;phone_calls&#47;:id</code></li>
+<li><code>PUT &#47;phone_calls&#47;:id</code></li>
+<li><code>DELETE &#47;phone_calls&#47;:id</code></li>
+<li><code>POST &#47;phone_calls&#47;import</code></li>
+</ul>
+
+<h3>Scoping</h3>
+
+<ol>
+<li>You made or received the call</li>
+<li>It involves someone in your team</li>
+<li>It involves one of your contacts</li>
+<li>You&#39;re a god</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <p>Phone calls can be to&#47;from users or contacts. They also
+have comments and todos.</p>
+
+<dl>
+  <dt>outcome</dt>
+  <dd>
+    Represents the action to take after the call <br />
+    One of the following:
+    <code>not_interested</code>,
+    <code>unanswered</code>,
+    <code>follow_up_required</code>, or blank.
+  </dd>
+
+  <dt>duration</dt>
+  <dd>The length of the call in seconds</dd>
+
+  <dt>kind</dt>
+  <dd>
+    One of the following:
+    <code>accepted</code>,
+    <code>rejected</code>,
+    <code>busy</code>,
+    <code>missed</code>
+  </dd>
+
+  <dt>dialed_at</dt>
+  <dd>When the call happened</dd>
+
+  <dt>to</dt>
+  <dd>ID and type for all people who received the call</dd>
+
+  <dt>from</dt>
+  <dd>ID and type for all people who made the call</dd>
+
+  <dt>contacts</dt>
+  <dd>IDs for all the contacts</dd>
+
+  <dt>users</dt>
+  <dd>IDs for all the users</dd>
+
+  <dt>todos</dt>
+  <dd>IDs for all the todos</dd>
+
+  <dt>comments</dt>
+  <dd>See the comment section</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-phone-call-format">Phone Call Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 8,
+  &quot;created_at&quot;: &quot;2011-12-15T14:26:39Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T14:26:39Z&quot;,
+  &quot;outcome&quot;: null,
+  &quot;duration&quot;: 600,
+  &quot;kind&quot;: &quot;accepted&quot;,
+  &quot;dialed_at&quot;: &quot;2011-12-08T13:01:51Z&quot;,
+  &quot;to&quot;: [
+    { 
+      &quot;id&quot;: 55,
+      &quot;to_type&quot;: &quot;User&quot;
+    }
+  ],
+  &quot;from&quot;: [
+    { 
+      &quot;id&quot;: 55,
+      &quot;from_type&quot;: &quot;Contact&quot;
+    }
+  ],
+  &quot;contacts&quot;: [
+    155
+  ],
+  &quot;users&quot;: [
+    466
+  ],
+  &quot;comments&quot;: [
+
+  ],
+  &quot;todos&quot;: [
+
+  ]
+}
+
+
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-imorting-phone-calls">Imorting Phone Calls</h2>
+
+              <p>There is a special route to use to add more calls to Radium.
+There a lot of cool things that go on in the background.</p>
+
+<p>This route takes an array of phone calls or processing later.</p>
+
+<dl>
+  <dt>number</dt>
+  <dd>
+    <strong>Required</strong><br />
+    International format preferred, but not required
+  </dd>
+
+  <dt>kind</dt>
+  <dd>
+    <strong>Required</strong><br />
+    See previous section for values
+  </dd>
+
+  <dt>direction</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Either: <code>incoming</code> or <code>outgoing</code>
+  </dd>
+
+  <dt>time</dt>
+  <dd><strong>Required</strong></dd>
+
+  <dt>duration</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Length of the call in seconds
+  </dd>
+
+  <dt>outcome</dt>
+  <dd>
+    <strong>Required</strong><br />
+    See previous section for values
+  </dd>
+
+  <dt>todos</dt>
+  <dd>
+    Optionally create todos about the call.
+    See todo section for format.
+  </dd>
+
+  <dt>meetings</dt>
+  <dd>
+    Optionally book meetings with the other person.
+    See meeting section for format.
+  </dd>
+
+  <dt>comments</dt>
+  <dd>
+    Optionally create comments about the call
+    See comment section for format.
+  </dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-import-a-call">Import a Call</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;phone_calls&#47;import</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;phone_calls&quot;: [
+    {
+      &quot;number&quot;: &quot;+2134829384&quot;,
+      &quot;kind&quot;: &quot;accepted&quot;,
+      &quot;direction&quot;: &quot;incoming&quot;,
+      &quot;time&quot;: &quot;2011-11-22T13:55:32Z&quot;,
+      &quot;duration&quot;: 200,
+      &quot;outcome&quot;: &quot;follow_up_required&quot;,
+      &quot;todos&quot;: [ ],
+      &quot;meetings&quot;: [ ],
+      &quot;comments&quot;: [ ]
+    }
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
             <h1 id="d-fields">Fields</h1>
           </th>
           <th class="code">&nbsp;</th>
@@ -3364,7 +3615,11 @@ values.</p>
             <td class="docs">
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
-              
+              <p>There are no routes for managing the fields themselves. This is
+because they are always attached to other objects. </p>
+
+<p>They are managed through nested attributes.</p>
+
             </td>
             <td class="code">
 
@@ -3447,6 +3702,101 @@ If you pass <code>id</code> &amp; <code>delete</code> the field will be deleted.
       &quot;name&quot;: &quot;Industry&quot;,
       &quot;value&quot;: &quot;IT&quot;,
       &quot;kind&quot;: &quot;other&quot;
+    },
+    {
+      &quot;_delete&quot;: true
+      &quot;id&quot;: 2
+    }
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-notes">Notes</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Notes are public pieces of text associated with a resource.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <p>There are no routes for managing the notes themselves. This is
+because they are always attached to other objects. </p>
+
+<p>They are managed through nested attributes.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <p>Notes only have one attribute: <code>text</code></p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-note-format">Note Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 283,
+  &quot;created_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+  &quot;text&quot;: &quot;Blah blah&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-nested-attributes">Nested Attributes</h2>
+
+              <p>You manage notes through the parent object. Each parent
+object has <code>notes_attributes</code> attribute used to manage
+the collection. You can do CRUD through this attribute.</p>
+
+<p>The attribute takes an array of field objects according
+to the format. </p>
+
+<p>If you pass an <code>id</code> then that field will be updated.
+If you do not pass an <code>id</code> a new field will be created.
+If you pass <code>id</code> &amp; <code>delete</code> the field will be deleted.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-nested-notes">Nested Notes</h2>
+                <pre><code class="javascript">{
+  &quot;notes_attributes&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;text&quot;: &quot;Change me!&quot;
+    },
+    {
+      &quot;text&quot;: &quot;This is a new note!&quot;,
     },
     {
       &quot;_delete&quot;: true
@@ -3576,6 +3926,121 @@ approved if the followable resource is public.</p>
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
   &quot;user_api_key&quot;: &quot;bar&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-comments">Comments</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Comments work like comments in every system. You can create comments
+about many different things. Comments may also have files attached.</p>
+
+<p>These resources support comments:</p>
+
+<ol>
+<li>Todos</li>
+<li>Meetings</li>
+<li>Phone Calls</li>
+<li>Deals</li>
+<li>Messages (IM, SMS, &amp; Email)</li>
+<li>Activities</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;deals&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;todos&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;meetings&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;phone_calls&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;messages&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;activities&#47;:id&#47;comments</code>: All users</li>
+<li><code>PUT &#47;comments&#47;:id</code>: Your comments only or God</li>
+<li><code>DELETE &#47;comments&#47;:id</code>: Your comments only or God</li>
+</ul>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-attributes">Attributes</h2>
+
+              <p><dl>
+  <dt>text</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    The full text for this comment
+  </dd></p>
+
+<p><dt>attachments</dt>
+  <dd>All the attachments for this comment. See the attachment sections for the format.</dd></p>
+
+<p><dt>user</dt>
+  <dd>ID for the user who wrote the comment</dd></p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-comment-format">Comment Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 7,
+  &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;text&quot;: &quot;Text 2&quot;,
+  &quot;user&quot;: 444
+  &quot;attachments&quot;: [ 
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-posting-a-comment">Posting a Comment</h2>
+                <p><code>POST &#47;todos&#47;:id&#47;comments</code></p>
+
+<p>Create a comment for the todo specified by :id.</p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;comment&quot;: {
+    &quot;text&quot;: &quot;You know someone already did this right?&quot;
+  }
 }
 </code></pre>
 
@@ -3720,121 +4185,6 @@ who posted it can change it or delete it.</p>
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
   &quot;user_api_key&quot;: &quot;foo&quot;
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-      <tbody>
-    </table>
-    <table cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th class="docs">
-            <h1 id="d-comments">Comments</h1>
-          </th>
-          <th class="code">&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              <p>Comments work like comments in every system. You can create comments
-about many different things. Comments may also have files attached.</p>
-
-<p>These resources support comments:</p>
-
-<ol>
-<li>Todos</li>
-<li>Meetings</li>
-<li>Phone Calls</li>
-<li>Deals</li>
-<li>Messages (IM, SMS, &amp; Email)</li>
-<li>Activities</li>
-</ol>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-routes-permissions">Routes  Permissions</h2>
-
-              <ul>
-<li><code>POST &#47;deals&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;todos&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;meetings&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;phone_calls&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;messages&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;activities&#47;:id&#47;comments</code>: All users</li>
-<li><code>PUT &#47;comments&#47;:id</code>: Your comments only or God</li>
-<li><code>DELETE &#47;comments&#47;:id</code>: Your comments only or God</li>
-</ul>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-attributes">Attributes</h2>
-
-              <p><dl>
-  <dt>text</dt>
-  <dd>
-    <strong>Required</strong><br/>
-    The full text for this comment
-  </dd></p>
-
-<p><dt>attachments</dt>
-  <dd>All the attachments for this comment. See the attachment sections for the format.</dd></p>
-
-<p><dt>user</dt>
-  <dd>ID for the user who wrote the comment</dd></p>
-
-            </td>
-            <td class="code">
-                <h2 id="r-comment-format">Comment Format</h2>
-                <pre><code class="javascript">{
-  &quot;id&quot;: 7,
-  &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-  &quot;text&quot;: &quot;Text 2&quot;,
-  &quot;user&quot;: 444
-  &quot;attachments&quot;: [ 
-  ]
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-posting-a-comment">Posting a Comment</h2>
-                <p><code>POST &#47;todos&#47;:id&#47;comments</code></p>
-
-<p>Create a comment for the todo specified by :id.</p>
-
-<h3>Parameters</h3>
-
-<pre><code class="javascript">{
-  &quot;developer_api_key&quot;: &quot;foo&quot;,
-  &quot;user_api_key&quot;: &quot;bar&quot;,
-  &quot;comment&quot;: {
-    &quot;text&quot;: &quot;You know someone already did this right?&quot;
-  }
 }
 </code></pre>
 
