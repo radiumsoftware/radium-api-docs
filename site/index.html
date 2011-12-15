@@ -111,6 +111,18 @@
             </ol>
           </section>
           <section>
+            <a class="header" href="#d-messaging">Messaging</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-email">Email</a></li>
+                  <li class="sub-section"><a href="#s-sms">SMS</a></li>
+                  <li class="sub-section"><a href="#s-im">IM</a></li>
+                  <li class="sub-section"><a href="#s-sending-email">Sending Email</a></li>
+                  <li class="sub-section"><a href="#s-sending-sms">Sending SMS</a></li>
+                  <li class="sub-section"><a href="#s-sending-im">Sending IM</a></li>
+            </ol>
+          </section>
+          <section>
             <a class="header" href="#d-campaigns">Campaigns</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
@@ -2475,6 +2487,380 @@ the <code>user_id</code>.</p>
     &quot;contact_id&quot;: 151,
     &quot;user_id&quot;: 460
   }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-messaging">Messaging</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Messaging covers IM, SMS, &amp; Email. All records are automatically
+associated by the server based on who they are sent to&#47;from.
+Anyone can send messages. Messages also have attachments.
+They can also have todos &amp; comments.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;emails</code>: All users</li>
+<li><code>POST &#47;sms</code>: All users</li>
+<li><code>POST &#47;ims</code>: All users</li>
+<li><code>GET &#47;messages</code>: All users according to scoping</li>
+<li><code>GET &#47;messages&#47;:id</code>: All users according to scoping</li>
+<li><code>DELETE &#47;messages&#47;:id</code>: Your messages or Gods</li>
+<li><code>POST &#47;messages&#47;:id&#47;read</code>: Your messages</li>
+</ul>
+
+<h3>Scoping</h3>
+
+<p>You are granted read access to messages in the following ways:</p>
+
+<ol>
+<li>You sent the message</li>
+<li>The message was sent to you</li>
+<li>The message was sent to a contact your following</li>
+<li>You&#39;re a god</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-email">Email</h2>
+
+              <dl>
+  <dt>subject</dt>
+  <dd>subject of the email</dd>
+
+  <dt>message</dt>
+  <dd>The full body of the email</dd>
+
+  <dt>sent_at</dt>
+  <dd>Time stamp for when the message was sent</dd>
+
+  <dt>html</dt>
+  <dd>Content of the html part if available</dd>
+
+  <dt>type</dt>
+  <dd>Type of message</dd>
+
+  <dt>sender</dt>
+  <dd>ID & type of record</dd>
+
+  <dt>users</dt>
+  <dd>IDs of all the users</dd>
+
+  <dt>contacts</dt>
+  <dd>IDs of all the contacts</dd>
+
+  <dt>comments</dt>
+  <dd>See the comments section</dd>
+
+  <dt>attachments</dt>
+  <dd>See the attachments section</dd>
+
+  <dt>todos</dt>
+  <dd>IDs of all the todos</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-email-format">Email Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 19,
+  &quot;created_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;subject&quot;: &quot;Lorem Ipsum&quot;,
+  &quot;message&quot;: &quot;Lorem ipsum dolo ...... &quot;,
+  &quot;sent_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;html&quot;: null,
+  &quot;type&quot;: &quot;Email&quot;
+  &quot;sender&quot;: {
+    &quot;id&quot;: 462,
+    &quot;sender_type&quot;: &quot;User&quot;
+  },
+  &quot;users&quot;: [
+    462
+  ],
+  &quot;contacts&quot;: [
+    153
+  ]
+  &quot;comments&quot;: [
+
+  ],
+  &quot;attachments&quot;: [
+
+  ],
+  &quot;todos&quot;: [
+
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-sms">SMS</h2>
+
+              <dl>
+  <dt>message</dt>
+  <dd>the content of the sms</dd>
+
+  <dt>sent_at</dt>
+  <dd>Time stamp for when the message was sent</dd>
+
+  <dt>type</dt>
+  <dd>Type of message</dd>
+
+  <dt>sender</dt>
+  <dd>ID & type of record</dd>
+
+  <dt>users</dt>
+  <dd>IDs of all the users</dd>
+
+  <dt>contacts</dt>
+  <dd>IDs of all the contacts</dd>
+
+  <dt>comments</dt>
+  <dd>See the comments section</dd>
+
+  <dt>todos</dt>
+  <dd>IDs of all the todos</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-sms-format">SMS Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 19,
+  &quot;created_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;message&quot;: &quot;Lorem ipsum dolo ...... &quot;,
+  &quot;sent_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;type&quot;: &quot;Sms&quot;
+  &quot;sender&quot;: {
+    &quot;id&quot;: 462,
+    &quot;sender_type&quot;: &quot;User&quot;
+  },
+  &quot;users&quot;: [
+    462
+  ],
+  &quot;contacts&quot;: [
+    153
+  ]
+  &quot;comments&quot;: [
+
+  ],
+  &quot;todos&quot;: [
+
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-im">IM</h2>
+
+              <dl>
+  <dt>message</dt>
+  <dd><strong>Required</strong></dd>
+
+  <dt>sent_at</dt>
+  <dd>Time stamp for when the message was sent</dd>
+
+  <dt>type</dt>
+  <dd>Type of message</dd>
+
+  <dt>sender</dt>
+  <dd>ID of sending user</dd>
+
+  <dt>users</dt>
+  <dd>IDs of all the users</dd>
+
+  <dt>comments</dt>
+  <dd>See the comments section</dd>
+
+  <dt>attachments</dt>
+  <dd>See the attachments section</dd>
+
+  <dt>todos</dt>
+  <dd>IDs of all the todos</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-email-format">Email Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 19,
+  &quot;created_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;message&quot;: &quot;Lorem ipsum dolo ...... &quot;,
+  &quot;sent_at&quot;: &quot;2011-12-15T10:38:39Z&quot;,
+  &quot;type&quot;: &quot;Im&quot;
+  &quot;sender&quot;: 462,
+  &quot;users&quot;: [
+    462, 321
+  ],
+  &quot;comments&quot;: [
+
+  ],
+  &quot;attachments&quot;: [
+
+  ],
+  &quot;todos&quot;: [
+
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-sending-email">Sending Email</h2>
+
+              <p>You can send an email to any address. The server will do work and connect
+the dots between the email addresses, users, contacts, groups and extra fields
+to associate the email with the correc records.</p>
+
+<dl>
+  <dt>to</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Array of email addresses to mail to
+  </dd>
+
+  <dt>cc</dt>
+  <dd>Array of email addresses to mail cc</dd>
+
+  <dt>bcc</dt>
+  <dd>Array of email addresses to mail cc</dd>
+
+  <dt>subject</dt>
+  <dd>Subject of the email</dd>
+
+  <dt>message</dt>
+  <dd>Full body of the email</dd>
+
+  <dt>html</dt>
+  <dd>Include an HTML part</dd>
+
+  <dt>attachments_attributes</dt>
+  <dd>See attachments section</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-send-an-email">Send an Email</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;emails</code></p>
+
+<pre><code class="javascript">{
+  &quot;to&quot;: [&quot;example@example.com&quot;]
+  &quot;cc&quot;: [&quot;someone@else.com&quot;], 
+  &quot;subject&quot;: &quot;Hey&quot;,
+  &quot;message&quot;: &quot;How&#39;s it going?&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-sending-sms">Sending SMS</h2>
+
+              <p>You can send an SMS to any number. The server will connect the dots
+between the numbers, users, contacts, and groups to associate the
+SMS with the correct records.</p>
+
+<p>You must supply the phone numbers in international format.</p>
+
+<p>This is usage based billing request.</p>
+
+<dl>
+  <dt>to</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Array of **internationally** formated phones numbers to deliver to
+  </dd>
+
+  <dt>message</dt>
+  <dd><strong>Required</strong><dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-send-a-sms">Send a SMS</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;sms</code></p>
+
+<pre><code class="javascript">{
+  &quot;to&quot;: [&quot;+12348123894&quot;]
+  &quot;message&quot;: &quot;How&#39;s it going?&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-sending-im">Sending IM</h2>
+
+              <p>IM&#39;s can only be sent to other users.</p>
+
+<dl>
+  <dt>to</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Array of user IDs to deliver to
+  </dd>
+
+  <dt>message</dt>
+  <dd><strong>Required</strong></br>
+
+  <dt>attachments_attributes</dt>
+  <dd>See attachments section</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-send-an-im">Send an IM</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;ims</code></p>
+
+<pre><code class="javascript">{
+  &quot;to&quot;: [1]
+  &quot;message&quot;: &quot;How&#39;s it going?&quot;
 }
 </code></pre>
 
