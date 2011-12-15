@@ -333,13 +333,6 @@
       * `phone_numbers`
       * `notes`
 
-      You specifically create, updated, or delete a member of the collection
-      through the attributes accessor. You assign a collection of new
-      objects through the accessor. If the `id` is given, then that
-      record will be updated. If `id` is not given, a new record
-      will be created. If `_delete` is given, then that record will be
-      deleted.
-
       You can manipulate each collection through these attributes:
 
       * `fields_attributes`
