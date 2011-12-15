@@ -123,10 +123,11 @@
             </ol>
           </section>
           <section>
-            <a class="header" href="#d-campaigns">Campaigns</a>
+            <a class="header" href="#d-fields">Fields</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
-                  <li class="sub-section"><a href="#s-attributes">Attributes</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+                  <li class="sub-section"><a href="#s-nested-attributes">Nested Attributes</a></li>
             </ol>
           </section>
           <section>
@@ -134,6 +135,13 @@
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
                   <li class="sub-section"><a href="#s-response-format">Response Format</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-campaigns">Campaigns</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-attributes">Attributes</a></li>
             </ol>
           </section>
           <section>
@@ -2754,6 +2762,8 @@ They can also have todos &amp; comments.</p>
 the dots between the email addresses, users, contacts, groups and extra fields
 to associate the email with the correc records.</p>
 
+<p>This is usage based billing request.</p>
+
 <dl>
   <dt>to</dt>
   <dd>
@@ -2861,6 +2871,277 @@ SMS with the correct records.</p>
 <pre><code class="javascript">{
   &quot;to&quot;: [1]
   &quot;message&quot;: &quot;How&#39;s it going?&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-fields">Fields</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Fields are arbitary key &amp; value pairs that you can use to add
+your own data to different resources. <code>Contacts</code> and <code>Groups</code>
+can have fields. They also accept nested fields. A field
+can be specified to be a certain <code>kind</code>. The <code>kind</code> will be used
+for matching purposes. They can also use a defined set of 
+values.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <p>Fields are very simple. They are key value pairs.
+You can specify <code>accepted_values</code> if you&#39;d like to 
+constrain possible inputs.</p>
+
+<dl>
+  <dt>name</dt>
+  <dd><strong>Required</strong></dd>
+
+  <dt>value</dt>
+  <dd>String value. Validation enforced according to `kind`</dd>
+
+  <dt>accepted_values</dt>
+  <dd>An optional array of allowed values. When this is set,
+    the server will not save the record unless the `value` matches
+    one of these exactly.
+  </dd>
+
+  <dt>kind</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Allowed values: 
+    <code>email_address</code>,
+    <code>phone_number</code>,
+    <code>url</code>,
+    <code>other</code>
+  </dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-field-format">Field Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 283,
+  &quot;created_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+  &quot;name&quot;: &quot;Industry&quot;,
+  &quot;value&quot;: &quot;Property &amp; Casualty Insurance&quot;,
+  &quot;accepted_values&quot;: null,
+  &quot;kind&quot;: &quot;other&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-nested-attributes">Nested Attributes</h2>
+
+              <p>You manage fields through the parent object. Each parent
+object has <code>fields_attributes</code> attribute used to manage
+the collection. You can do CRUD through this attribute.</p>
+
+<p>The attribute takes an array of field objects according
+to the format. </p>
+
+<p>If you pass an <code>id</code> then that field will be updated.
+If you do not pass an <code>id</code> a new field will be created.
+If you pass <code>id</code> &amp; <code>delete</code> the field will be deleted.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-nested-fields">Nested Fields</h2>
+                <pre><code class="javascript">{
+  &quot;fields_attributes&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;value&quot;: &quot;New Value&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Industry&quot;,
+      &quot;value&quot;: &quot;IT&quot;,
+      &quot;kind&quot;: &quot;other&quot;
+    },
+    {
+      &quot;_delete&quot;: true
+      &quot;id&quot;: 2
+    }
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-announcements">Announcements</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Announcements are sent out to all users. Only certain users can
+create announcements. All users in the account will receive an email
+when one is posted. A user can dimiss the announcement. The person
+who posted it can change it or delete it.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;announcements</code>: Team leaders</li>
+<li><code>GET &#47;announcements</code>: All Users</li>
+<li><code>GET &#47;announcements&#47;:id</code>: All users</li>
+<li><code>PUT &#47;announcements&#47;:id</code>: The poster</li>
+<li><code>DELETE &#47;announcements&#47;:id</code>: The poster</li>
+<li><code>POST &#47;announcements&#47;:id&#47;dismiss</code>: All users</li>
+</ul>
+
+<h3>Scoping</h3>
+
+<p>Only non-dismissed announcements are accessible via <code>GET</code></p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-response-format">Response Format</h2>
+
+              <dl>
+  <dt>title</dt>
+  <dd>The title for the announcment.</dd>
+
+  <dt>message</dt>
+  <dd>The text for the announcement. Can be as long as required.</dd>
+
+  <dt>comments</dt>
+  <dd>All the comments for this announcement.</dd>
+
+  <dt>user</dt>
+  <dd>ID of the user who posted this announcement</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-announcement-format">Announcement Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 7,
+  &quot;created_at&quot;: &quot;2011-12-14T13:25:17Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;title&quot;: &quot;Announcement 1&quot;,
+  &quot;message&quot;: &quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.&quot;,
+  &quot;comments&quot;: [
+    {
+      &quot;id&quot;: 7,
+      &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+      &quot;text&quot;: &quot;Text 2&quot;,
+      &quot;user&quot;: 444
+    },
+    {
+      &quot;id&quot;: 6,
+      &quot;created_at&quot;: &quot;2011-12-14T13:25:34Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-14T13:25:34Z&quot;,
+      &quot;text&quot;: &quot;Text 1&quot;,
+      &quot;user&quot;: 443
+    }
+  ],
+  &quot;user&quot;: 442
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-create-an-announcement">Create an Announcement</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;announcements</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;foo&quot;,
+  &quot;announcement&quot;: {
+    &quot;title&quot;: &quot;New Sales Process&quot;,
+    &quot;text&quot;: &quot;You are starting our new process this week ...&quot;
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-dismiss-an-announcement">Dismiss an Announcement</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;announcements&#47;:id&#47;dismiss</code></p>
+
+<h3>Paramters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;foo&quot;
 }
 </code></pre>
 
@@ -3115,150 +3396,6 @@ including current ids plus the ones.</p>
     &quot;target&quot;: &quot;15000.0&quot;,
     &quot;user_id&quot;: 398
   }
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-      <tbody>
-    </table>
-    <table cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th class="docs">
-            <h1 id="d-announcements">Announcements</h1>
-          </th>
-          <th class="code">&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              <p>Announcements are sent out to all users. Only certain users can
-create announcements. All users in the account will receive an email
-when one is posted. A user can dimiss the announcement. The person
-who posted it can change it or delete it.</p>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-routes-permissions">Routes  Permissions</h2>
-
-              <ul>
-<li><code>POST &#47;announcements</code>: Team leaders</li>
-<li><code>GET &#47;announcements</code>: All Users</li>
-<li><code>GET &#47;announcements&#47;:id</code>: All users</li>
-<li><code>PUT &#47;announcements&#47;:id</code>: The poster</li>
-<li><code>DELETE &#47;announcements&#47;:id</code>: The poster</li>
-<li><code>POST &#47;announcements&#47;:id&#47;dismiss</code>: All users</li>
-</ul>
-
-<h3>Scoping</h3>
-
-<p>Only non-dismissed announcements are accessible via <code>GET</code></p>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-response-format">Response Format</h2>
-
-              <dl>
-  <dt>title</dt>
-  <dd>The title for the announcment.</dd>
-
-  <dt>message</dt>
-  <dd>The text for the announcement. Can be as long as required.</dd>
-
-  <dt>comments</dt>
-  <dd>All the comments for this announcement.</dd>
-
-  <dt>user</dt>
-  <dd>ID of the user who posted this announcement</dd>
-</dl>
-
-            </td>
-            <td class="code">
-                <h2 id="r-announcement-format">Announcement Format</h2>
-                <pre><code class="javascript">{
-  &quot;id&quot;: 7,
-  &quot;created_at&quot;: &quot;2011-12-14T13:25:17Z&quot;,
-  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-  &quot;title&quot;: &quot;Announcement 1&quot;,
-  &quot;message&quot;: &quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.&quot;,
-  &quot;comments&quot;: [
-    {
-      &quot;id&quot;: 7,
-      &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-      &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-      &quot;text&quot;: &quot;Text 2&quot;,
-      &quot;user&quot;: 444
-    },
-    {
-      &quot;id&quot;: 6,
-      &quot;created_at&quot;: &quot;2011-12-14T13:25:34Z&quot;,
-      &quot;updated_at&quot;: &quot;2011-12-14T13:25:34Z&quot;,
-      &quot;text&quot;: &quot;Text 1&quot;,
-      &quot;user&quot;: 443
-    }
-  ],
-  &quot;user&quot;: 442
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-create-an-announcement">Create an Announcement</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;announcements</code></p>
-
-<h3>Parameters</h3>
-
-<pre><code class="javascript">{
-  &quot;developer_api_key&quot;: &quot;foo&quot;,
-  &quot;user_api_key&quot;: &quot;foo&quot;,
-  &quot;announcement&quot;: {
-    &quot;title&quot;: &quot;New Sales Process&quot;,
-    &quot;text&quot;: &quot;You are starting our new process this week ...&quot;
-  }
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-dismiss-an-announcement">Dismiss an Announcement</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;announcements&#47;:id&#47;dismiss</code></p>
-
-<h3>Paramters</h3>
-
-<pre><code class="javascript">{
-  &quot;developer_api_key&quot;: &quot;foo&quot;,
-  &quot;user_api_key&quot;: &quot;foo&quot;
 }
 </code></pre>
 
