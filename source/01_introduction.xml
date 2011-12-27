@@ -296,6 +296,36 @@
       ]]>
     </docs>
   </section>
+  <section title="Pagination">
+    <docs>
+      <![CDATA[
+      All `GET /resources` are paginated. Pagination is stored in the headers.
+      You can access a specific page by passing a `page`. parameter.
+      ]]>
+    </docs>
+    <reference title="Pagination Headers">
+      <![CDATA[
+      ```
+      Server: nginx/0.7.67
+      Date: Tue, 27 Dec 2011 20:07:14 GMT
+      Content-Type: application/json; charset=utf-8
+      Connection: close
+      X-Radium-Current-Page: 1
+      X-Radium-Total-Pages: 0
+      X-Ua-Compatible: IE=Edge,chrome=1
+      Etag: "d751713988987e9331980363e24189ce"
+      Cache-Control: max-age=0, private, must-revalidate
+      X-Request-Id: 8c7b0e478685cd25ffa9b925b60189bb
+      X-Runtime: 0.138841
+      X-Rack-Cache: miss
+      Content-Length: 2
+      X-Varnish: 1009793691
+      Age: 0
+      Via: 1.1 varnish
+      ```
+      ]]>
+    </reference>
+  </section>
   <section title="Help & Support">
     <docs>
       <![CDATA[
