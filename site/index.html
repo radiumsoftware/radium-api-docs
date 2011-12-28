@@ -29,6 +29,8 @@
                   <li class="sub-section"><a href="#s-resources">Resources</a></li>
                   <li class="sub-section"><a href="#s-associated-resources">Associated Resources</a></li>
                   <li class="sub-section"><a href="#s-push-notifications">Push Notifications</a></li>
+                  <li class="sub-section"><a href="#s-pagination">Pagination</a></li>
+                  <li class="sub-section"><a href="#s-nested-resources">Nested Resources</a></li>
                   <li class="sub-section"><a href="#s-help-support">Help  Support</a></li>
             </ol>
           </section>
@@ -91,7 +93,6 @@
                   <li class="sub-section"><a href="#s-permissions-routes">Permissions  Routes</a></li>
                   <li class="sub-section"><a href="#s-format">Format</a></li>
                   <li class="sub-section"><a href="#s-creating-users">Creating Users</a></li>
-                  <li class="sub-section"><a href="#s-updating-users">Updating Users</a></li>
             </ol>
           </section>
           <section>
@@ -152,19 +153,55 @@
             </ol>
           </section>
           <section>
+            <a class="header" href="#d-call-lists">Call Lists</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+                  <li class="sub-section"><a href="#s-creating-a-call-list">Creating a Call List</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-meetings">Meetings</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-inviting-people">Inviting People</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-invitations">Invitations</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-activities">Activities</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-call-list-activities">Call List Activities</a></li>
+                  <li class="sub-section"><a href="#s-campaign-activities">Campaign Activities</a></li>
+                  <li class="sub-section"><a href="#s-contact-activities">Contact Activities</a></li>
+                  <li class="sub-section"><a href="#s-deal-activities">Deal Activities</a></li>
+                  <li class="sub-section"><a href="#s-message-activities">Message Activities</a></li>
+                  <li class="sub-section"><a href="#s-meeting-activities">Meeting Activities</a></li>
+                  <li class="sub-section"><a href="#s-note-activities">Note Activities</a></li>
+                  <li class="sub-section"><a href="#s-phone-call-activities">Phone Call Activities</a></li>
+                  <li class="sub-section"><a href="#s-todo-activities">Todo Activities</a></li>
+                  <li class="sub-section"><a href="#s-routes-permission">Routes  Permission</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+            </ol>
+          </section>
+          <section>
+            <a class="header" href="#d-announcements">Announcements</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-response-format">Response Format</a></li>
+            </ol>
+          </section>
+          <section>
             <a class="header" href="#d-fields">Fields</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
                   <li class="sub-section"><a href="#s-format">Format</a></li>
-                  <li class="sub-section"><a href="#s-nested-attributes">Nested Attributes</a></li>
-            </ol>
-          </section>
-          <section>
-            <a class="header" href="#d-notes">Notes</a>
-            <ol>
-                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
-                  <li class="sub-section"><a href="#s-format">Format</a></li>
-                  <li class="sub-section"><a href="#s-nested-attributes">Nested Attributes</a></li>
             </ol>
           </section>
           <section>
@@ -175,17 +212,17 @@
             </ol>
           </section>
           <section>
+            <a class="header" href="#d-notes">Notes</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+            </ol>
+          </section>
+          <section>
             <a class="header" href="#d-comments">Comments</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
                   <li class="sub-section"><a href="#s-attributes">Attributes</a></li>
-            </ol>
-          </section>
-          <section>
-            <a class="header" href="#d-announcements">Announcements</a>
-            <ol>
-                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
-                  <li class="sub-section"><a href="#s-response-format">Response Format</a></li>
             </ol>
           </section>
           <section>
@@ -555,6 +592,79 @@ notification section for indepth discussion.</p>
 
             </td>
             <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-pagination">Pagination</h2>
+
+              <p>All <code>GET &#47;resources</code> are paginated. Pagination is stored in the headers.
+You can access a specific page by passing a <code>page</code>. parameter.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-pagination-headers">Pagination Headers</h2>
+                <pre><code>Server: nginx&#47;0.7.67
+Date: Tue, 27 Dec 2011 20:07:14 GMT
+Content-Type: application&#47;json; charset=utf-8
+Connection: close
+X-Radium-Current-Page: 1
+X-Radium-Total-Pages: 0
+X-Ua-Compatible: IE=Edge,chrome=1
+Etag: &quot;d751713988987e9331980363e24189ce&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 8c7b0e478685cd25ffa9b925b60189bb
+X-Runtime: 0.138841
+X-Rack-Cache: miss
+Content-Length: 2
+X-Varnish: 1009793691
+Age: 0
+Via: 1.1 varnish
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-nested-resources">Nested Resources</h2>
+
+              <p>Some resources are managed through the parent. They inherit their 
+permissions through the parent. For example, notes are managed
+through the parent</p>
+
+<p>Each parent
+object has <code>notes_attributes</code> attribute used to manage
+the collection. You can do CRUD through this attribute.</p>
+
+<p>The attribute takes an array of field objects according
+to the format. </p>
+
+<p>If you pass an <code>id</code> then that field will be updated.
+If you do not pass an <code>id</code> a new field will be created.
+If you pass <code>id</code> &amp; <code>delete</code> the field will be deleted.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-nested-resources">Nested Resources</h2>
+                <pre><code class="javascript">{
+  &quot;notes_attributes&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;text&quot;: &quot;Change me!&quot;
+    },
+    {
+      &quot;text&quot;: &quot;This is a new note!&quot;,
+    },
+    {
+      &quot;_delete&quot;: true
+      &quot;id&quot;: 2
+    }
+  ]
+}
+</code></pre>
+
 
             </td>
           </tr>
@@ -1421,7 +1531,7 @@ trying to poke around into other company&#39;s accounts.</p>
   <dt>name</dt>
   <dd><strong>Required</strong></dd>
 
-  <dt>approve_follow_requests</dt>
+  <dt>public</dt>
   <dd>
     Determines the default setting for handling following requests.
     All followable records will use the value for their default 
@@ -1452,7 +1562,7 @@ trying to poke around into other company&#39;s accounts.</p>
   &quot;created_at&quot;: &quot;2011-12-14T12:39:23Z&quot;,
   &quot;updated_at&quot;: &quot;2011-12-14T12:39:23Z&quot;,
   &quot;name&quot;: &quot;Apple&quot;,
-  &quot;approve_follow_requests&quot;: true,
+  &quot;public&quot;: true,
   &quot;users&quot;: [1,3,4,5],
   &quot;contacts&quot;: [1,2],
   &quot;campaigns&quot;: [1,3,4,5]
@@ -1504,7 +1614,7 @@ trying to poke around into other company&#39;s accounts.</p>
   &quot;user_api_key&quot;: &quot;bar&quot;,
   &quot;accounts&quot;: {
     &quot;name&quot;: &quot;New Name!&quot;
-    &quot;approve_following_requests&quot;: false
+    &quot;public&quot;: false
   }
 }
 </code></pre>
@@ -1553,11 +1663,11 @@ before deleting a user, othwerise the delete will fail.</p>
               <h2 id="s-permissions-routes">Permissions  Routes</h2>
 
               <ul>
-<li><code>GET &#47;users</code>: All users</li>
-<li><code>POST &#47;users</code>: Gods only</li>
-<li><code>GET &#47;users&#47;:id</code>: All users</li>
-<li><code>PUT &#47;users&#47;:id</code>: Gods to update anyone, but of you may update yourself</li>
-<li><code>DELETE &#47;users&#47;:id</code>: Gods only</li>
+<li><code>GET &#47;users</code>: Anyon</li>
+<li><code>POST &#47;users</code>: Admins only</li>
+<li><code>GET &#47;users&#47;:id</code>: Anyone</li>
+<li><code>PUT &#47;users&#47;:id</code>: Yourself, or anyone if you&#39;re an admin</li>
+<li><code>DELETE &#47;users&#47;:id</code>: Admins only</li>
 </ul>
 
             </td>
@@ -1600,7 +1710,7 @@ before deleting a user, othwerise the delete will fail.</p>
     <strong>This attribute is only added when user matches the logged in user!</strong>
   </dd>
 
-  <dt>account_id</dt>
+  <dt>account</dt>
   <dd>The ID for this user's company's account.</dd>
 
   <dt>contacts</dt>
@@ -1651,7 +1761,7 @@ before deleting a user, othwerise the delete will fail.</p>
   &quot;email&quot;: &quot;user-1@example.com&quot;,
   &quot;api_key&quot;: &quot;e68ff9eeeedbf05f2909f78eb960b69c2ae3fc2a&quot;,
   &quot;phone&quot;: &quot;+1234987&quot;
-  &quot;account_id&quot;: 294,
+  &quot;account&quot;: 294,
   &quot;contacts&quot;: [1,3,4,5,6,7]
   &quot;deals&quot;: [1,3,4,5,6],
   &quot;campaigns&quot;: [1,2,3],
@@ -1685,28 +1795,6 @@ before deleting a user, othwerise the delete will fail.</p>
 <pre><code class="javascript">{
   &quot;email&quot;: &quot;example@example.com&quot;,
   &quot;name&quot;: &quot;Adam Hawkins&quot;
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-updating-users">Updating Users</h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-change-a-password">Change a Password</h2>
-                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;users&#47;:id</code></p>
-
-<h3>Parameters</h3>
-
-<pre><code class="javascript">{
-  &quot;name&quot;: &quot;Adam Hawkins&quot;,
-  &quot;password&quot;: &quot;my super secure password&quot;,
-  &quot;password_confirmation&quot;: &quot;my super secure password&quot;
 }
 </code></pre>
 
@@ -1761,9 +1849,9 @@ in that particular section.</p>
               <ul>
 <li><code>POST &#47;contacts</code>: All Users</li>
 <li><code>GET &#47;contacts</code>: All users</li>
-<li><code>GET &#47;contacts&#47;:id</code>: Assigned to, following the contact, or a God</li>
-<li><code>PUT &#47;contacts&#47;:id</code>: Assigned to, following the contact, or a God</li>
-<li><code>DELETE &#47;contacts&#47;:id</code>: Assigned to you or you are a God</li>
+<li><code>GET &#47;contacts&#47;:id</code>: Assigned to, following the contact, public contact or Admin</li>
+<li><code>PUT &#47;contacts&#47;:id</code>: Assigned contacts or Admin</li>
+<li><code>DELETE &#47;contacts&#47;:id</code>: Assigned to you or Admin</li>
 </ul>
 
 <h3>Scoping</h3>
@@ -2560,6 +2648,9 @@ contacts to the campaign.</p>
 
   <dt>meetings</dt>
   <dd>All the meetings relating to this campaign</dd>
+
+  <dt>activities</dt>
+  <dd>All the activities in the feed</dd>
 </dl>
 
             </td>
@@ -2607,6 +2698,9 @@ contacts to the campaign.</p>
 
   ],
   &quot;meetings&quot;: [
+
+  ]
+  &quot;activities&quot;: [
 
   ]
 }
@@ -2832,6 +2926,9 @@ the following ways:</p>
 
   <dt>products</dt>
   <dd>IDs of all products referenced by line items</dd>
+
+  <dt>activities</dt>
+  <dd>ID's of all the activities in the feed</dd>
 </dl>
 
 <h3>Specifying Assocations</h3>
@@ -2885,6 +2982,9 @@ a <code>user_id</code> or <code>contact_id</code> attribute.</p>
 
   ],
   &quot;products&quot;: [
+
+  ],
+  &quot;activities&quot;: [
 
   ]
 }
@@ -2958,7 +3058,7 @@ the <code>user_id</code>.</p>
   &quot;deal: {
     &quot;description&quot;: &quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.&quot;,
     &quot;close_by&quot;: &quot;2011-12-22T09:37:23Z&quot;,
-    &quot;line_items&quot;: [
+    &quot;line_items_attributes&quot;: [
       {
         &quot;name&quot;: &quot;Radium&quot;,
         &quot;quantity&quot;: 1,
@@ -3456,7 +3556,7 @@ an item on a call list. All in All, todos are the workhorse.</p>
   &quot;description&quot;: &quot;Finish programming radium&quot;,
   &quot;finish_by&quot;: &quot;2011-12-22T15:06:27Z&quot;,
   &quot;campaign&quot;: 3,
-  &quot;call_list&quot;: null
+  &quot;call_list&quot;: 5
   &quot;reference&quot;: null,
   &quot;contacts&quot;: [
 
@@ -3712,7 +3812,7 @@ There a lot of cool things that go on in the background.</p>
       <thead>
         <tr>
           <th class="docs">
-            <h1 id="d-fields">Fields</h1>
+            <h1 id="d-call-lists">Call Lists</h1>
           </th>
           <th class="code">&nbsp;</th>
         </tr>
@@ -3722,249 +3822,15 @@ There a lot of cool things that go on in the background.</p>
             <td class="docs">
               <h2 id="s-"></h2>
 
-              <p>Fields are arbitary key &amp; value pairs that you can use to add
-your own data to different resources. <code>Contacts</code> and <code>Groups</code>
-can have fields. They also accept nested fields. A field
-can be specified to be a certain <code>kind</code>. The <code>kind</code> will be used
-for matching purposes. They can also use a defined set of 
-values.</p>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-routes-permissions">Routes  Permissions</h2>
-
-              <p>There are no routes for managing the fields themselves. This is
-because they are always attached to other objects. </p>
-
-<p>They are managed through nested attributes.</p>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-format">Format</h2>
-
-              <p>Fields are very simple. They are key value pairs.
-You can specify <code>accepted_values</code> if you&#39;d like to 
-constrain possible inputs.</p>
-
-<dl>
-  <dt>name</dt>
-  <dd><strong>Required</strong></dd>
-
-  <dt>value</dt>
-  <dd>String value. Validation enforced according to `kind`</dd>
-
-  <dt>accepted_values</dt>
-  <dd>An optional array of allowed values. When this is set,
-    the server will not save the record unless the `value` matches
-    one of these exactly.
-  </dd>
-
-  <dt>kind</dt>
-  <dd>
-    <strong>Required</strong><br />
-    Allowed values: 
-    <code>email_address</code>,
-    <code>phone_number</code>,
-    <code>url</code>,
-    <code>other</code>
-  </dd>
-</dl>
-
-            </td>
-            <td class="code">
-                <h2 id="r-field-format">Field Format</h2>
-                <pre><code class="javascript">{
-  &quot;id&quot;: 283,
-  &quot;created_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
-  &quot;updated_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
-  &quot;name&quot;: &quot;Industry&quot;,
-  &quot;value&quot;: &quot;Property &amp; Casualty Insurance&quot;,
-  &quot;accepted_values&quot;: null,
-  &quot;kind&quot;: &quot;other&quot;
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-nested-attributes">Nested Attributes</h2>
-
-              <p>You manage fields through the parent object. Each parent
-object has <code>fields_attributes</code> attribute used to manage
-the collection. You can do CRUD through this attribute.</p>
-
-<p>The attribute takes an array of field objects according
-to the format. </p>
-
-<p>If you pass an <code>id</code> then that field will be updated.
-If you do not pass an <code>id</code> a new field will be created.
-If you pass <code>id</code> &amp; <code>delete</code> the field will be deleted.</p>
-
-            </td>
-            <td class="code">
-                <h2 id="r-nested-fields">Nested Fields</h2>
-                <pre><code class="javascript">{
-  &quot;fields_attributes&quot;: [
-    {
-      &quot;id&quot;: 1,
-      &quot;value&quot;: &quot;New Value&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Industry&quot;,
-      &quot;value&quot;: &quot;IT&quot;,
-      &quot;kind&quot;: &quot;other&quot;
-    },
-    {
-      &quot;_delete&quot;: true
-      &quot;id&quot;: 2
-    }
-  ]
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-      <tbody>
-    </table>
-    <table cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th class="docs">
-            <h1 id="d-notes">Notes</h1>
-          </th>
-          <th class="code">&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              <p>Notes are public pieces of text associated with a resource.</p>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-routes-permissions">Routes  Permissions</h2>
-
-              <p>There are no routes for managing the notes themselves. This is
-because they are always attached to other objects. </p>
-
-<p>They are managed through nested attributes.</p>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-format">Format</h2>
-
-              <p>Notes only have one attribute: <code>text</code></p>
-
-            </td>
-            <td class="code">
-                <h2 id="r-note-format">Note Format</h2>
-                <pre><code class="javascript">{
-  &quot;id&quot;: 283,
-  &quot;created_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
-  &quot;updated_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
-  &quot;text&quot;: &quot;Blah blah&quot;
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-nested-attributes">Nested Attributes</h2>
-
-              <p>You manage notes through the parent object. Each parent
-object has <code>notes_attributes</code> attribute used to manage
-the collection. You can do CRUD through this attribute.</p>
-
-<p>The attribute takes an array of field objects according
-to the format. </p>
-
-<p>If you pass an <code>id</code> then that field will be updated.
-If you do not pass an <code>id</code> a new field will be created.
-If you pass <code>id</code> &amp; <code>delete</code> the field will be deleted.</p>
-
-            </td>
-            <td class="code">
-                <h2 id="r-nested-notes">Nested Notes</h2>
-                <pre><code class="javascript">{
-  &quot;notes_attributes&quot;: [
-    {
-      &quot;id&quot;: 1,
-      &quot;text&quot;: &quot;Change me!&quot;
-    },
-    {
-      &quot;text&quot;: &quot;This is a new note!&quot;,
-    },
-    {
-      &quot;_delete&quot;: true
-      &quot;id&quot;: 2
-    }
-  ]
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-      <tbody>
-    </table>
-    <table cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th class="docs">
-            <h1 id="d-following">Following</h1>
-          </th>
-          <th class="code">&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              <p>Users can follow different resources in the system. This will give
-them read access. It will also add related activities to their feed.
-Followable resources inhert their <code>public</code> setting from the <code>account</code>.
-If someone is public, following requests will automatically be approved.
-If something is private, the person in charge of it will have to approve it.
-A person can choose to no longer follow something at their will.</p>
-
-<p>These resources can be followed:</p>
-
-<ol>
-<li>Users</li>
-<li>Contacts</li>
-<li>Teams</li>
-<li>Campaigns</li>
-<li>Deals</li>
-<li>Groups</li>
-</ol>
+              <p>Call Lists represent a list of contacts that need to be called as part
+of a campaign. The calls are assigned to users and made to contacts.
+Adding someone to a call list adds them to their todo list. The
+todo can be reassigned or rescheduled if need be. Call Lists
+can have their own end date which sets the due date for all the todos.
+If a end date is not specified, it will be set from the campaign.
+A contact can be on many different call lists, but cannot be on the same
+one multiple times. Call lists can also be handled automatically
+using our VOIP system.</p>
 
             </td>
             <td class="code">
@@ -3976,21 +3842,23 @@ A person can choose to no longer follow something at their will.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;users&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;contacts&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;teams&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;campaigns&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;deals&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;groups&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>GET &#47;followings</code>: Anyone according to scoping</li>
-<li><code>GET &#47;followings&#47;:id</code>: Any according to scoping</li>
-<li><code>DELETE &#47;followings&#47;:id</code>: The follower or god</li>
-<li><code>PUT &#47;followings&#47;:id&#47;approve</code>: The resource manager or a god</li>
+<li><code>POST &#47;call_lists</code></li>
+<li><code>GET &#47;call_lists</code></li>
+<li><code>GET &#47;call_lists&#47;:id</code></li>
+<li>`PUT &#47;call_lists&#47;:id&#39;</li>
+<li><code>DELETE &#47;call_lists&#47;:id</code></li>
 </ul>
 
 <h3>Scoping</h3>
 
-<p>You are only allowed to access your own following requests.</p>
+<ol>
+<li>You are managing the associated campaign</li>
+<li>You are following the associated campaign</li>
+<li>You are following any of the user&#39;s making the calls</li>
+<li>You are following any of the contacts to be called</li>
+<li>You are following the user managing the campaign</li>
+<li>You are an admin</li>
+</ol>
 
             </td>
             <td class="code">
@@ -4001,32 +3869,280 @@ A person can choose to no longer follow something at their will.</p>
             <td class="docs">
               <h2 id="s-format">Format</h2>
 
-              <p>As mentioned earlier, following requests will be automatically
-approved if the followable resource is public.</p>
+              <p><dl>
+  <dt>description</dt>
+  <dd>Text descibing the call list</dd></p>
 
-<dl>
-  <dt>approved</dt>
-  <dd>Name says it all</dd>
+<p><dt>finish_by</dt>
+  <dd>The date all calls should be made by</dd></p>
+
+<p><dt>user</dt>
+  <dd>ID for the managing user</dd></p>
+
+<p><dt>campaign</dt>
+  <dd>ID for the associated campaign</dd></p>
+
+<p><dt>todos</dt>
+  <dd>IDs for all the todos</dd></p>
+
+<p><dt>pending_todos</dt>
+  <dd>IDs for all the unmade calls</dd></p>
+
+<p><dt>overdue_todos</dt>
+  <dd>IDs for all the late calls</dd></p>
+
+<p><dt>users</dt>
+  <dd>IDs for all the users making the calls</dd></p>
+
+<p><dt>contacts</dt>
+  <dd>IDs for all the contacts on the call list</dd>
+</dd></p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-call-list-format">Call List Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 1,
+  &quot;created_at&quot;: &quot;2011-12-28T14:26:24Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-28T14:26:24Z&quot;,
+  &quot;description&quot;: &quot;Call List 1&quot;,
+  &quot;finish_by&quot;: &quot;2012-01-04T14:26:22Z&quot;,
+  &quot;user&quot;: 5,,
+  &quot;campaign:&quot; 3,
+  &quot;todos&quot;: [
+
+  ],
+  &quot;pending_todos&quot;: [
+
+  ],
+  &quot;finished_todos&quot;: [
+
+  ],
+  &quot;overdue_todos&quot;: [
+
+  ],
+  &quot;users&quot;: [
+
+  ],
+  &quot;contacts&quot;: [
+
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-creating-a-call-list">Creating a Call List</h2>
+
+              <p><strong>NOTE</strong>: this functionality is a work in progress. There is some
+special logic that goes into creating a call list that has not
+been implemented yet. This specically pertains to addings groups
+to call lists. </p>
+
+<p>You can add contacts and groups to call lists. You can only add
+them if they have a phone number. The server will check for duplicates
+to ensure that the same person is not called twice.</p>
+
+<p>Groups are handled differently than contacts. Groups have primary 
+contacts. If a primary contact is present, they will be added to
+the call list. If a primaty contact is not present, a new contact
+will be added with the group&#39;s contact phone number. Then, you can
+fill in that contact&#39;s information when you make the call.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-meetings">Meetings</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Meetings are controlled by a user. They do not need to have anyone
+coming to the meeting. Users and contacts can be added to meetings.
+You invite people by sending their email address. The server will
+conect the dots to associate the users and contacts. If no one can
+be found matching the email, then a new contact will be created 
+for you to fill in their information. The server will send invitations
+via email. Invitations are handled individually. The meeting&#39;s organizer
+will be notified of acceptance and rejections. The organizer can
+also reschedule or cancel the meeting. If the meeting is rescheduled,
+all the people will be notified and be asked to reconfirm. Refer
+to the invitation section for managing individual invitations.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;meetings</code></li>
+<li><code>GET &#47;meetings</code></li>
+<li><code>GET &#47;meetings&#47;:id</code></li>
+<li><code>PUT &#47;meetings&#47;:id</code></li>
+<li><code>DELETE &#47;meetings&#47;:id</code></li>
+<li><code>PUT &#47;meetings&#47;:id&#47;reschedule</code></li>
+<li><code>PUT &#47;meetings&#47;:id&#47;cancel</code></li>
+</ul>
+
+<h3>Scoping</h3>
+
+<ol>
+<li>You are in charge of the meeting</li>
+<li>You are invited to the meeting</li>
+<li>Any of the invited contacts are assigned to you</li>
+<li>You are following any of the invited contacts</li>
+<li>You are an admin</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-inviting-people">Inviting People</h2>
+
+              
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <dl>
+  <dt>topic</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    Text describing the meetings purpose
+  </dd>
+
+  <dt>starts_at</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    Time when it starts
+  </dd>
+
+  <dt>ends_at</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    Time when it ends
+  </dd>
+
+  <dt>location</dt>
+  <dd>Can be an address, can be anything. 
+    Example: <code>the office</code>, or <code>123 Example St.</code>
+  </dd>
 
   <dt>user</dt>
-  <dd>ID for following user</dd>
+  <dd>ID for the user managing this meeting</dd>
 
-  <dt>followable</dt>
-  <dd>ID and Resource type</dd>
+  <dt>contacts</dt>
+  <dd>IDs for all the invited contacts</dd>
+
+  <dt>users</dt>
+  <dd>ID's for all the invited users including the organizer</dd>
+
+  <dt>activities</dt>
+  <dd>ID's for all activites in the meeting's feed</dd>
+
+  <dt>invitations</dt>
+  <dd>All the invitations for the meeting. See the invitation 
+    section for more details</dd>
 </dl>
 
             </td>
             <td class="code">
-                <h2 id="r-following-format">Following Format</h2>
+                <h2 id="r-meeting-format">Meeting Format</h2>
                 <pre><code class="javascript">{
-  &quot;id&quot;: 12,
-  &quot;created_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
-  &quot;updated_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
-  &quot;approved&quot;: true,
-  &quot;user&quot;: 464,
-  &quot;followable&quot;: {
-    &quot;id&quot;: 154,
-    &quot;followable_type&quot;: &quot;Contact&quot;
+  &quot;id&quot;: 2,
+  &quot;created_at&quot;: &quot;2011-12-28T14:26:26Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-28T14:26:26Z&quot;,
+  &quot;topic&quot;: &quot;Meeting 2&quot;,
+  &quot;location&quot;: &quot;The office&quot;,
+  &quot;starts_at&quot;: &quot;2011-12-28T15:26:22Z&quot;,
+  &quot;ends_at&quot;: &quot;2011-12-28T16:26:22Z&quot;,
+  &quot;user&quot;: 5,
+  &quot;contacts&quot;: [
+
+  ],
+  &quot;users&quot;: [
+    29
+  ],
+  &quot;activities&quot;: [
+    32
+  ],
+  &quot;invitations&quot;: [
+    {
+      &quot;id&quot;: 3,
+      &quot;created_at&quot;: &quot;2011-12-28T14:26:26Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-28T14:26:26Z&quot;,
+      &quot;state&quot;: &quot;confirmed&quot;,
+      &quot;hash_key&quot;: &quot;f9e7128044e00d3f7cd881fe76a3b079c8450c09&quot;,
+      &quot;meeting&quot;: 2,
+      &quot;user&quot;: 29
+    }
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>You can specify the <code>invite</code> parameter to send invitations.</p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-create-a-meeting">Create a Meeting</h2>
+                <p><code>POST &#47;meetings</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;meeting: {
+    &quot;topic&quot;: &quot;Q3&quot;,
+    &quot;starts_at&quot;: &quot;2011-12-28T15:26:22Z&quot;,
+    &quot;ends_at&quot;: &quot;2011-12-28T16:26:22Z&quot;,
+    &quot;invite&quot;: [ &#39;mycoworker@company.com&#39;, &#39;james@microsoft.com&#39;]
   }
 }
 </code></pre>
@@ -4034,21 +4150,86 @@ approved if the followable resource is public.</p>
 
             </td>
           </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-invitations">Invitations</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
           <tr>
             <td class="docs">
               <h2 id="s-"></h2>
 
-              
+              <p>Invitations connect people to meetings. They can be confirmed
+or rejected. They have a unique hash key that&#39;s used to
+generate a private URL that people outside the system can 
+use to track the meeting.</p>
+
             </td>
             <td class="code">
-                <h2 id="r-follow-something">Follow Something</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;contacts&#47;5&#47;follow</code></p>
 
-<h3>Parameters</h3>
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
-<pre><code class="javascript">{
-  &quot;developer_api_key&quot;: &quot;foo&quot;,
-  &quot;user_api_key&quot;: &quot;bar&quot;
+              <ul>
+<li><code>PUT &#47;invitation&#47;:id&#47;confirm</code></li>
+<li><code>PUT &#47;invitation&#47;:id&#47;reject</code></li>
+</ul>
+
+<p>These routes take no paramters. The <code>:id</code> refers to the
+<code>hash_key</code>. The system will only show you hash keys
+for your meetings so you cannot mess with other people&#39;s invitations.</p>
+
+<p><strong>NOTE</strong>: A user api key is not required for these routes
+since the server assumes only the person who owns the invitation
+will know the hash key.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <dl>
+  <dt>state</dt>
+  <dd><code>pending</code>, <code>cancelled</code>, or <code>rescheduled</code></dd>
+
+  <dt>hash_key</dt>
+  <dd>GUID for this invitation. Only given if you own this invitation</dd>
+
+  <dt>meeting</dt>
+  <dd>ID for associated meeting</dd>
+
+  <dt>user</dt>
+  <dd>The user this invitation belongs to</dd>
+
+  <dt>contact</dd>
+  <dd>The contact this invitation belongs to</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-invitation-format">Invitation Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 2,
+  &quot;created_at&quot;: &quot;2011-12-28T14:26:26Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-28T14:26:26Z&quot;,
+  &quot;state&quot;: &quot;pending&quot;,
+  &quot;hash_key&quot;: &quot;8a0e49cd3b18d49a565fe91211e66462f8104114&quot;,
+  &quot;meeting&quot;: 1,
+  &quot;user&quot;: 28
 }
 </code></pre>
 
@@ -4061,7 +4242,7 @@ approved if the followable resource is public.</p>
       <thead>
         <tr>
           <th class="docs">
-            <h1 id="d-comments">Comments</h1>
+            <h1 id="d-activities">Activities</h1>
           </th>
           <th class="code">&nbsp;</th>
         </tr>
@@ -4071,18 +4252,51 @@ approved if the followable resource is public.</p>
             <td class="docs">
               <h2 id="s-"></h2>
 
-              <p>Comments work like comments in every system. You can create comments
-about many different things. Comments may also have files attached.</p>
+              <p>Many resources have their own feed or timeline. The feed 
+is composed of different activities. Pretty much everything
+in the system generates activities. You can reconstruct these
+activities to create a timeline for each thing in the system.</p>
 
-<p>These resources support comments:</p>
+<p>And activity can be associated with anything in the system.
+Each one has a timestamp, the user who is responsible for it,
+tags describing it, and the associated objects.</p>
+
+<p>You can get the feed for any resource you can read. There
+are no interactions with the activities. You may only
+retreive the feed. The server will add the activites to all
+the right feeds. You do not have to worry about any of this.</p>
+
+<p>Different activites are disscussed in their own section.
+The following sections list the events and their associated tags.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-call-list-activities">Call List Activities</h2>
+
+              <p>A new activity is generated when the call list is added. <code>created</code></p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-campaign-activities">Campaign Activities</h2>
+
+              <p>A new activity is generated when any of these things happen:</p>
 
 <ol>
-<li>Todos</li>
-<li>Meetings</li>
-<li>Phone Calls</li>
-<li>Deals</li>
-<li>Messages (IM, SMS, &amp; Email)</li>
-<li>Activities</li>
+<li>A campaign is added: <code>created</code></li>
+<li>A campaign is assigned &#47; reassigned: <code>assigned</code></li>
+<li>A contact is added to a campaign: <code>contact_added</code></li>
+<li>A contact is removed from a campaign: <code>contact_removed</code></li>
+<li>Someone follows the campaign: <code>followed</code></li>
 </ol>
 
             </td>
@@ -4092,19 +4306,132 @@ about many different things. Comments may also have files attached.</p>
           </tr>
           <tr>
             <td class="docs">
-              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+              <h2 id="s-contact-activities">Contact Activities</h2>
+
+              <p>A new activity is generated when any of these things happen:</p>
+
+<ol>
+<li>When a contact is added: <code>created</code></li>
+<li>When a contact is assigned (or reassigned): <code>assigned</code></li>
+<li>When a contact becomes a lead: <code>became_lead</code></li>
+<li>When a contact becomes a prospect: <code>became_prospect</code></li>
+<li>When a contact becomes an opportunity: <code>became_opportunity</code></li>
+<li>When a contact becomes a customer: <code>became_customer</code></li>
+<li>When a contact becomes a dead end: <code>became_dead_end</code></li>
+<li>Someone follows the campaign: <code>followed</code></li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-deal-activities">Deal Activities</h2>
+
+              <p>A new activity is generated when any of these things happen:</p>
+
+<ol>
+<li>A deal is added: <code>created</code></li>
+<li>A deal is assigned&#47;reassigned: <code>assigned</code></li>
+<li>A deal is reopened: <code>pending</code></li>
+<li>A deal is closed: <code>closed</code></li>
+<li>A deal is paid: <code>paid</code></li>
+<li>A deal is rejected: <code>rejected</code></li>
+<li>Someone follows the deal: <code>followed</code></li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-message-activities">Message Activities</h2>
+
+              <p>A new activity is generated whenever a message is sent: <code>created</code></p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-meeting-activities">Meeting Activities</h2>
+
+              <p>A new activity is generated when any of these things happen:</p>
+
+<ol>
+<li>A meeting is added: <code>created</code></li>
+<li>A meeting is rescheduled: <code>rescheduled</code></li>
+<li>A meeting is cancelled: <code>cancelled</code></li>
+<li>An invitation is confirmed: <code>confirmed</code></li>
+<li>An invitation is rejected: <code>rejected</code></li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-note-activities">Note Activities</h2>
+
+              <p>A new activity is generated whenever a note is added: <code>created</code></p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-phone-call-activities">Phone Call Activities</h2>
+
+              <p>A new activity is generated whenever a phone call is made: <code>created</code></p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-todo-activities">Todo Activities</h2>
+
+              <p>A new activity is generated whenver any of these things happen:</p>
+
+<ol>
+<li>A todo is added: <code>created</code></li>
+<li>A todo is assigned&#47;reassigned: <code>assigned</code></li>
+<li>A todo is finished: <code>finished</code></li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permission">Routes  Permission</h2>
 
               <ul>
-<li><code>POST &#47;deals&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;todos&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;meetings&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;phone_calls&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;messages&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;activities&#47;:id&#47;comments</code>: All users</li>
-<li><code>PUT &#47;comments&#47;:id</code>: Your comments only or God</li>
-<li><code>DELETE &#47;comments&#47;:id</code>: Your comments only or God</li>
+<li><code>GET &#47;users&#47;:id&#47;feed</code></li>
+<li><code>GET &#47;contact&#47;:id&#47;feed</code></li>
+<li><code>GET &#47;deal&#47;:id&#47;feed</code></li>
+<li><code>GET &#47;campaign&#47;:id&#47;feed</code></li>
+<li><code>GET &#47;group&#47;:id&#47;feed</code></li>
 </ul>
 
+<p>You can retreive the feed for any resource you can access. 
+Refer to the documenation for each resource to see how
+access is deteremined.</p>
+
             </td>
             <td class="code">
 
@@ -4112,57 +4439,117 @@ about many different things. Comments may also have files attached.</p>
           </tr>
           <tr>
             <td class="docs">
-              <h2 id="s-attributes">Attributes</h2>
+              <h2 id="s-format">Format</h2>
 
-              <p><dl>
-  <dt>text</dt>
-  <dd>
-    <strong>Required</strong><br/>
-    The full text for this comment
-  </dd></p>
+              <p>Acitvities are formatted differently than other resources.
+They have two attributes: <code>owner</code> and <code>reference</code>. Each
+attribute has another attribute describe what kind of resource
+it is. The array of <code>tags</code> describe what happend. Example:
+<code>todo</code>, <code>assigned</code> or <code>contact</code> <code>became_lead</code>.</p>
 
-<p><dt>attachments</dt>
-  <dd>All the attachments for this comment. See the attachment sections for the format.</dd></p>
+<p>There is also a <code>timestamp</code> that corresponds to when the 
+action happened. Example, when the email was sent
+or when the contact was added.</p>
 
-<p><dt>user</dt>
-  <dd>ID for the user who wrote the comment</dd></p>
+<p>Also, the full objects are given. This is so you can retreive
+the feed and not have to make other request to fetch the associated
+objects. The server assumes you&#39;ll need to show the activity
+right away so all the data is given.</p>
+
+<p>Formats for the <code>owner</code> and <code>reference</code> follow the formats
+describing their specific sections. The example shows
+an activity done by a user about a todo.</p>
 
             </td>
             <td class="code">
-                <h2 id="r-comment-format">Comment Format</h2>
+                <h2 id="r-activity-format">Activity Format</h2>
                 <pre><code class="javascript">{
-  &quot;id&quot;: 7,
-  &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-  &quot;text&quot;: &quot;Text 2&quot;,
-  &quot;user&quot;: 444
-  &quot;attachments&quot;: [ 
-  ]
-}
-</code></pre>
+  &quot;id&quot;: 53,
+  &quot;created_at&quot;: &quot;2011-12-28T14:26:27Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-28T14:26:27Z&quot;,
+  &quot;tags&quot;: [
+    &quot;tags&quot;,
+    &quot;describing&quot;,
+    &quot;what&quot;,
+    &quot;action&quot;,
+    &quot;happened&quot;
+  ],
+  &quot;timestamp&quot;: &quot;2011-12-28T14:26:27Z&quot;,
+  &quot;owner&quot;: {
+    &quot;user&quot;: {
+      &quot;id&quot;: 46,
+      &quot;created_at&quot;: &quot;2011-12-28T14:26:27Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-28T14:26:27Z&quot;,
+      &quot;name&quot;: &quot;Kathryn Turner&quot;,
+      &quot;email&quot;: &quot;user-42@example.com&quot;,
+      &quot;phone&quot;: &quot;38542384224842&quot;,
+      &quot;public&quot;: true,
+      &quot;contacts&quot;: [
 
+      ],
+      &quot;deals&quot;: [
 
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
+      ],
+      &quot;campaigns&quot;: [
 
-              
-            </td>
-            <td class="code">
-                <h2 id="r-posting-a-comment">Posting a Comment</h2>
-                <p><code>POST &#47;todos&#47;:id&#47;comments</code></p>
+      ],
+      &quot;following&quot;: [
 
-<p>Create a comment for the todo specified by :id.</p>
+      ],
+      &quot;followers&quot;: [
 
-<h3>Parameters</h3>
+      ],
+      &quot;todos&quot;: [
 
-<pre><code class="javascript">{
-  &quot;developer_api_key&quot;: &quot;foo&quot;,
-  &quot;user_api_key&quot;: &quot;bar&quot;,
-  &quot;comment&quot;: {
-    &quot;text&quot;: &quot;You know someone already did this right?&quot;
+      ],
+      &quot;meetings&quot;: [
+
+      ],
+      &quot;reminders&quot;: [
+
+      ],
+      &quot;notes&quot;: [
+
+      ],
+      &quot;phone_calls&quot;: [
+
+      ],
+      &quot;ims&quot;: [
+
+      ],
+      &quot;emails&quot;: [
+
+      ],
+      &quot;sms&quot;: [
+
+      ],
+      &quot;activities&quot;: [
+
+      ],
+      &quot;account&quot;: 1
+    }
+  },
+  &quot;reference&quot;: {
+    &quot;todo&quot;: {
+      &quot;id&quot;: 3,
+      &quot;created_at&quot;: &quot;2011-12-28T14:26:27Z&quot;,
+      &quot;updated_at&quot;: &quot;2011-12-28T14:26:27Z&quot;,
+      &quot;kind&quot;: &quot;general&quot;,
+      &quot;description&quot;: &quot;Finish programming radium&quot;,
+      &quot;finish_by&quot;: &quot;2012-01-04T14:26:22Z&quot;,
+      &quot;contacts&quot;: [
+
+      ],
+      &quot;comments&quot;: [
+
+      ],
+      &quot;activities&quot;: [
+        51,
+        52
+      ],
+      &quot;user&quot;: 45,
+      &quot;reference&quot;: null
+    }
   }
 }
 </code></pre>
@@ -4308,6 +4695,392 @@ who posted it can change it or delete it.</p>
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
   &quot;user_api_key&quot;: &quot;foo&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-fields">Fields</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Fields are arbitary key &amp; value pairs that you can use to add
+your own data to different resources. <code>Contacts</code> and <code>Groups</code>
+can have fields. They also accept nested fields. A field
+can be specified to be a certain <code>kind</code>. The <code>kind</code> will be used
+for matching purposes. They can also use a defined set of 
+values.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <p>There are no routes for managing the fields themselves. This is
+because they are always attached to other objects. </p>
+
+<p>They are managed through nested attributes.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <p>Fields are very simple. They are key value pairs.
+You can specify <code>accepted_values</code> if you&#39;d like to 
+constrain possible inputs.</p>
+
+<dl>
+  <dt>name</dt>
+  <dd><strong>Required</strong></dd>
+
+  <dt>value</dt>
+  <dd>String value. Validation enforced according to `kind`</dd>
+
+  <dt>accepted_values</dt>
+  <dd>An optional array of allowed values. When this is set,
+    the server will not save the record unless the `value` matches
+    one of these exactly.
+  </dd>
+
+  <dt>kind</dt>
+  <dd>
+    <strong>Required</strong><br />
+    Allowed values: 
+    <code>email_address</code>,
+    <code>phone_number</code>,
+    <code>url</code>,
+    <code>other</code>
+  </dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-field-format">Field Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 283,
+  &quot;created_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+  &quot;name&quot;: &quot;Industry&quot;,
+  &quot;value&quot;: &quot;Property &amp; Casualty Insurance&quot;,
+  &quot;accepted_values&quot;: null,
+  &quot;kind&quot;: &quot;other&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-following">Following</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Users can follow different resources in the system. This will give
+them read access. It will also add related activities to their feed.
+Followable resources inhert their <code>public</code> setting from the <code>account</code>.
+If someone is public, following requests will automatically be approved.
+If something is private, the person in charge of it will have to approve it.
+A person can choose to no longer follow something at their will.</p>
+
+<p>These resources can be followed:</p>
+
+<ol>
+<li>Users</li>
+<li>Contacts</li>
+<li>Teams</li>
+<li>Campaigns</li>
+<li>Deals</li>
+<li>Groups</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;users&#47;:id&#47;follow</code>: Anyone</li>
+<li><code>POST &#47;contacts&#47;:id&#47;follow</code>: Anyone</li>
+<li><code>POST &#47;teams&#47;:id&#47;follow</code>: Anyone</li>
+<li><code>POST &#47;campaigns&#47;:id&#47;follow</code>: Anyone</li>
+<li><code>POST &#47;deals&#47;:id&#47;follow</code>: Anyone</li>
+<li><code>POST &#47;groups&#47;:id&#47;follow</code>: Anyone</li>
+<li><code>GET &#47;followings</code>: Anyone according to scoping</li>
+<li><code>GET &#47;followings&#47;:id</code>: Any according to scoping</li>
+<li><code>DELETE &#47;followings&#47;:id</code>: The follower or god</li>
+<li><code>PUT &#47;followings&#47;:id&#47;approve</code>: The resource manager or a god</li>
+</ul>
+
+<h3>Scoping</h3>
+
+<p>You are only allowed to access your own following requests.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <p>As mentioned earlier, following requests will be automatically
+approved if the followable resource is public.</p>
+
+<dl>
+  <dt>approved</dt>
+  <dd>Name says it all</dd>
+
+  <dt>user</dt>
+  <dd>ID for following user</dd>
+
+  <dt>followable</dt>
+  <dd>ID and Resource type</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-following-format">Following Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 12,
+  &quot;created_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
+  &quot;approved&quot;: true,
+  &quot;user&quot;: 464,
+  &quot;followable&quot;: {
+    &quot;id&quot;: 154,
+    &quot;followable_type&quot;: &quot;Contact&quot;
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-follow-something">Follow Something</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;contacts&#47;5&#47;follow</code></p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-notes">Notes</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Notes are public pieces of text associated with a resource.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <p>There are no routes for managing the notes themselves. This is
+because they are always attached to other objects. </p>
+
+<p>They are managed through nested attributes.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-format">Format</h2>
+
+              <p>Notes only have one attribute: <code>text</code></p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-note-format">Note Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 283,
+  &quot;created_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T19:12:25Z&quot;,
+  &quot;text&quot;: &quot;Blah blah&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-comments">Comments</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Comments work like comments in every system. You can create comments
+about many different things. Comments may also have files attached.</p>
+
+<p>These resources support comments:</p>
+
+<ol>
+<li>Todos</li>
+<li>Meetings</li>
+<li>Phone Calls</li>
+<li>Deals</li>
+<li>Messages (IM, SMS, &amp; Email)</li>
+<li>Activities</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST &#47;deals&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;todos&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;meetings&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;phone_calls&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;messages&#47;:id&#47;comments</code>: All users</li>
+<li><code>POST &#47;activities&#47;:id&#47;comments</code>: All users</li>
+<li><code>PUT &#47;comments&#47;:id</code>: Your comments only or God</li>
+<li><code>DELETE &#47;comments&#47;:id</code>: Your comments only or God</li>
+</ul>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-attributes">Attributes</h2>
+
+              <p><dl>
+  <dt>text</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    The full text for this comment
+  </dd></p>
+
+<p><dt>attachments</dt>
+  <dd>All the attachments for this comment. See the attachment sections for the format.</dd></p>
+
+<p><dt>user</dt>
+  <dd>ID for the user who wrote the comment</dd></p>
+
+            </td>
+            <td class="code">
+                <h2 id="r-comment-format">Comment Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 7,
+  &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;text&quot;: &quot;Text 2&quot;,
+  &quot;user&quot;: 444
+  &quot;attachments&quot;: [ 
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-posting-a-comment">Posting a Comment</h2>
+                <p><code>POST &#47;todos&#47;:id&#47;comments</code></p>
+
+<p>Create a comment for the todo specified by :id.</p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;comment&quot;: {
+    &quot;text&quot;: &quot;You know someone already did this right?&quot;
+  }
 }
 </code></pre>
 
