@@ -109,6 +109,9 @@
 
         <dt>meetings</dt>
         <dd>All the meetings relating to this campaign</dd>
+
+        <dt>activities</dt>
+        <dd>All the activities in the feed</dd>
       </dl>
       ]]>
     </docs>
@@ -157,6 +160,9 @@
 
         ],
         "meetings": [
+
+        ]
+        "activities": [
 
         ]
       }

@@ -24,11 +24,11 @@
   <section title="Permissions & Routes">
     <docs>
       <![CDATA[
-      * `GET /users`: All users
-      * `POST /users`: Gods only
-      * `GET /users/:id`: All users
-      * `PUT /users/:id`: Gods to update anyone, but of you may update yourself
-      * `DELETE /users/:id`: Gods only
+      * `GET /users`: Anyon
+      * `POST /users`: Admins only
+      * `GET /users/:id`: Anyone
+      * `PUT /users/:id`: Yourself, or anyone if you're an admin
+      * `DELETE /users/:id`: Admins only
       ]]>
     </docs>
   </section>
@@ -66,7 +66,7 @@
           <strong>This attribute is only added when user matches the logged in user!</strong>
         </dd>
 
-        <dt>account_id</dt>
+        <dt>account</dt>
         <dd>The ID for this user's company's account.</dd>
 
         <dt>contacts</dt>
@@ -118,7 +118,7 @@
         "email": "user-1@example.com",
         "api_key": "e68ff9eeeedbf05f2909f78eb960b69c2ae3fc2a",
         "phone": "+1234987"
-        "account_id": 294,
+        "account": 294,
         "contacts": [1,3,4,5,6,7]
         "deals": [1,3,4,5,6],
         "campaigns": [1,2,3],
@@ -147,23 +147,6 @@
       {
         "email": "example@example.com",
         "name": "Adam Hawkins"
-      }
-      ```
-      ]]>
-    </reference>
-  </section>
-  <section title="Updating Users">
-    <reference title="Change a Password">
-      <![CDATA[
-      `PUT https://api.radiumcrm.com/users/:id`
-
-      ### Parameters
-
-      ```javascript
-      {
-        "name": "Adam Hawkins",
-        "password": "my super secure password",
-        "password_confirmation": "my super secure password"
       }
       ```
       ]]>

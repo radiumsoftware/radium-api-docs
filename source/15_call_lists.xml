@@ -1,0 +1,126 @@
+<document>
+  <title>Call Lists</title>
+  <position>15</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Call Lists represent a list of contacts that need to be called as part
+      of a campaign. The calls are assigned to users and made to contacts.
+      Adding someone to a call list adds them to their todo list. The
+      todo can be reassigned or rescheduled if need be. Call Lists
+      can have their own end date which sets the due date for all the todos.
+      If a end date is not specified, it will be set from the campaign.
+      A contact can be on many different call lists, but cannot be on the same
+      one multiple times. Call lists can also be handled automatically
+      using our VOIP system.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `POST /call_lists`
+      * `GET /call_lists`
+      * `GET /call_lists/:id`
+      * `PUT /call_lists/:id'
+      * `DELETE /call_lists/:id`
+
+      ### Scoping
+
+      1. You are managing the associated campaign
+      2. You are following the associated campaign
+      3. You are following any of the user's making the calls
+      4. You are following any of the contacts to be called
+      5. You are following the user managing the campaign
+      6. You are an admin
+      ]]>
+    </docs>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      <dl>
+        <dt>description</dt>
+        <dd>Text descibing the call list</dd>
+
+        <dt>finish_by</dt>
+        <dd>The date all calls should be made by</dd>
+
+        <dt>user</dt>
+        <dd>ID for the managing user</dd>
+
+        <dt>campaign</dt>
+        <dd>ID for the associated campaign</dd>
+
+        <dt>todos</dt>
+        <dd>IDs for all the todos</dd>
+
+        <dt>pending_todos</dt>
+        <dd>IDs for all the unmade calls</dd>
+
+        <dt>overdue_todos</dt>
+        <dd>IDs for all the late calls</dd>
+
+        <dt>users</dt>
+        <dd>IDs for all the users making the calls</dd>
+
+        <dt>contacts</dt>
+        <dd>IDs for all the contacts on the call list</dd>
+      </dd>
+      ]]>
+    </docs>
+    <reference title="Call List Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 1,
+        "created_at": "2011-12-28T14:26:24Z",
+        "updated_at": "2011-12-28T14:26:24Z",
+        "description": "Call List 1",
+        "finish_by": "2012-01-04T14:26:22Z",
+        "user": 5,,
+        "campaign:" 3,
+        "todos": [
+
+        ],
+        "pending_todos": [
+
+        ],
+        "finished_todos": [
+
+        ],
+        "overdue_todos": [
+
+        ],
+        "users": [
+
+        ],
+        "contacts": [
+
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section title="Creating a Call List">
+    <docs>
+      <![CDATA[
+      **NOTE**: this functionality is a work in progress. There is some
+      special logic that goes into creating a call list that has not
+      been implemented yet. This specically pertains to addings groups
+      to call lists. 
+
+      You can add contacts and groups to call lists. You can only add
+      them if they have a phone number. The server will check for duplicates
+      to ensure that the same person is not called twice.
+
+      Groups are handled differently than contacts. Groups have primary 
+      contacts. If a primary contact is present, they will be added to
+      the call list. If a primaty contact is not present, a new contact
+      will be added with the group's contact phone number. Then, you can
+      fill in that contact's information when you make the call.
+      ]]>
+    </docs>
+  </section>
+</document>

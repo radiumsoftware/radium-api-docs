@@ -1,0 +1,255 @@
+<document>
+  <title>Activities</title>
+  <position>18</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Many resources have their own feed or timeline. The feed 
+      is composed of different activities. Pretty much everything
+      in the system generates activities. You can reconstruct these
+      activities to create a timeline for each thing in the system.
+
+      And activity can be associated with anything in the system.
+      Each one has a timestamp, the user who is responsible for it,
+      tags describing it, and the associated objects.
+
+      You can get the feed for any resource you can read. There
+      are no interactions with the activities. You may only
+      retreive the feed. The server will add the activites to all
+      the right feeds. You do not have to worry about any of this.
+
+      Different activites are disscussed in their own section.
+      The following sections list the events and their associated tags.
+      ]]>
+    </docs>
+  </section>
+  <section title="Call List Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated when the call list is added. `created`
+      ]]>
+    </docs>
+  </section>
+  <section title="Campaign Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated when any of these things happen:
+
+      1. A campaign is added: `created`
+      2. A campaign is assigned / reassigned: `assigned`
+      3. A contact is added to a campaign: `contact_added`
+      4. A contact is removed from a campaign: `contact_removed`
+      5. Someone follows the campaign: `followed`
+      ]]>
+    </docs>
+  <section title="Contact Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated when any of these things happen:
+
+      1. When a contact is added: `created`
+      2. When a contact is assigned (or reassigned): `assigned`
+      3. When a contact becomes a lead: `became_lead`
+      4. When a contact becomes a prospect: `became_prospect`
+      5. When a contact becomes an opportunity: `became_opportunity`
+      6. When a contact becomes a customer: `became_customer`
+      7. When a contact becomes a dead end: `became_dead_end`
+      8. Someone follows the campaign: `followed`
+      ]]>
+    </docs>
+  </section>
+  <section title="Deal Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated when any of these things happen:
+
+      1. A deal is added: `created`
+      2. A deal is assigned/reassigned: `assigned`
+      3. A deal is reopened: `pending`
+      4. A deal is closed: `closed`
+      5. A deal is paid: `paid`
+      6. A deal is rejected: `rejected`
+      7. Someone follows the deal: `followed`
+      ]]>
+    </docs>
+  </section>
+  <section title="Message Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated whenever a message is sent: `created`
+      ]]>
+    </docs>
+  </section>
+  <section title="Meeting Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated when any of these things happen:
+
+      1. A meeting is added: `created`
+      2. A meeting is rescheduled: `rescheduled`
+      3. A meeting is cancelled: `cancelled`
+      4. An invitation is confirmed: `confirmed`
+      5. An invitation is rejected: `rejected`
+      ]]>
+    </docs>
+  </section>
+  <section title="Note Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated whenever a note is added: `created`
+      ]]>
+    </docs>
+  </section>
+  <section title="Phone Call Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated whenever a phone call is made: `created`
+      ]]>
+    </docs>
+  </section>
+  <section title="Todo Activities">
+    <docs>
+      <![CDATA[
+      A new activity is generated whenver any of these things happen:
+
+      1. A todo is added: `created`
+      2. A todo is assigned/reassigned: `assigned`
+      3. A todo is finished: `finished`
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permission">
+    <docs>
+      <![CDATA[
+      * `GET /users/:id/feed`
+      * `GET /contact/:id/feed`
+      * `GET /deal/:id/feed`
+      * `GET /campaign/:id/feed`
+      * `GET /group/:id/feed`
+
+      You can retreive the feed for any resource you can access. 
+      Refer to the documenation for each resource to see how
+      access is deteremined.
+      ]]>
+    </docs>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      Acitvities are formatted differently than other resources.
+      They have two attributes: `owner` and `reference`. Each
+      attribute has another attribute describe what kind of resource
+      it is. The array of `tags` describe what happend. Example:
+      `todo`, `assigned` or `contact` `became_lead`.
+
+      There is also a `timestamp` that corresponds to when the 
+      action happened. Example, when the email was sent
+      or when the contact was added.
+
+      Also, the full objects are given. This is so you can retreive
+      the feed and not have to make other request to fetch the associated
+      objects. The server assumes you'll need to show the activity
+      right away so all the data is given.
+
+      Formats for the `owner` and `reference` follow the formats
+      describing their specific sections. The example shows
+      an activity done by a user about a todo.
+      ]]>
+    </docs>
+    <reference title="Activity Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 53,
+        "created_at": "2011-12-28T14:26:27Z",
+        "updated_at": "2011-12-28T14:26:27Z",
+        "tags": [
+          "tags",
+          "describing",
+          "what",
+          "action",
+          "happened"
+        ],
+        "timestamp": "2011-12-28T14:26:27Z",
+        "owner": {
+          "user": {
+            "id": 46,
+            "created_at": "2011-12-28T14:26:27Z",
+            "updated_at": "2011-12-28T14:26:27Z",
+            "name": "Kathryn Turner",
+            "email": "user-42@example.com",
+            "phone": "38542384224842",
+            "public": true,
+            "contacts": [
+
+            ],
+            "deals": [
+
+            ],
+            "campaigns": [
+
+            ],
+            "following": [
+
+            ],
+            "followers": [
+
+            ],
+            "todos": [
+
+            ],
+            "meetings": [
+
+            ],
+            "reminders": [
+
+            ],
+            "notes": [
+
+            ],
+            "phone_calls": [
+
+            ],
+            "ims": [
+
+            ],
+            "emails": [
+
+            ],
+            "sms": [
+
+            ],
+            "activities": [
+
+            ],
+            "account": 1
+          }
+        },
+        "reference": {
+          "todo": {
+            "id": 3,
+            "created_at": "2011-12-28T14:26:27Z",
+            "updated_at": "2011-12-28T14:26:27Z",
+            "kind": "general",
+            "description": "Finish programming radium",
+            "finish_by": "2012-01-04T14:26:22Z",
+            "contacts": [
+
+            ],
+            "comments": [
+
+            ],
+            "activities": [
+              51,
+              52
+            ],
+            "user": 45,
+            "reference": null
+          }
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

@@ -1,0 +1,176 @@
+<document>
+  <title>Meetings</title>
+  <position>16</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Meetings are controlled by a user. They do not need to have anyone
+      coming to the meeting. Users and contacts can be added to meetings.
+      You invite people by sending their email address. The server will
+      conect the dots to associate the users and contacts. If no one can
+      be found matching the email, then a new contact will be created 
+      for you to fill in their information. The server will send invitations
+      via email. Invitations are handled individually. The meeting's organizer
+      will be notified of acceptance and rejections. The organizer can
+      also reschedule or cancel the meeting. If the meeting is rescheduled,
+      all the people will be notified and be asked to reconfirm. Refer
+      to the invitation section for managing individual invitations.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `POST /meetings`
+      * `GET /meetings`
+      * `GET /meetings/:id`
+      * `PUT /meetings/:id`
+      * `DELETE /meetings/:id`
+      * `PUT /meetings/:id/reschedule`
+      * `PUT /meetings/:id/cancel`
+
+      ### Scoping
+
+      1. You are in charge of the meeting
+      2. You are invited to the meeting
+      3. Any of the invited contacts are assigned to you
+      4. You are following any of the invited contacts
+      5. You are an admin
+      ]]>
+    </docs>
+  </section>
+  <section>
+    <![CDATA[
+    ### Rescheduling, Cancelling, and Deleting
+
+    These are all different actions. Rescheduling is a special update.
+    It works the same way as the regular `PUT /meetings/:id` route
+    except will send out notifications to everyone regardless of
+    if the time changed or anything like that. Cancelling works
+    the same way. You can always reschedule a cancelled meeting.
+    A meeting will continue to exist in the system if it's cancelled.
+    Deleting a meeting will remove it from the system entirely and **will not**
+    send any notifications. It is up to you to decide which functionality
+    to use by a use case by use case basis.
+    ]]>
+  </section>
+  <section title="Inviting People">
+    <![CDATA[
+    You can add more people to the meeting one the `POST` and `PUT` routes. 
+    Specify a `invite` parameter which contains an array of valid email addresses.
+    Invitations will be created and notifications sent out by the server. 
+    You are not allowed to create invitations manually. If you want to invite
+    more people to an existing meeting use the `PUT /meetings/:id` route
+    with a `invite` parameter.
+    ]]>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      <dl>
+        <dt>topic</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          Text describing the meetings purpose
+        </dd>
+
+        <dt>starts_at</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          Time when it starts
+        </dd>
+
+        <dt>ends_at</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          Time when it ends
+        </dd>
+
+        <dt>location</dt>
+        <dd>Can be an address, can be anything. 
+          Example: <code>the office</code>, or <code>123 Example St.</code>
+        </dd>
+
+        <dt>user</dt>
+        <dd>ID for the user managing this meeting</dd>
+
+        <dt>contacts</dt>
+        <dd>IDs for all the invited contacts</dd>
+
+        <dt>users</dt>
+        <dd>ID's for all the invited users including the organizer</dd>
+
+        <dt>activities</dt>
+        <dd>ID's for all activites in the meeting's feed</dd>
+
+        <dt>invitations</dt>
+        <dd>All the invitations for the meeting. See the invitation 
+          section for more details</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Meeting Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 2,
+        "created_at": "2011-12-28T14:26:26Z",
+        "updated_at": "2011-12-28T14:26:26Z",
+        "topic": "Meeting 2",
+        "location": "The office",
+        "starts_at": "2011-12-28T15:26:22Z",
+        "ends_at": "2011-12-28T16:26:22Z",
+        "user": 5,
+        "contacts": [
+
+        ],
+        "users": [
+          29
+        ],
+        "activities": [
+          32
+        ],
+        "invitations": [
+          {
+            "id": 3,
+            "created_at": "2011-12-28T14:26:26Z",
+            "updated_at": "2011-12-28T14:26:26Z",
+            "state": "confirmed",
+            "hash_key": "f9e7128044e00d3f7cd881fe76a3b079c8450c09",
+            "meeting": 2,
+            "user": 29
+          }
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <docs>
+      <![CDATA[
+      You can specify the `invite` parameter to send invitations.
+      ]]>
+    </docs>
+    <reference title="Create a Meeting">
+      <![CDATA[
+      `POST /meetings`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar",
+        "meeting: {
+          "topic": "Q3",
+          "starts_at": "2011-12-28T15:26:22Z",
+          "ends_at": "2011-12-28T16:26:22Z",
+          "invite": [ 'mycoworker@company.com', 'james@microsoft.com']
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

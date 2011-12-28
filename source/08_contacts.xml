@@ -31,9 +31,9 @@
       <![CDATA[
       * `POST /contacts`: All Users
       * `GET /contacts`: All users
-      * `GET /contacts/:id`: Assigned to, following the contact, or a God
-      * `PUT /contacts/:id`: Assigned to, following the contact, or a God
-      * `DELETE /contacts/:id`: Assigned to you or you are a God
+      * `GET /contacts/:id`: Assigned to, following the contact, public contact or Admin
+      * `PUT /contacts/:id`: Assigned contacts or Admin
+      * `DELETE /contacts/:id`: Assigned to you or Admin
 
       ### Scoping
 

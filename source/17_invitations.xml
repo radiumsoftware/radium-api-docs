@@ -1,0 +1,67 @@
+<document>
+  <title>Invitations</title>
+  <position>17</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Invitations connect people to meetings. They can be confirmed
+      or rejected. They have a unique hash key that's used to
+      generate a private URL that people outside the system can 
+      use to track the meeting.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `PUT /invitation/:id/confirm`
+      * `PUT /invitation/:id/reject`
+
+      These routes take no paramters. The `:id` refers to the
+      `hash_key`. The system will only show you hash keys
+      for your meetings so you cannot mess with other people's invitations.
+
+      **NOTE**: A user api key is not required for these routes
+      since the server assumes only the person who owns the invitation
+      will know the hash key.
+      ]]>
+    </docs>
+  </section>
+  <section>
+    <docs>
+      <![CDATA[
+      <dl>
+        <dt>state</dt>
+        <dd><code>pending</code>, <code>cancelled</code>, or <code>rescheduled</code></dd>
+
+        <dt>hash_key</dt>
+        <dd>GUID for this invitation. Only given if you own this invitation</dd>
+
+        <dt>meeting</dt>
+        <dd>ID for associated meeting</dd>
+
+        <dt>user</dt>
+        <dd>The user this invitation belongs to</dd>
+
+        <dt>contact</dd>
+        <dd>The contact this invitation belongs to</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Invitation Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 2,
+        "created_at": "2011-12-28T14:26:26Z",
+        "updated_at": "2011-12-28T14:26:26Z",
+        "state": "pending",
+        "hash_key": "8a0e49cd3b18d49a565fe91211e66462f8104114",
+        "meeting": 1,
+        "user": 28
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>
