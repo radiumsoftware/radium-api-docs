@@ -1,6 +1,6 @@
 <document>
   <title>Fields</title>
-  <position>15</position>
+  <position>20</position>
   <section>
     <docs>
       <![CDATA[
@@ -66,45 +66,6 @@
         "value": "Property & Casualty Insurance",
         "accepted_values": null,
         "kind": "other"
-      }
-      ```
-      ]]>
-    </reference>
-  </section>
-  <section title="Nested Attributes">
-    <docs>
-      <![CDATA[
-      You manage fields through the parent object. Each parent
-      object has `fields_attributes` attribute used to manage
-      the collection. You can do CRUD through this attribute.
-
-      The attribute takes an array of field objects according
-      to the format. 
-
-      If you pass an `id` then that field will be updated.
-      If you do not pass an `id` a new field will be created.
-      If you pass `id` & `delete` the field will be deleted.
-      ]]>
-    </docs>
-    <reference title="Nested Fields">
-      <![CDATA[
-      ```javascript
-      {
-        "fields_attributes": [
-          {
-            "id": 1,
-            "value": "New Value"
-          },
-          {
-            "name": "Industry",
-            "value": "IT",
-            "kind": "other"
-          },
-          {
-            "_delete": true
-            "id": 2
-          }
-        ]
       }
       ```
       ]]>
