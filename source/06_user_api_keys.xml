@@ -42,7 +42,7 @@
     </docs>
     <reference title="Login">
       <![CDATA[
-      `POST https://api.radiumcrm.com/auth/identity/callback
+      `POST https://api.radiumcrm.com/auth/identity/callback`
 
       ### Example Request Parameters
 
