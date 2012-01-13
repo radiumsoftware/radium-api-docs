@@ -21,7 +21,8 @@
   <section title="Using email & password">
     <docs>
       <![CDATA[
-      ### Parameters
+      This request **cannot** currently be sent as JSON. You must use
+      standard form encoding.
 
       <dl>
         <dt>developer_api_key</dt>
@@ -45,12 +46,8 @@
 
       ### Example Request Parameters
 
-      ```javascript
-      {
-        "developer_api_key": "your-private-key",
-        "auth_key": "adam@radiumcrm.com",
-        "password": "password1",
-      }
+      ```
+      developer_api_key=foo&auth_key=adam%40radiumcrm.com&password=password
       ```
       ]]>
     </reference>
