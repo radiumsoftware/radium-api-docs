@@ -1,0 +1,58 @@
+<document>
+  <position>6</position>
+  <title>User API Keys</title>
+  <section>
+    <docs>
+      <![CDATA[
+      Users are added by a process on the server. They are authenticated by identities. 
+      Identities use emails/password, github, openid, linkedin, google or other OAuth
+      providers. You will have to prompt the user to choose their identification method.
+
+      Currently, only email/password are supported with API access. We are still trying
+      to determine the best way to integrate OAuth into the API.
+
+      If the login is successful, the response will follow the user format with 
+      an extra attribute: `user_api_key`.
+
+      Sending the `user_api_key` parameters is not required for these requests.
+      ]]>
+    </docs>
+  </section>
+  <section title="Using email & password">
+    <docs>
+      <![CDATA[
+      ### Parameters
+
+      <dl>
+        <dt>developer_api_key</dt>
+        <dd><strong>Required</strong></dd>
+
+        <dt>auth_key</dt>
+        <dd>
+          <strong>Required</strong><br/>
+          The user's email. Case insensitive.
+        </dd>
+
+        <dt>password</dt>
+        <dd><strong>Required</strong></dd>
+      </dl>
+
+      ]]>
+    </docs>
+    <reference title="Login">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/auth/identity/callback
+
+      ### Example Request Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "your-private-key",
+        "auth_key": "adam@radiumcrm.com",
+        "password": "password1",
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</section>

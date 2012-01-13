@@ -66,64 +66,6 @@
       ]]>
     </docs>
   </section>
-  <section title="Retrieve a User's API KEY">
-    <docs>
-      <![CDATA[
-      This first thing your application will do is prompt the user to login. If they login is successful,
-      the server will give you back their API key which you can store and reuse for all future requests.
-      One of the parameters will be the `api_key`. Refer to the user section
-      for the complete documentation on user reponse formats. For this particular response, the `api_key`
-      is added.
-
-      ### Parameters
-
-      <dl>
-        <dt>developer_api_key</dt>
-        <dd><strong>Required</strong></dd>
-
-        <dt>email</dt>
-        <dd>
-          <strong>Required</strong><br/>This is case insenstive.
-        </dd>
-
-        <dt>password</dt>
-        <dd><strong>Required</strong></dd>
-      </dl>
-
-      ]]>
-    </docs>
-    <reference title="Login">
-      <![CDATA[
-      `POST https://api.radiumcrm.com/login`
-
-      Authenticate a user from their email and password and return specific information
-      about that user, mainly their api key.
-
-      ### Example Request Parameters
-
-      ```javascript
-      {
-        "developer_api_key": "your-private-key",
-        "email": "adam@radiumcrm.com",
-        "password": "password1",
-      }
-      ```
-
-      ### Example Response
-
-      Note: more parameters than email and passowrd will be returned. Refer to the
-      user section for complete documentation.
-
-      ```javascript
-      {
-        "email": "adam@radiumcrm.com",
-        "password": "password",
-        "api_key": "users-secret-key"
-      }
-      ```
-      ]]>
-    </reference>
-  </section>
   <section>
     <docs>
       <![CDATA[
