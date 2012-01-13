@@ -9,6 +9,9 @@
       They intended for Companies, IE, your company would open an account in Radium then
       add users to it. Usage Based Billing services are billed to the account. The account
       contains billing and credit.
+
+      You are only allowed to manage your own account. You are not allowed to create or delete
+      existing accounts. That process is handled by the server.
       ]]>
     </docs>
   </section>
@@ -73,24 +76,6 @@
 
         ],
         "avatar": null
-      }
-      ```
-      ]]>
-    </reference>
-  </section>
-  <section>
-    <reference title="Create an Account">
-      <![CDATA[
-      `POST https://api.radiumcrm.com/accounts`
-
-      ### Parameters
-
-      ```javascript
-      {
-        "developer_api_key": "foo",
-        "accounts": {
-          "name": "My Company Inc."
-        }
       }
       ```
       ]]>
