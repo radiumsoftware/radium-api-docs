@@ -98,6 +98,17 @@
       entering the database. **All** times will be returned in UTC independent of
       whatever time zone they entered as. It is up to you to present the time
       in a different time zone if you want.
+
+      Valid formats:
+      * `YYYY-MM-DDTHH:MM:SSZ` (Z for UTC)
+      * `YYYY-MM-DDTHH:MM:SS-DD:DD`
+      * `YYYY-MM-DDTHH:MM:SS+DD:DD`
+
+      Examples:
+
+      * `2011-11-22T13:55:32Z`
+      * `2011-11-22T13:55:32-08:00`
+      * `2011-11-22T13:55:32+02:00`
       ]]>
     </docs>
   </section>
