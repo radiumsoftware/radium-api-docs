@@ -347,4 +347,73 @@
       ]]>
     </reference>
   </section>
+  <section title="Imorting SMS">
+    <docs>
+      <![CDATA[
+      There is a special route to use to add sms' to Radium.
+      There a lot of cool things that go on in the background.
+
+      This route takes an array of sms for processing later.
+
+      <dl>
+        <dt>number</dt>
+        <dd>
+          <strong>Required</strong><br />
+          International format preferred, but not required
+        </dd>
+
+        <dt>message</dt>
+        <dd>
+          <strong>Required</strong><br />
+          Content of the message
+        </dd>
+
+        <dt>direction</dt>
+        <dd>
+          <strong>Required</strong><br />
+          Either: <code>incoming</code> or <code>outgoing</code>
+        </dd>
+
+        <dt>time</dt>
+        <dd><strong>Required</strong></dd>
+
+        <dt>todos</dt>
+        <dd>
+          Optionally create todos about the sms.
+          See todo section for format.
+        </dd>
+
+        <dt>meetings</dt>
+        <dd>
+          Optionally book meetings with the other person.
+          See meeting section for format.
+        </dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Import a SMS">
+      <![CDATA[
+      `POST https://api.radiumcrm.com/sms/import`
+
+      ### Parameters
+
+      ```javascript
+      {
+        "developer_api_key": "foo",
+        "user_api_key": "bar",
+        "phone_calls": [
+          {
+            "number": "+2134829384",
+            "message": "Hey man",
+            "direction": "incoming",
+            "time": "2011-11-22T13:55:32Z",
+            "todos": [ ],
+            "meetings": [ ],
+          }
+        ]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
 </document>

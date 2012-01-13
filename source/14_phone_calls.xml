@@ -198,8 +198,7 @@
             "duration": 200,
             "outcome": "follow_up_required",
             "todos": [ ],
-            "meetings": [ ],
-            "comments": [ ]
+            "meetings": [ ]
           }
         ]
       }

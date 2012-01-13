@@ -9,27 +9,14 @@
       They intended for Companies, IE, your company would open an account in Radium then
       add users to it. Usage Based Billing services are billed to the account. The account
       contains billing and credit.
-
-      ### Deleting Accounts
-
-      This should be used with **EXTREME** caution. It will delete everything from the DB. 
-      There is no going back once this happens. Everything that has ever happened 
-      in Radium will be deleted!
       ]]>
     </docs>
   </section>
   <section title="Routes & Permissions">
     <docs>
       <![CDATA[
-      * `POST /accounts`: God developers only
-      * `GET /accounts/:id`: All developers
-      * `PUT /account/:id`: All developers
-      * `DELETE /accounts/:id` God developers only
-
-      The `user_api_key` is not required to create an account. It is however,
-      **required** for the others. This tells the API that a user has granted
-      you access to their account. This prevents rouge developers from 
-      trying to poke around into other company's accounts.
+      * `GET /accounts/:id`: All users
+      * `PUT /account/:id`: Admins only
       ]]>
     </docs>
   </section>
@@ -61,6 +48,9 @@
 
         <dt>campaigns</dt>
         <dd>IDs of all the campaigns in this account</dd>
+
+        <dt>avatar</dt>
+        <dd>See avatar section</dd>
       </dl>
       ]]>
     </docs>
@@ -68,14 +58,21 @@
       <![CDATA[
       ```javascript
       {
-        "id": 305,
-        "created_at": "2011-12-14T12:39:23Z",
-        "updated_at": "2011-12-14T12:39:23Z",
-        "name": "Apple",
-        "public": true,
-        "users": [1,3,4,5],
-        "contacts": [1,2],
-        "campaigns": [1,3,4,5]
+        "id": 2,
+        "created_at": "2012-01-13T13:36:56Z",
+        "updated_at": "2012-01-13T13:36:56Z",
+        "name": "Account 1",
+        "is_public": true,
+        "users": [
+
+        ],
+        "contacts": [
+
+        ],
+        "campaigns": [
+
+        ],
+        "avatar": null
       }
       ```
       ]]>
@@ -106,13 +103,11 @@
 
       ### Parameters
 
-      Set the `user_api_key` to a user in that account's api key.
-
       ```javascript
       {
         "developer_api_key": "foo",
         "user_api_key": "bar",
-        "accounts": {
+        "account": {
           "name": "New Name!"
           "public": false
         }

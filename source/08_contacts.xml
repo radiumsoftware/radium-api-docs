@@ -178,6 +178,9 @@
 
         <dt>user</dt>
         <dd>ID for the user managing this contact</dd>
+
+        <dt>avatar</dt>
+        <dd>See avatar section</dd>
       </dl>
 
       ### Email Addresses, Phone Numbers, & Fields
@@ -313,9 +316,9 @@
           "activities": [
 
           ],
-          "user": 458
+          "user": 458,
+          "avatar": null
         }
-
         ```
         ]]>
       </docs>

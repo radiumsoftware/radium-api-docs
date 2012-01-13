@@ -24,9 +24,8 @@
   <section title="Permissions & Routes">
     <docs>
       <![CDATA[
-      * `GET /users`: Anyon
-      * `POST /users`: Admins only
-      * `GET /users/:id`: Anyone
+      * `GET /users`: All users
+      * `GET /users/:id`: All users
       * `PUT /users/:id`: Yourself, or anyone if you're an admin
       * `DELETE /users/:id`: Admins only
       ]]>
@@ -104,6 +103,9 @@
 
         <dt>activities</dt>
         <dd>IDs for every activity in this user's feed</dd>
+
+        <dt>avatar</dt>
+        <dd>See avatar section</dd>
       </dl>
       ]]>
     </docs>
@@ -130,23 +132,27 @@
         "notes": [183,81]
         "phone_calls": [57,85],
         "messages": [1,3,5],
-        "activities": [237, 82347, 123847]
+        "activities": [237, 82347, 123847],
+        "avatar": null
       }
       ```
       ]]>
     </reference>
   </section>
-  <section title="Creating Users">
-    <reference title="Create a User">
+  <section title="Updating Users">
+    <reference title="Update a User">
       <![CDATA[
-      `POST https://api.radiumcrm.com/accounts/:account_id/users
+      `POST https://api.radiumcrm.com/users/1
 
       ### Parameters
 
       ```javascript
       {
-        "email": "example@example.com",
-        "name": "Adam Hawkins"
+        "user_api_key": "foo",
+        "developer_api_key": "bar",
+        "user" {
+          "email": "example@example.com",
+        }
       }
       ```
       ]]>
