@@ -100,15 +100,19 @@
       in a different time zone if you want.
 
       Valid formats:
+
       * `YYYY-MM-DDTHH:MM:SSZ` (Z for UTC)
       * `YYYY-MM-DDTHH:MM:SS-DD:DD`
       * `YYYY-MM-DDTHH:MM:SS+DD:DD`
 
+      The `D` after the + or - mean a digit. You can indicate the UTC
+      offset this way.
+
       Examples:
 
       * `2011-11-22T13:55:32Z`
-      * `2011-11-22T13:55:32-08:00`
-      * `2011-11-22T13:55:32+02:00`
+      * `2011-11-22T13:55:32-08:00` (San Francisco Time)
+      * `2011-11-22T13:55:32+02:00` (Helsinki Time)
       ]]>
     </docs>
   </section>
