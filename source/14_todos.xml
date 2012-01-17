@@ -8,6 +8,26 @@
       depending on what the todo is about. Todos can have attachments
       and comments. They may also have reminders. Todos also represent
       an item on a call list. All in All, todos are the workhorse.
+
+      There are three different types of todos:
+
+      1. General todos - Assigned to a user (optionally associated with other records like Deals or Contacts)
+      2. Calls - Associated with a Contact (optionally associated with a specific call list) 
+      3. Support Requests - Used for support forms
+
+      There are two main associations: user and reference. Todos 
+      can be associated with most things in the system. Todos are about (reference)
+      something and assigned to a someone (user). Setting the `user` association
+      will put that todo on that person's list. All the other objects are the
+      `reference`. Example a `Contact` may have it's own todo list. These are all
+      the todos are about them but may be assigned to many different users.
+
+      A todo may also represent a person on someone's call list. In this case,
+      the todo's kind is `call` and the `call_list` will be present. This individual
+      call can be reassigned and tracked just like all other todos.
+      Setting the call list is optional.
+
+      Todo's may also be associated with campaigns. Setting the campaign is optional.
       ]]>
     </docs>
   </section>
@@ -40,7 +60,10 @@
         </dd>
 
         <dt>description</dt>
-        <dd>Text describing what todo</dd>
+        <dd>
+          <strong>Required for &qout;general&quot, and &quot;support&quot; todos</strong>
+          Text describing what todo
+        </dd>
 
         <dt>finish_by</dt>
         <dd>Time this todo should be done by</dd>
@@ -91,6 +114,82 @@
         "user": 468
       }
       ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Create a Todo">
+      <![CDATA[
+        `POST https://api.radiumcrm.com/todos`
+
+        ```javascript
+        {
+          "developer_api_key": "foo",
+          "user_api_key": "bar",
+          "todo": {
+            "kind": "general",
+            "description": "Finish programming radium",
+            "finish_by": "2011-12-22T15:06:27Z"
+          }
+        }
+        ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Add to a User's Todo List">
+      <![CDATA[
+        `POST https://api.radiumcrm.com/todos`
+
+        ```javascript
+        {
+          "developer_api_key": "foo",
+          "user_api_key": "bar",
+          "todo": {
+            "kind": "general",
+            "description": "Finish programming radium",
+            "finish_by": "2011-12-22T15:06:27Z",
+            "user_id": 5
+          }
+        }
+        ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Add a Call to Someone to Your Todo List">
+      <![CDATA[
+        `POST https://api.radiumcrm.com/contacts/5/todos`
+
+        ```javascript
+        {
+          "developer_api_key": "foo",
+          "user_api_key": "bar",
+          "todo": {
+            "kind": "call",
+            "finish_by": "2011-12-22T15:06:27Z"
+          }
+        }
+        ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Add Someone to Specific a Call List">
+      <![CDATA[
+        `POST https://api.radiumcrm.com/contacts/5/todos`
+
+        ```javascript
+        {
+          "developer_api_key": "foo",
+          "user_api_key": "bar",
+          "todo": {
+            "kind": "call",
+            "finish_by": "2011-12-22T15:06:27Z",
+            "call_list_id": 2
+          }
+        }
+        ```
       ]]>
     </reference>
   </section>

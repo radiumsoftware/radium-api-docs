@@ -3590,6 +3590,28 @@ depending on what the todo is about. Todos can have attachments
 and comments. They may also have reminders. Todos also represent
 an item on a call list. All in All, todos are the workhorse.</p>
 
+<p>There are three different types of todos:</p>
+
+<ol>
+<li>General todos - Assigned to a user (optionally associated with other records like Deals or Contacts)</li>
+<li>Calls - Associated with a Contact (optionally associated with a specific call list) </li>
+<li>Support Requests - Used for support forms</li>
+</ol>
+
+<p>There are two main associations: user and reference. Todos 
+can be associated with most things in the system. Todos are about (reference)
+something and assigned to a someone (user). Setting the <code>user</code> association
+will put that todo on that person&#39;s list. All the other objects are the
+<code>reference</code>. Example a <code>Contact</code> may have it&#39;s own todo list. These are all
+the todos are about them but may be assigned to many different users.</p>
+
+<p>A todo may also represent a person on someone&#39;s call list. In this case,
+the todo&#39;s kind is <code>call</code> and the <code>call_list</code> will be present. This individual
+call can be reassigned and tracked just like all other todos.
+Setting the call list is optional.</p>
+
+<p>Todo&#39;s may also be associated with campaigns. Setting the campaign is optional.</p>
+
             </td>
             <td class="code">
 
@@ -3631,7 +3653,10 @@ an item on a call list. All in All, todos are the workhorse.</p>
   </dd>
 
   <dt>description</dt>
-  <dd>Text describing what todo</dd>
+  <dd>
+    <strong>Required for &qout;general&quot, and &quot;support&quot; todos</strong>
+    Text describing what todo
+  </dd>
 
   <dt>finish_by</dt>
   <dd>Time this todo should be done by</dd>
@@ -3679,6 +3704,102 @@ an item on a call list. All in All, todos are the workhorse.</p>
 
   ],
   &quot;user&quot;: 468
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-create-a-todo">Create a Todo</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;todos</code></p>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;todo&quot;: {
+    &quot;kind&quot;: &quot;general&quot;,
+    &quot;description&quot;: &quot;Finish programming radium&quot;,
+    &quot;finish_by&quot;: &quot;2011-12-22T15:06:27Z&quot;
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-add-to-a-user-s-todo-list">Add to a User's Todo List</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;todos</code></p>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;todo&quot;: {
+    &quot;kind&quot;: &quot;general&quot;,
+    &quot;description&quot;: &quot;Finish programming radium&quot;,
+    &quot;finish_by&quot;: &quot;2011-12-22T15:06:27Z&quot;,
+    &quot;user_id&quot;: 5
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-add-a-call-to-someone-to-your-todo-list">Add a Call to Someone to Your Todo List</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;contacts&#47;5&#47;todos</code></p>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;todo&quot;: {
+    &quot;kind&quot;: &quot;call&quot;,
+    &quot;finish_by&quot;: &quot;2011-12-22T15:06:27Z&quot;
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-add-someone-to-specific-a-call-list">Add Someone to Specific a Call List</h2>
+                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;contacts&#47;5&#47;todos</code></p>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;todo&quot;: {
+    &quot;kind&quot;: &quot;call&quot;,
+    &quot;finish_by&quot;: &quot;2011-12-22T15:06:27Z&quot;,
+    &quot;call_list_id&quot;: 2
+  }
 }
 </code></pre>
 
