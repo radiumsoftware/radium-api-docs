@@ -597,6 +597,14 @@ for that specific resource. </p>
 <p>Here is an example. Users are associated with many contacts. When you retrieve a user it will
 contain the id&#39;s of all the associated contacts so you <em>may</em> retrieve them if you like.</p>
 
+<p>You have write access to certain associations. If the association is one-to-one, you can set 
+it by sending an <code>association_name_id</code> parameter. For example, a contact is associated with a user.
+You can change this association by sending <code>user_id</code>. The principle is the same for one-to-many,
+except you send an <code>_ids</code> paramter. For example, you can change the contacts in a group by 
+sending <code>contact_ids</code>. Note that you assign the entire set when sending <code>contact_ids</code>. This is
+the same for all one-to-many associations. If you want to add one to the set then you must
+send an array with the new id included.</p>
+
             </td>
             <td class="code">
 
@@ -4095,7 +4103,7 @@ using our VOIP system.</p>
 <li><code>POST &#47;call_lists</code></li>
 <li><code>GET &#47;call_lists</code></li>
 <li><code>GET &#47;call_lists&#47;:id</code></li>
-<li>`PUT &#47;call_lists&#47;:id&#39;</li>
+<li><code>PUT &#47;call_lists&#47;:id</code></li>
 <li><code>DELETE &#47;call_lists&#47;:id</code></li>
 </ul>
 
