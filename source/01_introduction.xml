@@ -294,6 +294,14 @@
 
       Here is an example. Users are associated with many contacts. When you retrieve a user it will
       contain the id's of all the associated contacts so you _may_ retrieve them if you like.
+
+      You have write access to certain associations. If the association is one-to-one, you can set 
+      it by sending an `association_name_id` parameter. For example, a contact is associated with a user.
+      You can change this association by sending `user_id`. The principle is the same for one-to-many,
+      except you send an `_ids` paramter. For example, you can change the contacts in a group by 
+      sending `contact_ids`. Note that you assign the entire set when sending `contact_ids`. This is
+      the same for all one-to-many associations. If you want to add one to the set then you must
+      send an array with the new id included.
       ]]>
     </docs>
   </section>
