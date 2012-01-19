@@ -35,6 +35,8 @@
   <section title="Attributes">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>text</dt>
         <dd>
@@ -44,9 +46,14 @@
 
         <dt>attachments</dt>
         <dd>All the attachments for this comment. See the attachment sections for the format.</dd>
+      </dl>
 
+      ### Read Only Attributues
+
+      <dl>
         <dt>user</dt>
         <dd>ID for the user who wrote the comment</dd>
+      </dl>
       ]]>
     </docs>
     <reference title="Comment Format">

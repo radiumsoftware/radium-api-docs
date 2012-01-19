@@ -30,13 +30,19 @@
   <section title="Response Format">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>title</dt>
         <dd>The title for the announcment.</dd>
 
         <dt>message</dt>
         <dd>The text for the announcement. Can be as long as required.</dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dl>
         <dt>comments</dt>
         <dd>All the comments for this announcement.</dd>
 

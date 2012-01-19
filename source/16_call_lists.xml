@@ -22,7 +22,7 @@
       * `POST /call_lists`
       * `GET /call_lists`
       * `GET /call_lists/:id`
-      * `PUT /call_lists/:id'
+      * `PUT /call_lists/:id`
       * `DELETE /call_lists/:id`
 
       ### Scoping
@@ -39,6 +39,8 @@
   <section title="Format">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>description</dt>
         <dd>Text descibing the call list</dd>
@@ -51,7 +53,11 @@
 
         <dt>campaign</dt>
         <dd>ID for the associated campaign</dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dl>
         <dt>todos</dt>
         <dd>IDs for all the todos</dd>
 

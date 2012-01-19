@@ -30,10 +30,16 @@
   <section>
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>state</dt>
         <dd><code>pending</code>, <code>cancelled</code>, or <code>rescheduled</code></dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dl>
         <dt>hash_key</dt>
         <dd>GUID for this invitation. Only given if you own this invitation</dd>
 

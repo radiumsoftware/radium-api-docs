@@ -21,7 +21,12 @@
   <section title="Format">
     <docs>
       <![CDATA[
-      Notes only have one attribute: `text`
+      ### Changable Attributes
+
+      <dl>
+        <dt>text</dt>
+        <dd><strong>Required</strong></dd>
+      </dl>
       ]]>
     </docs>
     <reference title="Note Format">

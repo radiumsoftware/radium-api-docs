@@ -30,6 +30,8 @@
       You can specify `accepted_values` if you'd like to 
       constrain possible inputs.
 
+      ### Changable Attributes
+
       <dl>
         <dt>name</dt>
         <dd><strong>Required</strong></dd>

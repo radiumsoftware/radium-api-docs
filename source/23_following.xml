@@ -48,6 +48,8 @@
       As mentioned earlier, following requests will be automatically
       approved if the followable resource is public.
 
+      ### Read Only Attributes
+
       <dl>
         <dt>approved</dt>
         <dd>Name says it all</dd>

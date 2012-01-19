@@ -26,6 +26,8 @@
   <section title="Account Format">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>name</dt>
         <dd><strong>Required</strong></dd>
@@ -43,6 +45,13 @@
           <em>Default:</em> True
         </dd>
 
+        <dt>avatar</dt>
+        <dd>See avatar section</dd>
+      </dl>
+
+      ### Read Only Attributes
+
+      <dl>
         <dt>users</dt>
         <dd>IDs of all the users in this account</dd>
 
@@ -51,9 +60,6 @@
 
         <dt>campaigns</dt>
         <dd>IDs of all the campaigns in this account</dd>
-
-        <dt>avatar</dt>
-        <dd>See avatar section</dd>
       </dl>
       ]]>
     </docs>

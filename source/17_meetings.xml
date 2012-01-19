@@ -67,6 +67,8 @@
   <section title="Format">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>topic</dt>
         <dd>
@@ -90,7 +92,11 @@
         <dd>Can be an address, can be anything. 
           Example: <code>the office</code>, or <code>123 Example St.</code>
         </dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dl>
         <dt>user</dt>
         <dd>ID for the user managing this meeting</dd>
 

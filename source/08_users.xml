@@ -34,15 +34,11 @@
   <section title="Format">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>id</dt>
         <dd>ID for this record. Use this if you want to access it again.</dd>
-
-        <dt>created_at</dt>
-        <dd>Timestamp for when this record was added to the DB.</dd>
-
-        <dt>updated_at</dt>
-        <dd>Timestamp for when this record was last updated in the DB.</dd>
 
         <dt>name</dt>
         <dd>The full name </dd>
@@ -59,6 +55,13 @@
         <dt>password_confirmation</dt>
         <dd><strong><em>Required</em></strong> if `password` has been changed.</dd>
 
+        <dt>avatar</dt>
+        <dd>See avatar section</dd>
+      </dl>
+
+      ### Read Only Attributes
+
+      <dl>
         <dt>api_key</dt>
         <dd>
           Secret key used to grant access to the API.
@@ -104,8 +107,11 @@
         <dt>activities</dt>
         <dd>IDs for every activity in this user's feed</dd>
 
-        <dt>avatar</dt>
-        <dd>See avatar section</dd>
+        <dt>created_at</dt>
+        <dd>Timestamp for when this record was added to the DB.</dd>
+
+        <dt>updated_at</dt>
+        <dd>Timestamp for when this record was last updated in the DB.</dd>
       </dl>
       ]]>
     </docs>

@@ -37,6 +37,8 @@
   <section title="Attributes">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>name</dt>
         <dd>
@@ -79,7 +81,11 @@
           However, if you want to add one person, you will need to add the new id
           to existing array.
         </dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dl>
         <dt>todos</dt>
         <dd>All the todos that are associated with this campaign</dd>
 
@@ -225,8 +231,6 @@
         "developer_api_key": "foo",
         "user_api_key": "bar",
         "campaign": {
-          "currency": "USD",
-          "target": "15000.0",
           "user_id": 398
         }
       }

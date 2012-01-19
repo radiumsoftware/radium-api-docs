@@ -38,6 +38,8 @@
       Groups aggregate all data. They have fields. Refer to the fields
       section for more information.
 
+      ### Changable Attributes
+
       <dl>
         <dt>name</dt>
         <dd><strong>Required</strong></dd>
@@ -57,6 +59,16 @@
         <dt>contacts</dt>
         <dd>IDs of all the contacts</dd>
 
+        <dt>user</dt>
+        <dd>ID of managing user</dd>
+
+        <dt>avatar</dt>
+        <dd>ID of managing user</dd>
+      </dl>
+
+      ### Read Only Attributes
+
+      <dl>
         <dt>todos</dt>
         <dd>IDs of all the todos</dd>
 
@@ -83,19 +95,7 @@
 
         <dt>activites</dt>
         <dd>IDs for all the activities</dd>
-
-        <dt>user</dt>
-        <dd>ID of managing user</dd>
-
-        <dt>avatar</dt>
-        <dd>ID of managing user</dd>
       </dl>
-
-      ### Changing Associations
-
-      You can change the contacts group by setting `contact_ids`. 
-
-      You can change the managing user by setting `user_id`.
       ]]>
     </docs>
     <reference title="Group Format">

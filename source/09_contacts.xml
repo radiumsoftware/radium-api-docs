@@ -55,6 +55,8 @@
       that your application will need any extra information right away so it is given 
       to you.
 
+      ### Changable Attributes
+
       <dl>
         <dt>name</dt>
         <dd>The full name of this contact</dd>
@@ -146,9 +148,19 @@
           </dl>
         </dd>
 
+        <dt>avatar</dt>
+        <dd>See avatar section</dd>
+
         <dt>groups</dt>
         <dd>IDs for all the groups</dd>
 
+        <dt>user</dt>
+        <dd>ID for the user managing this contact</dd>
+      </dl>
+
+      ### Read Only Attributes
+
+      <dl>
         <dt>deals</dt>
         <dd>IDs for all the deals</dd>
 
@@ -175,12 +187,6 @@
 
         <dt>activities</dt>
         <dd>IDs for all the activities</dd>
-
-        <dt>user</dt>
-        <dd>ID for the user managing this contact</dd>
-
-        <dt>avatar</dt>
-        <dd>See avatar section</dd>
       </dl>
 
       ### Email Addresses, Phone Numbers, & Fields

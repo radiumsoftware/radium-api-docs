@@ -50,6 +50,8 @@
   <section title="Format">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>kind</dt>
         <dd>
@@ -61,19 +63,26 @@
 
         <dt>description</dt>
         <dd>
-          <strong>Required for &qout;general&quot, and &quot;support&quot; todos</strong>
+          <strong>Required</strong> for <code>general</code>, and <code>support</code> todos</strong>
           Text describing what todo
         </dd>
 
         <dt>finish_by</dt>
         <dd>Time this todo should be done by</dd>
 
+        <dt>user</dt>
+        <dd>ID of the responsible user</dd>
+
         <dt>call_list</dt>
         <dd>ID of call list</dd>
 
         <dt>campaign</dt>
         <dd>ID of associated campaign</dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dl>
         <dt>reference</dt>
         <dd>ID & type of associated resource</dd>
 
@@ -83,13 +92,7 @@
         <dt>comments</dt>
         <dd>See comments section</dd>
 
-        <dt>user</dt>
-        <dd>ID of the responsible user</dd>
       </dl>
-
-      ### Changing Associations
-
-      You can change the user by setting the `user_id` attribute.
       ]]>
     </docs>
     <reference title="Todo Format">

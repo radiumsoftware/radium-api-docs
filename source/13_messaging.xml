@@ -36,18 +36,38 @@
   <section title="Email">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
+        <dt>to</dt>
+        <dd>
+          <strong>Required</strong> Array of email address to mail to
+        </dd>
+
+        <dt>cc</dt>
+        <dd>Array of email address to cc</dd>
+
+        <dt>bcc</dt>
+        <dd>Array of email address to bcc</dd>
+
         <dt>subject</dt>
         <dd>subject of the email</dd>
 
         <dt>message</dt>
         <dd>The full body of the email</dd>
 
-        <dt>sent_at</dt>
-        <dd>Time stamp for when the message was sent</dd>
-
         <dt>html</dt>
         <dd>Content of the html part if available</dd>
+
+        <dt>attachments</dt>
+        <dd>See the attachments section</dd>
+      </dl>
+
+      ### Read Only Attributes
+
+      <dl>
+        <dt>sent_at</dt>
+        <dd>Time stamp for when the message was sent</dd>
 
         <dt>type</dt>
         <dd>Type of message</dd>
@@ -63,9 +83,6 @@
 
         <dt>comments</dt>
         <dd>See the comments section</dd>
-
-        <dt>attachments</dt>
-        <dd>See the attachments section</dd>
 
         <dt>todos</dt>
         <dd>IDs of all the todos</dd>
@@ -111,10 +128,19 @@
   <section title="SMS">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
+        <dt>to</dt>
+        <dd><strong>Required</strong> Array of international numbers to deliver to</dd>
+
         <dt>message</dt>
         <dd>the content of the sms</dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dt>
         <dt>sent_at</dt>
         <dd>Time stamp for when the message was sent</dd>
 
@@ -172,10 +198,22 @@
   <section title="IM">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
+        <dt>to</dt>
+        <dd><strong>Required</strong> Array of user ID's to deliver to</dd>
+
         <dt>message</dt>
         <dd><strong>Required</strong></dd>
 
+        <dt>attachments</dt>
+        <dd>See the attachments section</dd>
+      </dl>
+
+      ### Read Only Attributes
+
+      <dt>
         <dt>sent_at</dt>
         <dd>Time stamp for when the message was sent</dd>
 
@@ -191,15 +229,12 @@
         <dt>comments</dt>
         <dd>See the comments section</dd>
 
-        <dt>attachments</dt>
-        <dd>See the attachments section</dd>
-
         <dt>todos</dt>
         <dd>IDs of all the todos</dd>
       </dl>
       ]]>
     </docs>
-    <reference title="Email Format">
+    <reference title="IM Format">
       <![CDATA[
       ```javascript
       {
@@ -235,32 +270,6 @@
       to associate the email with the correc records.
 
       This is usage based billing request.
-
-      <dl>
-        <dt>to</dt>
-        <dd>
-          <strong>Required</strong><br />
-          Array of email addresses to mail to
-        </dd>
-
-        <dt>cc</dt>
-        <dd>Array of email addresses to mail cc</dd>
-
-        <dt>bcc</dt>
-        <dd>Array of email addresses to mail cc</dd>
-
-        <dt>subject</dt>
-        <dd>Subject of the email</dd>
-
-        <dt>message</dt>
-        <dd>Full body of the email</dd>
-
-        <dt>html</dt>
-        <dd>Include an HTML part</dd>
-
-        <dt>attachments_attributes</dt>
-        <dd>See attachments section</dd>
-      </dl>
       ]]>
     </docs>
     <reference title="Send an Email">
@@ -288,17 +297,6 @@
       You must supply the phone numbers in international format.
 
       This is usage based billing request.
-
-      <dl>
-        <dt>to</dt>
-        <dd>
-          <strong>Required</strong><br />
-          Array of **internationally** formated phones numbers to deliver to
-        </dd>
-
-        <dt>message</dt>
-        <dd><strong>Required</strong><dd>
-      </dl>
       ]]>
     </docs>
     <reference title="Send a SMS">
@@ -307,7 +305,7 @@
 
       ```javascript
       {
-        "to": ["+12348123894"]
+        "to": ["+12348123894"],
         "message": "How's it going?"
       }
       ```
@@ -318,20 +316,6 @@
     <docs>
       <![CDATA[
       IM's can only be sent to other users.
-
-      <dl>
-        <dt>to</dt>
-        <dd>
-          <strong>Required</strong><br />
-          Array of user IDs to deliver to
-        </dd>
-
-        <dt>message</dt>
-        <dd><strong>Required</strong></br>
-
-        <dt>attachments_attributes</dt>
-        <dd>See attachments section</dd>
-      </dl>
       ]]>
     </docs>
     <reference title="Send an IM">
@@ -401,7 +385,7 @@
       {
         "developer_api_key": "foo",
         "user_api_key": "bar",
-        "phone_calls": [
+        "sms": [
           {
             "number": "+2134829384",
             "message": "Hey man",

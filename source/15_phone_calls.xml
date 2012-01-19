@@ -33,6 +33,8 @@
       Phone calls can be to/from users or contacts. They also
       have comments and todos.
 
+      ### Changable Attributes
+
       <dl>
         <dt>outcome</dt>
         <dd>
@@ -42,7 +44,11 @@
           <code>unanswered</code>,
           <code>follow_up_required</code>, or blank.
         </dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dl>
         <dt>duration</dt>
         <dd>The length of the call in seconds</dd>
 

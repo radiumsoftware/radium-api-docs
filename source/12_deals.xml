@@ -43,6 +43,8 @@
   <section title="Format">
     <docs>
       <![CDATA[
+      ### Changable Attributes
+
       <dl>
         <dt>description</dt>
         <dd>
@@ -115,7 +117,11 @@
           <strong>Required</strong><br />
           ID of the user managing this deal
         </dd>
+      </dl>
 
+      ### Read Only Attributes
+
+      <dl>
         <dt>todos</dt>
         <dd>IDs of all the todos</dd>
 
@@ -128,12 +134,6 @@
         <dt>activities</dt>
         <dd>ID's of all the activities in the feed</dd>
       </dl>
-
-      ### Specifying Assocations
-
-      You can change the `user` and `contact` associations by passing
-      a `user_id` or `contact_id` attribute.
-
       ]]>
     </docs>
     <reference title="Deal Format">
