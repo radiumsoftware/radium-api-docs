@@ -40,6 +40,8 @@
       * `POST /phone_calls/:id/todos`
       * `POST /meetings/:id/todos`
       * `POST /deals/:id/todos`
+      * `GET /contacts/:id/todos`
+      * `GET /users/:id/todos`
       * `GET /todos`
       * `GET /todos/:id`
       * `PUT /todos/:id`
@@ -68,7 +70,10 @@
         </dd>
 
         <dt>finish_by</dt>
-        <dd>Time this todo should be done by</dd>
+        <dd><strong>Required</strong>Time this todo should be done by</dd>
+
+        <dt>finished</dt>
+        <dd><strong>Required</strong>Is the todo finished or not.</dd>
 
         <dt>user</dt>
         <dd>ID of the responsible user</dd>
@@ -105,6 +110,7 @@
         "kind": "general",
         "description": "Finish programming radium",
         "finish_by": "2011-12-22T15:06:27Z",
+        "finished": false,
         "campaign": 3,
         "call_list": 5
         "reference": null,
@@ -190,6 +196,23 @@
             "kind": "call",
             "finish_by": "2011-12-22T15:06:27Z",
             "call_list_id": 2
+          }
+        }
+        ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Finish a Todo">
+      <![CDATA[
+        `PUT https://api.radiumcrm.com/todos/5`
+
+        ```javascript
+        {
+          "developer_api_key": "foo",
+          "user_api_key": "bar",
+          "todo": {
+            "finished": true
           }
         }
         ```

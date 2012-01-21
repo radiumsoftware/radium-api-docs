@@ -759,155 +759,163 @@ route. This associates the new todo with the specified contact.</p>
             </td>
             <td class="code">
                 <h2 id="r-routes">Routes</h2>
-                <pre><code>GET    &#47;accounts&#47;:id
-PUT    &#47;accounts&#47;:id
+                <pre><code>GET    &#47;accounts&#47;:id&#47;join                                
+GET    &#47;accounts&#47;:id                                     
+PUT    &#47;accounts&#47;:id                                     
 
-POST   &#47;users&#47;:user_id&#47;follow
-GET    &#47;users&#47;:user_id&#47;feed
-GET    &#47;users
-GET    &#47;users&#47;:id
-PUT    &#47;users&#47;:id
-DELETE &#47;users&#47;:id
+POST   &#47;users&#47;:user_id&#47;follow                            
+GET    &#47;users&#47;:user_id&#47;feed                              
+GET    &#47;users&#47;:user_id&#47;todos                             
+GET    &#47;users                                            
+GET    &#47;users&#47;:id                                        
+PUT    &#47;users&#47;:id                                        
+DELETE &#47;users&#47;:id                                        
 
-POST   &#47;contacts&#47;:contact_id&#47;deals
-POST   &#47;contacts&#47;:contact_id&#47;notes
-POST   &#47;contacts&#47;:contact_id&#47;todos
-POST   &#47;contacts&#47;:contact_id&#47;follow
-GET    &#47;contacts&#47;:contact_id&#47;feed
-GET    &#47;contacts
-POST   &#47;contacts
-GET    &#47;contacts&#47;:id
-PUT    &#47;contacts&#47;:id
-DELETE &#47;contacts&#47;:id
+POST   &#47;contacts&#47;:contact_id&#47;deals                       
+POST   &#47;contacts&#47;:contact_id&#47;notes                       
+GET    &#47;contacts&#47;:contact_id&#47;todos                       
+POST   &#47;contacts&#47;:contact_id&#47;todos                       
+POST   &#47;contacts&#47;:contact_id&#47;follow                      
+GET    &#47;contacts&#47;:contact_id&#47;feed                        
+GET    &#47;contacts                                         
+POST   &#47;contacts                                         
+GET    &#47;contacts&#47;:id                                     
+PUT    &#47;contacts&#47;:id                                     
+DELETE &#47;contacts&#47;:id                                     
 
-POST   &#47;todos&#47;:todo_id&#47;comments
-POST   &#47;todos&#47;:todo_id&#47;reminders
-GET    &#47;todos
-POST   &#47;todos
-GET    &#47;todos&#47;:id
-PUT    &#47;todos&#47;:id
-DELETE &#47;todos&#47;:id
+POST   &#47;todos&#47;:todo_id&#47;comments                          
+POST   &#47;todos&#47;:todo_id&#47;reminders                         
+GET    &#47;todos                                            
+POST   &#47;todos                                            
+GET    &#47;todos&#47;:id                                        
+PUT    &#47;todos&#47;:id                                        
+DELETE &#47;todos&#47;:id                                        
 
-POST   &#47;deals&#47;:deal_id&#47;comments
-POST   &#47;deals&#47;:deal_id&#47;todos
-POST   &#47;deals&#47;:deal_id&#47;follow
-GET    &#47;deals&#47;:deal_id&#47;feed
-GET    &#47;deals
-GET    &#47;deals&#47;:id
-PUT    &#47;deals&#47;:id
-DELETE &#47;deals&#47;:id
+POST   &#47;deals&#47;:deal_id&#47;comments                          
+POST   &#47;deals&#47;:deal_id&#47;todos                             
+POST   &#47;deals&#47;:deal_id&#47;follow                            
+GET    &#47;deals&#47;:deal_id&#47;feed                              
+GET    &#47;deals                                            
+GET    &#47;deals&#47;:id                                        
+PUT    &#47;deals&#47;:id                                        
+DELETE &#47;deals&#47;:id                                        
 
-POST   &#47;groups&#47;:group_id&#47;todos
-POST   &#47;groups&#47;:group_id&#47;follow
-GET    &#47;groups&#47;:group_id&#47;feed
-GET    &#47;groups
-POST   &#47;groups
-GET    &#47;groups&#47;:id
-PUT    &#47;groups&#47;:id
-DELETE &#47;groups&#47;:id
+POST   &#47;groups&#47;:group_id&#47;todos                           
+POST   &#47;groups&#47;:group_id&#47;follow                          
+GET    &#47;groups&#47;:group_id&#47;feed                            
+GET    &#47;groups                                           
+POST   &#47;groups                                           
+GET    &#47;groups&#47;:id                                       
+PUT    &#47;groups&#47;:id                                       
+DELETE &#47;groups&#47;:id                                       
 
-POST   &#47;announcements&#47;:announcement_id&#47;comments
-GET    &#47;announcements
-POST   &#47;announcements
-GET    &#47;announcements&#47;:id
-PUT    &#47;announcements&#47;:id
-DELETE &#47;announcements&#47;:id
+POST   &#47;announcements&#47;:announcement_id&#47;comments          
+GET    &#47;announcements                                    
+POST   &#47;announcements                                    
+GET    &#47;announcements&#47;:id                                
+PUT    &#47;announcements&#47;:id                                
+DELETE &#47;announcements&#47;:id                                
 
-POST   &#47;emails&#47;:email_id&#47;comments
-POST   &#47;emails&#47;:email_id&#47;todos
-GET    &#47;emails
-POST   &#47;emails
-GET    &#47;emails&#47;:id
-PUT    &#47;emails&#47;:id
-DELETE &#47;emails&#47;:id
+POST   &#47;emails&#47;:email_id&#47;comments                        
+POST   &#47;emails&#47;:email_id&#47;todos                           
+GET    &#47;emails                                           
+POST   &#47;emails                                           
+GET    &#47;emails&#47;:id                                       
+PUT    &#47;emails&#47;:id                                       
+DELETE &#47;emails&#47;:id                                       
 
-POST   &#47;sms&#47;:sms_id&#47;comments
-POST   &#47;sms&#47;:sms_id&#47;todos
-POST   &#47;sms&#47;import
-GET    &#47;sms
-POST   &#47;sms
-GET    &#47;sms&#47;:id
-PUT    &#47;sms&#47;:id
-DELETE &#47;sms&#47;:id
+POST   &#47;sms&#47;:sms_id&#47;comments                             
+POST   &#47;sms&#47;:sms_id&#47;todos                                
+POST   &#47;sms&#47;import                                       
+GET    &#47;sms                                              
+POST   &#47;sms                                              
+GET    &#47;sms&#47;:id                                          
+PUT    &#47;sms&#47;:id                                          
+DELETE &#47;sms&#47;:id                                          
 
-POST   &#47;ims&#47;:im_id&#47;comments
-GET    &#47;ims
-POST   &#47;ims
-GET    &#47;ims&#47;:id
-PUT    &#47;ims&#47;:id
-DELETE &#47;ims&#47;:id
+POST   &#47;ims&#47;:im_id&#47;comments                              
+GET    &#47;ims                                              
+POST   &#47;ims                                              
+GET    &#47;ims&#47;:id                                          
+PUT    &#47;ims&#47;:id                                          
+DELETE &#47;ims&#47;:id                                          
 
-POST   &#47;meetings&#47;:meeting_id&#47;comments
-POST   &#47;meetings&#47;:meeting_id&#47;todos
-POST   &#47;meetings&#47;:meeting_id&#47;reminders
-PUT    &#47;meetings&#47;:id&#47;reschedule
-PUT    &#47;meetings&#47;:id&#47;cancel
-GET    &#47;meetings
-POST   &#47;meetings
-GET    &#47;meetings&#47;:id
-PUT    &#47;meetings&#47;:id
-DELETE &#47;meetings&#47;:id
+POST   &#47;meetings&#47;:meeting_id&#47;comments                    
+POST   &#47;meetings&#47;:meeting_id&#47;todos                       
+POST   &#47;meetings&#47;:meeting_id&#47;reminders                   
+PUT    &#47;meetings&#47;:id&#47;reschedule                          
+PUT    &#47;meetings&#47;:id&#47;cancel                              
+GET    &#47;meetings                                         
+POST   &#47;meetings                                         
+GET    &#47;meetings&#47;:id                                     
+PUT    &#47;meetings&#47;:id                                     
+DELETE &#47;meetings&#47;:id                                     
 
-PUT    &#47;invitations&#47;:id&#47;confirm
-PUT    &#47;invitations&#47;:id&#47;reject
+PUT    &#47;invitations&#47;:id&#47;confirm                          
+PUT    &#47;invitations&#47;:id&#47;reject                           
 
-POST   &#47;phone_calls&#47;:phone_call_id&#47;todos
-POST   &#47;phone_calls&#47;:phone_call_id&#47;comments
-POST   &#47;phone_calls&#47;import
-GET    &#47;phone_calls
-GET    &#47;phone_calls&#47;:id
-PUT    &#47;phone_calls&#47;:id
-DELETE &#47;phone_calls&#47;:id
+POST   &#47;phone_calls&#47;:phone_call_id&#47;todos                 
+POST   &#47;phone_calls&#47;:phone_call_id&#47;comments              
+POST   &#47;phone_calls&#47;import                               
+GET    &#47;phone_calls                                      
+GET    &#47;phone_calls&#47;:id                                  
+PUT    &#47;phone_calls&#47;:id                                  
+DELETE &#47;phone_calls&#47;:id                                  
 
-POST   &#47;notes&#47;:note_id&#47;todos
-GET    &#47;notes
-GET    &#47;notes&#47;:id
-PUT    &#47;notes&#47;:id
-DELETE &#47;notes&#47;:id
+POST   &#47;notes&#47;:note_id&#47;todos                             
+GET    &#47;notes                                            
+GET    &#47;notes&#47;:id                                        
+PUT    &#47;notes&#47;:id                                        
+DELETE &#47;notes&#47;:id                                        
 
-GET    &#47;reminders
-POST   &#47;reminders
-GET    &#47;reminders&#47;:id
-PUT    &#47;reminders&#47;:id
-DELETE &#47;reminders&#47;:id
+GET    &#47;reminders                                        
+POST   &#47;reminders                                        
+GET    &#47;reminders&#47;:id                                    
+PUT    &#47;reminders&#47;:id                                    
+DELETE &#47;reminders&#47;:id                                    
 
-POST   &#47;campaigns&#47;:campaign_id&#47;follow
-POST   &#47;campaigns&#47;:campaign_id&#47;comments
-POST   &#47;campaigns&#47;:campaign_id&#47;notes
-POST   &#47;campaigns&#47;:campaign_id&#47;call_lists
-GET    &#47;campaigns&#47;:campaign_id&#47;feed
-GET    &#47;campaigns
-POST   &#47;campaigns
-GET    &#47;campaigns&#47;:id
-PUT    &#47;campaigns&#47;:id
-DELETE &#47;campaigns&#47;:id
+POST   &#47;campaigns&#47;:campaign_id&#47;follow                    
+POST   &#47;campaigns&#47;:campaign_id&#47;comments                  
+POST   &#47;campaigns&#47;:campaign_id&#47;notes                     
+POST   &#47;campaigns&#47;:campaign_id&#47;call_lists                
+GET    &#47;campaigns&#47;:campaign_id&#47;feed                      
+GET    &#47;campaigns                                        
+POST   &#47;campaigns                                        
+GET    &#47;campaigns&#47;:id                                    
+PUT    &#47;campaigns&#47;:id                                    
+DELETE &#47;campaigns&#47;:id                                    
 
-PUT    &#47;followings&#47;:id&#47;approve
-GET    &#47;followings
-POST   &#47;followings
-GET    &#47;followings&#47;:id
-PUT    &#47;followings&#47;:id
-DELETE &#47;followings&#47;:id
+PUT    &#47;followings&#47;:id&#47;approve                           
+GET    &#47;followings                                       
+POST   &#47;followings                                       
+GET    &#47;followings&#47;:id                                   
+PUT    &#47;followings&#47;:id                                   
+DELETE &#47;followings&#47;:id                                   
 
-GET    &#47;products
-POST   &#47;products
-GET    &#47;products&#47;:id
-PUT    &#47;products&#47;:id
-DELETE &#47;products&#47;:id
+GET    &#47;products                                         
+POST   &#47;products                                         
+GET    &#47;products&#47;:id                                     
+PUT    &#47;products&#47;:id                                     
+DELETE &#47;products&#47;:id                                     
 
-GET    &#47;call_lists
-GET    &#47;call_lists&#47;:id
-PUT    &#47;call_lists&#47;:id
-DELETE &#47;call_lists&#47;:id
+GET    &#47;call_lists                                       
+GET    &#47;call_lists&#47;:id                                   
+PUT    &#47;call_lists&#47;:id                                   
+DELETE &#47;call_lists&#47;:id                                   
 
-GET    &#47;comments
-POST   &#47;comments
-GET    &#47;comments&#47;:id
-DELETE &#47;comments&#47;:id
+GET    &#47;comments                                         
+POST   &#47;comments                                         
+GET    &#47;comments&#47;:id                                     
+DELETE &#47;comments&#47;:id                                     
 
-POST   &#47;bug
+POST   &#47;bug                                              
 
-POST   &#47;echo
+POST   &#47;echo                                             
+
+       &#47;auth&#47;:provider&#47;callback                          
+       &#47;auth&#47;failure                                     
+
+GET    &#47;requests&#47;:id    
 </code></pre>
 
 
@@ -3643,6 +3651,8 @@ Setting the call list is optional.</p>
 <li><code>POST &#47;phone_calls&#47;:id&#47;todos</code></li>
 <li><code>POST &#47;meetings&#47;:id&#47;todos</code></li>
 <li><code>POST &#47;deals&#47;:id&#47;todos</code></li>
+<li><code>GET &#47;contacts&#47;:id&#47;todos</code></li>
+<li><code>GET &#47;users&#47;:id&#47;todos</code></li>
 <li><code>GET &#47;todos</code></li>
 <li><code>GET &#47;todos&#47;:id</code></li>
 <li><code>PUT &#47;todos&#47;:id</code></li>
@@ -3676,7 +3686,10 @@ Setting the call list is optional.</p>
   </dd>
 
   <dt>finish_by</dt>
-  <dd>Time this todo should be done by</dd>
+  <dd><strong>Required</strong>Time this todo should be done by</dd>
+
+  <dt>finished</dt>
+  <dd><strong>Required</strong>Is the todo finished or not.</dd>
 
   <dt>user</dt>
   <dd>ID of the responsible user</dd>
@@ -3712,6 +3725,7 @@ Setting the call list is optional.</p>
   &quot;kind&quot;: &quot;general&quot;,
   &quot;description&quot;: &quot;Finish programming radium&quot;,
   &quot;finish_by&quot;: &quot;2011-12-22T15:06:27Z&quot;,
+  &quot;finished&quot;: false,
   &quot;campaign&quot;: 3,
   &quot;call_list&quot;: 5
   &quot;reference&quot;: null,
@@ -3817,6 +3831,28 @@ Setting the call list is optional.</p>
     &quot;kind&quot;: &quot;call&quot;,
     &quot;finish_by&quot;: &quot;2011-12-22T15:06:27Z&quot;,
     &quot;call_list_id&quot;: 2
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-finish-a-todo">Finish a Todo</h2>
+                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;todos&#47;5</code></p>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;todo&quot;: {
+    &quot;finished&quot;: true
   }
 }
 </code></pre>
