@@ -60,7 +60,8 @@
           <strong>Required</strong><br />
           One of: <code>call</code>,
           <code>general</code>,
-          <code>support</code>
+          <code>support</code><br/>
+          Default: <code>general</code>
         </dd>
 
         <dt>description</dt>
@@ -70,10 +71,16 @@
         </dd>
 
         <dt>finish_by</dt>
-        <dd><strong>Required</strong>Time this todo should be done by</dd>
+        <dd>
+          <strong>Required</strong><br/>
+          Time this todo should be done by
+        </dd>
 
         <dt>finished</dt>
-        <dd><strong>Required</strong>Is the todo finished or not.</dd>
+        <dd>
+          <strong>Required</strong><br/>
+          Is the todo finished or not. Default: <code>false</code>
+        </dd>
 
         <dt>user</dt>
         <dd>ID of the responsible user</dd>
