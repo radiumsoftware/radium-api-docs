@@ -218,6 +218,13 @@
             </ol>
           </section>
           <section>
+            <a class="header" href="#d-following">Following</a>
+            <ol>
+                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
+            </ol>
+          </section>
+          <section>
             <a class="header" href="#d-comments">Comments</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
@@ -225,10 +232,14 @@
             </ol>
           </section>
           <section>
-            <a class="header" href="#d-following">Following</a>
+            <a class="header" href="#d-statistics">Statistics</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
-                  <li class="sub-section"><a href="#s-format">Format</a></li>
+                  <li class="sub-section"><a href="#s-dashboard-statistics">Dashboard Statistics</a></li>
+                  <li class="sub-section"><a href="#s-deals-statistics">Deals Statistics</a></li>
+                  <li class="sub-section"><a href="#s-pipeline-statistics">Pipeline Statistics</a></li>
+                  <li class="sub-section"><a href="#s-coffee-cup-statistics">Coffee Cup Statistics</a></li>
+                  <li class="sub-section"><a href="#s-campaign-statistics">Campaign Statistics</a></li>
             </ol>
           </section>
           <section>
@@ -314,9 +325,9 @@ scenarios.</p>
 
 <ol>
 <li>Authentication by query string paramters. EX:
-<code>&#47;foo?developer_api_key=bar&amp;user_api_key=baz</code></li>
+<code>/foo?developer_api_key=bar&amp;user_api_key=baz</code></li>
 <li>HTTP authorization. EX:
-<code>https:&#47;&#47;developer_api_key@user_api_key:api.radiumcrm.com</code></li>
+<code>https://developer_api_key@user_api_key:api.radiumcrm.com</code></li>
 <li>Request Headers. EX <code>X-Radium-Developer-API-Key: foo</code></li>
 <li>Form body paramters.</li>
 </ol>
@@ -336,9 +347,9 @@ strategy is right for your application.</p>
               <p>The API is designed to work these formats:</p>
 
 <ol>
-<li><code>application&#47;json</code> <strong>RECOMMENDED</strong></li>
-<li><code>application&#47;x-www-form-urlencoded</code></li>
-<li><code>multipart&#47;form-data</code> (for uploading Attachments and other files)</li>
+<li><code>application/json</code> <strong>RECOMMENDED</strong></li>
+<li><code>application/x-www-form-urlencoded</code></li>
+<li><code>multipart/form-data</code> (for uploading Attachments and other files)</li>
 </ol>
 
 <p>Sending parameters as JSON encoded objects is the preferred and
@@ -406,7 +417,7 @@ offset this way.</p>
               <h2 id="s-phone-numbers">Phone Numbers</h2>
 
               <p>Phone numbers come up often in the system. All phone numbers should be in 
-international format. They should include a +&#47;00 &amp; country code, but this not mandatory.
+international format. They should include a +/00 &amp; country code, but this not mandatory.
 A number cannot use click to call or other VOIP related features unless it is
 international format.</p>
 
@@ -632,15 +643,15 @@ notification section for indepth discussion.</p>
             <td class="docs">
               <h2 id="s-pagination">Pagination</h2>
 
-              <p>All <code>GET &#47;resources</code> are paginated. Pagination is stored in the headers.
+              <p>All <code>GET /resources</code> are paginated. Pagination is stored in the headers.
 You can access a specific page by passing a <code>page</code>. parameter.</p>
 
             </td>
             <td class="code">
                 <h2 id="r-pagination-headers">Pagination Headers</h2>
-                <pre><code>Server: nginx&#47;0.7.67
+                <pre><code>Server: nginx/0.7.67
 Date: Tue, 27 Dec 2011 20:07:14 GMT
-Content-Type: application&#47;json; charset=utf-8
+Content-Type: application/json; charset=utf-8
 Connection: close
 X-Radium-Current-Page: 1
 X-Radium-Total-Pages: 0
@@ -749,173 +760,173 @@ The various <code>:id</code> parameters are <strong>numeric</strong> only.</p>
 of input paramters and output formats.</p>
 
 <p>Some routes are nested as required. For example, you need 
-an account to create a user, so the route <code>POST &#47;accounts&#47;:account_id&#47;users</code>
+an account to create a user, so the route <code>POST /accounts/:account_id/users</code>
 reflects that.</p>
 
 <p>There are also associated routes. For example, you can create
-a todo about a contact usign the <code>POST &#47;contacts&#47;:contact_id&#47;todos</code>
+a todo about a contact usign the <code>POST /contacts/:contact_id/todos</code>
 route. This associates the new todo with the specified contact.</p>
 
             </td>
             <td class="code">
                 <h2 id="r-routes">Routes</h2>
-                <pre><code>GET    &#47;accounts&#47;:id&#47;join                                
-GET    &#47;accounts&#47;:id                                     
-PUT    &#47;accounts&#47;:id                                     
+                <pre><code>GET    /accounts/:id/join                                
+GET    /accounts/:id                                     
+PUT    /accounts/:id                                     
 
-POST   &#47;users&#47;:user_id&#47;follow                            
-GET    &#47;users&#47;:user_id&#47;feed                              
-GET    &#47;users&#47;:user_id&#47;todos                             
-GET    &#47;users                                            
-GET    &#47;users&#47;:id                                        
-PUT    &#47;users&#47;:id                                        
-DELETE &#47;users&#47;:id                                        
+POST   /users/:user_id/follow                            
+GET    /users/:user_id/feed                              
+GET    /users/:user_id/todos                             
+GET    /users                                            
+GET    /users/:id                                        
+PUT    /users/:id                                        
+DELETE /users/:id                                        
 
-POST   &#47;contacts&#47;:contact_id&#47;deals                       
-POST   &#47;contacts&#47;:contact_id&#47;notes                       
-GET    &#47;contacts&#47;:contact_id&#47;todos                       
-POST   &#47;contacts&#47;:contact_id&#47;todos                       
-POST   &#47;contacts&#47;:contact_id&#47;follow                      
-GET    &#47;contacts&#47;:contact_id&#47;feed                        
-GET    &#47;contacts                                         
-POST   &#47;contacts                                         
-GET    &#47;contacts&#47;:id                                     
-PUT    &#47;contacts&#47;:id                                     
-DELETE &#47;contacts&#47;:id                                     
+POST   /contacts/:contact_id/deals                       
+POST   /contacts/:contact_id/notes                       
+GET    /contacts/:contact_id/todos                       
+POST   /contacts/:contact_id/todos                       
+POST   /contacts/:contact_id/follow                      
+GET    /contacts/:contact_id/feed                        
+GET    /contacts                                         
+POST   /contacts                                         
+GET    /contacts/:id                                     
+PUT    /contacts/:id                                     
+DELETE /contacts/:id                                     
 
-POST   &#47;todos&#47;:todo_id&#47;comments                          
-POST   &#47;todos&#47;:todo_id&#47;reminders                         
-GET    &#47;todos                                            
-POST   &#47;todos                                            
-GET    &#47;todos&#47;:id                                        
-PUT    &#47;todos&#47;:id                                        
-DELETE &#47;todos&#47;:id                                        
+POST   /todos/:todo_id/comments                          
+POST   /todos/:todo_id/reminders                         
+GET    /todos                                            
+POST   /todos                                            
+GET    /todos/:id                                        
+PUT    /todos/:id                                        
+DELETE /todos/:id                                        
 
-POST   &#47;deals&#47;:deal_id&#47;comments                          
-POST   &#47;deals&#47;:deal_id&#47;todos                             
-POST   &#47;deals&#47;:deal_id&#47;follow                            
-GET    &#47;deals&#47;:deal_id&#47;feed                              
-GET    &#47;deals                                            
-GET    &#47;deals&#47;:id                                        
-PUT    &#47;deals&#47;:id                                        
-DELETE &#47;deals&#47;:id                                        
+POST   /deals/:deal_id/comments                          
+POST   /deals/:deal_id/todos                             
+POST   /deals/:deal_id/follow                            
+GET    /deals/:deal_id/feed                              
+GET    /deals                                            
+GET    /deals/:id                                        
+PUT    /deals/:id                                        
+DELETE /deals/:id                                        
 
-POST   &#47;groups&#47;:group_id&#47;todos                           
-POST   &#47;groups&#47;:group_id&#47;follow                          
-GET    &#47;groups&#47;:group_id&#47;feed                            
-GET    &#47;groups                                           
-POST   &#47;groups                                           
-GET    &#47;groups&#47;:id                                       
-PUT    &#47;groups&#47;:id                                       
-DELETE &#47;groups&#47;:id                                       
+POST   /groups/:group_id/todos                           
+POST   /groups/:group_id/follow                          
+GET    /groups/:group_id/feed                            
+GET    /groups                                           
+POST   /groups                                           
+GET    /groups/:id                                       
+PUT    /groups/:id                                       
+DELETE /groups/:id                                       
 
-POST   &#47;announcements&#47;:announcement_id&#47;comments          
-GET    &#47;announcements                                    
-POST   &#47;announcements                                    
-GET    &#47;announcements&#47;:id                                
-PUT    &#47;announcements&#47;:id                                
-DELETE &#47;announcements&#47;:id                                
+POST   /announcements/:announcement_id/comments          
+GET    /announcements                                    
+POST   /announcements                                    
+GET    /announcements/:id                                
+PUT    /announcements/:id                                
+DELETE /announcements/:id                                
 
-POST   &#47;emails&#47;:email_id&#47;comments                        
-POST   &#47;emails&#47;:email_id&#47;todos                           
-GET    &#47;emails                                           
-POST   &#47;emails                                           
-GET    &#47;emails&#47;:id                                       
-PUT    &#47;emails&#47;:id                                       
-DELETE &#47;emails&#47;:id                                       
+POST   /emails/:email_id/comments                        
+POST   /emails/:email_id/todos                           
+GET    /emails                                           
+POST   /emails                                           
+GET    /emails/:id                                       
+PUT    /emails/:id                                       
+DELETE /emails/:id                                       
 
-POST   &#47;sms&#47;:sms_id&#47;comments                             
-POST   &#47;sms&#47;:sms_id&#47;todos                                
-POST   &#47;sms&#47;import                                       
-GET    &#47;sms                                              
-POST   &#47;sms                                              
-GET    &#47;sms&#47;:id                                          
-PUT    &#47;sms&#47;:id                                          
-DELETE &#47;sms&#47;:id                                          
+POST   /sms/:sms_id/comments                             
+POST   /sms/:sms_id/todos                                
+POST   /sms/import                                       
+GET    /sms                                              
+POST   /sms                                              
+GET    /sms/:id                                          
+PUT    /sms/:id                                          
+DELETE /sms/:id                                          
 
-POST   &#47;ims&#47;:im_id&#47;comments                              
-GET    &#47;ims                                              
-POST   &#47;ims                                              
-GET    &#47;ims&#47;:id                                          
-PUT    &#47;ims&#47;:id                                          
-DELETE &#47;ims&#47;:id                                          
+POST   /ims/:im_id/comments                              
+GET    /ims                                              
+POST   /ims                                              
+GET    /ims/:id                                          
+PUT    /ims/:id                                          
+DELETE /ims/:id                                          
 
-POST   &#47;meetings&#47;:meeting_id&#47;comments                    
-POST   &#47;meetings&#47;:meeting_id&#47;todos                       
-POST   &#47;meetings&#47;:meeting_id&#47;reminders                   
-PUT    &#47;meetings&#47;:id&#47;reschedule                          
-PUT    &#47;meetings&#47;:id&#47;cancel                              
-GET    &#47;meetings                                         
-POST   &#47;meetings                                         
-GET    &#47;meetings&#47;:id                                     
-PUT    &#47;meetings&#47;:id                                     
-DELETE &#47;meetings&#47;:id                                     
+POST   /meetings/:meeting_id/comments                    
+POST   /meetings/:meeting_id/todos                       
+POST   /meetings/:meeting_id/reminders                   
+PUT    /meetings/:id/reschedule                          
+PUT    /meetings/:id/cancel                              
+GET    /meetings                                         
+POST   /meetings                                         
+GET    /meetings/:id                                     
+PUT    /meetings/:id                                     
+DELETE /meetings/:id                                     
 
-PUT    &#47;invitations&#47;:id&#47;confirm                          
-PUT    &#47;invitations&#47;:id&#47;reject                           
+PUT    /invitations/:id/confirm                          
+PUT    /invitations/:id/reject                           
 
-POST   &#47;phone_calls&#47;:phone_call_id&#47;todos                 
-POST   &#47;phone_calls&#47;:phone_call_id&#47;comments              
-POST   &#47;phone_calls&#47;import                               
-GET    &#47;phone_calls                                      
-GET    &#47;phone_calls&#47;:id                                  
-PUT    &#47;phone_calls&#47;:id                                  
-DELETE &#47;phone_calls&#47;:id                                  
+POST   /phone_calls/:phone_call_id/todos                 
+POST   /phone_calls/:phone_call_id/comments              
+POST   /phone_calls/import                               
+GET    /phone_calls                                      
+GET    /phone_calls/:id                                  
+PUT    /phone_calls/:id                                  
+DELETE /phone_calls/:id                                  
 
-POST   &#47;notes&#47;:note_id&#47;todos                             
-GET    &#47;notes                                            
-GET    &#47;notes&#47;:id                                        
-PUT    &#47;notes&#47;:id                                        
-DELETE &#47;notes&#47;:id                                        
+POST   /notes/:note_id/todos                             
+GET    /notes                                            
+GET    /notes/:id                                        
+PUT    /notes/:id                                        
+DELETE /notes/:id                                        
 
-GET    &#47;reminders                                        
-POST   &#47;reminders                                        
-GET    &#47;reminders&#47;:id                                    
-PUT    &#47;reminders&#47;:id                                    
-DELETE &#47;reminders&#47;:id                                    
+GET    /reminders                                        
+POST   /reminders                                        
+GET    /reminders/:id                                    
+PUT    /reminders/:id                                    
+DELETE /reminders/:id                                    
 
-POST   &#47;campaigns&#47;:campaign_id&#47;follow                    
-POST   &#47;campaigns&#47;:campaign_id&#47;comments                  
-POST   &#47;campaigns&#47;:campaign_id&#47;notes                     
-POST   &#47;campaigns&#47;:campaign_id&#47;call_lists                
-GET    &#47;campaigns&#47;:campaign_id&#47;feed                      
-GET    &#47;campaigns                                        
-POST   &#47;campaigns                                        
-GET    &#47;campaigns&#47;:id                                    
-PUT    &#47;campaigns&#47;:id                                    
-DELETE &#47;campaigns&#47;:id                                    
+POST   /campaigns/:campaign_id/follow                    
+POST   /campaigns/:campaign_id/comments                  
+POST   /campaigns/:campaign_id/notes                     
+POST   /campaigns/:campaign_id/call_lists                
+GET    /campaigns/:campaign_id/feed                      
+GET    /campaigns                                        
+POST   /campaigns                                        
+GET    /campaigns/:id                                    
+PUT    /campaigns/:id                                    
+DELETE /campaigns/:id                                    
 
-PUT    &#47;followings&#47;:id&#47;approve                           
-GET    &#47;followings                                       
-POST   &#47;followings                                       
-GET    &#47;followings&#47;:id                                   
-PUT    &#47;followings&#47;:id                                   
-DELETE &#47;followings&#47;:id                                   
+PUT    /followings/:id/approve                           
+GET    /followings                                       
+POST   /followings                                       
+GET    /followings/:id                                   
+PUT    /followings/:id                                   
+DELETE /followings/:id                                   
 
-GET    &#47;products                                         
-POST   &#47;products                                         
-GET    &#47;products&#47;:id                                     
-PUT    &#47;products&#47;:id                                     
-DELETE &#47;products&#47;:id                                     
+GET    /products                                         
+POST   /products                                         
+GET    /products/:id                                     
+PUT    /products/:id                                     
+DELETE /products/:id                                     
 
-GET    &#47;call_lists                                       
-GET    &#47;call_lists&#47;:id                                   
-PUT    &#47;call_lists&#47;:id                                   
-DELETE &#47;call_lists&#47;:id                                   
+GET    /call_lists                                       
+GET    /call_lists/:id                                   
+PUT    /call_lists/:id                                   
+DELETE /call_lists/:id                                   
 
-GET    &#47;comments                                         
-POST   &#47;comments                                         
-GET    &#47;comments&#47;:id                                     
-DELETE &#47;comments&#47;:id                                     
+GET    /comments                                         
+POST   /comments                                         
+GET    /comments/:id                                     
+DELETE /comments/:id                                     
 
-POST   &#47;bug                                              
+POST   /bug                                              
 
-POST   &#47;echo                                             
+POST   /echo                                             
 
-       &#47;auth&#47;:provider&#47;callback                          
-       &#47;auth&#47;failure                                     
+       /auth/:provider/callback                          
+       /auth/failure                                     
 
-GET    &#47;requests&#47;:id    
+GET    /requests/:id    
 </code></pre>
 
 
@@ -1375,7 +1386,7 @@ in this order:</p>
 <ol>
 <li>Headers</li>
 <li>HTTP Authentication</li>
-<li>Query&#47;Form Parameters</li>
+<li>Query/Form Parameters</li>
 </ol>
 
             </td>
@@ -1389,7 +1400,7 @@ in this order:</p>
 
               <p>You can authenticate yourself and the user over HTTP authentication. This process is simple.
 You use the developer API key for the user and the user API key for the password.
-This request can be presented in URL form: <code>http:&#47;&#47;developer_api_key:user_api_key@www.example.com&#47;</code></p>
+This request can be presented in URL form: <code>http://developer_api_key:user_api_key@www.example.com/</code></p>
 
 <p>You can also use this method to login a user. The user API key will only be checked if
 it is required for that particular request.</p>
@@ -1427,7 +1438,7 @@ it is required for that particular request.</p>
 </ol>
 
 <p>These parameters can come in two ways. They can speified in the URL as query parameters or sent as 
-form&#47;JSON encoded parameters in the body of each request. They can also be combined. 
+form/JSON encoded parameters in the body of each request. They can also be combined. 
 For example, you could specifiy the <code>developer_api_key</code> in the URL and the <code>user_api_key</code> in the body 
 of each request.</p>
 
@@ -1450,7 +1461,7 @@ key correctly and your request parameters are being interperted correctly. </p>
             </td>
             <td class="code">
                 <h2 id="r-echo">Echo</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;echo</code></p>
+                <p><code>POST https://api.radiumcrm.com/echo</code></p>
 
 <p>Allow a developer to test their code&#39;s interaction with the API without modifying
 anything on the server.</p>
@@ -1491,10 +1502,10 @@ anything on the server.</p>
               <h2 id="s-"></h2>
 
               <p>Users are added by a process on the server. They are authenticated by identities. 
-Identities use emails&#47;password, github, openid, linkedin, google or other OAuth
+Identities use emails/password, github, openid, linkedin, google or other OAuth
 providers. You will have to prompt the user to choose their identification method.</p>
 
-<p>Currently, only email&#47;password are supported with API access. We are still trying
+<p>Currently, only email/password are supported with API access. We are still trying
 to determine the best way to integrate OAuth into the API.</p>
 
 <p>If the login is successful, the response will follow the user format with 
@@ -1531,7 +1542,7 @@ standard form encoding.</p>
             </td>
             <td class="code">
                 <h2 id="r-login">Login</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;auth&#47;identity&#47;callback</code></p>
+                <p><code>POST https://api.radiumcrm.com/auth/identity/callback</code></p>
 
 <h3>Example Request Parameters</h3>
 
@@ -1576,8 +1587,8 @@ existing accounts. That process is handled by the server.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>GET &#47;accounts&#47;:id</code>: All users</li>
-<li><code>PUT &#47;account&#47;:id</code>: Admins only</li>
+<li><code>GET /accounts/:id</code>: All users</li>
+<li><code>PUT /account/:id</code>: Admins only</li>
 </ul>
 
             </td>
@@ -1658,7 +1669,7 @@ existing accounts. That process is handled by the server.</p>
             </td>
             <td class="code">
                 <h2 id="r-update-an-account">Update an Account</h2>
-                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;accounts&#47;:id</code></p>
+                <p><code>PUT https://api.radiumcrm.com/accounts/:id</code></p>
 
 <h3>Parameters</h3>
 
@@ -1716,10 +1727,10 @@ before deleting a user, othwerise the delete will fail.</p>
               <h2 id="s-permissions-routes">Permissions  Routes</h2>
 
               <ul>
-<li><code>GET &#47;users</code>: All users</li>
-<li><code>GET &#47;users&#47;:id</code>: All users</li>
-<li><code>PUT &#47;users&#47;:id</code>: Yourself, or anyone if you&#39;re an admin</li>
-<li><code>DELETE &#47;users&#47;:id</code>: Admins only</li>
+<li><code>GET /users</code>: All users</li>
+<li><code>GET /users/:id</code>: All users</li>
+<li><code>PUT /users/:id</code>: Yourself, or anyone if you&#39;re an admin</li>
+<li><code>DELETE /users/:id</code>: Admins only</li>
 </ul>
 
             </td>
@@ -1850,7 +1861,7 @@ before deleting a user, othwerise the delete will fail.</p>
             </td>
             <td class="code">
                 <h2 id="r-update-a-user">Update a User</h2>
-                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;users&#47;1</code></p>
+                <p><code>PUT https://api.radiumcrm.com/users/1</code></p>
 
 <h3>Parameters</h3>
 
@@ -1912,16 +1923,16 @@ in that particular section.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;contacts</code>: All Users</li>
-<li><code>GET &#47;contacts</code>: All users</li>
-<li><code>GET &#47;contacts&#47;:id</code>: Assigned to, following the contact, public contact or Admin</li>
-<li><code>PUT &#47;contacts&#47;:id</code>: Assigned contacts or Admin</li>
-<li><code>DELETE &#47;contacts&#47;:id</code>: Assigned to you or Admin</li>
+<li><code>POST /contacts</code>: All Users</li>
+<li><code>GET /contacts</code>: All users</li>
+<li><code>GET /contacts/:id</code>: Assigned to, following the contact, public contact or Admin</li>
+<li><code>PUT /contacts/:id</code>: Assigned contacts or Admin</li>
+<li><code>DELETE /contacts/:id</code>: Assigned to you or Admin</li>
 </ul>
 
 <h3>Scoping</h3>
 
-<p>The <code>GET &#47;contacts</code> route will only return contacts the specific user has 
+<p>The <code>GET /contacts</code> route will only return contacts the specific user has 
 access to you. You can be granted access the following ways:</p>
 
 <ol>
@@ -2341,7 +2352,7 @@ creating, update, and deleting for each. </p>
             </td>
             <td class="code">
                 <h2 id="r-creating-a-contact">Creating a Contact</h2>
-                <p><code>POST &#47;contacts</code></p>
+                <p><code>POST /contacts</code></p>
 
 <h3>Parameters</h3>
 
@@ -2426,11 +2437,11 @@ to generate specific sets of data for statistics.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;groups</code>: All users</li>
-<li><code>GET &#47;groups</code>: All users according to scoping</li>
-<li><code>GET &#47;groups&#47;:id</code>: All users according to scoping</li>
-<li><code>PUT &#47;groups&#47;:id</code>: The group manager or god</li>
-<li><code>DELETE &#47;groups&#47;:id</code>: The group manager or god</li>
+<li><code>POST /groups</code>: All users</li>
+<li><code>GET /groups</code>: All users according to scoping</li>
+<li><code>GET /groups/:id</code>: All users according to scoping</li>
+<li><code>PUT /groups/:id</code>: The group manager or god</li>
+<li><code>DELETE /groups/:id</code>: The group manager or god</li>
 </ul>
 
 <h3>Scoping</h3>
@@ -2576,7 +2587,7 @@ section for more information.</p>
             </td>
             <td class="code">
                 <h2 id="r-create-a-group">Create a Group</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;groups</code></p>
+                <p><code>POST https://api.radiumcrm.com/groups</code></p>
 
 <h3>Parameters</h3>
 
@@ -2627,11 +2638,11 @@ contacts to the campaign.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;campaigns</code>: Team leaders or Gods</li>
-<li><code>GET &#47;campaigns</code>: All Users according to scoping</li>
-<li><code>GET &#47;campaigns&#47;:id</code>: All users according to scoping</li>
-<li><code>PUT &#47;campaigns&#47;:id</code>: Campaign manager or Gods</li>
-<li><code>DELETE &#47;campaigns&#47;:id</code>: Campaign manager or Gods</li>
+<li><code>POST /campaigns</code>: Team leaders or Gods</li>
+<li><code>GET /campaigns</code>: All Users according to scoping</li>
+<li><code>GET /campaigns/:id</code>: All users according to scoping</li>
+<li><code>PUT /campaigns/:id</code>: Campaign manager or Gods</li>
+<li><code>DELETE /campaigns/:id</code>: Campaign manager or Gods</li>
 </ul>
 
 <h3>Scoping</h3>
@@ -2806,7 +2817,7 @@ attribute.</p>
             </td>
             <td class="code">
                 <h2 id="r-create-a-campaign">Create a Campaign</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;campaigns</code></p>
+                <p><code>POST https://api.radiumcrm.com/campaigns</code></p>
 
 <h3>Parameters</h3>
 
@@ -2841,7 +2852,7 @@ including current ids plus the ones.</p>
             </td>
             <td class="code">
                 <h2 id="r-update-a-campaign">Update a Campaign</h2>
-                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;campaigns&#47;:id</code></p>
+                <p><code>PUT https://api.radiumcrm.com/campaigns/:id</code></p>
 
 <h3>Parameters</h3>
 
@@ -2887,7 +2898,7 @@ A user is in charge of each deal. Deals go through these states:</p>
 They are optionally associated with a campaign.</p>
 
 <p>They also have embed line items to create an invoice style 
-structure that can eventually be handed off to fullfillment&#47;accounting.</p>
+structure that can eventually be handed off to fullfillment/accounting.</p>
 
             </td>
             <td class="code">
@@ -2899,11 +2910,11 @@ structure that can eventually be handed off to fullfillment&#47;accounting.</p>
               <h2 id="s-routes-permission">Routes  Permission</h2>
 
               <ul>
-<li><code>POST &#47;deals</code>: All users</li>
-<li><code>GET &#47;deals</code>: All users according to scoping rules</li>
-<li><code>GET &#47;deals&#47;:id</code>: All users according scoping rules</li>
-<li><code>PUT &#47;deals&#47;:id</code>: Managing the deal or God</li>
-<li><code>DELETE &#47;deals&#47;:id</code>: Managing the deal or God</li>
+<li><code>POST /deals</code>: All users</li>
+<li><code>GET /deals</code>: All users according to scoping rules</li>
+<li><code>GET /deals/:id</code>: All users according scoping rules</li>
+<li><code>PUT /deals/:id</code>: Managing the deal or God</li>
+<li><code>DELETE /deals/:id</code>: Managing the deal or God</li>
 </ul>
 
 <h3>Scoping</h3>
@@ -3131,7 +3142,7 @@ the <code>user_id</code>.</p>
             </td>
             <td class="code">
                 <h2 id="r-create-a-deal">Create a Deal</h2>
-                <p><code>POST &#47;deals</code></p>
+                <p><code>POST /deals</code></p>
 
 <h3>Parameters</h3>
 
@@ -3179,7 +3190,7 @@ the <code>user_id</code>.</p>
               <h2 id="s-"></h2>
 
               <p>Messaging covers IM, SMS, &amp; Email. All records are automatically
-associated by the server based on who they are sent to&#47;from.
+associated by the server based on who they are sent to/from.
 Anyone can send messages. Messages also have attachments.
 They can also have todos &amp; comments.</p>
 
@@ -3193,13 +3204,13 @@ They can also have todos &amp; comments.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;emails</code>: All users</li>
-<li><code>POST &#47;sms</code>: All users</li>
-<li><code>POST &#47;ims</code>: All users</li>
-<li><code>GET &#47;messages</code>: All users according to scoping</li>
-<li><code>GET &#47;messages&#47;:id</code>: All users according to scoping</li>
-<li><code>DELETE &#47;messages&#47;:id</code>: Your messages or Gods</li>
-<li><code>POST &#47;messages&#47;:id&#47;read</code>: Your messages</li>
+<li><code>POST /emails</code>: All users</li>
+<li><code>POST /sms</code>: All users</li>
+<li><code>POST /ims</code>: All users</li>
+<li><code>GET /messages</code>: All users according to scoping</li>
+<li><code>GET /messages/:id</code>: All users according to scoping</li>
+<li><code>DELETE /messages/:id</code>: Your messages or Gods</li>
+<li><code>POST /messages/:id/read</code>: Your messages</li>
 </ul>
 
 <h3>Scoping</h3>
@@ -3463,7 +3474,7 @@ to associate the email with the correc records.</p>
             </td>
             <td class="code">
                 <h2 id="r-send-an-email">Send an Email</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;emails</code></p>
+                <p><code>POST https://api.radiumcrm.com/emails</code></p>
 
 <pre><code class="javascript">{
   &quot;to&quot;: [&quot;example@example.com&quot;]
@@ -3491,7 +3502,7 @@ SMS with the correct records.</p>
             </td>
             <td class="code">
                 <h2 id="r-send-a-sms">Send a SMS</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;sms</code></p>
+                <p><code>POST https://api.radiumcrm.com/sms</code></p>
 
 <pre><code class="javascript">{
   &quot;to&quot;: [&quot;+12348123894&quot;],
@@ -3511,7 +3522,7 @@ SMS with the correct records.</p>
             </td>
             <td class="code">
                 <h2 id="r-send-an-im">Send an IM</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;ims</code></p>
+                <p><code>POST https://api.radiumcrm.com/ims</code></p>
 
 <pre><code class="javascript">{
   &quot;to&quot;: [1]
@@ -3569,7 +3580,7 @@ There a lot of cool things that go on in the background.</p>
             </td>
             <td class="code">
                 <h2 id="r-import-a-sms">Import a SMS</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;sms&#47;import</code></p>
+                <p><code>POST https://api.radiumcrm.com/sms/import</code></p>
 
 <h3>Parameters</h3>
 
@@ -3645,18 +3656,18 @@ Setting the call list is optional.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;contacts&#47;:id&#47;todos</code></li>
-<li><code>POST &#47;groups&#47;:id&#47;todos</code></li>
-<li><code>POST &#47;messages&#47;:id&#47;todos</code></li>
-<li><code>POST &#47;phone_calls&#47;:id&#47;todos</code></li>
-<li><code>POST &#47;meetings&#47;:id&#47;todos</code></li>
-<li><code>POST &#47;deals&#47;:id&#47;todos</code></li>
-<li><code>GET &#47;contacts&#47;:id&#47;todos</code></li>
-<li><code>GET &#47;users&#47;:id&#47;todos</code></li>
-<li><code>GET &#47;todos</code></li>
-<li><code>GET &#47;todos&#47;:id</code></li>
-<li><code>PUT &#47;todos&#47;:id</code></li>
-<li><code>DELETE &#47;todos&#47;:id</code></li>
+<li><code>POST /contacts/:id/todos</code></li>
+<li><code>POST /groups/:id/todos</code></li>
+<li><code>POST /messages/:id/todos</code></li>
+<li><code>POST /phone_calls/:id/todos</code></li>
+<li><code>POST /meetings/:id/todos</code></li>
+<li><code>POST /deals/:id/todos</code></li>
+<li><code>GET /contacts/:id/todos</code></li>
+<li><code>GET /users/:id/todos</code></li>
+<li><code>GET /todos</code></li>
+<li><code>GET /todos/:id</code></li>
+<li><code>PUT /todos/:id</code></li>
+<li><code>DELETE /todos/:id</code></li>
 </ul>
 
             </td>
@@ -3757,7 +3768,7 @@ Setting the call list is optional.</p>
             </td>
             <td class="code">
                 <h2 id="r-create-a-todo">Create a Todo</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;todos</code></p>
+                <p><code>POST https://api.radiumcrm.com/todos</code></p>
 
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
@@ -3781,7 +3792,7 @@ Setting the call list is optional.</p>
             </td>
             <td class="code">
                 <h2 id="r-add-to-a-user-s-todo-list">Add to a User's Todo List</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;todos</code></p>
+                <p><code>POST https://api.radiumcrm.com/todos</code></p>
 
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
@@ -3806,7 +3817,7 @@ Setting the call list is optional.</p>
             </td>
             <td class="code">
                 <h2 id="r-add-a-call-to-someone-to-your-todo-list">Add a Call to Someone to Your Todo List</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;contacts&#47;5&#47;todos</code></p>
+                <p><code>POST https://api.radiumcrm.com/contacts/5/todos</code></p>
 
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
@@ -3829,7 +3840,7 @@ Setting the call list is optional.</p>
             </td>
             <td class="code">
                 <h2 id="r-add-someone-to-specific-a-call-list">Add Someone to Specific a Call List</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;contacts&#47;5&#47;todos</code></p>
+                <p><code>POST https://api.radiumcrm.com/contacts/5/todos</code></p>
 
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
@@ -3853,7 +3864,7 @@ Setting the call list is optional.</p>
             </td>
             <td class="code">
                 <h2 id="r-finish-a-todo">Finish a Todo</h2>
-                <p><code>PUT https:&#47;&#47;api.radiumcrm.com&#47;todos&#47;5</code></p>
+                <p><code>PUT https://api.radiumcrm.com/todos/5</code></p>
 
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
@@ -3896,11 +3907,11 @@ They have todos and specific outcomes. </p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>GET &#47;phone_calls</code></li>
-<li><code>GET &#47;phone_calls&#47;:id</code></li>
-<li><code>PUT &#47;phone_calls&#47;:id</code></li>
-<li><code>DELETE &#47;phone_calls&#47;:id</code></li>
-<li><code>POST &#47;phone_calls&#47;import</code></li>
+<li><code>GET /phone_calls</code></li>
+<li><code>GET /phone_calls/:id</code></li>
+<li><code>PUT /phone_calls/:id</code></li>
+<li><code>DELETE /phone_calls/:id</code></li>
+<li><code>POST /phone_calls/import</code></li>
 </ul>
 
 <h3>Scoping</h3>
@@ -3921,7 +3932,7 @@ They have todos and specific outcomes. </p>
             <td class="docs">
               <h2 id="s-format">Format</h2>
 
-              <p>Phone calls can be to&#47;from users or contacts. They also
+              <p>Phone calls can be to/from users or contacts. They also
 have comments and todos.</p>
 
 <h3>Changable Attributes</h3>
@@ -4082,7 +4093,7 @@ There a lot of cool things that go on in the background.</p>
             </td>
             <td class="code">
                 <h2 id="r-import-a-call">Import a Call</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;phone_calls&#47;import</code></p>
+                <p><code>POST https://api.radiumcrm.com/phone_calls/import</code></p>
 
 <h3>Parameters</h3>
 
@@ -4143,11 +4154,11 @@ using our VOIP system.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;call_lists</code></li>
-<li><code>GET &#47;call_lists</code></li>
-<li><code>GET &#47;call_lists&#47;:id</code></li>
-<li><code>PUT &#47;call_lists&#47;:id</code></li>
-<li><code>DELETE &#47;call_lists&#47;:id</code></li>
+<li><code>POST /call_lists</code></li>
+<li><code>GET /call_lists</code></li>
+<li><code>GET /call_lists/:id</code></li>
+<li><code>PUT /call_lists/:id</code></li>
+<li><code>DELETE /call_lists/:id</code></li>
 </ul>
 
 <h3>Scoping</h3>
@@ -4302,13 +4313,13 @@ to the invitation section for managing individual invitations.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;meetings</code></li>
-<li><code>GET &#47;meetings</code></li>
-<li><code>GET &#47;meetings&#47;:id</code></li>
-<li><code>PUT &#47;meetings&#47;:id</code></li>
-<li><code>DELETE &#47;meetings&#47;:id</code></li>
-<li><code>PUT &#47;meetings&#47;:id&#47;reschedule</code></li>
-<li><code>PUT &#47;meetings&#47;:id&#47;cancel</code></li>
+<li><code>POST /meetings</code></li>
+<li><code>GET /meetings</code></li>
+<li><code>GET /meetings/:id</code></li>
+<li><code>PUT /meetings/:id</code></li>
+<li><code>DELETE /meetings/:id</code></li>
+<li><code>PUT /meetings/:id/reschedule</code></li>
+<li><code>PUT /meetings/:id/cancel</code></li>
 </ul>
 
 <h3>Scoping</h3>
@@ -4444,7 +4455,7 @@ to the invitation section for managing individual invitations.</p>
             </td>
             <td class="code">
                 <h2 id="r-create-a-meeting">Create a Meeting</h2>
-                <p><code>POST &#47;meetings</code></p>
+                <p><code>POST /meetings</code></p>
 
 <h3>Parameters</h3>
 
@@ -4494,8 +4505,8 @@ use to track the meeting.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>PUT &#47;invitation&#47;:id&#47;confirm</code></li>
-<li><code>PUT &#47;invitation&#47;:id&#47;reject</code></li>
+<li><code>PUT /invitation/:id/confirm</code></li>
+<li><code>PUT /invitation/:id/reject</code></li>
 </ul>
 
 <p>These routes take no paramters. The <code>:id</code> refers to the
@@ -4612,7 +4623,7 @@ The following sections list the events and their associated tags.</p>
 
 <ol>
 <li>A campaign is added: <code>created</code></li>
-<li>A campaign is assigned &#47; reassigned: <code>assigned</code></li>
+<li>A campaign is assigned / reassigned: <code>assigned</code></li>
 <li>A contact is added to a campaign: <code>contact_added</code></li>
 <li>A contact is removed from a campaign: <code>contact_removed</code></li>
 <li>Someone follows the campaign: <code>followed</code></li>
@@ -4653,7 +4664,7 @@ The following sections list the events and their associated tags.</p>
 
 <ol>
 <li>A deal is added: <code>created</code></li>
-<li>A deal is assigned&#47;reassigned: <code>assigned</code></li>
+<li>A deal is assigned/reassigned: <code>assigned</code></li>
 <li>A deal is reopened: <code>pending</code></li>
 <li>A deal is closed: <code>closed</code></li>
 <li>A deal is paid: <code>paid</code></li>
@@ -4726,7 +4737,7 @@ The following sections list the events and their associated tags.</p>
 
 <ol>
 <li>A todo is added: <code>created</code></li>
-<li>A todo is assigned&#47;reassigned: <code>assigned</code></li>
+<li>A todo is assigned/reassigned: <code>assigned</code></li>
 <li>A todo is finished: <code>finished</code></li>
 </ol>
 
@@ -4740,11 +4751,11 @@ The following sections list the events and their associated tags.</p>
               <h2 id="s-routes-permission">Routes  Permission</h2>
 
               <ul>
-<li><code>GET &#47;users&#47;:id&#47;feed</code></li>
-<li><code>GET &#47;contact&#47;:id&#47;feed</code></li>
-<li><code>GET &#47;deal&#47;:id&#47;feed</code></li>
-<li><code>GET &#47;campaign&#47;:id&#47;feed</code></li>
-<li><code>GET &#47;group&#47;:id&#47;feed</code></li>
+<li><code>GET /users/:id/feed</code></li>
+<li><code>GET /contact/:id/feed</code></li>
+<li><code>GET /deal/:id/feed</code></li>
+<li><code>GET /campaign/:id/feed</code></li>
+<li><code>GET /group/:id/feed</code></li>
 </ul>
 
 <p>You can retreive the feed for any resource you can access. 
@@ -4907,12 +4918,12 @@ who posted it can change it or delete it.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;announcements</code>: Team leaders</li>
-<li><code>GET &#47;announcements</code>: All Users</li>
-<li><code>GET &#47;announcements&#47;:id</code>: All users</li>
-<li><code>PUT &#47;announcements&#47;:id</code>: The poster</li>
-<li><code>DELETE &#47;announcements&#47;:id</code>: The poster</li>
-<li><code>POST &#47;announcements&#47;:id&#47;dismiss</code>: All users</li>
+<li><code>POST /announcements</code>: Team leaders</li>
+<li><code>GET /announcements</code>: All Users</li>
+<li><code>GET /announcements/:id</code>: All users</li>
+<li><code>PUT /announcements/:id</code>: The poster</li>
+<li><code>DELETE /announcements/:id</code>: The poster</li>
+<li><code>POST /announcements/:id/dismiss</code>: All users</li>
 </ul>
 
 <h3>Scoping</h3>
@@ -4988,7 +4999,7 @@ who posted it can change it or delete it.</p>
             </td>
             <td class="code">
                 <h2 id="r-create-an-announcement">Create an Announcement</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;announcements</code></p>
+                <p><code>POST https://api.radiumcrm.com/announcements</code></p>
 
 <h3>Parameters</h3>
 
@@ -5013,7 +5024,7 @@ who posted it can change it or delete it.</p>
             </td>
             <td class="code">
                 <h2 id="r-dismiss-an-announcement">Dismiss an Announcement</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;announcements&#47;:id&#47;dismiss</code></p>
+                <p><code>POST https://api.radiumcrm.com/announcements/:id/dismiss</code></p>
 
 <h3>Paramters</h3>
 
@@ -5187,128 +5198,6 @@ because they are always attached to other objects. </p>
       <thead>
         <tr>
           <th class="docs">
-            <h1 id="d-comments">Comments</h1>
-          </th>
-          <th class="code">&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              <p>Comments work like comments in every system. You can create comments
-about many different things. Comments may also have files attached.</p>
-
-<p>These resources support comments:</p>
-
-<ol>
-<li>Todos</li>
-<li>Meetings</li>
-<li>Phone Calls</li>
-<li>Deals</li>
-<li>Messages (IM, SMS, &amp; Email)</li>
-<li>Activities</li>
-</ol>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-routes-permissions">Routes  Permissions</h2>
-
-              <ul>
-<li><code>POST &#47;deals&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;todos&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;meetings&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;phone_calls&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;messages&#47;:id&#47;comments</code>: All users</li>
-<li><code>POST &#47;activities&#47;:id&#47;comments</code>: All users</li>
-<li><code>PUT &#47;comments&#47;:id</code>: Your comments only or God</li>
-<li><code>DELETE &#47;comments&#47;:id</code>: Your comments only or God</li>
-</ul>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-attributes">Attributes</h2>
-
-              <h3>Changable Attributes</h3>
-
-<dl>
-  <dt>text</dt>
-  <dd>
-    <strong>Required</strong><br/>
-    The full text for this comment
-  </dd>
-
-  <dt>attachments</dt>
-  <dd>All the attachments for this comment. See the attachment sections for the format.</dd>
-</dl>
-
-<h3>Read Only Attributues</h3>
-
-<dl>
-  <dt>user</dt>
-  <dd>ID for the user who wrote the comment</dd>
-</dl>
-
-            </td>
-            <td class="code">
-                <h2 id="r-comment-format">Comment Format</h2>
-                <pre><code class="javascript">{
-  &quot;id&quot;: 7,
-  &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
-  &quot;text&quot;: &quot;Text 2&quot;,
-  &quot;user&quot;: 444
-  &quot;attachments&quot;: [ 
-  ]
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-posting-a-comment">Posting a Comment</h2>
-                <p><code>POST &#47;todos&#47;:id&#47;comments</code></p>
-
-<p>Create a comment for the todo specified by :id.</p>
-
-<h3>Parameters</h3>
-
-<pre><code class="javascript">{
-  &quot;developer_api_key&quot;: &quot;foo&quot;,
-  &quot;user_api_key&quot;: &quot;bar&quot;,
-  &quot;comment&quot;: {
-    &quot;text&quot;: &quot;You know someone already did this right?&quot;
-  }
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-      <tbody>
-    </table>
-    <table cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th class="docs">
             <h1 id="d-following">Following</h1>
           </th>
           <th class="code">&nbsp;</th>
@@ -5347,16 +5236,16 @@ A person can choose to no longer follow something at their will.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>POST &#47;users&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;contacts&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;teams&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;campaigns&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;deals&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>POST &#47;groups&#47;:id&#47;follow</code>: Anyone</li>
-<li><code>GET &#47;followings</code>: Anyone according to scoping</li>
-<li><code>GET &#47;followings&#47;:id</code>: Any according to scoping</li>
-<li><code>DELETE &#47;followings&#47;:id</code>: The follower or god</li>
-<li><code>PUT &#47;followings&#47;:id&#47;approve</code>: The resource manager or a god</li>
+<li><code>POST /users/:id/follow</code>: Anyone</li>
+<li><code>POST /contacts/:id/follow</code>: Anyone</li>
+<li><code>POST /teams/:id/follow</code>: Anyone</li>
+<li><code>POST /campaigns/:id/follow</code>: Anyone</li>
+<li><code>POST /deals/:id/follow</code>: Anyone</li>
+<li><code>POST /groups/:id/follow</code>: Anyone</li>
+<li><code>GET /followings</code>: Anyone according to scoping</li>
+<li><code>GET /followings/:id</code>: Any according to scoping</li>
+<li><code>DELETE /followings/:id</code>: The follower or god</li>
+<li><code>PUT /followings/:id/approve</code>: The resource manager or a god</li>
 </ul>
 
 <h3>Scoping</h3>
@@ -5415,13 +5304,286 @@ approved if the followable resource is public.</p>
             </td>
             <td class="code">
                 <h2 id="r-follow-something">Follow Something</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;contacts&#47;5&#47;follow</code></p>
+                <p><code>POST https://api.radiumcrm.com/contacts/5/follow</code></p>
 
 <h3>Parameters</h3>
 
 <pre><code class="javascript">{
   &quot;developer_api_key&quot;: &quot;foo&quot;,
   &quot;user_api_key&quot;: &quot;bar&quot;
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-comments">Comments</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>Comments work like comments in every system. You can create comments
+about many different things. Comments may also have files attached.</p>
+
+<p>These resources support comments:</p>
+
+<ol>
+<li>Todos</li>
+<li>Meetings</li>
+<li>Phone Calls</li>
+<li>Deals</li>
+<li>Messages (IM, SMS, &amp; Email)</li>
+<li>Activities</li>
+</ol>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>POST /deals/:id/comments</code>: All users</li>
+<li><code>POST /todos/:id/comments</code>: All users</li>
+<li><code>POST /meetings/:id/comments</code>: All users</li>
+<li><code>POST /phone_calls/:id/comments</code>: All users</li>
+<li><code>POST /messages/:id/comments</code>: All users</li>
+<li><code>POST /activities/:id/comments</code>: All users</li>
+<li><code>PUT /comments/:id</code>: Your comments only or God</li>
+<li><code>DELETE /comments/:id</code>: Your comments only or God</li>
+</ul>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-attributes">Attributes</h2>
+
+              <h3>Changable Attributes</h3>
+
+<dl>
+  <dt>text</dt>
+  <dd>
+    <strong>Required</strong><br/>
+    The full text for this comment
+  </dd>
+
+  <dt>attachments</dt>
+  <dd>All the attachments for this comment. See the attachment sections for the format.</dd>
+</dl>
+
+<h3>Read Only Attributues</h3>
+
+<dl>
+  <dt>user</dt>
+  <dd>ID for the user who wrote the comment</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-comment-format">Comment Format</h2>
+                <pre><code class="javascript">{
+  &quot;id&quot;: 7,
+  &quot;created_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-14T13:25:36Z&quot;,
+  &quot;text&quot;: &quot;Text 2&quot;,
+  &quot;user&quot;: 444
+  &quot;attachments&quot;: [ 
+  ]
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-posting-a-comment">Posting a Comment</h2>
+                <p><code>POST /todos/:id/comments</code></p>
+
+<p>Create a comment for the todo specified by :id.</p>
+
+<h3>Parameters</h3>
+
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;,
+  &quot;comment&quot;: {
+    &quot;text&quot;: &quot;You know someone already did this right?&quot;
+  }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+      <tbody>
+    </table>
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1 id="d-statistics">Statistics</h1>
+          </th>
+          <th class="code">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="docs">
+              <h2 id="s-"></h2>
+
+              <p>The API can give you statistics on individual or groups of resources.</p>
+
+<p><strong>This functionality is a WIP!</strong> Statisics may be added or removed
+as the application develops. </p>
+
+<p><strong>NOTE</strong>: Date Scoping will be implemented when a final set of statistics 
+has been decided.</p>
+
+<p>Deal Totals are given as objects divded up into currencies. Sums are
+given in floating point values.</p>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-routes-permissions">Routes  Permissions</h2>
+
+              <ul>
+<li><code>GET /dashboard/statistics</code>: All users</li>
+<li><code>GET /statistics/deals</code>: All users</li>
+<li><code>GET /statistics/pipeline</code>: All users</li>
+<li><code>GET /statistics/coffee_cup</code>: All users</li>
+<li><code>GET /campaigns/:id/statistics</code>: User who can read that campaign</li>
+</ul>
+
+            </td>
+            <td class="code">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-dashboard-statistics">Dashboard Statistics</h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-"></h2>
+                <pre><code class="javascript">{
+    leads: 0,
+    prospects: 0,
+    upcoming_meetings: 23,
+    pending_calls: 60,
+    pending_deals: { USD: 699000 },
+    closed_deals: { USD: 204000 },
+    paid_deals: { USD: 144000 },
+    rejected_deals: { USD: 144000 }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-deals-statistics">Deals Statistics</h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-"></h2>
+                <pre><code class="javascript">{
+    pending_deals: { USD: 699000 },
+    closed_deals: { USD: 204000 },
+    paid_deals: { USD: 144000 },
+    rejected_deals: { USD: 144000 }
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-pipeline-statistics">Pipeline Statistics</h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-"></h2>
+                <pre><code class="javascript">{
+    leads: 0,
+    prospects: 0,
+    opportunities: 268,
+    customers: 41,
+    dead_ends: 41
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-coffee-cup-statistics">Coffee Cup Statistics</h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-"></h2>
+                <pre><code class="javascript">{
+    calls_made: 0,
+    calls_remaining: 123,
+    todos_finished: 0,
+    todos_remaining: 247,
+    paid_deals: 48,
+    unpaid_deals: 301
+}
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
+              <h2 id="s-campaign-statistics">Campaign Statistics</h2>
+
+              
+            </td>
+            <td class="code">
+                <h2 id="r-"></h2>
+                <pre><code class="javascript">{
+    pending_deals: { USD: 15000 },
+    closed_deals: { USD: 6000 },
+    paid_deals: { USD: 3000 },
+    rejected_deals: { USD: 3000 }
 }
 </code></pre>
 
@@ -5486,7 +5648,7 @@ system for tracking and resolving.</p>
             </td>
             <td class="code">
                 <h2 id="r-reporting-a-bug">Reporting a Bug</h2>
-                <p><code>POST https:&#47;&#47;api.radiumcrm.com&#47;bugs</code></p>
+                <p><code>POST https://api.radiumcrm.com/bugs</code></p>
 
 <h3>Parameters</h3>
 

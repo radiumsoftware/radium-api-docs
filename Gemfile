@@ -6,5 +6,5 @@ gem 'thin'
 
 group :development do
   gem 'heroku'
-  gem 'api_guides', :path => "~/projects/api_guides"
+  gem 'api_guides'
 end

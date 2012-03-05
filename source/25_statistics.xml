@@ -1,0 +1,108 @@
+<document>
+  <title>Statistics</title>
+  <position>25</position>
+  <section>
+    <docs>
+      <![CDATA[
+      The API can give you statistics on individual or groups of resources.
+
+      **This functionality is a WIP!** Statisics may be added or removed
+      as the application develops. 
+
+      **NOTE**: Date Scoping will be implemented when a final set of statistics 
+      has been decided.
+
+      Deal Totals are given as objects divded up into currencies. Sums are
+      given in floating point values.
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `GET /dashboard/statistics`: All users
+      * `GET /statistics/deals`: All users
+      * `GET /statistics/pipeline`: All users
+      * `GET /statistics/coffee_cup`: All users
+      * `GET /campaigns/:id/statistics`: User who can read that campaign
+      ]]>
+    </docs>
+  </section>
+  <section title="Dashboard Statistics">
+    <reference>
+      <![CDATA[
+      ```javascript
+      {
+          leads: 0,
+          prospects: 0,
+          upcoming_meetings: 23,
+          pending_calls: 60,
+          pending_deals: { USD: 699000 },
+          closed_deals: { USD: 204000 },
+          paid_deals: { USD: 144000 },
+          rejected_deals: { USD: 144000 }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section title="Deals Statistics">
+    <reference>
+      <![CDATA[
+      ```javascript
+      {
+          pending_deals: { USD: 699000 },
+          closed_deals: { USD: 204000 },
+          paid_deals: { USD: 144000 },
+          rejected_deals: { USD: 144000 }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section title="Pipeline Statistics">
+    <reference>
+      <![CDATA[
+      ```javascript
+      {
+          leads: 0,
+          prospects: 0,
+          opportunities: 268,
+          customers: 41,
+          dead_ends: 41
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section title="Coffee Cup Statistics">
+    <reference>
+      <![CDATA[
+      ```javascript
+      {
+          calls_made: 0,
+          calls_remaining: 123,
+          todos_finished: 0,
+          todos_remaining: 247,
+          paid_deals: 48,
+          unpaid_deals: 301
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section title="Campaign Statistics">
+    <reference>
+      <![CDATA[
+      ```javascript
+      {
+          pending_deals: { USD: 15000 },
+          closed_deals: { USD: 6000 },
+          paid_deals: { USD: 3000 },
+          rejected_deals: { USD: 3000 }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>
