@@ -2062,6 +2062,31 @@ to you.</p>
 <h3>Read Only Attributes</h3>
 
 <dl>
+  <dt>contacted_at</dt>
+  <dd>The last time the contact was contacted (via email/sms/phone)</dd>
+
+  <dt>status</dt>
+  <dd>
+    The contact's status in the pipeline. One of the following:
+    <code>lead</code>, <code>prospect</code>, <code>opportunity</code>, 
+    <code>customer</code>, or <code>dead_end</code>
+  </dd>
+
+  <dt>became_lead_at</dt>
+  <dd>The time when the contact entered the lead phase. Usually when they entered radium</dd>
+
+  <dt>became_prospect_at</dt>
+  <dd>The time the contact entered the prospect phase</dd>
+
+  <dt>became_opportunity_at</dt>
+  <dd>The time the contact entered the opportunity phase</dd>
+
+  <dt>became_customer_at</dt>
+  <dd>The time the contact entered the customer phase</dd>
+
+  <dt>became_dead_end_at</dd>
+  <dd>The time the contact entered the dead end phase</dd>
+
   <dt>deals</dt>
   <dd>IDs for all the deals</dd>
 
@@ -2130,6 +2155,13 @@ contact object.</p>
   &quot;created_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
   &quot;updated_at&quot;: &quot;2011-12-14T16:35:15Z&quot;,
   &quot;name&quot;: &quot;Johnny Graham&quot;,
+  &quot;contacted_at&quot;: null,
+  &quot;became_lead_at&quot;: &quot;2012-03-14T20:05:50Z&quot;,
+  &quot;became_prospect_at&quot;: null,
+  &quot;became_opportunity_at&quot;: null,
+  &quot;became_customer_at&quot;: null,
+  &quot;became_dead_end_at&quot;: null,
+  &quot;status&quot;: &quot;lead&quot;,
   &quot;addresses&quot;: [
     {
       &quot;id&quot;: 8,
