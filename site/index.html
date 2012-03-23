@@ -162,6 +162,7 @@
             <a class="header" href="#d-call-lists">Call Lists</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
+                  <li class="sub-section"><a href="#s-entries">Entries</a></li>
                   <li class="sub-section"><a href="#s-format">Format</a></li>
                   <li class="sub-section"><a href="#s-creating-a-call-list">Creating a Call List</a></li>
             </ol>
@@ -4211,6 +4212,75 @@ using our VOIP system.</p>
           </tr>
           <tr>
             <td class="docs">
+              <h2 id="s-entries">Entries</h2>
+
+              <p>You can add contacts and groups to call lists. You can only add
+them if they have a phone number. The server will check for duplicates
+to ensure that the same person is not called twice.</p>
+
+<p>Groups are handled differently than contacts. Groups have primary 
+contacts. If a primary contact is present, they will be added to
+the call list.</p>
+
+<p>This information is passed through the <code>entries</code> attribute.
+The data is used to create the underlying todos. Any attributes
+left out of the entry will be filled in from the call list. This means
+that todos will default to call list&#39;s <code>finish_by</code> time. Todos will
+also be assigned to the call list&#39;s user unless otherwise specified.</p>
+
+<p>The <code>entries</code> attribute is always an Array.</p>
+
+<p>Entries can be added on create or update.</p>
+
+<p>Delete the underlying todo if you want to remove someone from a call list.</p>
+
+<h3>Required Attributes</h3>
+
+<dl>
+  <dt>contact_id</dt>
+  <dd>The ID of the contact</dd>
+
+  <dt>group_id</dt>
+  <dd>The ID of the group</dd>
+</dl>
+
+<h3>Optional Attributes</h3>
+
+<dl>
+  <dt>time</dt>
+  <dd>The time the call should be made</dd>
+
+  <dt>user_id</dt>
+  <dd>Who should make the call</dd>
+
+  <dt>description</dt>
+  <dd>Further describe the call</dd>
+</dl>
+
+            </td>
+            <td class="code">
+                <h2 id="r-"></h2>
+                <pre><code class="javascript">[
+  {
+    &quot;contact_id&quot;: 5
+  },
+  {
+    &quot;group_id&quot;: 3,
+    &quot;time&quot;: &quot;2012-12-25T12:55Z&quot;
+  },
+  {
+    &quot;contact_id&quot;: 5,
+    &quot;user_id&quot;: 3,
+    &quot;description&quot;: &quot;Make sure you mention the new products&quot;
+  }
+]
+</code></pre>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td class="docs">
               <h2 id="s-format">Format</h2>
 
               <h3>Changable Attributes</h3>
@@ -4287,20 +4357,8 @@ using our VOIP system.</p>
             <td class="docs">
               <h2 id="s-creating-a-call-list">Creating a Call List</h2>
 
-              <p><strong>NOTE</strong>: this functionality is a work in progress. There is some
-special logic that goes into creating a call list that has not
-been implemented yet. This specically pertains to addings groups
-to call lists. </p>
-
-<p>You can add contacts and groups to call lists. You can only add
-them if they have a phone number. The server will check for duplicates
-to ensure that the same person is not called twice.</p>
-
-<p>Groups are handled differently than contacts. Groups have primary 
-contacts. If a primary contact is present, they will be added to
-the call list. If a primaty contact is not present, a new contact
-will be added with the group&#39;s contact phone number. Then, you can
-fill in that contact&#39;s information when you make the call.</p>
+              <p>You can specify who should be on the call list with the <code>entries</code> 
+attribute.</p>
 
             </td>
             <td class="code">

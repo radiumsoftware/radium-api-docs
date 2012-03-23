@@ -36,6 +36,74 @@
       ]]>
     </docs>
   </section>
+  <section title="Entries">
+    <docs>
+      <![CDATA[
+      You can add contacts and groups to call lists. You can only add
+      them if they have a phone number. The server will check for duplicates
+      to ensure that the same person is not called twice.
+
+      Groups are handled differently than contacts. Groups have primary 
+      contacts. If a primary contact is present, they will be added to
+      the call list.
+
+      This information is passed through the `entries` attribute.
+      The data is used to create the underlying todos. Any attributes
+      left out of the entry will be filled in from the call list. This means
+      that todos will default to call list's `finish_by` time. Todos will
+      also be assigned to the call list's user unless otherwise specified.
+
+      The `entries` attribute is always an Array.
+
+      Entries can be added on create or update.
+
+      Delete the underlying todo if you want to remove someone from a call list.
+
+      ### Required Attributes
+
+      <dl>
+        <dt>contact_id</dt>
+        <dd>The ID of the contact</dd>
+
+        <dt>group_id</dt>
+        <dd>The ID of the group</dd>
+      </dl>
+
+      ### Optional Attributes
+
+      <dl>
+        <dt>time</dt>
+        <dd>The time the call should be made</dd>
+
+        <dt>user_id</dt>
+        <dd>Who should make the call</dd>
+
+        <dt>description</dt>
+        <dd>Further describe the call</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference>
+      <![CDATA[
+      ```javascript
+      [
+        {
+          "contact_id": 5
+        },
+        {
+          "group_id": 3,
+          "time": "2012-12-25T12:55Z"
+        },
+        {
+          "contact_id": 5,
+          "user_id": 3,
+          "description": "Make sure you mention the new products"
+        }
+      ]
+      ```
+      ]]>
+    </reference>
+  </section>
   <section title="Format">
     <docs>
       <![CDATA[
@@ -112,20 +180,8 @@
   <section title="Creating a Call List">
     <docs>
       <![CDATA[
-      **NOTE**: this functionality is a work in progress. There is some
-      special logic that goes into creating a call list that has not
-      been implemented yet. This specically pertains to addings groups
-      to call lists. 
-
-      You can add contacts and groups to call lists. You can only add
-      them if they have a phone number. The server will check for duplicates
-      to ensure that the same person is not called twice.
-
-      Groups are handled differently than contacts. Groups have primary 
-      contacts. If a primary contact is present, they will be added to
-      the call list. If a primaty contact is not present, a new contact
-      will be added with the group's contact phone number. Then, you can
-      fill in that contact's information when you make the call.
+      You can specify who should be on the call list with the `entries` 
+      attribute.
       ]]>
     </docs>
   </section>
