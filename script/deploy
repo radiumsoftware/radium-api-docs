@@ -131,7 +131,7 @@ class Deploy < Thor
   end
 
   desc "generate", "Generates the documenatation"
-  task :generate do
+  def generate
     inside ROOT do
       run! "bundle exec rake generate"
 
