@@ -135,7 +135,7 @@ class Deploy < Thor
     inside ROOT do
       run! "bundle exec rake generate"
 
-      say "Documenation", "Generated"
+      say_status "Documenation", "Generated"
     end
   end
 
