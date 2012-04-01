@@ -137,10 +137,12 @@
     <docs>
       <![CDATA[
       Acitvities are formatted differently than other resources.
-      They have two attributes: `owner` and `reference`. Each
-      attribute has another attribute describe what kind of resource
-      it is. The array of `tags` describe what happend. Example:
-      `todo`, `assigned` or `contact` `became_lead`.
+      They have two attributes: `owner` and `reference`.
+
+      There are also `kind` and `tag` attributes. `kind` is what
+      type of record it's associated with (todo, contact, or deal etc).
+      Then `tag` is used to describe that action happened. It may not always
+      be an action, but just a general description of the event.
 
       There is also a `timestamp` that corresponds to when the 
       action happened. Example, when the email was sent
@@ -163,13 +165,8 @@
         "id": 53,
         "created_at": "2011-12-28T14:26:27Z",
         "updated_at": "2011-12-28T14:26:27Z",
-        "tags": [
-          "tags",
-          "describing",
-          "what",
-          "action",
-          "happened"
-        ],
+        "kind": "todo",
+        "tag": "created",
         "timestamp": "2011-12-28T14:26:27Z",
         "owner": {
           "user": {

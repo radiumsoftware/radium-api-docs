@@ -4862,10 +4862,12 @@ access is deteremined.</p>
               <h2 id="s-format">Format</h2>
 
               <p>Acitvities are formatted differently than other resources.
-They have two attributes: <code>owner</code> and <code>reference</code>. Each
-attribute has another attribute describe what kind of resource
-it is. The array of <code>tags</code> describe what happend. Example:
-<code>todo</code>, <code>assigned</code> or <code>contact</code> <code>became_lead</code>.</p>
+They have two attributes: <code>owner</code> and <code>reference</code>.</p>
+
+<p>There are also <code>kind</code> and <code>tag</code> attributes. <code>kind</code> is what
+type of record it&#39;s associated with (todo, contact, or deal etc).
+Then <code>tag</code> is used to describe that action happened. It may not always
+be an action, but just a general description of the event.</p>
 
 <p>There is also a <code>timestamp</code> that corresponds to when the 
 action happened. Example, when the email was sent
@@ -4887,13 +4889,8 @@ an activity done by a user about a todo.</p>
   &quot;id&quot;: 53,
   &quot;created_at&quot;: &quot;2011-12-28T14:26:27Z&quot;,
   &quot;updated_at&quot;: &quot;2011-12-28T14:26:27Z&quot;,
-  &quot;tags&quot;: [
-    &quot;tags&quot;,
-    &quot;describing&quot;,
-    &quot;what&quot;,
-    &quot;action&quot;,
-    &quot;happened&quot;
-  ],
+  &quot;kind&quot;: &quot;todo&quot;,
+  &quot;tag&quot;: &quot;created&quot;,
   &quot;timestamp&quot;: &quot;2011-12-28T14:26:27Z&quot;,
   &quot;owner&quot;: {
     &quot;user&quot;: {
