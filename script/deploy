@@ -194,16 +194,9 @@ class Deploy < Thor
   desc "run_deploy", "Tests prereqs and runs a deploy"
   method_option :environment, :default => "production"
   def run_deploy
-    say "Checking prereqs..."
-
-    prereqs = invoke(:ensure_clean) &&
-      invoke(:ensure_github_connection) &&
-      invoke(:ensure_heroku_connection) &&
-      invoke(:ensure_heroku_outdated) &&
-      invoke(:ensure_fast_forward)
+    prereqs = invoke(:ensure_prereqs)
 
     if !prereqs
-      abort_deploy "Failed prereqs"
       return false
     end
 
