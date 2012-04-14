@@ -92,10 +92,11 @@ class Deploy < Thor
 
   desc "ensure_heroku_connection", "Tests this user can access heroku"
   def ensure_heroku_connection
-    if success? "heroku config"
+    remotes = run "git remote", :capture => true
+    if remotes =~ /heroku/ && success?("heroku config")
       pass "Heroku connected"
     else
-      failure "SSH key missing or user is not a collabator"
+      failure "SSH key missing or user is not a collabator or heroku remote is missing"
     end
   end
 
