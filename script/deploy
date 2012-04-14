@@ -81,6 +81,20 @@ class Deploy < Thor
     end
   end
 
+  desc "ensure_master", "Ensure on master branch"
+  def ensure_master
+    inside ROOT do
+      branch = run "git symbolic-ref HEAD", :capture => true
+
+      if branch =~ /master/i
+        return pass "master is the current branch"
+      else
+        failure "Current branch is not master."
+        return false
+      end
+    end
+  end
+
   desc "ensure_github_connection", "Tests this user can ssh to github"
   def ensure_github_connection
     if run_with_status("ssh -T git@github.com ").exitstatus == 1
@@ -135,7 +149,8 @@ class Deploy < Thor
   def ensure_prereqs
     say "Checking prereqs..."
 
-    prereqs = invoke(:ensure_clean) &&
+    prereqs = invoke(:ensure_master) &&
+      invoke(:ensure_clean) &&
       invoke(:ensure_github_connection) &&
       invoke(:ensure_heroku_connection) &&
       invoke(:ensure_heroku_outdated) &&
