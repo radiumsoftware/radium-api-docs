@@ -14,244 +14,244 @@
 
 ```javascript
 -- create_table("accounts", {:force=>true})
-   -> 0.0272s
+   -> 0.0252s
 -- add_index("accounts", ["name"], {:name=>"index_accounts_on_name", :unique=>true})
-   -> 0.0048s
+   -> 0.0046s
 -- create_table("activities", {:force=>true})
-   -> 0.0050s
+   -> 0.0053s
 -- add_index("activities", ["account_id"], {:name=>"index_activities_on_account_id"})
-   -> 0.0025s
+   -> 0.0029s
 -- add_index("activities", ["kind"], {:name=>"index_activities_on_kind"})
-   -> 0.0038s
--- add_index("activities", ["owner_id", "owner_type"], {:name=>"index_activities_on_owner_id_and_owner_type"})
-   -> 0.0031s
--- add_index("activities", ["reference_id", "reference_type"], {:name=>"index_activities_on_reference_id_and_reference_type"})
-   -> 0.0038s
--- add_index("activities", ["tag"], {:name=>"index_activities_on_tag"})
-   -> 0.0064s
--- add_index("activities", ["updated_at"], {:name=>"index_activities_on_updated_at"})
-   -> 0.0071s
--- create_table("activities_feeds", {:force=>true})
-   -> 0.0056s
--- add_index("activities_feeds", ["activity_id"], {:name=>"index_activities_feeds_on_activity_id"})
-   -> 0.0025s
--- add_index("activities_feeds", ["feedable_id", "feedable_type"], {:name=>"by_feed"})
-   -> 0.0034s
--- create_table("addresses", {:force=>true})
-   -> 0.0060s
--- add_index("addresses", ["contact_id", "name"], {:name=>"index_addresses_on_contact_id_and_name", :unique=>true})
    -> 0.0036s
+-- add_index("activities", ["owner_id", "owner_type"], {:name=>"index_activities_on_owner_id_and_owner_type"})
+   -> 0.0038s
+-- add_index("activities", ["reference_id", "reference_type"], {:name=>"index_activities_on_reference_id_and_reference_type"})
+   -> 0.0039s
+-- add_index("activities", ["tag"], {:name=>"index_activities_on_tag"})
+   -> 0.0057s
+-- add_index("activities", ["updated_at"], {:name=>"index_activities_on_updated_at"})
+   -> 0.0050s
+-- create_table("activities_feeds", {:force=>true})
+   -> 0.0037s
+-- add_index("activities_feeds", ["activity_id"], {:name=>"index_activities_feeds_on_activity_id"})
+   -> 0.0028s
+-- add_index("activities_feeds", ["feedable_id", "feedable_type"], {:name=>"by_feed"})
+   -> 0.0029s
+-- create_table("addresses", {:force=>true})
+   -> 0.0069s
+-- add_index("addresses", ["contact_id", "name"], {:name=>"index_addresses_on_contact_id_and_name", :unique=>true})
+   -> 0.0032s
 -- add_index("addresses", ["contact_id"], {:name=>"index_addresses_on_contact_id"})
    -> 0.0033s
 -- create_table("announcement_users", {:force=>true})
-   -> 0.0076s
+   -> 0.0037s
 -- add_index("announcement_users", ["announcement_id"], {:name=>"index_announcement_users_on_announcement_id"})
-   -> 0.0042s
+   -> 0.0027s
 -- add_index("announcement_users", ["user_id", "announcement_id"], {:name=>"index_announcement_users_on_user_id_and_announcement_id", :unique=>true})
-   -> 0.0054s
+   -> 0.0032s
 -- add_index("announcement_users", ["user_id"], {:name=>"index_announcement_users_on_user_id"})
-   -> 0.0066s
+   -> 0.0062s
 -- create_table("announcements", {:force=>true})
-   -> 0.0087s
+   -> 0.0049s
 -- add_index("announcements", ["created_at"], {:name=>"index_announcements_on_created_at"})
-   -> 0.0029s
+   -> 0.0024s
 -- add_index("announcements", ["user_id"], {:name=>"index_announcements_on_user_id"})
-   -> 0.0030s
+   -> 0.0035s
 -- create_table("attachments", {:force=>true})
    -> 0.0057s
 -- add_index("attachments", ["account_id"], {:name=>"index_attachments_on_account_id"})
-   -> 0.0031s
--- add_index("attachments", ["attachable_id", "attachable_type"], {:name=>"index_attachments_on_attachable_id_and_attachable_type"})
-   -> 0.0035s
--- add_index("attachments", ["user_id"], {:name=>"index_attachments_on_user_id"})
-   -> 0.0033s
--- create_table("call_lists", {:force=>true})
-   -> 0.0049s
--- add_index("call_lists", ["campaign_id"], {:name=>"index_call_lists_on_campaign_id"})
-   -> 0.0050s
--- create_table("campaigns", {:force=>true})
-   -> 0.0070s
--- add_index("campaigns", ["account_id"], {:name=>"index_campaigns_on_account_id"})
-   -> 0.0060s
--- add_index("campaigns", ["user_id"], {:name=>"index_campaigns_on_user_id"})
-   -> 0.0029s
--- create_table("campaigns_contacts", {:id=>false, :force=>true})
-   -> 0.0018s
--- add_index("campaigns_contacts", ["campaign_id"], {:name=>"index_campaigns_contacts_on_campaign_id"})
-   -> 0.0032s
--- add_index("campaigns_contacts", ["contact_id"], {:name=>"index_campaigns_contacts_on_contact_id"})
-   -> 0.0040s
--- create_table("comments", {:force=>true})
-   -> 0.0074s
--- add_index("comments", ["commentable_id", "commentable_type"], {:name=>"index_comments_on_commentable_id_and_commentable_type"})
-   -> 0.0054s
--- add_index("comments", ["user_id"], {:name=>"index_comments_on_commentator_id"})
-   -> 0.0040s
--- create_table("contacts", {:force=>true})
-   -> 0.0067s
--- add_index("contacts", ["account_id"], {:name=>"index_contacts_on_account_id"})
-   -> 0.0046s
--- add_index("contacts", ["user_id"], {:name=>"index_contacts_on_user_id"})
-   -> 0.0267s
--- create_table("contacts_groups", {:force=>true})
-   -> 0.0045s
--- add_index("contacts_groups", ["contact_id", "group_id"], {:name=>"index_contacts_groups_on_contact_id_and_group_id", :unique=>true})
-   -> 0.0038s
--- add_index("contacts_groups", ["contact_id"], {:name=>"index_contacts_groups_on_contact_id"})
-   -> 0.0055s
--- add_index("contacts_groups", ["group_id"], {:name=>"index_contacts_groups_on_group_id"})
-   -> 0.0056s
--- create_table("contacts_todos", {:id=>false, :force=>true})
-   -> 0.0021s
--- create_table("deals", {:force=>true})
-   -> 0.0093s
--- add_index("deals", ["account_id"], {:name=>"index_deals_on_account_id"})
-   -> 0.0046s
--- add_index("deals", ["contact_id"], {:name=>"index_deals_on_contact_id"})
-   -> 0.0039s
--- add_index("deals", ["user_id"], {:name=>"index_deals_on_user_id"})
-   -> 0.0075s
--- create_table("developers", {:force=>true})
-   -> 0.0078s
--- add_index("developers", ["api_key"], {:name=>"index_developers_on_api_key", :unique=>true})
-   -> 0.0103s
--- create_table("fields", {:force=>true})
-   -> 0.0150s
--- add_index("fields", ["account_id"], {:name=>"index_fields_on_account_id"})
-   -> 0.0087s
--- add_index("fields", ["extendable_id", "extendable_type"], {:name=>"index_fields_on_extendable_id_and_extendable_type"})
-   -> 0.0054s
--- add_index("fields", ["extendable_id"], {:name=>"index_fields_on_extendable_id"})
-   -> 0.0060s
--- create_table("followings", {:force=>true})
-   -> 0.0156s
--- add_index("followings", ["followable_id", "followable_type"], {:name=>"index_followings_on_followable_id_and_followable_type"})
    -> 0.0041s
--- add_index("followings", ["user_id", "followable_id", "followable_type"], {:name=>"by_user_and_item", :unique=>true})
-   -> 0.0130s
--- add_index("followings", ["user_id"], {:name=>"index_followings_on_user_id"})
+-- add_index("attachments", ["attachable_id", "attachable_type"], {:name=>"index_attachments_on_attachable_id_and_attachable_type"})
+   -> 0.0042s
+-- add_index("attachments", ["user_id"], {:name=>"index_attachments_on_user_id"})
+   -> 0.0035s
+-- create_table("call_lists", {:force=>true})
+   -> 0.0046s
+-- add_index("call_lists", ["campaign_id"], {:name=>"index_call_lists_on_campaign_id"})
+   -> 0.0031s
+-- create_table("campaigns", {:force=>true})
+   -> 0.0049s
+-- add_index("campaigns", ["account_id"], {:name=>"index_campaigns_on_account_id"})
+   -> 0.0032s
+-- add_index("campaigns", ["user_id"], {:name=>"index_campaigns_on_user_id"})
+   -> 0.0042s
+-- create_table("campaigns_contacts", {:id=>false, :force=>true})
+   -> 0.0015s
+-- add_index("campaigns_contacts", ["campaign_id"], {:name=>"index_campaigns_contacts_on_campaign_id"})
+   -> 0.0024s
+-- add_index("campaigns_contacts", ["contact_id"], {:name=>"index_campaigns_contacts_on_contact_id"})
+   -> 0.0029s
+-- create_table("comments", {:force=>true})
+   -> 0.0047s
+-- add_index("comments", ["commentable_id", "commentable_type"], {:name=>"index_comments_on_commentable_id_and_commentable_type"})
+   -> 0.0026s
+-- add_index("comments", ["user_id"], {:name=>"index_comments_on_commentator_id"})
+   -> 0.0035s
+-- create_table("contacts", {:force=>true})
+   -> 0.0057s
+-- add_index("contacts", ["account_id"], {:name=>"index_contacts_on_account_id"})
+   -> 0.0023s
+-- add_index("contacts", ["user_id"], {:name=>"index_contacts_on_user_id"})
+   -> 0.0027s
+-- create_table("contacts_groups", {:force=>true})
+   -> 0.0038s
+-- add_index("contacts_groups", ["contact_id", "group_id"], {:name=>"index_contacts_groups_on_contact_id_and_group_id", :unique=>true})
+   -> 0.0035s
+-- add_index("contacts_groups", ["contact_id"], {:name=>"index_contacts_groups_on_contact_id"})
+   -> 0.0033s
+-- add_index("contacts_groups", ["group_id"], {:name=>"index_contacts_groups_on_group_id"})
+   -> 0.0035s
+-- create_table("contacts_todos", {:id=>false, :force=>true})
+   -> 0.0014s
+-- create_table("deals", {:force=>true})
+   -> 0.0046s
+-- add_index("deals", ["account_id"], {:name=>"index_deals_on_account_id"})
+   -> 0.0028s
+-- add_index("deals", ["contact_id"], {:name=>"index_deals_on_contact_id"})
+   -> 0.0032s
+-- add_index("deals", ["user_id"], {:name=>"index_deals_on_user_id"})
+   -> 0.0040s
+-- create_table("developers", {:force=>true})
    -> 0.0048s
+-- add_index("developers", ["api_key"], {:name=>"index_developers_on_api_key", :unique=>true})
+   -> 0.0042s
+-- create_table("fields", {:force=>true})
+   -> 0.0049s
+-- add_index("fields", ["account_id"], {:name=>"index_fields_on_account_id"})
+   -> 0.0029s
+-- add_index("fields", ["extendable_id", "extendable_type"], {:name=>"index_fields_on_extendable_id_and_extendable_type"})
+   -> 0.0600s
+-- add_index("fields", ["extendable_id"], {:name=>"index_fields_on_extendable_id"})
+   -> 0.0469s
+-- create_table("followings", {:force=>true})
+   -> 0.0060s
+-- add_index("followings", ["followable_id", "followable_type"], {:name=>"index_followings_on_followable_id_and_followable_type"})
+   -> 0.0034s
+-- add_index("followings", ["user_id", "followable_id", "followable_type"], {:name=>"by_user_and_item", :unique=>true})
+   -> 0.0039s
+-- add_index("followings", ["user_id"], {:name=>"index_followings_on_user_id"})
+   -> 0.0036s
 -- create_table("groups", {:force=>true})
-   -> 0.0074s
+   -> 0.0058s
 -- add_index("groups", ["account_id", "name"], {:name=>"index_groups_on_account_id_and_name", :unique=>true})
    -> 0.0029s
 -- add_index("groups", ["account_id"], {:name=>"index_groups_on_account_id"})
    -> 0.0030s
 -- add_index("groups", ["name"], {:name=>"index_groups_on_name"})
-   -> 0.0076s
+   -> 0.0033s
 -- add_index("groups", ["primary_contact_id"], {:name=>"index_groups_on_primary_contact_id"})
-   -> 0.0127s
+   -> 0.0039s
 -- create_table("identities", {:force=>true})
-   -> 0.0127s
--- add_index("identities", ["email"], {:name=>"index_identities_on_email"})
-   -> 0.0035s
--- create_table("invitations", {:force=>true})
-   -> 0.0099s
--- add_index("invitations", ["hash_key"], {:name=>"index_invitations_on_hash_key", :unique=>true})
-   -> 0.0036s
--- add_index("invitations", ["invitee_id", "invitee_type"], {:name=>"index_invitations_on_invitee_id_and_invitee_type"})
-   -> 0.0036s
--- add_index("invitations", ["invitee_id"], {:name=>"index_invitations_on_invitee_id"})
-   -> 0.0097s
--- add_index("invitations", ["meeting_id", "invitee_id", "invitee_type"], {:name=>"index_invitations_on_meeting_id_and_invitee_id_and_invitee_type", :unique=>true})
-   -> 0.0103s
--- add_index("invitations", ["meeting_id"], {:name=>"index_invitations_on_meeting_id"})
-   -> 0.0114s
--- create_table("line_items", {:force=>true})
-   -> 0.0109s
--- add_index("line_items", ["deal_id"], {:name=>"index_line_items_on_deal_id"})
-   -> 0.0035s
--- create_table("meetings", {:force=>true})
-   -> 0.0052s
--- add_index("meetings", ["user_id"], {:name=>"index_meetings_on_user_id"})
-   -> 0.0041s
--- create_table("message_participants", {:force=>true})
-   -> 0.0087s
--- add_index("message_participants", ["id", "received"], {:name=>"index_message_participants_on_id_and_received"})
-   -> 0.0053s
--- add_index("message_participants", ["message_id", "participant_id", "participant_type"], {:name=>"by_participant_and_message"})
-   -> 0.0264s
--- add_index("message_participants", ["message_id"], {:name=>"index_message_participants_on_message_id"})
-   -> 0.0076s
--- add_index("message_participants", ["participant_id", "participant_type"], {:name=>"by_participant"})
-   -> 0.0053s
--- create_table("messages", {:force=>true})
-   -> 0.0066s
--- add_index("messages", ["account_id"], {:name=>"index_messages_on_account_id"})
-   -> 0.0043s
--- add_index("messages", ["sender_id", "sender_type"], {:name=>"index_messages_on_sender_id_and_sender_type"})
-   -> 0.0079s
--- add_index("messages", ["type"], {:name=>"index_messages_on_type"})
-   -> 0.0062s
--- create_table("notes", {:force=>true})
-   -> 0.0073s
--- add_index("notes", ["reference_id", "reference_type"], {:name=>"index_notes_on_reference_id_and_reference_type"})
-   -> 0.0044s
--- add_index("notes", ["user_id"], {:name=>"index_notes_on_user_id"})
-   -> 0.0030s
--- create_table("phone_call_participants", {:force=>true})
    -> 0.0050s
--- add_index("phone_call_participants", ["id", "received"], {:name=>"index_phone_call_participants_on_id_and_received"})
-   -> 0.0040s
--- add_index("phone_call_participants", ["person_id", "person_type"], {:name=>"by_person"})
+-- add_index("identities", ["email"], {:name=>"index_identities_on_email"})
+   -> 0.0025s
+-- create_table("invitations", {:force=>true})
+   -> 0.0055s
+-- add_index("invitations", ["hash_key"], {:name=>"index_invitations_on_hash_key", :unique=>true})
+   -> 0.0025s
+-- add_index("invitations", ["invitee_id", "invitee_type"], {:name=>"index_invitations_on_invitee_id_and_invitee_type"})
+   -> 0.0031s
+-- add_index("invitations", ["invitee_id"], {:name=>"index_invitations_on_invitee_id"})
+   -> 0.0051s
+-- add_index("invitations", ["meeting_id", "invitee_id", "invitee_type"], {:name=>"index_invitations_on_meeting_id_and_invitee_id_and_invitee_type", :unique=>true})
+   -> 0.0048s
+-- add_index("invitations", ["meeting_id"], {:name=>"index_invitations_on_meeting_id"})
+   -> 0.0042s
+-- create_table("line_items", {:force=>true})
    -> 0.0046s
--- add_index("phone_call_participants", ["phone_call_id"], {:name=>"index_phone_call_participants_on_phone_call_id"})
-   -> 0.0071s
--- create_table("phone_calls", {:force=>true})
-   -> 0.0312s
--- add_index("phone_calls", ["account_id"], {:name=>"index_phone_calls_on_account_id"})
+-- add_index("line_items", ["deal_id"], {:name=>"index_line_items_on_deal_id"})
+   -> 0.0027s
+-- create_table("meetings", {:force=>true})
+   -> 0.0055s
+-- add_index("meetings", ["user_id"], {:name=>"index_meetings_on_user_id"})
    -> 0.0037s
--- create_table("products", {:force=>true})
+-- create_table("message_participants", {:force=>true})
+   -> 0.0061s
+-- add_index("message_participants", ["id", "received"], {:name=>"index_message_participants_on_id_and_received"})
+   -> 0.0036s
+-- add_index("message_participants", ["message_id", "participant_id", "participant_type"], {:name=>"by_participant_and_message"})
+   -> 0.0031s
+-- add_index("message_participants", ["message_id"], {:name=>"index_message_participants_on_message_id"})
+   -> 0.0036s
+-- add_index("message_participants", ["participant_id", "participant_type"], {:name=>"by_participant"})
+   -> 0.0055s
+-- create_table("messages", {:force=>true})
+   -> 0.0058s
+-- add_index("messages", ["account_id"], {:name=>"index_messages_on_account_id"})
+   -> 0.0026s
+-- add_index("messages", ["sender_id", "sender_type"], {:name=>"index_messages_on_sender_id_and_sender_type"})
+   -> 0.0035s
+-- add_index("messages", ["type"], {:name=>"index_messages_on_type"})
+   -> 0.0042s
+-- create_table("notes", {:force=>true})
+   -> 0.0062s
+-- add_index("notes", ["reference_id", "reference_type"], {:name=>"index_notes_on_reference_id_and_reference_type"})
+   -> 0.0031s
+-- add_index("notes", ["user_id"], {:name=>"index_notes_on_user_id"})
+   -> 0.0032s
+-- create_table("phone_call_participants", {:force=>true})
+   -> 0.0056s
+-- add_index("phone_call_participants", ["id", "received"], {:name=>"index_phone_call_participants_on_id_and_received"})
+   -> 0.0028s
+-- add_index("phone_call_participants", ["person_id", "person_type"], {:name=>"by_person"})
+   -> 0.0032s
+-- add_index("phone_call_participants", ["phone_call_id"], {:name=>"index_phone_call_participants_on_phone_call_id"})
+   -> 0.0041s
+-- create_table("phone_calls", {:force=>true})
    -> 0.0054s
+-- add_index("phone_calls", ["account_id"], {:name=>"index_phone_calls_on_account_id"})
+   -> 0.0039s
+-- create_table("products", {:force=>true})
+   -> 0.0051s
 -- add_index("products", ["account_id"], {:name=>"index_products_on_account_id"})
-   -> 0.0043s
+   -> 0.0027s
 -- create_table("reminders", {:force=>true})
-   -> 0.0115s
+   -> 0.0054s
 -- add_index("reminders", ["remindable_id", "remindable_type"], {:name=>"index_reminders_on_remindable_id_and_remindable_type"})
    -> 0.0035s
 -- add_index("reminders", ["time"], {:name=>"index_reminders_on_time"})
-   -> 0.0032s
+   -> 0.0044s
 -- add_index("reminders", ["user_id"], {:name=>"index_reminders_on_user_id"})
-   -> 0.0035s
+   -> 0.0046s
 -- create_table("taggings", {:force=>true})
-   -> 0.0215s
--- add_index("taggings", ["tag_id"], {:name=>"index_taggings_on_tag_id"})
-   -> 0.0075s
--- add_index("taggings", ["taggable_id", "taggable_type", "context"], {:name=>"index_taggings_on_taggable_id_and_taggable_type_and_context"})
-   -> 0.0041s
--- create_table("tags", {:force=>true})
-   -> 0.0070s
--- create_table("todos", {:force=>true})
-   -> 0.0065s
--- add_index("todos", ["account_id"], {:name=>"index_todos_on_account_id"})
-   -> 0.0030s
--- add_index("todos", ["call_list_id"], {:name=>"index_todos_on_call_list_id"})
-   -> 0.0045s
--- add_index("todos", ["campaign_id"], {:name=>"index_todos_on_campaign_id"})
-   -> 0.0043s
--- add_index("todos", ["reference_id", "reference_type"], {:name=>"index_todos_on_reference_id_and_reference_type"})
-   -> 0.0074s
--- add_index("todos", ["user_id"], {:name=>"index_todos_on_user_id"})
-   -> 0.0066s
--- create_table("users", {:force=>true})
    -> 0.0060s
--- add_index("users", ["account_id"], {:name=>"index_users_on_account_id"})
-   -> 0.0035s
--- add_index("users", ["api_key"], {:name=>"index_users_on_api_key", :unique=>true})
-   -> 0.0033s
--- add_index("users", ["email"], {:name=>"index_users_on_email", :unique=>true})
-   -> 0.0040s
--- add_index("users", ["phone", "account_id"], {:name=>"index_users_on_phone_and_account_id", :unique=>true})
+-- add_index("taggings", ["tag_id"], {:name=>"index_taggings_on_tag_id"})
+   -> 0.0025s
+-- add_index("taggings", ["taggable_id", "taggable_type", "context"], {:name=>"index_taggings_on_taggable_id_and_taggable_type_and_context"})
+   -> 0.0031s
+-- create_table("tags", {:force=>true})
    -> 0.0045s
+-- create_table("todos", {:force=>true})
+   -> 0.0058s
+-- add_index("todos", ["account_id"], {:name=>"index_todos_on_account_id"})
+   -> 0.0025s
+-- add_index("todos", ["call_list_id"], {:name=>"index_todos_on_call_list_id"})
+   -> 0.0026s
+-- add_index("todos", ["campaign_id"], {:name=>"index_todos_on_campaign_id"})
+   -> 0.0034s
+-- add_index("todos", ["reference_id", "reference_type"], {:name=>"index_todos_on_reference_id_and_reference_type"})
+   -> 0.0044s
+-- add_index("todos", ["user_id"], {:name=>"index_todos_on_user_id"})
+   -> 0.0117s
+-- create_table("users", {:force=>true})
+   -> 0.0066s
+-- add_index("users", ["account_id"], {:name=>"index_users_on_account_id"})
+   -> 0.0026s
+-- add_index("users", ["api_key"], {:name=>"index_users_on_api_key", :unique=>true})
+   -> 0.0032s
+-- add_index("users", ["email"], {:name=>"index_users_on_email", :unique=>true})
+   -> 0.0031s
+-- add_index("users", ["phone", "account_id"], {:name=>"index_users_on_phone_and_account_id", :unique=>true})
+   -> 0.0040s
 -- initialize_schema_migrations_table()
-   -> 0.0042s
+   -> 0.0055s
 -- assume_migrated_upto_version(20120412101621, ["/Users/adam/radium/radium/db/migrate"])
-   -> 0.0202s
+   -> 0.0123s
 // Announcement
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:19Z",
-  "updated_at": "2012-04-14T13:59:19Z",
+  "created_at": "2012-04-14T14:11:56Z",
+  "updated_at": "2012-04-14T14:11:56Z",
   "title": "Announcement 1",
   "message": "Long form text",
   "user": 9,
@@ -264,10 +264,10 @@
 // CallList
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:20Z",
-  "updated_at": "2012-04-14T13:59:20Z",
+  "created_at": "2012-04-14T14:11:56Z",
+  "updated_at": "2012-04-14T14:11:56Z",
   "description": "Call List 1",
-  "finish_by": "2012-04-21T13:59:17Z",
+  "finish_by": "2012-04-21T14:11:53Z",
   "todos": [
 
   ],
@@ -292,11 +292,11 @@
 // Campaign
 {
   "id": 2,
-  "created_at": "2012-04-14T13:59:20Z",
-  "updated_at": "2012-04-14T13:59:20Z",
+  "created_at": "2012-04-14T14:11:56Z",
+  "updated_at": "2012-04-14T14:11:56Z",
   "name": "Campaign 2",
   "description": "Long form text",
-  "ends_at": "2012-04-21T13:59:17Z",
+  "ends_at": "2012-04-21T14:11:53Z",
   "currency": "USD",
   "target": "10000.0",
   "public": true,
@@ -349,8 +349,8 @@
 // Comment
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:21Z",
-  "updated_at": "2012-04-14T13:59:21Z",
+  "created_at": "2012-04-14T14:11:57Z",
+  "updated_at": "2012-04-14T14:11:57Z",
   "text": "Text 1",
   "user": 14
 }
@@ -359,11 +359,11 @@
 // Contact
 {
   "id": 2,
-  "created_at": "2012-04-14T13:59:21Z",
-  "updated_at": "2012-04-14T13:59:21Z",
+  "created_at": "2012-04-14T14:11:57Z",
+  "updated_at": "2012-04-14T14:11:57Z",
   "name": "Contact 1",
   "contacted_at": null,
-  "became_lead_at": "2012-04-14T13:59:21Z",
+  "became_lead_at": "2012-04-14T14:11:57Z",
   "became_prospect_at": null,
   "became_opportunity_at": null,
   "became_customer_at": null,
@@ -399,9 +399,9 @@
 
   ],
   "activities": [
-    9,
+    11,
     10,
-    11
+    9
   ],
   "fields": [
 
@@ -409,8 +409,8 @@
   "addresses": [
     {
       "id": 1,
-      "created_at": "2012-04-14T13:59:21Z",
-      "updated_at": "2012-04-14T13:59:21Z",
+      "created_at": "2012-04-14T14:11:57Z",
+      "updated_at": "2012-04-14T14:11:57Z",
       "name": "Address 1",
       "street": "826 Hazel",
       "state": "CA",
@@ -422,8 +422,8 @@
   "phone_numbers": [
     {
       "id": 3,
-      "created_at": "2012-04-14T13:59:21Z",
-      "updated_at": "2012-04-14T13:59:21Z",
+      "created_at": "2012-04-14T14:11:57Z",
+      "updated_at": "2012-04-14T14:11:57Z",
       "name": "Phone Number",
       "value": "+52313872481",
       "accepted_values": null,
@@ -433,8 +433,8 @@
   "email_addresses": [
     {
       "id": 2,
-      "created_at": "2012-04-14T13:59:21Z",
-      "updated_at": "2012-04-14T13:59:21Z",
+      "created_at": "2012-04-14T14:11:57Z",
+      "updated_at": "2012-04-14T14:11:57Z",
       "name": "Email",
       "value": "email-1@example.com",
       "accepted_values": null,
@@ -454,10 +454,10 @@
 // Deal
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:21Z",
-  "updated_at": "2012-04-14T13:59:21Z",
+  "created_at": "2012-04-14T14:11:58Z",
+  "updated_at": "2012-04-14T14:11:58Z",
   "description": "This deal rocks!",
-  "close_by": "2012-04-21T13:59:21Z",
+  "close_by": "2012-04-21T14:11:58Z",
   "state": "pending",
   "public": true,
   "contact": 3,
@@ -469,9 +469,9 @@
 
   ],
   "activities": [
-    16,
+    18,
     17,
-    18
+    16
   ],
   "comments": [
 
@@ -479,8 +479,8 @@
   "line_items": [
     {
       "id": 1,
-      "created_at": "2012-04-14T13:59:21Z",
-      "updated_at": "2012-04-14T13:59:21Z",
+      "created_at": "2012-04-14T14:11:58Z",
+      "updated_at": "2012-04-14T14:11:58Z",
       "name": "Radium",
       "quantity": 1,
       "price": "1000.0",
@@ -489,8 +489,8 @@
     },
     {
       "id": 2,
-      "created_at": "2012-04-14T13:59:21Z",
-      "updated_at": "2012-04-14T13:59:21Z",
+      "created_at": "2012-04-14T14:11:58Z",
+      "updated_at": "2012-04-14T14:11:58Z",
       "name": "Radium",
       "quantity": 1,
       "price": "1000.0",
@@ -499,8 +499,8 @@
     },
     {
       "id": 3,
-      "created_at": "2012-04-14T13:59:21Z",
-      "updated_at": "2012-04-14T13:59:21Z",
+      "created_at": "2012-04-14T14:11:58Z",
+      "updated_at": "2012-04-14T14:11:58Z",
       "name": "Radium",
       "quantity": 1,
       "price": "1000.0",
@@ -517,11 +517,11 @@
 // Email
 {
   "id": 2,
-  "created_at": "2012-04-14T13:59:22Z",
-  "updated_at": "2012-04-14T13:59:22Z",
+  "created_at": "2012-04-14T14:11:59Z",
+  "updated_at": "2012-04-14T14:11:59Z",
   "subject": "Hey",
   "message": "Long form text",
-  "sent_at": "2012-04-14T13:59:22Z",
+  "sent_at": "2012-04-14T14:11:59Z",
   "user": 22,
   "users": [
     22
@@ -544,8 +544,8 @@
 // Following
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:23Z",
-  "updated_at": "2012-04-14T13:59:23Z",
+  "created_at": "2012-04-14T14:11:59Z",
+  "updated_at": "2012-04-14T14:11:59Z",
   "approved": true,
   "user": 27,
   "contact": 4
@@ -555,8 +555,8 @@
 // Group
 {
   "id": 7,
-  "created_at": "2012-04-14T13:59:23Z",
-  "updated_at": "2012-04-14T13:59:23Z",
+  "created_at": "2012-04-14T14:11:59Z",
+  "updated_at": "2012-04-14T14:11:59Z",
   "name": "Group 7",
   "email": null,
   "phone": null,
@@ -607,10 +607,10 @@
 // Im
 {
   "id": 3,
-  "created_at": "2012-04-14T13:59:23Z",
-  "updated_at": "2012-04-14T13:59:23Z",
+  "created_at": "2012-04-14T14:11:59Z",
+  "updated_at": "2012-04-14T14:11:59Z",
   "message": "Hey man",
-  "sent_at": "2012-04-14T13:59:23Z",
+  "sent_at": "2012-04-14T14:11:59Z",
   "sender": 30,
   "users": [
     29,
@@ -631,10 +631,10 @@
 // Invitation
 {
   "id": 2,
-  "created_at": "2012-04-14T13:59:23Z",
-  "updated_at": "2012-04-14T13:59:23Z",
+  "created_at": "2012-04-14T14:12:00Z",
+  "updated_at": "2012-04-14T14:12:00Z",
   "state": "pending",
-  "hash_key": "695269580c744703c58044818b194e1b97815763",
+  "hash_key": "0db15141fb983d653e6b2111a9eff13529640a2d",
   "meeting": 1,
   "user": 32
 }
@@ -643,12 +643,12 @@
 // Meeting
 {
   "id": 2,
-  "created_at": "2012-04-14T13:59:23Z",
-  "updated_at": "2012-04-14T13:59:23Z",
+  "created_at": "2012-04-14T14:12:00Z",
+  "updated_at": "2012-04-14T14:12:00Z",
   "topic": "Meeting 2",
   "location": "The office",
-  "starts_at": "2012-04-14T14:59:17Z",
-  "ends_at": "2012-04-14T15:59:17Z",
+  "starts_at": "2012-04-14T15:11:53Z",
+  "ends_at": "2012-04-14T16:11:53Z",
   "contacts": [
 
   ],
@@ -661,10 +661,10 @@
   "invitations": [
     {
       "id": 3,
-      "created_at": "2012-04-14T13:59:23Z",
-      "updated_at": "2012-04-14T13:59:23Z",
+      "created_at": "2012-04-14T14:12:00Z",
+      "updated_at": "2012-04-14T14:12:00Z",
       "state": "confirmed",
-      "hash_key": "44a902110b6667568e9d0688dee0622f6b67a815",
+      "hash_key": "919cd9d6b0cbacf913fe970d471307f0a3bc4bd8",
       "meeting": 2,
       "user": 33
     }
@@ -675,8 +675,8 @@
 // Note
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:24Z",
-  "updated_at": "2012-04-14T13:59:24Z",
+  "created_at": "2012-04-14T14:12:00Z",
+  "updated_at": "2012-04-14T14:12:00Z",
   "message": "Long form text"
 }
 
@@ -684,12 +684,12 @@
 // PhoneCall
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:24Z",
-  "updated_at": "2012-04-14T13:59:24Z",
+  "created_at": "2012-04-14T14:12:01Z",
+  "updated_at": "2012-04-14T14:12:01Z",
   "outcome": null,
   "duration": 600,
   "kind": "accepted",
-  "dialed_at": "2012-04-07T13:59:17Z",
+  "dialed_at": "2012-04-07T14:11:53Z",
   "contacts": [
     6
   ],
@@ -708,8 +708,8 @@
 // Product
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:25Z",
-  "updated_at": "2012-04-14T13:59:25Z",
+  "created_at": "2012-04-14T14:12:02Z",
+  "updated_at": "2012-04-14T14:12:02Z",
   "name": "Radium",
   "description": null,
   "currency": "USD",
@@ -723,9 +723,9 @@
 // Reminder
 {
   "id": 1,
-  "created_at": "2012-04-14T13:59:26Z",
-  "updated_at": "2012-04-14T13:59:26Z",
-  "time": "2012-04-21T13:59:17Z",
+  "created_at": "2012-04-14T14:12:02Z",
+  "updated_at": "2012-04-14T14:12:02Z",
+  "time": "2012-04-21T14:11:53Z",
   "via": "sms",
   "todo": 1,
   "user": 43
@@ -735,10 +735,10 @@
 // Sms
 {
   "id": 4,
-  "created_at": "2012-04-14T13:59:26Z",
-  "updated_at": "2012-04-14T13:59:26Z",
+  "created_at": "2012-04-14T14:12:02Z",
+  "updated_at": "2012-04-14T14:12:02Z",
   "message": "Less than 255 characters",
-  "sent_at": "2012-04-14T13:59:26Z",
+  "sent_at": "2012-04-14T14:12:02Z",
   "user": 45,
   "users": [
     45
@@ -761,11 +761,11 @@
 // Todo
 {
   "id": 2,
-  "created_at": "2012-04-14T13:59:27Z",
-  "updated_at": "2012-04-14T13:59:27Z",
+  "created_at": "2012-04-14T14:12:03Z",
+  "updated_at": "2012-04-14T14:12:03Z",
   "kind": "general",
   "description": "Finish programming radium",
-  "finish_by": "2012-04-21T13:59:17Z",
+  "finish_by": "2012-04-21T14:11:53Z",
   "finished": false,
   "contacts": [
 
@@ -779,9 +779,9 @@
   ],
   "user": {
     "id": 47,
-    "created_at": "2012-04-14T13:59:27Z",
-    "updated_at": "2012-04-14T13:59:27Z",
-    "name": "Mark James",
+    "created_at": "2012-04-14T14:12:03Z",
+    "updated_at": "2012-04-14T14:12:03Z",
+    "name": "Martin Duncan",
     "email": "user-39@example.com",
     "phone": "38539383924839",
     "public": true,
@@ -842,9 +842,9 @@
 // User
 {
   "id": 48,
-  "created_at": "2012-04-14T13:59:27Z",
-  "updated_at": "2012-04-14T13:59:27Z",
-  "name": "Anna Jackson",
+  "created_at": "2012-04-14T14:12:04Z",
+  "updated_at": "2012-04-14T14:12:04Z",
+  "name": "Patricia Greene",
   "email": "user-40@example.com",
   "phone": "38540384024840",
   "public": true,
@@ -903,8 +903,8 @@
 // Account
 {
   "id": 3,
-  "created_at": "2012-04-14T13:59:27Z",
-  "updated_at": "2012-04-14T13:59:27Z",
+  "created_at": "2012-04-14T14:12:04Z",
+  "updated_at": "2012-04-14T14:12:04Z",
   "name": "Account 1",
   "is_public": true,
   "users": [
@@ -928,17 +928,17 @@
 // Activity
 {
   "id": 49,
-  "created_at": "2012-04-14T13:59:27Z",
-  "updated_at": "2012-04-14T13:59:27Z",
+  "created_at": "2012-04-14T14:12:04Z",
+  "updated_at": "2012-04-14T14:12:04Z",
   "kind": "todo",
   "tag": "created",
-  "timestamp": "2012-04-14T13:59:27Z",
+  "timestamp": "2012-04-14T14:12:04Z",
   "owner": {
     "user": {
       "id": 50,
-      "created_at": "2012-04-14T13:59:27Z",
-      "updated_at": "2012-04-14T13:59:27Z",
-      "name": "Diana Gray",
+      "created_at": "2012-04-14T14:12:04Z",
+      "updated_at": "2012-04-14T14:12:04Z",
+      "name": "Edward Cooper",
       "email": "user-42@example.com",
       "phone": "38542384224842",
       "public": true,
@@ -996,11 +996,11 @@
   "reference": {
     "todo": {
       "id": 3,
-      "created_at": "2012-04-14T13:59:27Z",
-      "updated_at": "2012-04-14T13:59:27Z",
+      "created_at": "2012-04-14T14:12:04Z",
+      "updated_at": "2012-04-14T14:12:04Z",
       "kind": "general",
       "description": "Finish programming radium",
-      "finish_by": "2012-04-21T13:59:17Z",
+      "finish_by": "2012-04-21T14:11:53Z",
       "finished": false,
       "contacts": [
 
@@ -1014,9 +1014,9 @@
       ],
       "user": {
         "id": 49,
-        "created_at": "2012-04-14T13:59:27Z",
-        "updated_at": "2012-04-14T13:59:27Z",
-        "name": "Lawrence Bradley",
+        "created_at": "2012-04-14T14:12:04Z",
+        "updated_at": "2012-04-14T14:12:04Z",
+        "name": "Jimmy Ray",
         "email": "user-41@example.com",
         "phone": "38541384124841",
         "public": true,
