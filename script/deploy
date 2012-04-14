@@ -130,17 +130,17 @@ class Deploy < Thor
     end
   end
 
-  desc "prereqs", "Tests all prereqs"
-  def prereqs
+  desc "ensure_prereqs", "Tests all prereqs"
+  def ensure_prereqs
     say "Checking prereqs..."
 
-    tests = invoke(:ensure_clean) &&
+    prereqs = invoke(:ensure_clean) &&
       invoke(:ensure_github_connection) &&
       invoke(:ensure_heroku_connection) &&
       invoke(:ensure_heroku_outdated) &&
       invoke(:ensure_fast_forward)
 
-    if !tests
+    if !prereqs
       abort_deploy "Failed prereqs"
       return false
     end
