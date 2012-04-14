@@ -199,7 +199,6 @@ class Deploy < Thor
   def commit
     inside ROOT do
       run! "git add #{DEPLOY_FILE}"
-      run! "git add site/"
       run! "git commit -m '[Deploy]'"
       @new_commit = true # so we can catch the failure and blow away the last commit
     end
