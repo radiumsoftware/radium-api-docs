@@ -164,15 +164,6 @@ class Deploy < Thor
     pass "Prereqs"
   end
 
-  desc "generate", "Generates the documenatation"
-  def generate
-    inside ROOT do
-      run! "bundle exec rake generate"
-
-      say_status "Documenation", "Generated"
-    end
-  end
-
   desc "record", "Records this deploy in deploys.md"
   def record
     inside ROOT do
@@ -219,7 +210,6 @@ class Deploy < Thor
     say "Running predeploy tasks..."
 
     begin
-      invoke :generate
       invoke :record
       invoke :commit
     rescue CommandFailed => ex

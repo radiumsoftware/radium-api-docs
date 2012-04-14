@@ -12,3 +12,9 @@ task :generate do
 end
 
 task :default => :generate
+
+namespace :assets do
+  task :precompile => 'generate' do
+    # nothing
+  end
+end
