@@ -145,7 +145,7 @@ class Deploy < Thor
       return false
     end
 
-    say_status "Prereqs passed"
+    pass "Prereqs"
   end
 
   desc "generate", "Generates the documenatation"
