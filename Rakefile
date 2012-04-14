@@ -14,8 +14,7 @@ end
 task :default => :generate
 
 namespace :assets do
-  desc "Compiles site"
   task :precompile => 'generate' do
-    # nothing
+    true
   end
 end
