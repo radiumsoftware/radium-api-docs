@@ -1,4 +1,4 @@
-require 'bundler'
+require 'bundler/setup'
 require 'api_guides'
 
 task :generate do
