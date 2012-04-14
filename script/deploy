@@ -109,7 +109,7 @@ class Deploy < Thor
     inside ROOT do
       remotes = run "git remote", :capture => true
       if remotes =~ /heroku/ && success?("heroku config")
-        pass "Heroku connected"
+        return pass "Heroku connected"
       else
         failure "SSH key missing or user is not a collabator or heroku remote is missing"
         return false
@@ -121,7 +121,7 @@ class Deploy < Thor
   def ensure_clean
     inside ROOT do
       if success? "git diff --exit-code"
-        pass "No uncommited files"
+        return pass "No uncommited files"
       else
         failure "There are uncommited files"
         return false
@@ -133,7 +133,7 @@ class Deploy < Thor
   def ensure_heroku_outdated
     inside ROOT do
       if !success? "git diff head heroku/master --exit-code"
-        pass "Code not deployed"
+        return pass "Code not deployed"
       else
         failure "Code already deployed"
         return false
