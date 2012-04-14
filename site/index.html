@@ -219,13 +219,6 @@
             </ol>
           </section>
           <section>
-            <a class="header" href="#d-following">Following</a>
-            <ol>
-                  <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
-                  <li class="sub-section"><a href="#s-format">Format</a></li>
-            </ol>
-          </section>
-          <section>
             <a class="header" href="#d-comments">Comments</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
@@ -233,14 +226,10 @@
             </ol>
           </section>
           <section>
-            <a class="header" href="#d-statistics">Statistics</a>
+            <a class="header" href="#d-following">Following</a>
             <ol>
                   <li class="sub-section"><a href="#s-routes-permissions">Routes  Permissions</a></li>
-                  <li class="sub-section"><a href="#s-dashboard-statistics">Dashboard Statistics</a></li>
-                  <li class="sub-section"><a href="#s-deals-statistics">Deals Statistics</a></li>
-                  <li class="sub-section"><a href="#s-pipeline-statistics">Pipeline Statistics</a></li>
-                  <li class="sub-section"><a href="#s-coffee-cup-statistics">Coffee Cup Statistics</a></li>
-                  <li class="sub-section"><a href="#s-campaign-statistics">Campaign Statistics</a></li>
+                  <li class="sub-section"><a href="#s-format">Format</a></li>
             </ol>
           </section>
           <section>
@@ -5285,131 +5274,6 @@ because they are always attached to other objects. </p>
       <thead>
         <tr>
           <th class="docs">
-            <h1 id="d-following">Following</h1>
-          </th>
-          <th class="code">&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              <p>Users can follow different resources in the system. This will give
-them read access. It will also add related activities to their feed.
-Followable resources inhert their <code>public</code> setting from the <code>account</code>.
-If someone is public, following requests will automatically be approved.
-If something is private, the person in charge of it will have to approve it.
-A person can choose to no longer follow something at their will.</p>
-
-<p>These resources can be followed:</p>
-
-<ol>
-<li>Users</li>
-<li>Contacts</li>
-<li>Teams</li>
-<li>Campaigns</li>
-<li>Deals</li>
-<li>Groups</li>
-</ol>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-routes-permissions">Routes  Permissions</h2>
-
-              <ul>
-<li><code>POST /users/:id/follow</code>: Anyone</li>
-<li><code>POST /contacts/:id/follow</code>: Anyone</li>
-<li><code>POST /teams/:id/follow</code>: Anyone</li>
-<li><code>POST /campaigns/:id/follow</code>: Anyone</li>
-<li><code>POST /deals/:id/follow</code>: Anyone</li>
-<li><code>POST /groups/:id/follow</code>: Anyone</li>
-<li><code>GET /followings</code>: Anyone according to scoping</li>
-<li><code>GET /followings/:id</code>: Any according to scoping</li>
-<li><code>DELETE /followings/:id</code>: The follower or god</li>
-<li><code>PUT /followings/:id/approve</code>: The resource manager or a god</li>
-</ul>
-
-<h3>Scoping</h3>
-
-<p>You are only allowed to access your own following requests.</p>
-
-            </td>
-            <td class="code">
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-format">Format</h2>
-
-              <p>As mentioned earlier, following requests will be automatically
-approved if the followable resource is public.</p>
-
-<h3>Read Only Attributes</h3>
-
-<dl>
-  <dt>approved</dt>
-  <dd>Name says it all</dd>
-
-  <dt>user</dt>
-  <dd>ID for following user</dd>
-
-  <dt>followable</dt>
-  <dd>ID and Resource type</dd>
-</dl>
-
-            </td>
-            <td class="code">
-                <h2 id="r-following-format">Following Format</h2>
-                <pre><code class="javascript">{
-  &quot;id&quot;: 12,
-  &quot;created_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
-  &quot;updated_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
-  &quot;approved&quot;: true,
-  &quot;user&quot;: 464,
-  &quot;followable&quot;: {
-    &quot;id&quot;: 154,
-    &quot;followable_type&quot;: &quot;Contact&quot;
-  }
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-"></h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-follow-something">Follow Something</h2>
-                <p><code>POST https://api.radiumcrm.com/contacts/5/follow</code></p>
-
-<h3>Parameters</h3>
-
-<pre><code class="javascript">{
-  &quot;developer_api_key&quot;: &quot;foo&quot;,
-  &quot;user_api_key&quot;: &quot;bar&quot;
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-      <tbody>
-    </table>
-    <table cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th class="docs">
             <h1 id="d-comments">Comments</h1>
           </th>
           <th class="code">&nbsp;</th>
@@ -5532,7 +5396,7 @@ about many different things. Comments may also have files attached.</p>
       <thead>
         <tr>
           <th class="docs">
-            <h1 id="d-statistics">Statistics</h1>
+            <h1 id="d-following">Following</h1>
           </th>
           <th class="code">&nbsp;</th>
         </tr>
@@ -5542,16 +5406,23 @@ about many different things. Comments may also have files attached.</p>
             <td class="docs">
               <h2 id="s-"></h2>
 
-              <p>The API can give you statistics on individual or groups of resources.</p>
+              <p>Users can follow different resources in the system. This will give
+them read access. It will also add related activities to their feed.
+Followable resources inhert their <code>public</code> setting from the <code>account</code>.
+If someone is public, following requests will automatically be approved.
+If something is private, the person in charge of it will have to approve it.
+A person can choose to no longer follow something at their will.</p>
 
-<p><strong>This functionality is a WIP!</strong> Statisics may be added or removed
-as the application develops. </p>
+<p>These resources can be followed:</p>
 
-<p><strong>NOTE</strong>: Date Scoping will be implemented when a final set of statistics 
-has been decided.</p>
-
-<p>Deal Totals are given as objects divded up into currencies. Sums are
-given in floating point values.</p>
+<ol>
+<li>Users</li>
+<li>Contacts</li>
+<li>Teams</li>
+<li>Campaigns</li>
+<li>Deals</li>
+<li>Groups</li>
+</ol>
 
             </td>
             <td class="code">
@@ -5563,13 +5434,22 @@ given in floating point values.</p>
               <h2 id="s-routes-permissions">Routes  Permissions</h2>
 
               <ul>
-<li><code>GET /dashboard/statistics</code>: All users</li>
-<li><code>GET /statistics/deals</code>: All users</li>
-<li><code>GET /statistics/pipeline</code>: All users</li>
-<li><code>GET /statistics/coffee_cup</code>: All users</li>
-<li><code>GET /campaigns/:id/statistics</code>: User who can read that campaign</li>
+<li><code>POST /users/:id/follow</code>: Anyone</li>
+<li><code>POST /contacts/:id/follow</code>: Anyone</li>
+<li><code>POST /teams/:id/follow</code>: Anyone</li>
+<li><code>POST /campaigns/:id/follow</code>: Anyone</li>
+<li><code>POST /deals/:id/follow</code>: Anyone</li>
+<li><code>POST /groups/:id/follow</code>: Anyone</li>
+<li><code>GET /followings</code>: Anyone according to scoping</li>
+<li><code>GET /followings/:id</code>: Any according to scoping</li>
+<li><code>DELETE /followings/:id</code>: The follower or god</li>
+<li><code>PUT /followings/:id/approve</code>: The resource manager or a god</li>
 </ul>
 
+<h3>Scoping</h3>
+
+<p>You are only allowed to access your own following requests.</p>
+
             </td>
             <td class="code">
 
@@ -5577,21 +5457,37 @@ given in floating point values.</p>
           </tr>
           <tr>
             <td class="docs">
-              <h2 id="s-dashboard-statistics">Dashboard Statistics</h2>
+              <h2 id="s-format">Format</h2>
 
-              
+              <p>As mentioned earlier, following requests will be automatically
+approved if the followable resource is public.</p>
+
+<h3>Read Only Attributes</h3>
+
+<dl>
+  <dt>approved</dt>
+  <dd>Name says it all</dd>
+
+  <dt>user</dt>
+  <dd>ID for following user</dd>
+
+  <dt>followable</dt>
+  <dd>ID and Resource type</dd>
+</dl>
+
             </td>
             <td class="code">
-                <h2 id="r-"></h2>
+                <h2 id="r-following-format">Following Format</h2>
                 <pre><code class="javascript">{
-    leads: 0,
-    prospects: 0,
-    upcoming_meetings: 23,
-    pending_calls: 60,
-    pending_deals: { USD: 699000 },
-    closed_deals: { USD: 204000 },
-    paid_deals: { USD: 144000 },
-    rejected_deals: { USD: 144000 }
+  &quot;id&quot;: 12,
+  &quot;created_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
+  &quot;updated_at&quot;: &quot;2011-12-15T12:39:01Z&quot;,
+  &quot;approved&quot;: true,
+  &quot;user&quot;: 464,
+  &quot;followable&quot;: {
+    &quot;id&quot;: 154,
+    &quot;followable_type&quot;: &quot;Contact&quot;
+  }
 }
 </code></pre>
 
@@ -5600,77 +5496,19 @@ given in floating point values.</p>
           </tr>
           <tr>
             <td class="docs">
-              <h2 id="s-deals-statistics">Deals Statistics</h2>
+              <h2 id="s-"></h2>
 
               
             </td>
             <td class="code">
-                <h2 id="r-"></h2>
-                <pre><code class="javascript">{
-    pending_deals: { USD: 699000 },
-    closed_deals: { USD: 204000 },
-    paid_deals: { USD: 144000 },
-    rejected_deals: { USD: 144000 }
-}
-</code></pre>
+                <h2 id="r-follow-something">Follow Something</h2>
+                <p><code>POST https://api.radiumcrm.com/contacts/5/follow</code></p>
 
+<h3>Parameters</h3>
 
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-pipeline-statistics">Pipeline Statistics</h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-"></h2>
-                <pre><code class="javascript">{
-    leads: 0,
-    prospects: 0,
-    opportunities: 268,
-    customers: 41,
-    dead_ends: 41
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-coffee-cup-statistics">Coffee Cup Statistics</h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-"></h2>
-                <pre><code class="javascript">{
-    calls_made: 0,
-    calls_remaining: 123,
-    todos_finished: 0,
-    todos_remaining: 247,
-    paid_deals: 48,
-    unpaid_deals: 301
-}
-</code></pre>
-
-
-            </td>
-          </tr>
-          <tr>
-            <td class="docs">
-              <h2 id="s-campaign-statistics">Campaign Statistics</h2>
-
-              
-            </td>
-            <td class="code">
-                <h2 id="r-"></h2>
-                <pre><code class="javascript">{
-    pending_deals: { USD: 15000 },
-    closed_deals: { USD: 6000 },
-    paid_deals: { USD: 3000 },
-    rejected_deals: { USD: 3000 }
+<pre><code class="javascript">{
+  &quot;developer_api_key&quot;: &quot;foo&quot;,
+  &quot;user_api_key&quot;: &quot;bar&quot;
 }
 </code></pre>
 
