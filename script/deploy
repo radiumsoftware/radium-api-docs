@@ -130,6 +130,24 @@ class Deploy < Thor
     end
   end
 
+  desc "prereqs", "Tests all prereqs"
+  def prereqs
+    say "Checking prereqs..."
+
+    prereqs = invoke(:ensure_clean) &&
+      invoke(:ensure_github_connection) &&
+      invoke(:ensure_heroku_connection) &&
+      invoke(:ensure_heroku_outdated) &&
+      invoke(:ensure_fast_forward)
+
+    if !prereqs
+      abort_deploy "Failed prereqs"
+      return false
+    end
+
+    say_status "Preqs passed"
+  end
+
   desc "generate", "Generates the documenatation"
   def generate
     inside ROOT do
@@ -138,7 +156,6 @@ class Deploy < Thor
       say_status "Documenation", "Generated"
     end
   end
-
 
   desc "record", "Records this deploy in deploys.md"
   def record
