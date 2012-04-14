@@ -106,29 +106,38 @@ class Deploy < Thor
 
   desc "ensure_heroku_connection", "Tests this user can access heroku"
   def ensure_heroku_connection
-    remotes = run "git remote", :capture => true
-    if remotes =~ /heroku/ && success?("heroku config")
-      pass "Heroku connected"
-    else
-      failure "SSH key missing or user is not a collabator or heroku remote is missing"
+    inside ROOT do
+      remotes = run "git remote", :capture => true
+      if remotes =~ /heroku/ && success?("heroku config")
+        pass "Heroku connected"
+      else
+        failure "SSH key missing or user is not a collabator or heroku remote is missing"
+        return false
+      end
     end
   end
 
   desc "ensure_clean", "Test to see if the repo is clean"
   def ensure_clean
-    if success? "git diff --exit-code"
-      pass "No uncommited files"
-    else
-      failure "There are uncommited files"
+    inside ROOT do
+      if success? "git diff --exit-code"
+        pass "No uncommited files"
+      else
+        failure "There are uncommited files"
+        return false
+      end
     end
   end
 
   desc "ensure_heroku_outdated", "Test to see if this code has been deployed or not"
   def ensure_heroku_outdated
-    if !success? "git diff head heroku/master --exit-code"
-      pass "Code not deployed"
-    else
-      failure "Code already deployed"
+    inside ROOT do
+      if !success? "git diff head heroku/master --exit-code"
+        pass "Code not deployed"
+      else
+        failure "Code already deployed"
+        return false
+      end
     end
   end
 
