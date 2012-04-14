@@ -173,39 +173,6 @@ class Deploy < Thor
     pass "Prereqs"
   end
 
-  desc "record", "Records this deploy in deploys.md"
-  def record
-    inside ROOT do
-      commit_info = run('git show --format="format:%h - %an: %s"', :capture => true, :verbose => false).split("\n")[0]
-
-      format = "* [%s] %s\n"
-
-      run "touch #{DEPLOY_FILE}"
-
-      existing_contents = File.read DEPLOY_FILE
-
-      File.open DEPLOY_FILE, 'w' do |f|
-        f.puts format % [Time.now.strftime("%Y-%m-%d %H:%M %z"), commit_info]
-        f.puts existing_contents.chomp
-      end
-
-      say_status "Deploy Log", commit_info
-    end
-
-    true
-  end
-
-  desc "commit", "Commits files neede to deploy" 
-  def commit
-    inside ROOT do
-      run! "git add #{DEPLOY_FILE}"
-      run! "git commit -m '[Deploy]'"
-      @new_commit = true # so we can catch the failure and blow away the last commit
-    end
-
-    say_status "Deploy Files", "Commited"
-  end
-
   desc "run_deploy", "Tests prereqs and runs a deploy"
   method_option :environment, :default => "production"
   def run_deploy
@@ -214,24 +181,6 @@ class Deploy < Thor
     if !prereqs
       return false
     end
-
-    say "Running predeploy tasks..."
-
-    begin
-      invoke :record
-      invoke :commit
-    rescue CommandFailed => ex
-      abort_deploy "A deploy step failed to run: #{ex}"
-
-      if @new_commit
-        run "git reset HEAD~1"
-      else
-        run "git reset --hard HEAD"
-      end
-
-      return false
-    end
-
     say "Deploying..."
 
     begin
