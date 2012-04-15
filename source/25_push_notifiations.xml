@@ -1,0 +1,71 @@
+<document>
+  <title>Push Notifications</title>
+  <position>24</position>
+  <section>
+    <docs>
+      <![CDATA[
+      The server sends push notifications so clients can update in realtime. 
+      There are two different channels. One for realtime updates to records
+      and one for the feed. You may only subscribe to channels for a specific user.
+      There are no global channels. The server only sends push notifications for records
+      the user can access. This follows the principle that the API only shows you 
+      what a user has access to.
+
+      The general format for a channel is like this: `/name/user-api-key`. 
+      Replace "user-api-key" with a user.
+
+      The client is only allowed to receive message.
+      ]]>
+    </docs>
+  </section>
+  <section title="Update Channel">
+    <docs>
+      <![CDATA[
+      ### Channel: /updates/user-api-key
+
+      The update channel pushes out all create, update and delete actions. 
+      Each message contains the action and the record itself. The enire record
+      is sent in each message. For example, the complete record is sent on update
+      and **not** just the changes. This is so the client can pull in a complete record
+      if they don't have it in memory already.
+
+      <dl>
+        <dt>action</dt>
+        <dd>Either: <code>create</code>, <code>update</code>, or <code>delete</code></dd>
+
+        <dt>resource</dt>
+        <dd>The name of the resource type. Example: <code>user</code></dd>
+
+        <dt>data</dt>
+        <dd>The raw data</dd>
+      </dl>
+
+      When a record is deleted, only the ID is given in `data`.
+      ]]>
+    </docs>
+    <reference>
+      <![CDATA[
+      ### Channel: /updates/user-api-key
+
+      ```javascript
+      {
+        "action": "update",
+        "resource": todo",
+        "data": { ... }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section title="Feed Channel">
+    <docs>
+      <![CDATA[
+      ### Channel: /feed/user-api-key
+
+      The feed channel receives everything that comes into the user's feed.
+      New entries are sent when they are added or changed. Each message is in the
+      `Activity` format.
+      ]]>
+    </docs>
+  </section>
+</document>
