@@ -49,8 +49,11 @@
       ### Read Only Attributes
 
       <dl>
-        <dt>duration</dt>
-        <dd>The length of the call in seconds</dd>
+        <dt>started_at</dt>
+        <dd>When the call started</dd>
+
+        <dt>ended_at</dt>
+        <dd>When the call ended</dd>
 
         <dt>kind</dt>
         <dd>
@@ -60,9 +63,6 @@
           <code>busy</code>,
           <code>missed</code>
         </dd>
-
-        <dt>dialed_at</dt>
-        <dd>When the call happened</dd>
 
         <dt>to</dt>
         <dd>ID and type for all people who received the call</dd>
@@ -94,7 +94,8 @@
         "outcome": null,
         "duration": 600,
         "kind": "accepted",
-        "dialed_at": "2011-12-08T13:01:51Z",
+        "started_at": "2011-12-08T13:01:51Z",
+        "ended_at": "2011-12-08T13:31:51Z",
         "to": [
           { 
             "id": 55,
