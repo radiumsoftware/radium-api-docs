@@ -1,0 +1,62 @@
+<document>
+  <title>Notifications</title>
+  <position>23</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Notifications remind users of things that happen.
+
+      These resources generate notifications:
+
+      1. Contacts
+      2. Todos
+      3. Deals
+      4. Campaigns
+      5. Meetings
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      * `GET /notifications`
+      * `GET /notifications/:id`
+      * `DELETE /followings/:id`: The follower or god
+
+      ### Scoping
+
+      You are only allowed access to your notifications
+      ]]>
+    </docs>
+  </section>
+  <section title="Format">
+    <docs>
+      <![CDATA[
+      ### Read Only Attributes
+
+      <dl>
+        <dt>tag</dt>
+        <dd>Name says it all</dd>
+
+        <dt>references</dt>
+        <dd>The object associated with the notification</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Notification Format">
+      <![CDATA[
+      ```javascript
+      {
+        "id": 12,
+        "created_at": "2011-12-15T12:39:01Z",
+        "updated_at": "2011-12-15T12:39:01Z",
+        "tag": "assigned.contact",
+        "reference": {
+          "contact: 5
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>

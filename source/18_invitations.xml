@@ -46,11 +46,8 @@
         <dt>meeting</dt>
         <dd>ID for associated meeting</dd>
 
-        <dt>user</dt>
-        <dd>The user this invitation belongs to</dd>
-
-        <dt>contact</dd>
-        <dd>The contact this invitation belongs to</dd>
+        <dt>invitee</dt>
+        <dd>The user or contact the invitation belongs to</dd>
       </dl>
       ]]>
     </docs>
@@ -64,7 +61,7 @@
         "state": "pending",
         "hash_key": "8a0e49cd3b18d49a565fe91211e66462f8104114",
         "meeting": 1,
-        "user": 28
+        "invitee": { "user": 28 }
       }
       ```
       ]]>

@@ -120,7 +120,7 @@
         "finished": false,
         "campaign": 3,
         "call_list": 5
-        "reference": null,
+        "reference": { "contact": ... }
         "contacts": [
 
         ],
