@@ -61,6 +61,11 @@
         <dt>name</dt>
         <dd>The full name of this contact</dd>
 
+        <dt>group_names</dt>
+        <dd>Array of names. Case insenstive. The contact will be added to these groups. 
+          Groups are only added. Never removed.
+        </dd>
+
         <dt>addresses</dt>
         <dd>
           <dl>
