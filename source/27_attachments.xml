@@ -1,0 +1,93 @@
+<document>
+  <title>Attachments</title>
+  <position>27</position>
+  <section>
+    <docs>
+      <![CDATA[
+      Attachments are files associated with other objects. Most resources support
+      attachments. Creating attachments is a bit tricky due to how file uploads
+      are implemented and restrictions on what AJAX can do. In most cases, you 
+      want to attach files to things you add to Radium. In order for this to work,
+      you must first create the attachment using the API. The API will give you back 
+      an ID. Then you can pass that ID with the parent resource when you want to create it.
+
+      There are also API routes to add attachments to existing resources.
+
+      The following resources support attachments:
+
+      1. Contacts
+      2. Campaigns
+      3. Call Lists
+      4. Comments
+      5. Deals
+      6. Emails
+      7. Meetings
+      8. Todos
+      ]]>
+    </docs>
+  </section>
+  <section title="Routes & Permissions">
+    <docs>
+      <![CDATA[
+      Anyone may attach files to anything they can access. However, only the admin
+      of the parent resource or the uploader can delete attachments.
+
+      * `POST /attachments
+      * `POST /contacts/:id/attachments`
+      * `POST /campaigns/:id/attachments`
+      * `POST /call_lists/:id/attachments`
+      * `POST /deals/:id/attachments`
+      * `POST /meetings/:id/attachments`
+      * `POST /todos/:id/attachments`
+      * `DELETE /attachments/:id
+      ]]>
+    </docs>
+  </section>
+  <section title="Attributes">
+    <docs>
+      <![CDATA[
+      ### Read Only Attributues
+
+      <dl>
+        <dt>user</dt>
+        <dd>ID for the user who uploaded the attachment</dd>
+
+        <dt>url</dt>
+        <dd>Full url to download the attachment</dd>
+      </dl>
+      ]]>
+    </docs>
+    <reference title="Comment Format">
+      <![CDATA[
+      ```javascript
+      {
+        "attachment": {
+          "id": 7,
+          "created_at": "2011-12-14T13:25:36Z",
+          "updated_at": "2011-12-14T13:25:36Z",
+          "user": 444,
+          "url": "http://example.com/image.jpg"
+        }
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+  <section>
+    <reference title="Upload an Attachment">
+      <![CDATA[
+      `POST /attachments`
+
+      Create an attachment that can be associated with something else.
+
+      This request must be sent as a multipart post and URL encoded.
+
+      ### Parameters
+
+      ```
+      developer_api_key=foo&user_api_key=bar&attachment[file]=uploaded_file
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>
