@@ -16,8 +16,8 @@
 {
   "announcement": {
     "id": 1,
-    "created_at": "2012-05-05T02:59:23Z",
-    "updated_at": "2012-05-05T02:59:23Z",
+    "created_at": "2012-05-05T03:06:55Z",
+    "updated_at": "2012-05-05T03:06:55Z",
     "title": "Announcement 1",
     "message": "Long form text",
     "user": 10,
@@ -32,10 +32,10 @@
 {
   "call_list": {
     "id": 1,
-    "created_at": "2012-05-05T02:59:23Z",
-    "updated_at": "2012-05-05T02:59:23Z",
+    "created_at": "2012-05-05T03:06:55Z",
+    "updated_at": "2012-05-05T03:06:55Z",
     "description": "Call List 1",
-    "finish_by": "2012-05-12T02:59:19Z",
+    "finish_by": "2012-05-12T03:06:52Z",
     "todos": [
 
     ],
@@ -65,11 +65,11 @@
 {
   "campaign": {
     "id": 2,
-    "created_at": "2012-05-05T02:59:23Z",
-    "updated_at": "2012-05-05T02:59:23Z",
+    "created_at": "2012-05-05T03:06:55Z",
+    "updated_at": "2012-05-05T03:06:55Z",
     "name": "Campaign 2",
     "description": "Long form text",
-    "ends_at": "2012-05-12T02:59:19Z",
+    "ends_at": "2012-05-12T03:06:52Z",
     "currency": "USD",
     "target": "10000.0",
     "public": true,
@@ -96,6 +96,959 @@
 
     ],
     "user": 12
+  }
+}
+
+
+// Comment
+{
+  "comment": {
+    "id": 1,
+    "created_at": "2012-05-05T03:06:56Z",
+    "updated_at": "2012-05-05T03:06:56Z",
+    "text": "Text 1",
+    "attachments": [
+
+    ],
+    "user": 15
+  }
+}
+
+
+// Contact
+{
+  "contact": {
+    "id": 2,
+    "created_at": "2012-05-05T03:06:56Z",
+    "updated_at": "2012-05-05T03:06:56Z",
+    "name": "Contact 1",
+    "display_name": "Contact 1",
+    "contacted_at": null,
+    "became_lead_at": "2012-05-05T03:06:56Z",
+    "became_prospect_at": null,
+    "became_opportunity_at": null,
+    "became_customer_at": null,
+    "became_dead_end_at": null,
+    "status": "lead",
+    "public": true,
+    "groups": [
+      1,
+      2
+    ],
+    "campaigns": [
+
+    ],
+    "activities": [
+      15,
+      14,
+      13
+    ],
+    "fields": [
+
+    ],
+    "addresses": [
+      {
+        "id": 1,
+        "created_at": "2012-05-05T03:06:56Z",
+        "updated_at": "2012-05-05T03:06:56Z",
+        "name": "Address 1",
+        "street": "826 Hazel",
+        "state": "CA",
+        "country": "United States",
+        "zip_code": "94550",
+        "time_zone": null
+      }
+    ],
+    "phone_numbers": [
+      {
+        "id": 3,
+        "created_at": "2012-05-05T03:06:56Z",
+        "updated_at": "2012-05-05T03:06:56Z",
+        "name": "Phone Number",
+        "value": "+52313872481",
+        "accepted_values": null,
+        "kind": "phone_number"
+      }
+    ],
+    "email_addresses": [
+      {
+        "id": 2,
+        "created_at": "2012-05-05T03:06:56Z",
+        "updated_at": "2012-05-05T03:06:56Z",
+        "name": "Email",
+        "value": "email-1@example.com",
+        "accepted_values": null,
+        "kind": "email_address"
+      }
+    ],
+    "attachments": [
+
+    ],
+    "user": 16,
+    "avatar": {
+      "small_url": "/images/fallback/small_default.png",
+      "medium_url": "/images/fallback/medium_default.png",
+      "large_url": "/images/fallback/large_default.png",
+      "huge_url": "/images/fallback/huge_default.png"
+    }
+  }
+}
+
+
+// Deal
+{
+  "deal": {
+    "id": 1,
+    "created_at": "2012-05-05T03:06:57Z",
+    "updated_at": "2012-05-05T03:06:57Z",
+    "description": "This deal rocks!",
+    "close_by": "2012-05-12T03:06:57Z",
+    "state": "pending",
+    "public": true,
+    "products": [
+
+    ],
+    "activities": [
+      23,
+      22,
+      21
+    ],
+    "comments": [
+
+    ],
+    "line_items": [
+      {
+        "id": 1,
+        "created_at": "2012-05-05T03:06:57Z",
+        "updated_at": "2012-05-05T03:06:57Z",
+        "name": "Radium",
+        "quantity": 1,
+        "price": "1000.0",
+        "currency": "USD",
+        "product": null
+      },
+      {
+        "id": 2,
+        "created_at": "2012-05-05T03:06:57Z",
+        "updated_at": "2012-05-05T03:06:57Z",
+        "name": "Radium",
+        "quantity": 1,
+        "price": "1000.0",
+        "currency": "USD",
+        "product": null
+      },
+      {
+        "id": 3,
+        "created_at": "2012-05-05T03:06:57Z",
+        "updated_at": "2012-05-05T03:06:57Z",
+        "name": "Radium",
+        "quantity": 1,
+        "price": "1000.0",
+        "currency": "USD",
+        "product": null
+      }
+    ],
+    "notes": [
+
+    ],
+    "attachments": [
+
+    ],
+    "contact": 3,
+    "user": 22
+  }
+}
+
+
+// Email
+{
+  "email": {
+    "id": 2,
+    "created_at": "2012-05-05T03:06:58Z",
+    "updated_at": "2012-05-05T03:06:58Z",
+    "subject": "Hey",
+    "message": "Long form text",
+    "sent_at": "2012-05-05T03:06:58Z",
+    "users": [
+      23
+    ],
+    "contacts": [
+      1
+    ],
+    "comments": [
+
+    ],
+    "attachments": [
+
+    ],
+    "sender": {
+      "user": 23
+    }
+  }
+}
+
+
+// Following
+{
+  "following": {
+    "id": 1,
+    "created_at": "2012-05-05T03:06:59Z",
+    "updated_at": "2012-05-05T03:06:59Z",
+    "approved": true,
+    "user": 28,
+    "followable": {
+      "contact": 4
+    }
+  }
+}
+
+
+// Group
+{
+  "group": {
+    "id": 7,
+    "created_at": "2012-05-05T03:06:59Z",
+    "updated_at": "2012-05-05T03:06:59Z",
+    "name": "Group 7",
+    "email": null,
+    "phone": null,
+    "public": true,
+    "contacts": [
+
+    ],
+    "activities": [
+
+    ],
+    "fields": [
+
+    ],
+    "attachments": [
+
+    ],
+    "avatar": {
+      "small_url": "/images/fallback/small_default.png",
+      "medium_url": "/images/fallback/medium_default.png",
+      "large_url": "/images/fallback/large_default.png",
+      "huge_url": "/images/fallback/huge_default.png"
+    },
+    "primary_contact": null
+  }
+}
+
+
+// Im
+{
+  "im": {
+    "id": 3,
+    "created_at": "2012-05-05T03:06:59Z",
+    "updated_at": "2012-05-05T03:06:59Z",
+    "message": "Hey man",
+    "sent_at": "2012-05-05T03:06:59Z",
+    "users": [
+      30,
+      31
+    ],
+    "comments": [
+
+    ],
+    "attachments": [
+
+    ],
+    "sender": 31
+  }
+}
+
+
+// Invitation
+{
+  "invitation": {
+    "id": 2,
+    "created_at": "2012-05-05T03:06:59Z",
+    "updated_at": "2012-05-05T03:06:59Z",
+    "state": "pending",
+    "hash_key": "daa9c05f3d02443ea9421666f2affa6dec2ea052",
+    "meeting": 1,
+    "invitee": {
+      "user": 33
+    }
+  }
+}
+
+
+// Meeting
+{
+  "meeting": {
+    "id": 2,
+    "created_at": "2012-05-05T03:06:59Z",
+    "updated_at": "2012-05-05T03:06:59Z",
+    "topic": "Meeting 2",
+    "location": "The office",
+    "starts_at": "2012-05-05T04:06:52Z",
+    "ends_at": "2012-05-05T05:06:52Z",
+    "contacts": [
+
+    ],
+    "users": [
+      34
+    ],
+    "activities": [
+      35
+    ],
+    "invitations": [
+      {
+        "id": 3,
+        "created_at": "2012-05-05T03:06:59Z",
+        "updated_at": "2012-05-05T03:06:59Z",
+        "state": "confirmed",
+        "hash_key": "119ffe97ac5c15d8eee1606f8205d5290145ed33",
+        "meeting": 2,
+        "invitee": {
+          "user": 34
+        }
+      }
+    ],
+    "attachments": [
+
+    ]
+  }
+}
+
+
+// Note
+{
+  "note": {
+    "id": 1,
+    "created_at": "2012-05-05T03:07:00Z",
+    "updated_at": "2012-05-05T03:07:00Z",
+    "message": "Long form text"
+  }
+}
+
+
+// PhoneCall
+{
+  "phone_call": {
+    "id": 1,
+    "created_at": "2012-05-05T03:07:01Z",
+    "updated_at": "2012-05-05T03:07:01Z",
+    "outcome": null,
+    "kind": "accepted",
+    "source": null,
+    "started_at": "2012-05-05T02:56:52Z",
+    "ended_at": "2012-05-04T20:06:52-07:00",
+    "transcription_url": null,
+    "recording_url": null,
+    "contacts": [
+      6
+    ],
+    "users": [
+      43
+    ],
+    "comments": [
+
+    ]
+  }
+}
+
+
+// Product
+{
+  "product": {
+    "id": 1,
+    "created_at": "2012-05-05T03:07:02Z",
+    "updated_at": "2012-05-05T03:07:02Z",
+    "name": "Radium",
+    "description": null,
+    "currency": "USD",
+    "price": "1000.0",
+    "deals": [
+
+    ]
+  }
+}
+
+
+// Reminder
+{
+  "reminder": {
+    "id": 1,
+    "created_at": "2012-05-05T03:07:02Z",
+    "updated_at": "2012-05-05T03:07:02Z",
+    "time": "2012-05-12T03:06:52Z",
+    "via": "sms",
+    "remindable": {
+      "todo": 1
+    },
+    "user": 44
+  }
+}
+
+
+// Sms
+{
+  "sms": {
+    "id": 4,
+    "created_at": "2012-05-05T03:07:03Z",
+    "updated_at": "2012-05-05T03:07:03Z",
+    "message": "Less than 255 characters",
+    "sent_at": "2012-05-05T03:07:03Z",
+    "sender": {
+      "user": 46
+    },
+    "users": [
+      46
+    ],
+    "contacts": [
+      7
+    ],
+    "comments": [
+
+    ]
+  }
+}
+
+
+// Todo
+{
+  "todo": {
+    "id": 2,
+    "created_at": "2012-05-05T03:07:04Z",
+    "updated_at": "2012-05-05T03:07:04Z",
+    "kind": "general",
+    "description": "Finish programming radium",
+    "finish_by": "2012-05-12T03:06:52Z",
+    "finished": false,
+    "contacts": [
+
+    ],
+    "comments": [
+
+    ],
+    "activities": [
+      55,
+      54
+    ],
+    "attachments": [
+
+    ],
+    "user": {
+      "id": 48,
+      "created_at": "2012-05-05T03:07:04Z",
+      "updated_at": "2012-05-05T03:07:04Z",
+      "name": "Kathleen Moore",
+      "email": "user-39@example.com",
+      "phone": "38539383924839",
+      "public": true,
+      "contacts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "todos": [
+        2
+      ],
+      "activities": [
+        54,
+        55
+      ],
+      "avatar": {
+        "small_url": "/images/fallback/small_default.png",
+        "medium_url": "/images/fallback/medium_default.png",
+        "large_url": "/images/fallback/large_default.png",
+        "huge_url": "/images/fallback/huge_default.png"
+      },
+      "account": 1
+    },
+    "reference": null
+  }
+}
+
+
+// User
+{
+  "user": {
+    "id": 49,
+    "created_at": "2012-05-05T03:07:04Z",
+    "updated_at": "2012-05-05T03:07:04Z",
+    "name": "Wayne Hernandez",
+    "email": "user-40@example.com",
+    "phone": "38540384024840",
+    "public": true,
+    "contacts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "todos": [
+
+    ],
+    "activities": [
+
+    ],
+    "avatar": {
+      "small_url": "/images/fallback/small_default.png",
+      "medium_url": "/images/fallback/medium_default.png",
+      "large_url": "/images/fallback/large_default.png",
+      "huge_url": "/images/fallback/huge_default.png"
+    },
+    "account": 1
+  }
+}
+
+
+// Account
+{
+  "account": {
+    "id": 4,
+    "created_at": "2012-05-05T03:07:04Z",
+    "updated_at": "2012-05-05T03:07:04Z",
+    "name": "Account 1",
+    "public": true,
+    "users": [
+
+    ],
+    "contacts": [
+
+    ],
+    "campaigns": [
+
+    ],
+    "avatar": {
+      "small_url": "/images/fallback/small_default.png",
+      "medium_url": "/images/fallback/medium_default.png",
+      "large_url": "/images/fallback/large_default.png",
+      "huge_url": "/images/fallback/huge_default.png"
+    }
+  }
+}
+
+
+// Activity
+{
+  "activity": {
+    "id": 59,
+    "created_at": "2012-05-05T03:07:05Z",
+    "updated_at": "2012-05-05T03:07:05Z",
+    "kind": "todo",
+    "tag": "created",
+    "timestamp": "2012-05-05T03:07:05Z",
+    "owner": {
+      "user": {
+        "id": 51,
+        "created_at": "2012-05-05T03:07:05Z",
+        "updated_at": "2012-05-05T03:07:05Z",
+        "name": "Jennifer Fuller",
+        "email": "user-42@example.com",
+        "phone": "38542384224842",
+        "public": true,
+        "contacts": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "todos": [
+
+        ],
+        "activities": [
+
+        ],
+        "avatar": {
+          "small_url": "/images/fallback/small_default.png",
+          "medium_url": "/images/fallback/medium_default.png",
+          "large_url": "/images/fallback/large_default.png",
+          "huge_url": "/images/fallback/huge_default.png"
+        },
+        "account": 1
+      }
+    },
+    "reference": {
+      "todo": {
+        "id": 3,
+        "created_at": "2012-05-05T03:07:04Z",
+        "updated_at": "2012-05-05T03:07:04Z",
+        "kind": "general",
+        "description": "Finish programming radium",
+        "finish_by": "2012-05-12T03:06:52Z",
+        "finished": false,
+        "contacts": [
+
+        ],
+        "comments": [
+
+        ],
+        "activities": [
+          57,
+          58
+        ],
+        "attachments": [
+
+        ],
+        "user": {
+          "id": 50,
+          "created_at": "2012-05-05T03:07:04Z",
+          "updated_at": "2012-05-05T03:07:04Z",
+          "name": "Wayne Lopez",
+          "email": "user-41@example.com",
+          "phone": "38541384124841",
+          "public": true,
+          "contacts": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "todos": [
+            3
+          ],
+          "activities": [
+            57,
+            58
+          ],
+          "avatar": {
+            "small_url": "/images/fallback/small_default.png",
+            "medium_url": "/images/fallback/medium_default.png",
+            "large_url": "/images/fallback/large_default.png",
+            "huge_url": "/images/fallback/huge_default.png"
+          },
+          "account": 1
+        },
+        "reference": null
+      }
+    }
+  }
+}
+
+
+// PhoneCallStartedNotification
+{
+  "phone_call_started_notification": {
+    "number": "+192558738138",
+    "source": "android",
+    "time": "2012-05-04T20:07:05-07:00",
+    "direction": "outgoing",
+    "to": {
+      "contact": {
+        "id": 8,
+        "created_at": "2012-05-05T03:07:05Z",
+        "updated_at": "2012-05-05T03:07:05Z",
+        "name": "Contact 6",
+        "display_name": "Contact 6",
+        "contacted_at": null,
+        "became_lead_at": "2012-05-05T03:07:05Z",
+        "became_prospect_at": null,
+        "became_opportunity_at": null,
+        "became_customer_at": null,
+        "became_dead_end_at": null,
+        "status": "lead",
+        "public": true,
+        "groups": [
+          12,
+          13
+        ],
+        "campaigns": [
+
+        ],
+        "activities": [
+          60,
+          61,
+          62
+        ],
+        "fields": [
+
+        ],
+        "addresses": [
+          {
+            "id": 6,
+            "created_at": "2012-05-05T03:07:05Z",
+            "updated_at": "2012-05-05T03:07:05Z",
+            "name": "Address 6",
+            "street": "826 Hazel",
+            "state": "CA",
+            "country": "United States",
+            "zip_code": "94550",
+            "time_zone": null
+          }
+        ],
+        "phone_numbers": [
+          {
+            "id": 14,
+            "created_at": "2012-05-05T03:07:05Z",
+            "updated_at": "2012-05-05T03:07:05Z",
+            "name": "Phone Number",
+            "value": "+52363872486",
+            "accepted_values": null,
+            "kind": "phone_number"
+          }
+        ],
+        "email_addresses": [
+          {
+            "id": 13,
+            "created_at": "2012-05-05T03:07:05Z",
+            "updated_at": "2012-05-05T03:07:05Z",
+            "name": "Email",
+            "value": "email-6@example.com",
+            "accepted_values": null,
+            "kind": "email_address"
+          }
+        ],
+        "attachments": [
+
+        ],
+        "user": 53,
+        "avatar": {
+          "small_url": "/images/fallback/small_default.png",
+          "medium_url": "/images/fallback/medium_default.png",
+          "large_url": "/images/fallback/large_default.png",
+          "huge_url": "/images/fallback/huge_default.png"
+        }
+      }
+    },
+    "from": {
+      "user": {
+        "id": 52,
+        "created_at": "2012-05-05T03:07:05Z",
+        "updated_at": "2012-05-05T03:07:05Z",
+        "name": "Kathy Arnold",
+        "email": "user-43@example.com",
+        "phone": "38543384324843",
+        "public": true,
+        "contacts": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "todos": [
+
+        ],
+        "activities": [
+          60,
+          61,
+          62
+        ],
+        "avatar": {
+          "small_url": "/images/fallback/small_default.png",
+          "medium_url": "/images/fallback/medium_default.png",
+          "large_url": "/images/fallback/large_default.png",
+          "huge_url": "/images/fallback/huge_default.png"
+        },
+        "account": 1
+      }
+    }
+  }
+}
+
+
+// PhoneCallFinishedNotification
+{
+  "phone_call_finished_notification": {
+    "number": "+192558738138",
+    "source": "android",
+    "time": "2012-05-04T20:07:06-07:00",
+    "direction": "outgoing",
+    "to": {
+      "contact": {
+        "id": 9,
+        "created_at": "2012-05-05T03:07:06Z",
+        "updated_at": "2012-05-05T03:07:06Z",
+        "name": "Contact 7",
+        "display_name": "Contact 7",
+        "contacted_at": null,
+        "became_lead_at": "2012-05-05T03:07:06Z",
+        "became_prospect_at": null,
+        "became_opportunity_at": null,
+        "became_customer_at": null,
+        "became_dead_end_at": null,
+        "status": "lead",
+        "public": true,
+        "groups": [
+          14,
+          15
+        ],
+        "campaigns": [
+
+        ],
+        "activities": [
+          63,
+          64,
+          65
+        ],
+        "fields": [
+
+        ],
+        "addresses": [
+          {
+            "id": 7,
+            "created_at": "2012-05-05T03:07:06Z",
+            "updated_at": "2012-05-05T03:07:06Z",
+            "name": "Address 7",
+            "street": "826 Hazel",
+            "state": "CA",
+            "country": "United States",
+            "zip_code": "94550",
+            "time_zone": null
+          }
+        ],
+        "phone_numbers": [
+          {
+            "id": 16,
+            "created_at": "2012-05-05T03:07:06Z",
+            "updated_at": "2012-05-05T03:07:06Z",
+            "name": "Phone Number",
+            "value": "+52373872487",
+            "accepted_values": null,
+            "kind": "phone_number"
+          }
+        ],
+        "email_addresses": [
+          {
+            "id": 15,
+            "created_at": "2012-05-05T03:07:06Z",
+            "updated_at": "2012-05-05T03:07:06Z",
+            "name": "Email",
+            "value": "email-7@example.com",
+            "accepted_values": null,
+            "kind": "email_address"
+          }
+        ],
+        "attachments": [
+
+        ],
+        "user": 57,
+        "avatar": {
+          "small_url": "/images/fallback/small_default.png",
+          "medium_url": "/images/fallback/medium_default.png",
+          "large_url": "/images/fallback/large_default.png",
+          "huge_url": "/images/fallback/huge_default.png"
+        }
+      }
+    },
+    "from": {
+      "user": {
+        "id": 56,
+        "created_at": "2012-05-05T03:07:06Z",
+        "updated_at": "2012-05-05T03:07:06Z",
+        "name": "Melissa Payne",
+        "email": "user-47@example.com",
+        "phone": "38547384724847",
+        "public": true,
+        "contacts": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "todos": [
+
+        ],
+        "activities": [
+          63,
+          64,
+          65
+        ],
+        "avatar": {
+          "small_url": "/images/fallback/small_default.png",
+          "medium_url": "/images/fallback/medium_default.png",
+          "large_url": "/images/fallback/large_default.png",
+          "huge_url": "/images/fallback/huge_default.png"
+        },
+        "account": 1
+      }
+    }
+  }
+}
+
+
+// Notification
+{
+  "notification": {
+    "id": 19,
+    "created_at": "2012-05-05T03:07:07Z",
+    "updated_at": "2012-05-05T03:07:07Z",
+    "tag": "assigned.todo",
+    "reference": {
+      "todo": {
+        "id": 4,
+        "created_at": "2012-05-05T03:07:07Z",
+        "updated_at": "2012-05-05T03:07:07Z",
+        "kind": "general",
+        "description": "Finish programming radium",
+        "finish_by": "2012-05-12T03:06:52Z",
+        "finished": false,
+        "contacts": [
+
+        ],
+        "comments": [
+
+        ],
+        "activities": [
+          67,
+          68
+        ],
+        "attachments": [
+
+        ],
+        "user": {
+          "id": 61,
+          "created_at": "2012-05-05T03:07:07Z",
+          "updated_at": "2012-05-05T03:07:07Z",
+          "name": "Ann Meyer",
+          "email": "user-52@example.com",
+          "phone": "38552385224852",
+          "public": true,
+          "contacts": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "todos": [
+            4
+          ],
+          "activities": [
+            67,
+            68
+          ],
+          "avatar": {
+            "small_url": "/images/fallback/small_default.png",
+            "medium_url": "/images/fallback/medium_default.png",
+            "large_url": "/images/fallback/large_default.png",
+            "huge_url": "/images/fallback/huge_default.png"
+          },
+          "account": 1
+        },
+        "reference": null
+      }
+    }
   }
 }
 
