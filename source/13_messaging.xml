@@ -80,12 +80,6 @@
 
         <dt>contacts</dt>
         <dd>IDs of all the contacts</dd>
-
-        <dt>comments</dt>
-        <dd>See the comments section</dd>
-
-        <dt>todos</dt>
-        <dd>IDs of all the todos</dd>
       </dl>
       ]]>
     </docs>
@@ -93,33 +87,26 @@
       <![CDATA[
       ```javascript
       {
-        "id": 19,
-        "created_at": "2011-12-15T10:38:39Z",
-        "updated_at": "2011-12-15T10:38:39Z",
-        "subject": "Lorem Ipsum",
-        "message": "Lorem ipsum dolo ...... ",
-        "sent_at": "2011-12-15T10:38:39Z",
-        "html": null,
-        "type": "Email"
-        "sender": {
-          "id": 462,
-          "sender_type": "User"
-        },
-        "users": [
-          462
-        ],
-        "contacts": [
-          153
-        ]
-        "comments": [
+        "email": {
+          "id": 2,
+          "created_at": "2012-05-09T11:05:27Z",
+          "updated_at": "2012-05-09T11:05:27Z",
+          "subject": "Hey",
+          "message": "Long form text",
+          "sent_at": "2012-05-09T11:05:27Z",
+          "users": [
+            53
+          ],
+          "contacts": [
+            1
+          ],
+          "attachments": [
 
-        ],
-        "attachments": [
-
-        ],
-        "todos": [
-
-        ]
+          ],
+          "sender": {
+            "user": 53
+          }
+        }
       }
       ```
       ]]>
@@ -155,12 +142,6 @@
 
         <dt>contacts</dt>
         <dd>IDs of all the contacts</dd>
-
-        <dt>comments</dt>
-        <dd>See the comments section</dd>
-
-        <dt>todos</dt>
-        <dd>IDs of all the todos</dd>
       </dl>
       ]]>
     </docs>
@@ -168,28 +149,22 @@
       <![CDATA[
       ```javascript
       {
-        "id": 19,
-        "created_at": "2011-12-15T10:38:39Z",
-        "updated_at": "2011-12-15T10:38:39Z",
-        "message": "Lorem ipsum dolo ...... ",
-        "sent_at": "2011-12-15T10:38:39Z",
-        "type": "Sms"
-        "sender": {
-          "id": 462,
-          "sender_type": "User"
-        },
-        "users": [
-          462
-        ],
-        "contacts": [
-          153
-        ]
-        "comments": [
-
-        ],
-        "todos": [
-
-        ]
+        "sms": {
+          "id": 4,
+          "created_at": "2012-05-09T11:05:30Z",
+          "updated_at": "2012-05-09T11:05:30Z",
+          "message": "Less than 255 characters",
+          "sent_at": "2012-05-09T11:05:30Z",
+          "sender": {
+            "user": 76
+          },
+          "users": [
+            76
+          ],
+          "contacts": [
+            7
+          ]
+        }
       }
       ```
       ]]>
@@ -225,12 +200,6 @@
 
         <dt>users</dt>
         <dd>IDs of all the users</dd>
-
-        <dt>comments</dt>
-        <dd>See the comments section</dd>
-
-        <dt>todos</dt>
-        <dd>IDs of all the todos</dd>
       </dl>
       ]]>
     </docs>
@@ -238,25 +207,21 @@
       <![CDATA[
       ```javascript
       {
-        "id": 19,
-        "created_at": "2011-12-15T10:38:39Z",
-        "updated_at": "2011-12-15T10:38:39Z",
-        "message": "Lorem ipsum dolo ...... ",
-        "sent_at": "2011-12-15T10:38:39Z",
-        "type": "Im"
-        "sender": 462,
-        "users": [
-          462, 321
-        ],
-        "comments": [
+        "im": {
+          "id": 3,
+          "created_at": "2012-05-09T11:05:27Z",
+          "updated_at": "2012-05-09T11:05:27Z",
+          "message": "Hey man",
+          "sent_at": "2012-05-09T11:05:27Z",
+          "users": [
+            60,
+            61
+          ],
+          "attachments": [
 
-        ],
-        "attachments": [
-
-        ],
-        "todos": [
-
-        ]
+          ],
+          "sender": 61
+        }
       }
       ```
       ]]>
@@ -267,7 +232,7 @@
       <![CDATA[
       You can send an email to any address. The server will do work and connect
       the dots between the email addresses, users, contacts, groups and extra fields
-      to associate the email with the correc records.
+      to associate the email with the correct records.
 
       This is usage based billing request.
       ]]>
@@ -277,11 +242,12 @@
       `POST https://api.radiumcrm.com/emails`
 
       ```javascript
-      {
-        "to": ["example@example.com"]
-        "cc": ["someone@else.com"], 
-        "subject": "Hey",
-        "message": "How's it going?"
+      { "email": {
+          "to": ["example@example.com"]
+          "cc": ["someone@else.com"], 
+          "subject": "Hey",
+          "message": "How's it going?"
+        }
       }
       ```
       ]]>
@@ -304,9 +270,10 @@
       `POST https://api.radiumcrm.com/sms`
 
       ```javascript
-      {
-        "to": ["+12348123894"],
-        "message": "How's it going?"
+      { "sms:" {
+          "to": ["+12348123894"],
+          "message": "How's it going?"
+        }
       }
       ```
       ]]>
@@ -323,9 +290,11 @@
       `POST https://api.radiumcrm.com/ims`
 
       ```javascript
-      {
-        "to": [1]
-        "message": "How's it going?"
+      { "im": { 
+        {
+          "to": [1]
+          "message": "How's it going?"
+        }
       }
       ```
       ]]>

@@ -106,9 +106,6 @@
         <dt>users</dt>
         <dd>ID's for all the invited users including the organizer</dd>
 
-        <dt>activities</dt>
-        <dd>ID's for all activites in the meeting's feed</dd>
-
         <dt>invitations</dt>
         <dd>All the invitations for the meeting. See the invitation 
           section for more details</dd>
@@ -119,34 +116,37 @@
       <![CDATA[
       ```javascript
       {
-        "id": 2,
-        "created_at": "2011-12-28T14:26:26Z",
-        "updated_at": "2011-12-28T14:26:26Z",
-        "topic": "Meeting 2",
-        "location": "The office",
-        "starts_at": "2011-12-28T15:26:22Z",
-        "ends_at": "2011-12-28T16:26:22Z",
-        "user": 5,
-        "contacts": [
+        "meeting": {
+          "id": 2,
+          "created_at": "2012-05-09T11:14:16Z",
+          "updated_at": "2012-05-09T11:14:16Z",
+          "topic": "Meeting 2",
+          "location": "The office",
+          "starts_at": "2012-05-09T12:14:05Z",
+          "ends_at": "2012-05-09T13:14:05Z",
+          "contacts": [
 
-        ],
-        "users": [
-          29
-        ],
-        "activities": [
-          32
-        ],
-        "invitations": [
-          {
-            "id": 3,
-            "created_at": "2011-12-28T14:26:26Z",
-            "updated_at": "2011-12-28T14:26:26Z",
-            "state": "confirmed",
-            "hash_key": "f9e7128044e00d3f7cd881fe76a3b079c8450c09",
-            "meeting": 2,
-            "user": 29
-          }
-        ]
+          ],
+          "users": [
+            64
+          ],
+          "invitations": [
+            {
+              "id": 3,
+              "created_at": "2012-05-09T11:14:16Z",
+              "updated_at": "2012-05-09T11:14:16Z",
+              "state": "confirmed",
+              "hash_key": "024e1a505dbe83960ddbfdf617e7306364fc2c11",
+              "meeting": 2,
+              "invitee": {
+                "user": 64
+              }
+            }
+          ],
+          "attachments": [
+
+          ]
+        }
       }
       ```
       ]]>

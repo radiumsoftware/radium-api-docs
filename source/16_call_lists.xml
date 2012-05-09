@@ -147,31 +147,34 @@
       <![CDATA[
       ```javascript
       {
-        "id": 1,
-        "created_at": "2011-12-28T14:26:24Z",
-        "updated_at": "2011-12-28T14:26:24Z",
-        "description": "Call List 1",
-        "finish_by": "2012-01-04T14:26:22Z",
-        "user": 5,,
-        "campaign:" 3,
-        "todos": [
+        "call_list": {
+          "id": 1,
+          "created_at": "2012-05-09T11:14:12Z",
+          "updated_at": "2012-05-09T11:14:12Z",
+          "description": "Call List 1",
+          "finish_by": "2012-05-16T11:14:05Z",
+          "todos": [
 
-        ],
-        "pending_todos": [
+          ],
+          "pending_todos": [
 
-        ],
-        "finished_todos": [
+          ],
+          "finished_todos": [
 
-        ],
-        "overdue_todos": [
+          ],
+          "overdue_todos": [
 
-        ],
-        "users": [
+          ],
+          "users": [
 
-        ],
-        "contacts": [
+          ],
+          "contacts": [
 
-        ]
+          ],
+          "attachments": [
+
+          ]
+        }
       }
       ```
       ]]>

@@ -4,7 +4,7 @@
   <section>
     <docs>
       <![CDATA[
-      Fields are arbitary key & value pairs that you can use to add
+      Fields are arbitrary key & value pairs that you can use to add
       your own data to different resources. `Contacts` and `Groups`
       can have fields. They also accept nested fields. A field
       can be specified to be a certain `kind`. The `kind` will be used
@@ -60,14 +60,16 @@
     <reference title="Field Format">
       <![CDATA[
       ```javascript
-      {
-        "id": 283,
-        "created_at": "2011-12-14T19:12:25Z",
-        "updated_at": "2011-12-14T19:12:25Z",
-        "name": "Industry",
-        "value": "Property & Casualty Insurance",
-        "accepted_values": null,
-        "kind": "other"
+      { "field":
+        {
+          "id": 283,
+          "created_at": "2011-12-14T19:12:25Z",
+          "updated_at": "2011-12-14T19:12:25Z",
+          "name": "Industry",
+          "value": "Property & Casualty Insurance",
+          "accepted_values": null,
+          "kind": "other"
+        }
       }
       ```
       ]]>

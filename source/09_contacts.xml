@@ -8,7 +8,7 @@
       Contacts must be assigned to someone. They can be placed in arbitrary
       groups. They are added to campaigns and users interact with them
       through the other resources (Deals, Todos, Phone Calls etc). Users
-      can request to follow contacts to add their activites to their feed.
+      can request to follow contacts to add their activities to their feed.
       Their progress is tracked through the sales pipeline.
 
       They have multiple addresses, phone numbers, and email address. 
@@ -51,7 +51,7 @@
     <docs>
       <![CDATA[
       The contact format is slightly different because of how important contacts are. 
-      Some associated records are embeded directly into the contact itself. It's assumed
+      Some associated records are embedded directly into the contact itself. It's assumed
       that your application will need any extra information right away so it is given 
       to you.
 
@@ -203,15 +203,6 @@
         <dt>followers</dt>
         <dd>IDs for all the users following this contact</dd>
 
-        <dt>messages</dt>
-        <dd>IDs for all the messages</dd>
-
-        <dt>phone_calls</dt>
-        <dd>IDs for all the phone calls</dd>
-
-        <dt>meetings</dt>
-        <dd>IDs for all the meetings</dd>
-
         <dt>notes</dt>
         <dd>IDs for all the notes</dd>
 
@@ -222,7 +213,7 @@
       ### Email Addresses, Phone Numbers, & Fields
 
       All of these are stored internally in a `Field` resource, hence
-      the smiliar format. The `kind` attributes are omitted for
+      the same format. The `kind` attributes are omitted for
       `email_addresses` and `phone_numbers` since it's implied
       by the attribute name. You can manipulate these by using
       nested attributes or directly using the `Field` routes.
@@ -257,110 +248,91 @@
         <![CDATA[
         ```javascript
         {
-          "id": 150,
-          "created_at": "2011-12-14T16:35:15Z",
-          "updated_at": "2011-12-14T16:35:15Z",
-          "name": "Johnny Graham",
-          "contacted_at": null,
-          "became_lead_at": "2012-03-14T20:05:50Z",
-          "became_prospect_at": null,
-          "became_opportunity_at": null,
-          "became_customer_at": null,
-          "became_dead_end_at": null,
-          "status": "lead",
-          "addresses": [
-            {
-              "id": 8,
-              "created_at": "2011-12-14T16:35:15Z",
-              "updated_at": "2011-12-14T16:35:15Z",
-              "name": "Address 1",
-              "street": "03284 Johnson Center",
-              "state": "Illinois",
-              "country": "United States",
-              "zip_code": "39645",
-              "time_zone": null
+          "contact": {
+            "id": 2,
+            "created_at": "2012-05-09T08:33:45Z",
+            "updated_at": "2012-05-09T08:33:45Z",
+            "name": "Contact 1",
+            "display_name": "Contact 1",
+            "contacted_at": null,
+            "became_lead_at": "2012-05-09T08:33:45Z",
+            "became_prospect_at": null,
+            "became_opportunity_at": null,
+            "became_customer_at": null,
+            "became_dead_end_at": null,
+            "status": "lead",
+            "public": true,
+            "source": "radium",
+            "groups": [
+              1,
+              2
+            ],
+            "campaigns": [
+
+            ],
+            "deals": [
+
+            ],
+            "activities": [
+              15,
+              14,
+              13
+            ],
+            "fields": [
+
+            ],
+            "addresses": [
+              {
+                "id": 1,
+                "created_at": "2012-05-09T08:33:45Z",
+                "updated_at": "2012-05-09T08:33:45Z",
+                "name": "Address 1",
+                "street": "826 Hazel",
+                "state": "CA",
+                "country": "United States",
+                "zip_code": "94550",
+                "time_zone": null
+              }
+            ],
+            "phone_numbers": [
+              {
+                "id": 3,
+                "created_at": "2012-05-09T08:33:45Z",
+                "updated_at": "2012-05-09T08:33:45Z",
+                "name": "Phone Number",
+                "value": "+52313872481",
+                "accepted_values": null,
+                "kind": "phone_number"
+              }
+            ],
+            "email_addresses": [
+              {
+                "id": 2,
+                "created_at": "2012-05-09T08:33:45Z",
+                "updated_at": "2012-05-09T08:33:45Z",
+                "name": "Email",
+                "value": "email-1@example.com",
+                "accepted_values": null,
+                "kind": "email_address"
+              }
+            ],
+            "attachments": [
+
+            ],
+            "notes": [
+
+            ],
+            "followers": [
+
+            ],
+            "user": 46,
+            "avatar": {
+              "small_url": "/images/fallback/small_default.png",
+              "medium_url": "/images/fallback/medium_default.png",
+              "large_url": "/images/fallback/large_default.png",
+              "huge_url": "/images/fallback/huge_default.png"
             }
-          ],
-          "phone_numbers": [
-            {
-              "id": 282,
-              "created_at": "2011-12-14T16:35:15Z",
-              "updated_at": "2011-12-14T16:35:15Z",
-              "name": "Phone Number",
-              "value": "+52313872481",
-              "accepted_values": null,
-            }
-          ],
-          "email_addresses": [
-            {
-              "id": 281,
-              "created_at": "2011-12-14T16:35:15Z",
-              "updated_at": "2011-12-14T16:35:15Z",
-              "name": "Email",
-              "value": "email-1@example.com",
-              "accepted_values": null,
-            }
-          ],
-          "fields": [
-            {
-              "id": 285,
-              "created_at": "2011-12-14T19:12:30Z",
-              "updated_at": "2011-12-14T19:12:30Z",
-              "name": "Industry",
-              "value": "Real Estate Development",
-              "accepted_values": null,
-              "kind": "other"
-            },
-            {
-              "id": 284,
-              "created_at": "2011-12-14T19:12:28Z",
-              "updated_at": "2011-12-14T19:12:28Z",
-              "name": "Industry",
-              "value": "Auto Parts Stores",
-              "accepted_values": null,
-              "kind": "other"
-            },
-            {
-              "id": 283,
-              "created_at": "2011-12-14T19:12:25Z",
-              "updated_at": "2011-12-14T19:12:25Z",
-              "name": "Industry",
-              "value": "Property & Casualty Insurance",
-              "accepted_values": null,
-              "kind": "other"
-            }
-          ],
-          "groups": [17,18
-          ],
-          "deals": [
-
-          ],
-          "todos": [
-
-          ],
-          "campaigns": [
-
-          ],
-          "followers": [
-
-          ],
-          "messages": [
-
-          ],
-          "phone_calls": [
-
-          ],
-          "meetings": [
-
-          ],
-          "notes": [
-
-          ],
-          "activities": [
-
-          ],
-          "user": 458,
-          "avatar": null
+          }
         }
         ```
         ]]>

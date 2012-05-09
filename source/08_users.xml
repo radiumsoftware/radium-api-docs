@@ -37,9 +37,6 @@
       ### Changable Attributes
 
       <dl>
-        <dt>id</dt>
-        <dd>ID for this record. Use this if you want to access it again.</dd>
-
         <dt>name</dt>
         <dd>The full name </dd>
 
@@ -48,12 +45,6 @@
 
         <dt>phone</dt>
         <dd>User's primary contact phone number</dd>
-
-        <dt>password</dt>
-        <dd>A nice strong password. All characters are accepted.</dd>
-
-        <dt>password_confirmation</dt>
-        <dd><strong><em>Required</em></strong> if `password` has been changed.</dd>
 
         <dt>avatar</dt>
         <dd>See avatar section</dd>
@@ -69,43 +60,13 @@
         </dd>
 
         <dt>account</dt>
-        <dd>The ID for this user's company's account.</dd>
+        <dd>The ID for this user's account.</dd>
 
         <dt>contacts</dt>
         <dd>Associated contact IDs</dd>
 
-        <dt>deals</dt>
-        <dd>Associated deal IDs</dd>
-
-        <dt>campaigns</dt>
-        <dd>Associated campaign IDs</dd>
-
-        <dt>following</dt>
-        <dd>IDs for all the users this person is following</dd>
-
-        <dt>followers</dt>
-        <dd>IDs for all the users that are following this user</dd>
-
         <dt>todos</dt>
         <dd>Associated todo IDs</dd>
-
-        <dt>meetings</dt>
-        <dd>Associated meeting IDs</dd>
-
-        <dt>reminders</dt>
-        <dd>IDs for all reminders</dd>
-
-        <dt>notes</dt>
-        <dd>IDs for all this user's notes</dd>
-
-        <dt>phone_calls</dt>
-        <dd>IDs for all this user's phone calls</dd>
-
-        <dt>messages</dt>
-        <dd>IDs for all this user's messages (IM, SMS &amp; Email)</dd>
-
-        <dt>activities</dt>
-        <dd>IDs for every activity in this user's feed</dd>
 
         <dt>created_at</dt>
         <dd>Timestamp for when this record was added to the DB.</dd>
@@ -119,27 +80,37 @@
       <![CDATA[
       ```javascript
       {
-        "id": 442,
-        "created_at": "2011-12-13T15:15:35Z",
-        "updated_at": "2011-12-13T15:15:35Z",
-        "name": "Adam Hawkins",
-        "email": "user-1@example.com",
-        "api_key": "e68ff9eeeedbf05f2909f78eb960b69c2ae3fc2a",
-        "phone": "+1234987"
-        "account": 294,
-        "contacts": [1,3,4,5,6,7]
-        "deals": [1,3,4,5,6],
-        "campaigns": [1,2,3],
-        "following": [1,2,3],
-        "followers": [1,2],
-        "todos": [1,3,5,6],
-        "meetings": [1,3,5,6],
-        "reminders": [1,5,6,7],
-        "notes": [183,81]
-        "phone_calls": [57,85],
-        "messages": [1,3,5],
-        "activities": [237, 82347, 123847],
-        "avatar": null
+        "user": {
+          "id": 79,
+          "created_at": "2012-05-09T08:24:09Z",
+          "updated_at": "2012-05-09T08:24:09Z",
+          "name": "Sharon Wood",
+          "email": "user-40@example.com",
+          "phone": "38540384024840",
+          "public": true,
+          "contacts": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "todos": [
+
+          ],
+          "activities": [
+
+          ],
+          "avatar": {
+            "small_url": "/images/fallback/small_default.png",
+            "medium_url": "/images/fallback/medium_default.png",
+            "large_url": "/images/fallback/large_default.png",
+            "huge_url": "/images/fallback/huge_default.png"
+          },
+          "account": 1
+        }
       }
       ```
       ]]>

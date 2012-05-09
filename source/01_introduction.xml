@@ -163,6 +163,12 @@
           returns a 202 it should be considered a success.
         </dd>
 
+        <dt>204</dt>
+        <dd>
+          <strong>No Content</strong><br/>
+          Returns for successfull `PUT` requests
+        </dd>
+
         <dt>401</dt>
         <dd>
           <strong>Unauthorized</strong><br/>
@@ -322,29 +328,22 @@
   <section title="Pagination">
     <docs>
       <![CDATA[
-      All `GET /resources` are paginated. Pagination is stored in the headers.
-      You can access a specific page by passing a `page`. parameter.
+      All `GET /resources` are paginated. Pagination is provided in the response body
+      in a `pagination` object. 
       ]]>
     </docs>
-    <reference title="Pagination Headers">
+    <reference title="Pagination Response">
       <![CDATA[
       ```
-      Server: nginx/0.7.67
-      Date: Tue, 27 Dec 2011 20:07:14 GMT
-      Content-Type: application/json; charset=utf-8
-      Connection: close
-      X-Radium-Current-Page: 1
-      X-Radium-Total-Pages: 0
-      X-Ua-Compatible: IE=Edge,chrome=1
-      Etag: "d751713988987e9331980363e24189ce"
-      Cache-Control: max-age=0, private, must-revalidate
-      X-Request-Id: 8c7b0e478685cd25ffa9b925b60189bb
-      X-Runtime: 0.138841
-      X-Rack-Cache: miss
-      Content-Length: 2
-      X-Varnish: 1009793691
-      Age: 0
-      Via: 1.1 varnish
+      {
+        "meta": {
+          "pagination": {
+            total_pages: 5,
+            current_page: 2
+          }
+        }
+        "other_keys": ...
+      }
       ```
       ]]>
     </reference>
@@ -394,12 +393,13 @@
     <docs>
       <![CDATA[
       IF you are having a prolem using or understanding **after having read
-      the documentation** please email: [api-support@radiumcrm.com](mailto:
-      api-support@radiumcrm.com). Someone will get back to you ASAP. If you
-      happen to run into Adam Hawkins anywhere like on the street, in the
+      the documentation** please tweet @radiumcrm
+      There is also a public flowdock [here](https://radium.flowdock.com/invitations/6d70fab64e2ff9222f15f60adb2e8d875ed72c61-support)
+
+      If you happen to run into Adam Hawkins anywhere like on the street, in the
       club, on the beach, in Europe, in California, in Asia, or at a
       conference, or up in your codez, please give him a shout! He'd love to
-      hear from you. 
+      hear from you.
       ]]>
     </docs>
   </section>

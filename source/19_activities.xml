@@ -15,10 +15,10 @@
 
       You can get the feed for any resource you can read. There
       are no interactions with the activities. You may only
-      retreive the feed. The server will add the activites to all
+      retrieve the feed. The server will add the activities to all
       the right feeds. You do not have to worry about any of this.
 
-      Different activites are disscussed in their own section.
+      Different activities are discussed in their own section.
       The following sections list the events and their associated tags.
       ]]>
     </docs>
@@ -110,7 +110,7 @@
   <section title="Todo Activities">
     <docs>
       <![CDATA[
-      A new activity is generated whenver any of these things happen:
+      A new activity is generated whenever any of these things happen:
 
       1. A todo is added: `created`
       2. A todo is assigned/reassigned: `assigned`
@@ -127,16 +127,16 @@
       * `GET /campaign/:id/feed`
       * `GET /group/:id/feed`
 
-      You can retreive the feed for any resource you can access. 
-      Refer to the documenation for each resource to see how
-      access is deteremined.
+      You can retrieve the feed for any resource you can access. 
+      Refer to the documentation for each resource to see how
+      access is determined
       ]]>
     </docs>
   </section>
   <section title="Format">
     <docs>
       <![CDATA[
-      Acitvities are formatted differently than other resources.
+      Activities are formatted differently than other resources.
       They have two attributes: `owner` and `reference`.
 
       There are also `kind` and `tag` attributes. `kind` is what
@@ -148,7 +148,7 @@
       action happened. Example, when the email was sent
       or when the contact was added.
 
-      Also, the full objects are given. This is so you can retreive
+      Also, the full objects are given. This is so you can retrieve
       the feed and not have to make other request to fetch the associated
       objects. The server assumes you'll need to show the activity
       right away so all the data is given.
@@ -161,87 +161,21 @@
     <reference title="Activity Format">
       <![CDATA[
       ```javascript
-      {
-        "id": 53,
-        "created_at": "2011-12-28T14:26:27Z",
-        "updated_at": "2011-12-28T14:26:27Z",
-        "kind": "todo",
-        "tag": "created",
-        "timestamp": "2011-12-28T14:26:27Z",
-        "owner": {
-          "user": {
-            "id": 46,
-            "created_at": "2011-12-28T14:26:27Z",
-            "updated_at": "2011-12-28T14:26:27Z",
-            "name": "Kathryn Turner",
-            "email": "user-42@example.com",
-            "phone": "38542384224842",
-            "public": true,
-            "contacts": [
+      { "activity": {
+          "id": 59,
+          "created_at": "2012-05-09T11:14:19Z",
+          "updated_at": "2012-05-09T11:14:19Z",
+          "kind": "todo",
+          "tag": "created",
+          "timestamp": "2012-05-09T11:14:19Z",
+          "comments": [
 
-            ],
-            "deals": [
-
-            ],
-            "campaigns": [
-
-            ],
-            "following": [
-
-            ],
-            "followers": [
-
-            ],
-            "todos": [
-
-            ],
-            "meetings": [
-
-            ],
-            "reminders": [
-
-            ],
-            "notes": [
-
-            ],
-            "phone_calls": [
-
-            ],
-            "ims": [
-
-            ],
-            "emails": [
-
-            ],
-            "sms": [
-
-            ],
-            "activities": [
-
-            ],
-            "account": 1
-          }
-        },
-        "reference": {
-          "todo": {
-            "id": 3,
-            "created_at": "2011-12-28T14:26:27Z",
-            "updated_at": "2011-12-28T14:26:27Z",
-            "kind": "general",
-            "description": "Finish programming radium",
-            "finish_by": "2012-01-04T14:26:22Z",
-            "contacts": [
-
-            ],
-            "comments": [
-
-            ],
-            "activities": [
-              51,
-              52
-            ],
-            "user": 45,
-            "reference": null
+          ],
+          "owner": {
+            "user": { ... }
+          },
+          "reference": {
+            "todo": { ... }
           }
         }
       }

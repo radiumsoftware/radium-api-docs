@@ -75,12 +75,6 @@
 
         <dt>users</dt>
         <dd>IDs for all the users</dd>
-
-        <dt>todos</dt>
-        <dd>IDs for all the todos</dd>
-
-        <dt>comments</dt>
-        <dd>See the comment section</dd>
       </dl>
       ]]>
     </docs>
@@ -88,38 +82,24 @@
       <![CDATA[
       ```javascript
       {
-        "id": 8,
-        "created_at": "2011-12-15T14:26:39Z",
-        "updated_at": "2011-12-15T14:26:39Z",
-        "outcome": null,
-        "duration": 600,
-        "kind": "accepted",
-        "started_at": "2011-12-08T13:01:51Z",
-        "ended_at": "2011-12-08T13:31:51Z",
-        "to": [
-          { 
-            "id": 55,
-            "to_type": "User"
-          }
-        ],
-        "from": [
-          { 
-            "id": 55,
-            "from_type": "Contact"
-          }
-        ],
-        "contacts": [
-          155
-        ],
-        "users": [
-          466
-        ],
-        "comments": [
-
-        ],
-        "todos": [
-
-        ]
+        "phone_call": {
+          "id": 1,
+          "created_at": "2012-05-09T11:14:17Z",
+          "updated_at": "2012-05-09T11:14:17Z",
+          "outcome": null,
+          "kind": "accepted",
+          "source": null,
+          "started_at": "2012-05-09T11:04:05Z",
+          "ended_at": "2012-05-09T13:14:05+02:00",
+          "transcription_url": null,
+          "recording_url": null,
+          "contacts": [
+            6
+          ],
+          "users": [
+            73
+          ]
+        }
       }
       ]]>
     </reference>

@@ -64,37 +64,16 @@
 
         <dt>avatar</dt>
         <dd>ID of managing user</dd>
+        
+        <dt>primary_contact</dt>
+        <dd>The primary contact for this group</dd>
       </dl>
 
       ### Read Only Attributes
 
       <dl>
-        <dt>todos</dt>
-        <dd>IDs of all the todos</dd>
-
-        <dt>deals</dt>
-        <dd>IDs of all the deals</dd>
-
-        <dt>messages</dt>
-        <dd>IDs of all the messages</dd>
-
-        <dt>notes</dt>
-        <dd>IDs of all the notes</dd>
-
-        <dt>phone_calls</dt>
-        <dd>IDs of all the phone call</dd>
-
-        <dt>meetings</dt>
-        <dd>IDs of all the meetings</dd>
-
-        <dt>campaigns</dt>
-        <dd>IDs for all the campaigns relating to contacts</dd>
-
         <dt>users</dt>
         <dd>IDs for all the users relating to contacts</dd>
-
-        <dt>activites</dt>
-        <dd>IDs for all the activities</dd>
       </dl>
       ]]>
     </docs>
@@ -102,48 +81,35 @@
       <![CDATA[
       ```javascript
       {
-        "id": 21,
-        "created_at": "2011-12-15T12:39:01Z",
-        "updated_at": "2011-12-15T12:39:01Z",
-        "name": "Partners",
-        "email: "joe@partners.com",
-        "phone": "+13249812348",
-        "public": false,
-        "fields": [
+        "group": {
+          "id": 7,
+          "created_at": "2012-05-09T11:01:38Z",
+          "updated_at": "2012-05-09T11:01:38Z",
+          "name": "Group 7",
+          "email": null,
+          "phone": null,
+          "public": true,
+          "contacts": [
 
-        ],
-        "contacts": [
-          154
-        ],
-        "todos": [
+          ],
+          "users": [
 
-        ],
-        "deals": [
+          ],
+          "fields": [
 
-        ],
-        "messages": [
+          ],
+          "attachments": [
 
-        ],
-        "notes": [
-
-        ],
-        "phone_calls": [
-
-        ],
-        "meetings": [
-
-        ],
-        "campaigns": [
-
-        ],
-        "users": [
-
-        ],
-        "activities": [
-
-        ],
-        user: 55,
-        avatar: null
+          ],
+          "avatar": {
+            "small_url": "/images/fallback/small_default.png",
+            "medium_url": "/images/fallback/medium_default.png",
+            "large_url": "/images/fallback/large_default.png",
+            "huge_url": "/images/fallback/huge_default.png"
+          },
+          "primary_contact": null,
+          "user": 59
+        }
       }
       ```
       ]]>

@@ -122,17 +122,13 @@
       ### Read Only Attributes
 
       <dl>
-        <dt>todos</dt>
-        <dd>IDs of all the todos</dd>
-
-        <dt>comments</dt>
-        <dd>All comment object. See comment section.</dd>
-
         <dt>products</dt>
         <dd>IDs of all products referenced by line items</dd>
-
-        <dt>activities</dt>
-        <dd>ID's of all the activities in the feed</dd>
+      </dl>
+      
+      <dl>
+        <dt>notes</dt>
+        <dd>IDs of all notes about this deal</dd>
       </dl>
       ]]>
     </docs>
@@ -140,53 +136,58 @@
       <![CDATA[
       ```javascript
       {
-        "id": 31,
-        "created_at": "2011-12-15T09:37:23Z",
-        "updated_at": "2011-12-15T09:37:23Z",
-        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-        "close_by": "2011-12-22T09:37:23Z",
-        "state": "pending",
-        "public": true,
-        "line_items": [
-          {
-            "id": 34,
-            "name": "Radium",
-            "quantity": 1,
-            "price": "1000.0",
-            "currency": "USD",
-            "product": null
-          },
-          {
-            "id": 33,
-            "name": "Radium",
-            "quantity": 1,
-            "price": "1000.0",
-            "currency": "USD",
-            "product": null
-          },
-          {
-            "id": 32,
-            "name": "Radium",
-            "quantity": 1,
-            "price": "1000.0",
-            "currency": "USD",
-            "product": null
-          }
-        ],
-        "contact": 151,
-        "user": 460,
-        "todos": [
+        "deal": {
+          "id": 1,
+          "created_at": "2012-05-09T11:05:26Z",
+          "updated_at": "2012-05-09T11:05:26Z",
+          "description": "This deal rocks!",
+          "close_by": "2012-05-16T11:05:26Z",
+          "state": "pending",
+          "public": true,
+          "products": [
 
-        ],
-        "comments": [
+          ],
+          "line_items": [
+            {
+              "id": 1,
+              "created_at": "2012-05-09T11:05:26Z",
+              "updated_at": "2012-05-09T11:05:26Z",
+              "name": "Radium",
+              "quantity": 1,
+              "price": "1000.0",
+              "currency": "USD",
+              "product": null
+            },
+            {
+              "id": 2,
+              "created_at": "2012-05-09T11:05:26Z",
+              "updated_at": "2012-05-09T11:05:26Z",
+              "name": "Radium",
+              "quantity": 1,
+              "price": "1000.0",
+              "currency": "USD",
+              "product": null
+            },
+            {
+              "id": 3,
+              "created_at": "2012-05-09T11:05:26Z",
+              "updated_at": "2012-05-09T11:05:26Z",
+              "name": "Radium",
+              "quantity": 1,
+              "price": "1000.0",
+              "currency": "USD",
+              "product": null
+            }
+          ],
+          "notes": [
 
-        ],
-        "products": [
+          ],
+          "attachments": [
 
-        ],
-        "activities": [
-
-        ]
+          ],
+          "contact": 3,
+          "user": 52
+        }
       }
       ```
       ]]>

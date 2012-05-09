@@ -55,13 +55,17 @@
       <![CDATA[
       ```javascript
       {
-        "id": 2,
-        "created_at": "2011-12-28T14:26:26Z",
-        "updated_at": "2011-12-28T14:26:26Z",
-        "state": "pending",
-        "hash_key": "8a0e49cd3b18d49a565fe91211e66462f8104114",
-        "meeting": 1,
-        "invitee": { "user": 28 }
+        "invitation": {
+          "id": 2,
+          "created_at": "2012-05-09T11:14:16Z",
+          "updated_at": "2012-05-09T11:14:16Z",
+          "state": "pending",
+          "hash_key": "f7ec8506aed90130207b5ec50f4bba59ceaa38d6",
+          "meeting": 1,
+          "invitee": {
+            "user": 63
+          }
+        }
       }
       ```
       ]]>

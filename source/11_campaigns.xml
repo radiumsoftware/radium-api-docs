@@ -86,17 +86,17 @@
       ### Read Only Attributes
 
       <dl>
+        <dt>call_lists</dt>
+        <dd>All the call lists that are associated with this campaign</dd>
+        
         <dt>todos</dt>
         <dd>All the todos that are associated with this campaign</dd>
 
         <dt>deals</dt>
         <dd>All the deals that are associated with this campaign</dd>
-
-        <dt>phone_calls</dt>
-        <dd>All the phone calls that are associated with this campaign (call list or otherwiser)</dd>
-
-        <dt>messages</dt>
-        <dd>All the messages that have been sent relating to this campaign</dd>
+        
+        <dt>products</dt>
+        <dd>All the products that are associated with this campaign</dd>
 
         <dt>groups</dt>
         <dd>All the groups associated with this campaign</dd>
@@ -112,12 +112,6 @@
 
         <dt>notes</dt>
         <dd>All the notes relating to this campaign</dd>
-
-        <dt>meetings</dt>
-        <dd>All the meetings relating to this campaign</dd>
-
-        <dt>activities</dt>
-        <dd>All the activities in the feed</dd>
       </dl>
       ]]>
     </docs>
@@ -125,52 +119,48 @@
       <![CDATA[
       ```javascript
       {
-        "id": 13,
-        "created_at": "2011-12-14T14:56:12Z",
-        "updated_at": "2011-12-14T14:56:12Z",
-        "name": "Campaign 3",
-        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-        "ends_at": "2011-12-21T14:55:25Z",
-        "currency": "USD",
-        "target": "10000.0",
-        "user": 449,
-        "public": true,
-        "contacts": [
+        "campaign": {
+          "id": 2,
+          "created_at": "2012-05-09T11:05:25Z",
+          "updated_at": "2012-05-09T11:05:25Z",
+          "name": "Campaign 2",
+          "description": "Long form text",
+          "ends_at": "2012-05-16T11:05:18Z",
+          "currency": "USD",
+          "target": "10000.0",
+          "public": true,
+          "contacts": [
 
-        ],
-        "todos": [
+          ],
+          "groups": [
 
-        ],
-        "deals": [
+          ],
+          "users": [
 
-        ],
-        "phone_calls": [
+          ],
+          "deals": [
 
-        ],
-        "messages": [
+          ],
+          "products": [
 
-        ],
-        "groups": [
+          ],
+          "call_lists": [
 
-        ],
-        "products": [
+          ],
+          "todos": [
 
-        ],
-        "users": [
+          ],
+          "followers": [
 
-        ],
-        "followers": [
+          ],
+          "attachments": [
 
-        ],
-        "notes": [
+          ],
+          "notes": [
 
-        ],
-        "meetings": [
-
-        ]
-        "activities": [
-
-        ]
+          ],
+          "user": 42
+        }
       }
       ```
       ]]>

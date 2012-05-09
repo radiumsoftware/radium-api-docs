@@ -6,28 +6,13 @@
       <![CDATA[
       Comments work like comments in every system. You can create comments
       about many different things. Comments may also have files attached.
-
-      These resources support comments:
-
-      1. Todos
-      2. Meetings
-      3. Phone Calls
-      4. Deals
-      5. Messages (IM, SMS, & Email)
-      6. Activities
       ]]>
     </docs>
   </section>
   <section title="Routes & Permissions">
     <docs>
       <![CDATA[
-      * `POST /deals/:id/comments`: All users
-      * `POST /todos/:id/comments`: All users
-      * `POST /meetings/:id/comments`: All users
-      * `POST /phone_calls/:id/comments`: All users
-      * `POST /messages/:id/comments`: All users
       * `POST /activities/:id/comments`: All users
-      * `PUT /comments/:id`: Your comments only or God
       * `DELETE /comments/:id`: Your comments only or God
       ]]>
     </docs>
@@ -35,7 +20,7 @@
   <section title="Attributes">
     <docs>
       <![CDATA[
-      ### Changable Attributes
+      ### Changeable Attributes
 
       <dl>
         <dt>text</dt>
@@ -48,7 +33,7 @@
         <dd>All the attachments for this comment. See the attachment sections for the format.</dd>
       </dl>
 
-      ### Read Only Attributues
+      ### Read Only Attributes
 
       <dl>
         <dt>user</dt>
@@ -60,13 +45,16 @@
       <![CDATA[
       ```javascript
       {
-        "id": 7,
-        "created_at": "2011-12-14T13:25:36Z",
-        "updated_at": "2011-12-14T13:25:36Z",
-        "text": "Text 2",
-        "user": 444
-        "attachments": [ 
-        ]
+        "comment": {
+          "id": 1,
+          "created_at": "2012-05-09T11:14:13Z",
+          "updated_at": "2012-05-09T11:14:13Z",
+          "text": "Text 1",
+          "attachments": [
+
+          ],
+          "user": 45
+        }
       }
       ```
       ]]>

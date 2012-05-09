@@ -100,10 +100,6 @@
 
         <dt>contacts</dt>
         <dd>IDs of all associated contacts</dd>
-
-        <dt>comments</dt>
-        <dd>See comments section</dd>
-
       </dl>
       ]]>
     </docs>
@@ -111,23 +107,52 @@
       <![CDATA[
       ```javascript
       {
-        "id": 26,
-        "created_at": "2011-12-15T15:07:13Z",
-        "updated_at": "2011-12-15T15:07:13Z",
-        "kind": "general",
-        "description": "Finish programming radium",
-        "finish_by": "2011-12-22T15:06:27Z",
-        "finished": false,
-        "campaign": 3,
-        "call_list": 5
-        "reference": { "contact": ... }
-        "contacts": [
+        "todo": {
+          "id": 2,
+          "created_at": "2012-05-09T11:14:19Z",
+          "updated_at": "2012-05-09T11:14:19Z",
+          "kind": "general",
+          "description": "Finish programming radium",
+          "finish_by": "2012-05-16T11:14:05Z",
+          "finished": false,
+          "contacts": [
 
-        ],
-        "comments": [
+          ],
+          "attachments": [
 
-        ],
-        "user": 468
+          ],
+          "user": {
+            "id": 78,
+            "created_at": "2012-05-09T11:14:19Z",
+            "updated_at": "2012-05-09T11:14:19Z",
+            "name": "Bonnie Matthews",
+            "email": "user-39@example.com",
+            "phone": "38539383924839",
+            "public": true,
+            "contacts": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "todos": [
+              2
+            ],
+            "avatar": {
+              "small_url": "/images/fallback/small_default.png",
+              "medium_url": "/images/fallback/medium_default.png",
+              "large_url": "/images/fallback/large_default.png",
+              "huge_url": "/images/fallback/huge_default.png"
+            },
+            "account": 1
+          },
+          "reference": null,
+          "call_list": null,
+          "campaign": null
+        }
       }
       ```
       ]]>
