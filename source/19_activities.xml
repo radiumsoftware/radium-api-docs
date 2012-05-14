@@ -20,6 +20,16 @@
 
       Different activities are discussed in their own section.
       The following sections list the events and their associated tags.
+
+      The feed can only be requested in specific intervals. These requests
+      are not paginated, so be careful what you wish for. The server will
+      give it to you. You must send a `start_date` and `end_date` parameter.
+
+      Examples:
+
+      * `/users/1/feed?start_date=2012-05-01&end_date=2012-05-15`
+      * `/users/1/feed?start_date=2012-05-15&end_date=2012-05-15`
+
       ]]>
     </docs>
   </section>
