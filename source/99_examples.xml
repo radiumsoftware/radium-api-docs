@@ -16,8 +16,8 @@
 {
   "account": {
     "id": 5,
-    "created_at": "2012-05-16T14:45:21Z",
-    "updated_at": "2012-05-16T14:45:21Z",
+    "created_at": "2012-05-16T19:52:24Z",
+    "updated_at": "2012-05-16T19:52:24Z",
     "name": "Account 1",
     "public": true,
     "users": [
@@ -43,8 +43,8 @@
 {
   "announcement": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:21Z",
-    "updated_at": "2012-05-16T14:45:21Z",
+    "created_at": "2012-05-16T19:52:24Z",
+    "updated_at": "2012-05-16T19:52:24Z",
     "title": "Announcement 1",
     "message": "Long form text",
     "user": 41,
@@ -59,10 +59,10 @@
 {
   "call_list": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:22Z",
-    "updated_at": "2012-05-16T14:45:22Z",
+    "created_at": "2012-05-16T19:52:24Z",
+    "updated_at": "2012-05-16T19:52:24Z",
     "description": "Call List 1",
-    "finish_by": "2012-05-23T14:45:15Z",
+    "finish_by": "2012-05-23T19:52:18Z",
     "todos": [
 
     ],
@@ -92,11 +92,11 @@
 {
   "campaign": {
     "id": 2,
-    "created_at": "2012-05-16T14:45:22Z",
-    "updated_at": "2012-05-16T14:45:22Z",
+    "created_at": "2012-05-16T19:52:24Z",
+    "updated_at": "2012-05-16T19:52:24Z",
     "name": "Campaign 2",
     "description": "Long form text",
-    "ends_at": "2012-05-23T14:45:15Z",
+    "ends_at": "2012-05-23T19:52:18Z",
     "currency": "USD",
     "target": "10000.0",
     "public": true,
@@ -139,8 +139,8 @@
 {
   "comment": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:22Z",
-    "updated_at": "2012-05-16T14:45:22Z",
+    "created_at": "2012-05-16T19:52:25Z",
+    "updated_at": "2012-05-16T19:52:25Z",
     "text": "Text 1",
     "attachments": [
 
@@ -154,12 +154,12 @@
 {
   "contact": {
     "id": 2,
-    "created_at": "2012-05-16T14:45:22Z",
-    "updated_at": "2012-05-16T14:45:22Z",
+    "created_at": "2012-05-16T19:52:25Z",
+    "updated_at": "2012-05-16T19:52:25Z",
     "name": "Contact 1",
     "display_name": "Contact 1",
     "contacted_at": null,
-    "became_lead_at": "2012-05-16T14:45:22Z",
+    "became_lead_at": "2012-05-16T19:52:25Z",
     "became_prospect_at": null,
     "became_opportunity_at": null,
     "became_customer_at": null,
@@ -183,8 +183,8 @@
     "addresses": [
       {
         "id": 1,
-        "created_at": "2012-05-16T14:45:22Z",
-        "updated_at": "2012-05-16T14:45:22Z",
+        "created_at": "2012-05-16T19:52:25Z",
+        "updated_at": "2012-05-16T19:52:25Z",
         "name": "Address 1",
         "street": "826 Hazel",
         "state": "CA",
@@ -196,8 +196,8 @@
     "phone_numbers": [
       {
         "id": 3,
-        "created_at": "2012-05-16T14:45:22Z",
-        "updated_at": "2012-05-16T14:45:22Z",
+        "created_at": "2012-05-16T19:52:25Z",
+        "updated_at": "2012-05-16T19:52:25Z",
         "name": "Phone Number",
         "value": "+52313872481",
         "accepted_values": null,
@@ -207,8 +207,8 @@
     "email_addresses": [
       {
         "id": 2,
-        "created_at": "2012-05-16T14:45:22Z",
-        "updated_at": "2012-05-16T14:45:22Z",
+        "created_at": "2012-05-16T19:52:25Z",
+        "updated_at": "2012-05-16T19:52:25Z",
         "name": "Email",
         "value": "email-1@example.com",
         "accepted_values": null,
@@ -239,10 +239,10 @@
 {
   "deal": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:22Z",
-    "updated_at": "2012-05-16T14:45:22Z",
+    "created_at": "2012-05-16T19:52:25Z",
+    "updated_at": "2012-05-16T19:52:25Z",
     "description": "This deal rocks!",
-    "close_by": "2012-05-23T14:45:22Z",
+    "close_by": "2012-05-23T19:52:25Z",
     "state": "pending",
     "public": true,
     "products": [
@@ -251,8 +251,8 @@
     "line_items": [
       {
         "id": 1,
-        "created_at": "2012-05-16T14:45:22Z",
-        "updated_at": "2012-05-16T14:45:22Z",
+        "created_at": "2012-05-16T19:52:25Z",
+        "updated_at": "2012-05-16T19:52:25Z",
         "name": "Radium",
         "quantity": 1,
         "price": "1000.0",
@@ -261,8 +261,8 @@
       },
       {
         "id": 2,
-        "created_at": "2012-05-16T14:45:22Z",
-        "updated_at": "2012-05-16T14:45:22Z",
+        "created_at": "2012-05-16T19:52:25Z",
+        "updated_at": "2012-05-16T19:52:25Z",
         "name": "Radium",
         "quantity": 1,
         "price": "1000.0",
@@ -271,8 +271,8 @@
       },
       {
         "id": 3,
-        "created_at": "2012-05-16T14:45:22Z",
-        "updated_at": "2012-05-16T14:45:22Z",
+        "created_at": "2012-05-16T19:52:25Z",
+        "updated_at": "2012-05-16T19:52:25Z",
         "name": "Radium",
         "quantity": 1,
         "price": "1000.0",
@@ -296,11 +296,11 @@
 {
   "email": {
     "id": 2,
-    "created_at": "2012-05-16T14:45:23Z",
-    "updated_at": "2012-05-16T14:45:23Z",
+    "created_at": "2012-05-16T19:52:25Z",
+    "updated_at": "2012-05-16T19:52:25Z",
     "subject": "Hey",
     "message": "Long form text",
-    "sent_at": "2012-05-16T14:45:23Z",
+    "sent_at": "2012-05-16T19:52:25Z",
     "users": [
       54
     ],
@@ -321,8 +321,8 @@
 {
   "following": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:23Z",
-    "updated_at": "2012-05-16T14:45:23Z",
+    "created_at": "2012-05-16T19:52:25Z",
+    "updated_at": "2012-05-16T19:52:25Z",
     "approved": true,
     "user": 59,
     "followable": {
@@ -336,8 +336,8 @@
 {
   "group": {
     "id": 7,
-    "created_at": "2012-05-16T14:45:23Z",
-    "updated_at": "2012-05-16T14:45:23Z",
+    "created_at": "2012-05-16T19:52:25Z",
+    "updated_at": "2012-05-16T19:52:25Z",
     "name": "Group 7",
     "email": null,
     "phone": null,
@@ -370,10 +370,10 @@
 {
   "im": {
     "id": 3,
-    "created_at": "2012-05-16T14:45:23Z",
-    "updated_at": "2012-05-16T14:45:23Z",
+    "created_at": "2012-05-16T19:52:25Z",
+    "updated_at": "2012-05-16T19:52:25Z",
     "message": "Hey man",
-    "sent_at": "2012-05-16T14:45:23Z",
+    "sent_at": "2012-05-16T19:52:25Z",
     "users": [
       61,
       62
@@ -390,10 +390,10 @@
 {
   "invitation": {
     "id": 2,
-    "created_at": "2012-05-16T14:45:23Z",
-    "updated_at": "2012-05-16T14:45:23Z",
+    "created_at": "2012-05-16T19:52:26Z",
+    "updated_at": "2012-05-16T19:52:26Z",
     "state": "pending",
-    "hash_key": "5533eb8bd68764d505e8b6a9181448441addf56b",
+    "hash_key": "da90386d636e865f1b726d1b153dc2060d11767c",
     "meeting": 1,
     "invitee": {
       "user": 64
@@ -406,12 +406,12 @@
 {
   "meeting": {
     "id": 2,
-    "created_at": "2012-05-16T14:45:23Z",
-    "updated_at": "2012-05-16T14:45:23Z",
+    "created_at": "2012-05-16T19:52:26Z",
+    "updated_at": "2012-05-16T19:52:26Z",
     "topic": "Meeting 2",
     "location": "The office",
-    "starts_at": "2012-05-16T15:45:15Z",
-    "ends_at": "2012-05-16T16:45:15Z",
+    "starts_at": "2012-05-16T20:52:18Z",
+    "ends_at": "2012-05-16T21:52:18Z",
     "contacts": [
 
     ],
@@ -421,10 +421,10 @@
     "invitations": [
       {
         "id": 3,
-        "created_at": "2012-05-16T14:45:23Z",
-        "updated_at": "2012-05-16T14:45:23Z",
+        "created_at": "2012-05-16T19:52:26Z",
+        "updated_at": "2012-05-16T19:52:26Z",
         "state": "confirmed",
-        "hash_key": "e034c12bb57095b153e990e181258016ecc46a31",
+        "hash_key": "68b8c8a016ad468ef62970c3894cf61fe040f75a",
         "meeting": 2,
         "invitee": {
           "user": 65
@@ -442,8 +442,8 @@
 {
   "note": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:23Z",
-    "updated_at": "2012-05-16T14:45:23Z",
+    "created_at": "2012-05-16T19:52:26Z",
+    "updated_at": "2012-05-16T19:52:26Z",
     "message": "Long form text"
   }
 }
@@ -453,13 +453,13 @@
 {
   "phone_call": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:23Z",
-    "updated_at": "2012-05-16T14:45:23Z",
+    "created_at": "2012-05-16T19:52:26Z",
+    "updated_at": "2012-05-16T19:52:26Z",
     "outcome": null,
     "kind": "accepted",
     "source": null,
-    "started_at": "2012-05-16T14:35:15Z",
-    "ended_at": "2012-05-16T16:45:15+02:00",
+    "started_at": "2012-05-16T19:42:18Z",
+    "ended_at": "2012-05-16T21:52:18+02:00",
     "transcription_url": null,
     "recording_url": null,
     "contacts": [
@@ -476,8 +476,8 @@
 {
   "product": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:24Z",
-    "updated_at": "2012-05-16T14:45:24Z",
+    "created_at": "2012-05-16T19:52:26Z",
+    "updated_at": "2012-05-16T19:52:26Z",
     "name": "Radium",
     "description": null,
     "currency": "USD",
@@ -493,9 +493,9 @@
 {
   "reminder": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:24Z",
-    "updated_at": "2012-05-16T14:45:24Z",
-    "time": "2012-05-23T14:45:15Z",
+    "created_at": "2012-05-16T19:52:26Z",
+    "updated_at": "2012-05-16T19:52:26Z",
+    "time": "2012-05-23T19:52:18Z",
     "via": "sms",
     "remindable": {
       "todo": 1
@@ -509,10 +509,10 @@
 {
   "sms": {
     "id": 4,
-    "created_at": "2012-05-16T14:45:24Z",
-    "updated_at": "2012-05-16T14:45:24Z",
+    "created_at": "2012-05-16T19:52:26Z",
+    "updated_at": "2012-05-16T19:52:26Z",
     "message": "Less than 255 characters",
-    "sent_at": "2012-05-16T14:45:24Z",
+    "sent_at": "2012-05-16T19:52:26Z",
     "sender": {
       "user": 77
     },
@@ -530,11 +530,11 @@
 {
   "todo": {
     "id": 2,
-    "created_at": "2012-05-16T14:45:24Z",
-    "updated_at": "2012-05-16T14:45:24Z",
+    "created_at": "2012-05-16T19:52:26Z",
+    "updated_at": "2012-05-16T19:52:26Z",
     "kind": "general",
     "description": "Finish programming radium",
-    "finish_by": "2012-05-23T14:45:15Z",
+    "finish_by": "2012-05-23T19:52:18Z",
     "finished": false,
     "contacts": [
 
@@ -544,9 +544,9 @@
     ],
     "user": {
       "id": 79,
-      "created_at": "2012-05-16T14:45:24Z",
-      "updated_at": "2012-05-16T14:45:24Z",
-      "name": "Ruby Williams",
+      "created_at": "2012-05-16T19:52:26Z",
+      "updated_at": "2012-05-16T19:52:26Z",
+      "name": "Stephen Wells",
       "email": "user-39@example.com",
       "phone": "38539383924839",
       "public": true,
@@ -581,9 +581,9 @@
 {
   "user": {
     "id": 80,
-    "created_at": "2012-05-16T14:45:24Z",
-    "updated_at": "2012-05-16T14:45:24Z",
-    "name": "Maria Ross",
+    "created_at": "2012-05-16T19:52:27Z",
+    "updated_at": "2012-05-16T19:52:27Z",
+    "name": "Jack Duncan",
     "email": "user-40@example.com",
     "phone": "38540384024840",
     "public": true,
@@ -614,8 +614,8 @@
 {
   "account": {
     "id": 6,
-    "created_at": "2012-05-16T14:45:24Z",
-    "updated_at": "2012-05-16T14:45:24Z",
+    "created_at": "2012-05-16T19:52:27Z",
+    "updated_at": "2012-05-16T19:52:27Z",
     "name": "Account 2",
     "public": true,
     "users": [
@@ -641,21 +641,21 @@
 {
   "activity": {
     "id": 9,
-    "created_at": "2012-05-16T14:45:24Z",
-    "updated_at": "2012-05-16T14:45:24Z",
+    "created_at": "2012-05-16T19:52:27Z",
+    "updated_at": "2012-05-16T19:52:27Z",
     "kind": "todo",
     "tag": "created",
     "scheduled": false,
-    "timestamp": "2012-05-16T14:45:24Z",
+    "timestamp": "2012-05-16T19:52:27Z",
     "comments": [
 
     ],
     "owner": {
       "user": {
         "id": 82,
-        "created_at": "2012-05-16T14:45:24Z",
-        "updated_at": "2012-05-16T14:45:24Z",
-        "name": "Robert Torres",
+        "created_at": "2012-05-16T19:52:27Z",
+        "updated_at": "2012-05-16T19:52:27Z",
+        "name": "Juan Torres",
         "email": "user-42@example.com",
         "phone": "38542384224842",
         "public": true,
@@ -683,11 +683,11 @@
     "reference": {
       "todo": {
         "id": 3,
-        "created_at": "2012-05-16T14:45:24Z",
-        "updated_at": "2012-05-16T14:45:24Z",
+        "created_at": "2012-05-16T19:52:27Z",
+        "updated_at": "2012-05-16T19:52:27Z",
         "kind": "general",
         "description": "Finish programming radium",
-        "finish_by": "2012-05-23T14:45:15Z",
+        "finish_by": "2012-05-23T19:52:18Z",
         "finished": false,
         "contacts": [
 
@@ -697,9 +697,9 @@
         ],
         "user": {
           "id": 81,
-          "created_at": "2012-05-16T14:45:24Z",
-          "updated_at": "2012-05-16T14:45:24Z",
-          "name": "Martin Harris",
+          "created_at": "2012-05-16T19:52:27Z",
+          "updated_at": "2012-05-16T19:52:27Z",
+          "name": "Charles Montgomery",
           "email": "user-41@example.com",
           "phone": "38541384124841",
           "public": true,
@@ -737,17 +737,17 @@
   "phone_call_started_notification": {
     "number": "+192558738138",
     "source": "android",
-    "time": "2012-05-16T16:45:24+02:00",
+    "time": "2012-05-16T21:52:27+02:00",
     "direction": "outgoing",
     "to": {
       "contact": {
         "id": 8,
-        "created_at": "2012-05-16T14:45:24Z",
-        "updated_at": "2012-05-16T14:45:24Z",
+        "created_at": "2012-05-16T19:52:27Z",
+        "updated_at": "2012-05-16T19:52:27Z",
         "name": "Contact 6",
         "display_name": "Contact 6",
         "contacted_at": null,
-        "became_lead_at": "2012-05-16T14:45:24Z",
+        "became_lead_at": "2012-05-16T19:52:27Z",
         "became_prospect_at": null,
         "became_opportunity_at": null,
         "became_customer_at": null,
@@ -771,8 +771,8 @@
         "addresses": [
           {
             "id": 6,
-            "created_at": "2012-05-16T14:45:24Z",
-            "updated_at": "2012-05-16T14:45:24Z",
+            "created_at": "2012-05-16T19:52:27Z",
+            "updated_at": "2012-05-16T19:52:27Z",
             "name": "Address 6",
             "street": "826 Hazel",
             "state": "CA",
@@ -784,8 +784,8 @@
         "phone_numbers": [
           {
             "id": 14,
-            "created_at": "2012-05-16T14:45:24Z",
-            "updated_at": "2012-05-16T14:45:24Z",
+            "created_at": "2012-05-16T19:52:27Z",
+            "updated_at": "2012-05-16T19:52:27Z",
             "name": "Phone Number",
             "value": "+52363872486",
             "accepted_values": null,
@@ -795,8 +795,8 @@
         "email_addresses": [
           {
             "id": 13,
-            "created_at": "2012-05-16T14:45:24Z",
-            "updated_at": "2012-05-16T14:45:24Z",
+            "created_at": "2012-05-16T19:52:27Z",
+            "updated_at": "2012-05-16T19:52:27Z",
             "name": "Email",
             "value": "email-6@example.com",
             "accepted_values": null,
@@ -824,9 +824,9 @@
     "from": {
       "user": {
         "id": 83,
-        "created_at": "2012-05-16T14:45:24Z",
-        "updated_at": "2012-05-16T14:45:24Z",
-        "name": "Pamela Fowler",
+        "created_at": "2012-05-16T19:52:27Z",
+        "updated_at": "2012-05-16T19:52:27Z",
+        "name": "Karen Martin",
         "email": "user-43@example.com",
         "phone": "38543384324843",
         "public": true,
@@ -861,17 +861,17 @@
   "phone_call_finished_notification": {
     "number": "+192558738138",
     "source": "android",
-    "time": "2012-05-16T16:45:24+02:00",
+    "time": "2012-05-16T21:52:27+02:00",
     "direction": "outgoing",
     "to": {
       "contact": {
         "id": 9,
-        "created_at": "2012-05-16T14:45:25Z",
-        "updated_at": "2012-05-16T14:45:25Z",
+        "created_at": "2012-05-16T19:52:27Z",
+        "updated_at": "2012-05-16T19:52:27Z",
         "name": "Contact 7",
         "display_name": "Contact 7",
         "contacted_at": null,
-        "became_lead_at": "2012-05-16T14:45:25Z",
+        "became_lead_at": "2012-05-16T19:52:27Z",
         "became_prospect_at": null,
         "became_opportunity_at": null,
         "became_customer_at": null,
@@ -895,8 +895,8 @@
         "addresses": [
           {
             "id": 7,
-            "created_at": "2012-05-16T14:45:25Z",
-            "updated_at": "2012-05-16T14:45:25Z",
+            "created_at": "2012-05-16T19:52:27Z",
+            "updated_at": "2012-05-16T19:52:27Z",
             "name": "Address 7",
             "street": "826 Hazel",
             "state": "CA",
@@ -908,8 +908,8 @@
         "phone_numbers": [
           {
             "id": 16,
-            "created_at": "2012-05-16T14:45:25Z",
-            "updated_at": "2012-05-16T14:45:25Z",
+            "created_at": "2012-05-16T19:52:27Z",
+            "updated_at": "2012-05-16T19:52:27Z",
             "name": "Phone Number",
             "value": "+52373872487",
             "accepted_values": null,
@@ -919,8 +919,8 @@
         "email_addresses": [
           {
             "id": 15,
-            "created_at": "2012-05-16T14:45:25Z",
-            "updated_at": "2012-05-16T14:45:25Z",
+            "created_at": "2012-05-16T19:52:27Z",
+            "updated_at": "2012-05-16T19:52:27Z",
             "name": "Email",
             "value": "email-7@example.com",
             "accepted_values": null,
@@ -948,9 +948,9 @@
     "from": {
       "user": {
         "id": 87,
-        "created_at": "2012-05-16T14:45:24Z",
-        "updated_at": "2012-05-16T14:45:24Z",
-        "name": "Todd Harvey",
+        "created_at": "2012-05-16T19:52:27Z",
+        "updated_at": "2012-05-16T19:52:27Z",
+        "name": "Virginia Lawrence",
         "email": "user-47@example.com",
         "phone": "38547384724847",
         "public": true,
@@ -985,17 +985,17 @@
 {
   "notification": {
     "id": 1,
-    "created_at": "2012-05-16T14:45:25Z",
-    "updated_at": "2012-05-16T14:45:25Z",
+    "created_at": "2012-05-16T19:52:27Z",
+    "updated_at": "2012-05-16T19:52:27Z",
     "tag": "assigned.todo",
     "reference": {
       "todo": {
         "id": 4,
-        "created_at": "2012-05-16T14:45:25Z",
-        "updated_at": "2012-05-16T14:45:25Z",
+        "created_at": "2012-05-16T19:52:27Z",
+        "updated_at": "2012-05-16T19:52:27Z",
         "kind": "general",
         "description": "Finish programming radium",
-        "finish_by": "2012-05-23T14:45:15Z",
+        "finish_by": "2012-05-23T19:52:18Z",
         "finished": false,
         "contacts": [
 
@@ -1005,9 +1005,9 @@
         ],
         "user": {
           "id": 92,
-          "created_at": "2012-05-16T14:45:25Z",
-          "updated_at": "2012-05-16T14:45:25Z",
-          "name": "Christina Hunt",
+          "created_at": "2012-05-16T19:52:27Z",
+          "updated_at": "2012-05-16T19:52:27Z",
+          "name": "Lillian Franklin",
           "email": "user-52@example.com",
           "phone": "38552385224852",
           "public": true,
