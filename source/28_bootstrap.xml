@@ -1,0 +1,43 @@
+<document>
+  <title>Bootstrap Data</title>
+  <position>28</position>
+  <section title="Routes">
+    <docs>
+      <![CDATA[
+      * `GET /bootstrap`
+      ]]>
+    </docs>
+  </section>
+  <section>
+    <docs>
+      <![CDATA[
+      You can use the bootstrap API call to load your application with some common
+      and important data.
+
+      It includes:
+
+      * The current user
+      * The current account
+      * All the users in the account
+      * All the contacts
+      * All the campaigns
+      * All the deals
+      * A slice of the user's feed from 1 week into the future to 2 weeks into the past.
+      ]]>
+    </docs>
+    <reference title="Bootstrap Example">
+      <![CDATA[
+      ```
+      {
+        "user": { ... },
+        "current_user": { ... },
+        "account": { ... },
+        "contacts": [{ ... }]
+        "campaigns": [{ ... }],
+        "deals": [{ ... }]
+      }
+      ```
+      ]]>
+    </reference>
+  </section>
+</document>
