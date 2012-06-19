@@ -11,1084 +11,258 @@
 <reference title="Examples">
 <![CDATA[
 ```javascript
-
-// Account
-{
-  "account": {
-    "id": 5,
-    "created_at": "2012-06-19T11:10:20Z",
-    "updated_at": "2012-06-19T11:10:20Z",
-    "name": "Account 1",
-    "public": true,
-    "meta": {
-    },
-    "users": [
-
-    ],
-    "contacts": [
-
-    ],
-    "campaigns": [
-
-    ],
-    "avatar": {
-      "small_url": "/images/fallback/small_default.png",
-      "medium_url": "/images/fallback/medium_default.png",
-      "large_url": "/images/fallback/large_default.png",
-      "huge_url": "/images/fallback/huge_default.png"
-    }
-  }
-}
-
-
-// Announcement
-{
-  "announcement": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:20Z",
-    "updated_at": "2012-06-19T11:10:20Z",
-    "title": "Announcement 1",
-    "message": "Long form text",
-    "user": 41,
-    "meta": {
-    },
-    "comments": [
-
-    ]
-  }
-}
-
-
-// CallList
-{
-  "call_list": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:20Z",
-    "updated_at": "2012-06-19T11:10:20Z",
-    "description": "Call List 1",
-    "finish_by": "2012-06-26T11:10:13Z",
-    "overdue": false,
-    "finished": true,
-    "meta": {
-    },
-    "todos": [
-
-    ],
-    "pending_todos": [
-
-    ],
-    "finished_todos": [
-
-    ],
-    "overdue_todos": [
-
-    ],
-    "users": [
-
-    ],
-    "contacts": [
-
-    ],
-    "attachments": [
-
-    ],
-    "comments": [
-
-    ]
-  }
-}
-
-
-// Campaign
-{
-  "campaign": {
-    "id": 2,
-    "created_at": "2012-06-19T11:10:20Z",
-    "updated_at": "2012-06-19T11:10:20Z",
-    "user": 43,
-    "name": "Campaign 2",
-    "description": "Long form text",
-    "ends_at": "2012-06-26T11:10:13Z",
-    "currency": "USD",
-    "target": "10000.0",
-    "public": true,
-    "meta": {
-      "feed": {
-        "start_date": null,
-        "end_date": null,
-        "current_date": null
-      }
-    },
-    "contacts": [
-
-    ],
-    "groups": [
-
-    ],
-    "users": [
-
-    ],
-    "deals": [
-
-    ],
-    "products": [
-
-    ],
-    "call_lists": [
-
-    ],
-    "todos": [
-
-    ],
-    "followers": [
-
-    ],
-    "attachments": [
-
-    ],
-    "notes": [
-
-    ],
-    "comments": [
-
-    ]
-  }
-}
-
-
-// Comment
-{
-  "comment": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:20Z",
-    "updated_at": "2012-06-19T11:10:20Z",
-    "user": 46,
-    "text": "Text 1",
-    "meta": {
-    },
-    "attachments": [
-
-    ]
-  }
-}
-
-
-// Contact
-{
-  "contact": {
-    "id": 2,
-    "created_at": "2012-06-19T11:10:21Z",
-    "updated_at": "2012-06-19T11:10:21Z",
-    "user": 47,
-    "name": "Contact 1",
-    "display_name": "Contact 1",
-    "contacted_at": null,
-    "became_lead_at": "2012-06-19T11:10:21Z",
-    "became_prospect_at": null,
-    "became_opportunity_at": null,
-    "became_customer_at": null,
-    "became_dead_end_at": null,
-    "status": "lead",
-    "public": true,
-    "source": "radium",
-    "meta": {
-      "feed": {
-        "start_date": null,
-        "end_date": null,
-        "current_date": null
-      }
-    },
-    "groups": [
-      1,
-      2
-    ],
-    "campaigns": [
-
-    ],
-    "deals": [
-
-    ],
-    "fields": [
-
-    ],
-    "addresses": [
-      {
-        "id": 1,
-        "created_at": "2012-06-19T11:10:21Z",
-        "updated_at": "2012-06-19T11:10:21Z",
-        "name": "Address 1",
-        "street": "826 Hazel",
-        "state": "CA",
-        "country": "United States",
-        "zip_code": "94550",
-        "time_zone": null,
-        "meta": {
-        }
-      }
-    ],
-    "phone_numbers": [
-      {
-        "id": 3,
-        "created_at": "2012-06-19T11:10:21Z",
-        "updated_at": "2012-06-19T11:10:21Z",
-        "name": "Phone Number",
-        "value": "+52313872481",
-        "accepted_values": null,
-        "kind": "phone_number",
-        "meta": {
-        }
-      }
-    ],
-    "email_addresses": [
-      {
-        "id": 2,
-        "created_at": "2012-06-19T11:10:21Z",
-        "updated_at": "2012-06-19T11:10:21Z",
-        "name": "Email",
-        "value": "email-1@example.com",
-        "accepted_values": null,
-        "kind": "email_address",
-        "meta": {
-        }
-      }
-    ],
-    "attachments": [
-
-    ],
-    "notes": [
-
-    ],
-    "followers": [
-
-    ],
-    "avatar": {
-      "small_url": "/images/fallback/small_default.png",
-      "medium_url": "/images/fallback/medium_default.png",
-      "large_url": "/images/fallback/large_default.png",
-      "huge_url": "/images/fallback/huge_default.png"
-    }
-  }
-}
-
-
-// Deal
-{
-  "deal": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:21Z",
-    "updated_at": "2012-06-19T11:10:21Z",
-    "contact": 3,
-    "user": 53,
-    "name": "Deal 1",
-    "description": "This deal rocks!",
-    "close_by": "2012-06-26T11:10:21Z",
-    "state": "pending",
-    "public": true,
-    "overdue": false,
-    "meta": {
-      "feed": {
-        "start_date": null,
-        "end_date": null,
-        "current_date": null
-      }
-    },
-    "products": [
-
-    ],
-    "line_items": [
-      {
-        "id": 1,
-        "created_at": "2012-06-19T11:10:21Z",
-        "updated_at": "2012-06-19T11:10:21Z",
-        "name": "Radium",
-        "quantity": 1,
-        "price": "1000.0",
-        "currency": "USD",
-        "product": null,
-        "meta": {
-        }
-      },
-      {
-        "id": 2,
-        "created_at": "2012-06-19T11:10:21Z",
-        "updated_at": "2012-06-19T11:10:21Z",
-        "name": "Radium",
-        "quantity": 1,
-        "price": "1000.0",
-        "currency": "USD",
-        "product": null,
-        "meta": {
-        }
-      },
-      {
-        "id": 3,
-        "created_at": "2012-06-19T11:10:21Z",
-        "updated_at": "2012-06-19T11:10:21Z",
-        "name": "Radium",
-        "quantity": 1,
-        "price": "1000.0",
-        "currency": "USD",
-        "product": null,
-        "meta": {
-        }
-      }
-    ],
-    "notes": [
-
-    ],
-    "attachments": [
-
-    ],
-    "comments": [
-
-    ]
-  }
-}
-
-
-// Email
-{
-  "email": {
-    "id": 2,
-    "created_at": "2012-06-19T11:10:21Z",
-    "updated_at": "2012-06-19T11:10:21Z",
-    "subject": "Hey",
-    "message": "Long form text",
-    "sent_at": "2012-06-19T11:10:21Z",
-    "meta": {
-    },
-    "users": [
-      54
-    ],
-    "contacts": [
-      1
-    ],
-    "attachments": [
-
-    ],
-    "comments": [
-
-    ],
-    "sender": {
-      "user": 54
-    }
-  }
-}
-
-
-// Following
-{
-  "following": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:21Z",
-    "updated_at": "2012-06-19T11:10:21Z",
-    "approved": true,
-    "user": 59,
-    "meta": {
-    },
-    "followable": {
-      "contact": 4
-    }
-  }
-}
-
-
-// Group
-{
-  "group": {
-    "id": 7,
-    "created_at": "2012-06-19T11:10:21Z",
-    "updated_at": "2012-06-19T11:10:21Z",
-    "name": "Group 7",
-    "email": null,
-    "phone": null,
-    "public": true,
-    "primary_contact": null,
-    "user": 60,
-    "meta": {
-      "feed": {
-        "start_date": null,
-        "end_date": null,
-        "current_date": null
-      }
-    },
-    "contacts": [
-
-    ],
-    "users": [
-
-    ],
-    "fields": [
-
-    ],
-    "attachments": [
-
-    ],
-    "avatar": {
-      "small_url": "/images/fallback/small_default.png",
-      "medium_url": "/images/fallback/medium_default.png",
-      "large_url": "/images/fallback/large_default.png",
-      "huge_url": "/images/fallback/huge_default.png"
-    }
-  }
-}
-
-
-// Im
-{
-  "im": {
-    "id": 3,
-    "created_at": "2012-06-19T11:10:21Z",
-    "updated_at": "2012-06-19T11:10:21Z",
-    "message": "Hey man",
-    "sent_at": "2012-06-19T11:10:21Z",
-    "meta": {
-    },
-    "users": [
-      61,
-      62
-    ],
-    "attachments": [
-
-    ],
-    "sender": 62
-  }
-}
-
-
-// Invitation
-{
-  "invitation": {
-    "id": 2,
-    "created_at": "2012-06-19T11:10:22Z",
-    "updated_at": "2012-06-19T11:10:22Z",
-    "state": "pending",
-    "hash_key": "b998243f7edf1e39d2c12479b67f88c7",
-    "meeting": 1,
-    "meta": {
-    },
-    "comments": [
-
-    ],
-    "invitee": {
-      "user": 64
-    }
-  }
-}
-
-
-// Meeting
-{
-  "meeting": {
-    "id": 2,
-    "created_at": "2012-06-19T11:10:22Z",
-    "updated_at": "2012-06-19T11:10:22Z",
-    "topic": "Meeting 2",
-    "location": "The office",
-    "starts_at": "2012-06-19T12:10:13Z",
-    "ends_at": "2012-06-19T13:10:13Z",
-    "meta": {
-    },
-    "contacts": [
-
-    ],
-    "users": [
-      65
-    ],
-    "invitations": [
-      {
-        "id": 3,
-        "created_at": "2012-06-19T11:10:22Z",
-        "updated_at": "2012-06-19T11:10:22Z",
-        "state": "confirmed",
-        "hash_key": "33a96f0190a17a45a46953a4417c0322",
-        "meeting": 2,
-        "meta": {
-        },
-        "comments": [
-
-        ],
-        "invitee": {
-          "user": 65
-        }
-      }
-    ],
-    "attachments": [
-
-    ],
-    "comments": [
-
-    ]
-  }
-}
-
-
-// Note
-{
-  "note": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:22Z",
-    "updated_at": "2012-06-19T11:10:22Z",
-    "message": "Long form text",
-    "meta": {
-    },
-    "comments": [
-
-    ]
-  }
-}
-
-
-// PhoneCall
-{
-  "phone_call": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:22Z",
-    "updated_at": "2012-06-19T11:10:22Z",
-    "outcome": null,
-    "kind": "accepted",
-    "source": null,
-    "started_at": "2012-06-19T11:00:13Z",
-    "ended_at": "2012-06-19T13:10:13+02:00",
-    "transcription_url": null,
-    "recording_url": null,
-    "meta": {
-    },
-    "contacts": [
-      6
-    ],
-    "users": [
-      74
-    ],
-    "comments": [
-
-    ]
-  }
-}
-
-
-// Product
-{
-  "product": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:22Z",
-    "updated_at": "2012-06-19T11:10:22Z",
-    "name": "Radium",
-    "description": null,
-    "currency": "USD",
-    "price": "1000.0",
-    "meta": {
-    },
-    "deals": [
-
-    ]
-  }
-}
-
-
-// Reminder
-{
-  "reminder": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:23Z",
-    "updated_at": "2012-06-19T11:10:23Z",
-    "time": "2012-06-26T11:10:13Z",
-    "via": "sms",
-    "user": 75,
-    "meta": {
-    },
-    "remindable": {
-      "todo": 1
-    }
-  }
-}
-
-
-// Sms
-{
-  "sms": {
-    "id": 4,
-    "created_at": "2012-06-19T11:10:23Z",
-    "updated_at": "2012-06-19T11:10:23Z",
-    "message": "Less than 255 characters",
-    "sent_at": "2012-06-19T11:10:23Z",
-    "meta": {
-    },
-    "users": [
-      77
-    ],
-    "contacts": [
-      7
-    ],
-    "comments": [
-
-    ],
-    "sender": {
-      "user": 77
-    }
-  }
-}
-
-
-// Todo
-{
-  "todo": {
-    "id": 2,
-    "created_at": "2012-06-19T11:10:23Z",
-    "updated_at": "2012-06-19T11:10:23Z",
-    "call_list": null,
-    "campaign": null,
-    "user": 79,
-    "kind": "general",
-    "description": "Finish programming radium",
-    "finish_by": "2012-06-26T11:10:13Z",
-    "finished": false,
-    "overdue": false,
-    "meta": {
-    },
-    "contacts": [
-
-    ],
-    "attachments": [
-
-    ],
-    "comments": [
-
-    ],
-    "reference": null
-  }
-}
-
-
-// User
-{
-  "user": {
-    "id": 80,
-    "created_at": "2012-06-19T11:10:23Z",
-    "updated_at": "2012-06-19T11:10:23Z",
-    "name": "Stephen Knight",
-    "email": "user-40@example.com",
-    "phone": "38540384024840",
-    "public": true,
-    "meta": {
-      "feed": {
-        "start_date": null,
-        "end_date": null,
-        "current_date": null
-      }
-    },
-    "avatar": {
-      "small_url": "/images/fallback/small_default.png",
-      "medium_url": "/images/fallback/medium_default.png",
-      "large_url": "/images/fallback/large_default.png",
-      "huge_url": "/images/fallback/huge_default.png"
-    },
-    "account": 1
-  }
-}
-
-
-// Account
-{
-  "account": {
-    "id": 6,
-    "created_at": "2012-06-19T11:10:23Z",
-    "updated_at": "2012-06-19T11:10:23Z",
-    "name": "Account 2",
-    "public": true,
-    "meta": {
-    },
-    "users": [
-
-    ],
-    "contacts": [
-
-    ],
-    "campaigns": [
-
-    ],
-    "avatar": {
-      "small_url": "/images/fallback/small_default.png",
-      "medium_url": "/images/fallback/medium_default.png",
-      "large_url": "/images/fallback/large_default.png",
-      "huge_url": "/images/fallback/huge_default.png"
-    }
-  }
-}
-
-
-// Activity
-{
-  "activity": {
-    "id": 10,
-    "created_at": "2012-06-19T11:10:23Z",
-    "updated_at": "2012-06-19T11:10:23Z",
-    "kind": "todo",
-    "tag": "created",
-    "scheduled": false,
-    "timestamp": "2012-06-19T11:10:23Z",
-    "meta": {
-    },
-    "comments": [
-
-    ],
-    "owner": {
-      "user": {
-        "id": 82,
-        "created_at": "2012-06-19T11:10:23Z",
-        "updated_at": "2012-06-19T11:10:23Z",
-        "name": "Cheryl Gomez",
-        "email": "user-42@example.com",
-        "phone": "38542384224842",
-        "public": true,
-        "meta": {
-          "feed": {
-            "start_date": null,
-            "end_date": null,
-            "current_date": null
-          }
-        },
-        "avatar": {
-          "small_url": "/images/fallback/small_default.png",
-          "medium_url": "/images/fallback/medium_default.png",
-          "large_url": "/images/fallback/large_default.png",
-          "huge_url": "/images/fallback/huge_default.png"
-        },
-        "account": 1
-      }
-    },
-    "reference": {
-      "todo": {
-        "id": 3,
-        "created_at": "2012-06-19T11:10:23Z",
-        "updated_at": "2012-06-19T11:10:23Z",
-        "call_list": null,
-        "campaign": null,
-        "user": 81,
-        "kind": "general",
-        "description": "Finish programming radium",
-        "finish_by": "2012-06-26T11:10:13Z",
-        "finished": false,
-        "overdue": false,
-        "meta": {
-        },
-        "contacts": [
-
-        ],
-        "attachments": [
-
-        ],
-        "comments": [
-
-        ],
-        "reference": null
-      }
-    }
-  }
-}
-
-
-// PhoneCallStartedNotification
-{
-  "phone_call_started_notification": {
-    "number": "+192558738138",
-    "source": "android",
-    "time": "2012-06-19T13:10:23+02:00",
-    "direction": "outgoing",
-    "to": {
-      "contact": {
-        "id": 8,
-        "created_at": "2012-06-19T11:10:23Z",
-        "updated_at": "2012-06-19T11:10:23Z",
-        "user": 84,
-        "name": "Contact 6",
-        "display_name": "Contact 6",
-        "contacted_at": null,
-        "became_lead_at": "2012-06-19T11:10:23Z",
-        "became_prospect_at": null,
-        "became_opportunity_at": null,
-        "became_customer_at": null,
-        "became_dead_end_at": null,
-        "status": "lead",
-        "public": true,
-        "source": "radium",
-        "meta": {
-          "feed": {
-            "start_date": null,
-            "end_date": null,
-            "current_date": null
-          }
-        },
-        "groups": [
-          12,
-          13
-        ],
-        "campaigns": [
-
-        ],
-        "deals": [
-
-        ],
-        "fields": [
-
-        ],
-        "addresses": [
-          {
-            "id": 6,
-            "created_at": "2012-06-19T11:10:23Z",
-            "updated_at": "2012-06-19T11:10:23Z",
-            "name": "Address 6",
-            "street": "826 Hazel",
-            "state": "CA",
-            "country": "United States",
-            "zip_code": "94550",
-            "time_zone": null,
-            "meta": {
-            }
-          }
-        ],
-        "phone_numbers": [
-          {
-            "id": 14,
-            "created_at": "2012-06-19T11:10:23Z",
-            "updated_at": "2012-06-19T11:10:23Z",
-            "name": "Phone Number",
-            "value": "+52363872486",
-            "accepted_values": null,
-            "kind": "phone_number",
-            "meta": {
-            }
-          }
-        ],
-        "email_addresses": [
-          {
-            "id": 13,
-            "created_at": "2012-06-19T11:10:23Z",
-            "updated_at": "2012-06-19T11:10:23Z",
-            "name": "Email",
-            "value": "email-6@example.com",
-            "accepted_values": null,
-            "kind": "email_address",
-            "meta": {
-            }
-          }
-        ],
-        "attachments": [
-
-        ],
-        "notes": [
-
-        ],
-        "followers": [
-
-        ],
-        "avatar": {
-          "small_url": "/images/fallback/small_default.png",
-          "medium_url": "/images/fallback/medium_default.png",
-          "large_url": "/images/fallback/large_default.png",
-          "huge_url": "/images/fallback/huge_default.png"
-        }
-      }
-    },
-    "from": {
-      "user": {
-        "id": 83,
-        "created_at": "2012-06-19T11:10:23Z",
-        "updated_at": "2012-06-19T11:10:23Z",
-        "name": "Brandon Edwards",
-        "email": "user-43@example.com",
-        "phone": "38543384324843",
-        "public": true,
-        "meta": {
-          "feed": {
-            "start_date": null,
-            "end_date": null,
-            "current_date": null
-          }
-        },
-        "avatar": {
-          "small_url": "/images/fallback/small_default.png",
-          "medium_url": "/images/fallback/medium_default.png",
-          "large_url": "/images/fallback/large_default.png",
-          "huge_url": "/images/fallback/huge_default.png"
-        },
-        "account": 1
-      }
-    }
-  }
-}
-
-
-// PhoneCallFinishedNotification
-{
-  "phone_call_finished_notification": {
-    "number": "+192558738138",
-    "source": "android",
-    "time": "2012-06-19T13:10:23+02:00",
-    "direction": "outgoing",
-    "to": {
-      "contact": {
-        "id": 9,
-        "created_at": "2012-06-19T11:10:23Z",
-        "updated_at": "2012-06-19T11:10:23Z",
-        "user": 88,
-        "name": "Contact 7",
-        "display_name": "Contact 7",
-        "contacted_at": null,
-        "became_lead_at": "2012-06-19T11:10:23Z",
-        "became_prospect_at": null,
-        "became_opportunity_at": null,
-        "became_customer_at": null,
-        "became_dead_end_at": null,
-        "status": "lead",
-        "public": true,
-        "source": "radium",
-        "meta": {
-          "feed": {
-            "start_date": null,
-            "end_date": null,
-            "current_date": null
-          }
-        },
-        "groups": [
-          14,
-          15
-        ],
-        "campaigns": [
-
-        ],
-        "deals": [
-
-        ],
-        "fields": [
-
-        ],
-        "addresses": [
-          {
-            "id": 7,
-            "created_at": "2012-06-19T11:10:23Z",
-            "updated_at": "2012-06-19T11:10:23Z",
-            "name": "Address 7",
-            "street": "826 Hazel",
-            "state": "CA",
-            "country": "United States",
-            "zip_code": "94550",
-            "time_zone": null,
-            "meta": {
-            }
-          }
-        ],
-        "phone_numbers": [
-          {
-            "id": 16,
-            "created_at": "2012-06-19T11:10:23Z",
-            "updated_at": "2012-06-19T11:10:23Z",
-            "name": "Phone Number",
-            "value": "+52373872487",
-            "accepted_values": null,
-            "kind": "phone_number",
-            "meta": {
-            }
-          }
-        ],
-        "email_addresses": [
-          {
-            "id": 15,
-            "created_at": "2012-06-19T11:10:23Z",
-            "updated_at": "2012-06-19T11:10:23Z",
-            "name": "Email",
-            "value": "email-7@example.com",
-            "accepted_values": null,
-            "kind": "email_address",
-            "meta": {
-            }
-          }
-        ],
-        "attachments": [
-
-        ],
-        "notes": [
-
-        ],
-        "followers": [
-
-        ],
-        "avatar": {
-          "small_url": "/images/fallback/small_default.png",
-          "medium_url": "/images/fallback/medium_default.png",
-          "large_url": "/images/fallback/large_default.png",
-          "huge_url": "/images/fallback/huge_default.png"
-        }
-      }
-    },
-    "from": {
-      "user": {
-        "id": 87,
-        "created_at": "2012-06-19T11:10:23Z",
-        "updated_at": "2012-06-19T11:10:23Z",
-        "name": "Virginia Dean",
-        "email": "user-47@example.com",
-        "phone": "38547384724847",
-        "public": true,
-        "meta": {
-          "feed": {
-            "start_date": null,
-            "end_date": null,
-            "current_date": null
-          }
-        },
-        "avatar": {
-          "small_url": "/images/fallback/small_default.png",
-          "medium_url": "/images/fallback/medium_default.png",
-          "large_url": "/images/fallback/large_default.png",
-          "huge_url": "/images/fallback/huge_default.png"
-        },
-        "account": 1
-      }
-    }
-  }
-}
-
-
-// Notification
-{
-  "notification": {
-    "id": 1,
-    "created_at": "2012-06-19T11:10:23Z",
-    "updated_at": "2012-06-19T11:10:23Z",
-    "tag": "assigned.todo",
-    "meta": {
-    },
-    "reference": {
-      "todo": {
-        "id": 4,
-        "created_at": "2012-06-19T11:10:23Z",
-        "updated_at": "2012-06-19T11:10:23Z",
-        "call_list": null,
-        "campaign": null,
-        "user": 92,
-        "kind": "general",
-        "description": "Finish programming radium",
-        "finish_by": "2012-06-26T11:10:13Z",
-        "finished": false,
-        "overdue": false,
-        "meta": {
-        },
-        "contacts": [
-
-        ],
-        "attachments": [
-
-        ],
-        "comments": [
-
-        ],
-        "reference": null
-      }
-    }
-  }
-}
-
+-- create_table("accounts", {:force=>true})
+   -> 0.0334s
+-- add_index("accounts", ["lead_pool_manager_id"], {:name=>"index_accounts_on_lead_pool_manager_id"})
+   -> 0.0067s
+-- add_index("accounts", ["name"], {:name=>"index_accounts_on_name", :unique=>true})
+   -> 0.0058s
+-- create_table("activities", {:force=>true})
+   -> 0.0093s
+-- add_index("activities", ["account_id"], {:name=>"index_activities_on_account_id"})
+   -> 0.0048s
+-- add_index("activities", ["kind"], {:name=>"index_activities_on_kind"})
+   -> 0.0045s
+-- add_index("activities", ["overdue"], {:name=>"index_activities_on_overdue"})
+   -> 0.0044s
+-- add_index("activities", ["owner_id", "owner_type"], {:name=>"index_activities_on_owner_id_and_owner_type"})
+   -> 0.0041s
+-- add_index("activities", ["reference_id", "reference_type"], {:name=>"index_activities_on_reference_id_and_reference_type"})
+   -> 0.0041s
+-- add_index("activities", ["tag"], {:name=>"index_activities_on_tag"})
+   -> 0.0044s
+-- add_index("activities", ["timestamp"], {:name=>"index_activities_on_timestamp"})
+   -> 0.0054s
+-- add_index("activities", ["updated_at", "timestamp"], {:name=>"index_activities_on_updated_at_and_timestamp"})
+   -> 0.0056s
+-- add_index("activities", ["updated_at"], {:name=>"index_activities_on_updated_at"})
+   -> 0.0056s
+-- create_table("activities_feeds", {:force=>true})
+   -> 0.0034s
+-- add_index("activities_feeds", ["activity_id"], {:name=>"index_activities_feeds_on_activity_id"})
+   -> 0.0030s
+-- add_index("activities_feeds", ["feedable_id", "feedable_type"], {:name=>"by_feed"})
+   -> 0.0035s
+-- create_table("addresses", {:force=>true})
+   -> 0.0046s
+-- add_index("addresses", ["contact_id", "name"], {:name=>"index_addresses_on_contact_id_and_name", :unique=>true})
+   -> 0.0028s
+-- add_index("addresses", ["contact_id"], {:name=>"index_addresses_on_contact_id"})
+   -> 0.0028s
+-- create_table("announcement_users", {:force=>true})
+   -> 0.0038s
+-- add_index("announcement_users", ["announcement_id"], {:name=>"index_announcement_users_on_announcement_id"})
+   -> 0.0033s
+-- add_index("announcement_users", ["user_id", "announcement_id"], {:name=>"index_announcement_users_on_user_id_and_announcement_id", :unique=>true})
+   -> 0.0336s
+-- add_index("announcement_users", ["user_id"], {:name=>"index_announcement_users_on_user_id"})
+   -> 0.0173s
+-- create_table("announcements", {:force=>true})
+   -> 0.0061s
+-- add_index("announcements", ["created_at"], {:name=>"index_announcements_on_created_at"})
+   -> 0.0031s
+-- add_index("announcements", ["user_id"], {:name=>"index_announcements_on_user_id"})
+   -> 0.0031s
+-- create_table("attachments", {:force=>true})
+   -> 0.0049s
+-- add_index("attachments", ["account_id"], {:name=>"index_attachments_on_account_id"})
+   -> 0.0031s
+-- add_index("attachments", ["attachable_id", "attachable_type"], {:name=>"index_attachments_on_attachable_id_and_attachable_type"})
+   -> 0.0037s
+-- add_index("attachments", ["user_id"], {:name=>"index_attachments_on_user_id"})
+   -> 0.0031s
+-- create_table("call_lists", {:force=>true})
+   -> 0.0043s
+-- add_index("call_lists", ["campaign_id"], {:name=>"index_call_lists_on_campaign_id"})
+   -> 0.0026s
+-- create_table("campaigns", {:force=>true})
+   -> 0.0050s
+-- add_index("campaigns", ["account_id"], {:name=>"index_campaigns_on_account_id"})
+   -> 0.0023s
+-- add_index("campaigns", ["user_id"], {:name=>"index_campaigns_on_user_id"})
+   -> 0.0026s
+-- create_table("campaigns_contacts", {:id=>false, :force=>true})
+   -> 0.0018s
+-- add_index("campaigns_contacts", ["campaign_id"], {:name=>"index_campaigns_contacts_on_campaign_id"})
+   -> 0.0025s
+-- add_index("campaigns_contacts", ["contact_id"], {:name=>"index_campaigns_contacts_on_contact_id"})
+   -> 0.0026s
+-- create_table("comments", {:force=>true})
+   -> 0.0051s
+-- add_index("comments", ["commentable_id", "commentable_type"], {:name=>"index_comments_on_commentable_id_and_commentable_type"})
+   -> 0.0028s
+-- add_index("comments", ["user_id"], {:name=>"index_comments_on_commentator_id"})
+   -> 0.0028s
+-- create_table("contacts", {:force=>true})
+   -> 0.0058s
+-- add_index("contacts", ["account_id"], {:name=>"index_contacts_on_account_id"})
+   -> 0.0027s
+-- add_index("contacts", ["user_id"], {:name=>"index_contacts_on_user_id"})
+   -> 0.0027s
+-- create_table("contacts_groups", {:force=>true})
+   -> 0.0045s
+-- add_index("contacts_groups", ["contact_id", "group_id"], {:name=>"index_contacts_groups_on_contact_id_and_group_id", :unique=>true})
+   -> 0.0039s
+-- add_index("contacts_groups", ["contact_id"], {:name=>"index_contacts_groups_on_contact_id"})
+   -> 0.0034s
+-- add_index("contacts_groups", ["group_id"], {:name=>"index_contacts_groups_on_group_id"})
+   -> 0.0035s
+-- create_table("contacts_todos", {:id=>false, :force=>true})
+   -> 0.0017s
+-- create_table("deals", {:force=>true})
+   -> 0.0062s
+-- add_index("deals", ["account_id"], {:name=>"index_deals_on_account_id"})
+   -> 0.0032s
+-- add_index("deals", ["contact_id"], {:name=>"index_deals_on_contact_id"})
+   -> 0.0028s
+-- add_index("deals", ["user_id"], {:name=>"index_deals_on_user_id"})
+   -> 0.0045s
+-- create_table("developers", {:force=>true})
+   -> 0.0061s
+-- add_index("developers", ["api_key"], {:name=>"index_developers_on_api_key", :unique=>true})
+   -> 0.0035s
+-- create_table("fields", {:force=>true})
+   -> 0.0050s
+-- add_index("fields", ["account_id"], {:name=>"index_fields_on_account_id"})
+   -> 0.0033s
+-- add_index("fields", ["extendable_id", "extendable_type"], {:name=>"index_fields_on_extendable_id_and_extendable_type"})
+   -> 0.0029s
+-- add_index("fields", ["extendable_id"], {:name=>"index_fields_on_extendable_id"})
+   -> 0.0036s
+-- create_table("followings", {:force=>true})
+   -> 0.0051s
+-- add_index("followings", ["followable_id", "followable_type"], {:name=>"index_followings_on_followable_id_and_followable_type"})
+   -> 0.0037s
+-- add_index("followings", ["user_id", "followable_id", "followable_type"], {:name=>"by_user_and_item", :unique=>true})
+   -> 0.0038s
+-- add_index("followings", ["user_id"], {:name=>"index_followings_on_user_id"})
+   -> 0.0034s
+-- create_table("groups", {:force=>true})
+   -> 0.0050s
+-- add_index("groups", ["account_id", "name"], {:name=>"index_groups_on_account_id_and_name", :unique=>true})
+   -> 0.0031s
+-- add_index("groups", ["account_id"], {:name=>"index_groups_on_account_id"})
+   -> 0.0029s
+-- add_index("groups", ["name"], {:name=>"index_groups_on_name"})
+   -> 0.0039s
+-- add_index("groups", ["primary_contact_id"], {:name=>"index_groups_on_primary_contact_id"})
+   -> 0.0041s
+-- create_table("identities", {:force=>true})
+   -> 0.0047s
+-- add_index("identities", ["email"], {:name=>"index_identities_on_email"})
+   -> 0.0025s
+-- create_table("invitations", {:force=>true})
+   -> 0.0061s
+-- add_index("invitations", ["hash_key"], {:name=>"index_invitations_on_hash_key", :unique=>true})
+   -> 0.0036s
+-- add_index("invitations", ["invitee_id", "invitee_type"], {:name=>"index_invitations_on_invitee_id_and_invitee_type"})
+   -> 0.0040s
+-- add_index("invitations", ["invitee_id"], {:name=>"index_invitations_on_invitee_id"})
+   -> 0.0037s
+-- add_index("invitations", ["meeting_id", "invitee_id", "invitee_type"], {:name=>"index_invitations_on_meeting_id_and_invitee_id_and_invitee_type", :unique=>true})
+   -> 0.0039s
+-- add_index("invitations", ["meeting_id"], {:name=>"index_invitations_on_meeting_id"})
+   -> 0.0042s
+-- create_table("line_items", {:force=>true})
+   -> 0.0055s
+-- add_index("line_items", ["deal_id"], {:name=>"index_line_items_on_deal_id"})
+   -> 0.0027s
+-- create_table("meetings", {:force=>true})
+   -> 0.0053s
+-- add_index("meetings", ["user_id"], {:name=>"index_meetings_on_user_id"})
+   -> 0.0029s
+-- create_table("message_participants", {:force=>true})
+   -> 0.0055s
+-- add_index("message_participants", ["id", "received"], {:name=>"index_message_participants_on_id_and_received"})
+   -> 0.0143s
+-- add_index("message_participants", ["message_id", "participant_id", "participant_type"], {:name=>"by_participant_and_message"})
+   -> 0.0045s
+-- add_index("message_participants", ["message_id"], {:name=>"index_message_participants_on_message_id"})
+   -> 0.0036s
+-- add_index("message_participants", ["participant_id", "participant_type"], {:name=>"by_participant"})
+   -> 0.0043s
+-- create_table("messages", {:force=>true})
+   -> 0.0063s
+-- add_index("messages", ["account_id"], {:name=>"index_messages_on_account_id"})
+   -> 0.0029s
+-- add_index("messages", ["sender_id", "sender_type"], {:name=>"index_messages_on_sender_id_and_sender_type"})
+   -> 0.0031s
+-- add_index("messages", ["type"], {:name=>"index_messages_on_type"})
+   -> 0.0033s
+-- create_table("notes", {:force=>true})
+   -> 0.0055s
+-- add_index("notes", ["reference_id", "reference_type"], {:name=>"index_notes_on_reference_id_and_reference_type"})
+   -> 0.0027s
+-- add_index("notes", ["user_id"], {:name=>"index_notes_on_user_id"})
+   -> 0.0030s
+-- create_table("notifications", {:force=>true})
+   -> 0.0051s
+-- add_index("notifications", ["user_id"], {:name=>"index_notifications_on_user_id"})
+   -> 0.0027s
+-- create_table("phone_call_participants", {:force=>true})
+   -> 0.0042s
+-- add_index("phone_call_participants", ["id", "received"], {:name=>"index_phone_call_participants_on_id_and_received"})
+   -> 0.0027s
+-- add_index("phone_call_participants", ["person_id", "person_type"], {:name=>"by_person"})
+   -> 0.0030s
+-- add_index("phone_call_participants", ["phone_call_id"], {:name=>"index_phone_call_participants_on_phone_call_id"})
+   -> 0.0036s
+-- create_table("phone_calls", {:force=>true})
+   -> 0.0049s
+-- add_index("phone_calls", ["account_id"], {:name=>"index_phone_calls_on_account_id"})
+   -> 0.0033s
+-- add_index("phone_calls", ["ended_at"], {:name=>"index_phone_calls_on_ended_at"})
+   -> 0.0029s
+-- add_index("phone_calls", ["started_at"], {:name=>"index_phone_calls_on_started_at"})
+   -> 0.0035s
+-- create_table("products", {:force=>true})
+   -> 0.0058s
+-- add_index("products", ["account_id"], {:name=>"index_products_on_account_id"})
+   -> 0.0024s
+-- create_table("reminders", {:force=>true})
+   -> 0.0047s
+-- add_index("reminders", ["remindable_id", "remindable_type"], {:name=>"index_reminders_on_remindable_id_and_remindable_type"})
+   -> 0.0032s
+-- add_index("reminders", ["time"], {:name=>"index_reminders_on_time"})
+   -> 0.0030s
+-- add_index("reminders", ["user_id"], {:name=>"index_reminders_on_user_id"})
+   -> 0.0031s
+-- create_table("taggings", {:force=>true})
+   -> 0.0049s
+-- add_index("taggings", ["tag_id"], {:name=>"index_taggings_on_tag_id"})
+   -> 0.0025s
+-- add_index("taggings", ["taggable_id", "taggable_type", "context"], {:name=>"index_taggings_on_taggable_id_and_taggable_type_and_context"})
+   -> 0.0030s
+-- create_table("tags", {:force=>true})
+   -> 0.0036s
+-- create_table("todos", {:force=>true})
+   -> 0.0049s
+-- add_index("todos", ["account_id"], {:name=>"index_todos_on_account_id"})
+   -> 0.0025s
+-- add_index("todos", ["call_list_id"], {:name=>"index_todos_on_call_list_id"})
+   -> 0.0033s
+-- add_index("todos", ["campaign_id"], {:name=>"index_todos_on_campaign_id"})
+   -> 0.0032s
+-- add_index("todos", ["reference_id", "reference_type"], {:name=>"index_todos_on_reference_id_and_reference_type"})
+   -> 0.0032s
+-- add_index("todos", ["user_id"], {:name=>"index_todos_on_user_id"})
+   -> 0.0040s
+-- create_table("users", {:force=>true})
+   -> 0.0053s
+-- add_index("users", ["account_id"], {:name=>"index_users_on_account_id"})
+   -> 0.0024s
+-- add_index("users", ["api_key"], {:name=>"index_users_on_api_key", :unique=>true})
+   -> 0.0029s
+-- add_index("users", ["email"], {:name=>"index_users_on_email", :unique=>true})
+   -> 0.0032s
+-- add_index("users", ["phone", "account_id"], {:name=>"index_users_on_phone_and_account_id", :unique=>true})
+   -> 0.0034s
+-- initialize_schema_migrations_table()
+   -> 0.0037s
+-- assume_migrated_upto_version(20120611141232, ["/Users/adam/radium/radium/db/migrate"])
+   -> 0.0143s
+You have 1 pending migrations:
+  20120619114033 ChangeContactSource
 ````
 ]]>
 </reference>
